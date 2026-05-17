@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MM CPA Services PLLC — Simplifying Taxes. Strengthening Businesses.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0B2545;
+    --blue: #1A56DB;
+    --sky: #3B82F6;
+    --gold: #D97706;
+    --light: #F0F6FF;
+    --gray: #64748B;
+    --border: #E2E8F0;
+    --white: #FFFFFF;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1E293B; background: var(--white); }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand { font-size: 1.1rem; font-weight: 700; color: var(--navy); text-decoration: none; }
+  .nav-brand span { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue); color: var(--white);
+    padding: .5rem 1.25rem; border-radius: 8px;
+    font-size: .875rem; font-weight: 600;
+    text-decoration: none; transition: background .2s;
+  }
+  .nav-cta:hover { background: #1648c7; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1A3A6B 60%, #1A56DB 100%);
+    color: var(--white);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    color: #93C5FD; border-radius: 100px;
+    font-size: .8rem; font-weight: 500;
+    padding: .35rem .9rem; margin-bottom: 1.5rem;
+  }
+  .badge::before { content: '★'; color: var(--gold); }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800; line-height: 1.15;
+    max-width: 760px; margin: 0 auto 1.25rem;
+  }
+  .hero h1 span { color: #60A5FA; }
+  .hero p {
+    font-size: 1.125rem; color: #CBD5E1;
+    max-width: 540px; margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--white);
+    padding: .875rem 2rem; border-radius: 10px;
+    font-weight: 700; font-size: 1rem;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(217,119,6,.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(217,119,6,.5); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.35);
+    padding: .875rem 2rem; border-radius: 10px;
+    font-weight: 600; font-size: 1rem;
+    text-decoration: none; transition: background .2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* STATS */
+  .stats {
+    background: var(--navy);
+    padding: 2rem;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 0;
+  }
+  .stat {
+    flex: 1; min-width: 150px; max-width: 220px;
+    text-align: center; padding: 1rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 2.25rem; font-weight: 800; color: #60A5FA; line-height: 1; }
+  .stat-label { font-size: .8rem; color: #94A3B8; margin-top: .35rem; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+
+  /* SECTION BASE */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: .8rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .75rem; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800; color: var(--navy); margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--gray); line-height: 1.7; max-width: 560px; }
+
+  /* SERVICES */
+  .services { background: var(--light); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem; margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--white); border-radius: 14px;
+    padding: 1.75rem; border: 1px solid var(--border);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,37,69,.1); }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--light); display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1rem;
+  }
+  .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+  .service-card p { font-size: .875rem; color: var(--gray); line-height: 1.65; }
+
+  /* WHY US */
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 3rem;
+  }
+  @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem; border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .why-check {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #DBEAFE; color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .why-item h4 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; }
+  .why-item p { font-size: .825rem; color: var(--gray); line-height: 1.55; }
+
+  /* CREDENTIALS */
+  .creds { background: var(--navy); }
+  .creds .section-title { color: var(--white); }
+  .creds .section-sub { color: #94A3B8; }
+  .creds-row {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    margin-top: 2.5rem; align-items: center;
+  }
+  .cred-badge {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #CBD5E1; border-radius: 100px;
+    padding: .6rem 1.25rem; font-size: .875rem; font-weight: 600;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .cred-badge::before { content: '✓'; color: #34D399; font-weight: 700; }
+
+  /* TESTIMONIAL */
+  .testimonial-box {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    border: 1px solid #BFDBFE;
+    border-radius: 18px; padding: 2.5rem;
+    max-width: 700px; margin: 3rem auto 0;
+    text-align: center;
+  }
+  .testimonial-stars { color: var(--gold); font-size: 1.25rem; margin-bottom: 1.25rem; letter-spacing: .1em; }
+  .testimonial-text { font-size: 1.1rem; color: var(--navy); line-height: 1.75; font-style: italic; font-weight: 500; }
+  .testimonial-author { margin-top: 1.5rem; font-size: .875rem; color: var(--gray); font-weight: 600; }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, #1A56DB, #0B2545);
+    text-align: center; padding: 5rem 2rem;
+    color: var(--white);
+  }
+  .cta-section h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 1rem; }
+  .cta-section p { color: #93C5FD; font-size: 1.05rem; margin-bottom: 2.5rem; }
+  .cta-contact {
+    display: flex; flex-wrap: wrap; gap: 1.5rem;
+    justify-content: center; margin-bottom: 2.5rem;
+  }
+  .cta-contact a { color: #CBD5E1; text-decoration: none; font-size: 1rem; font-weight: 500; }
+  .cta-contact a:hover { color: var(--white); }
+  .cta-contact a::before { margin-right: .5rem; }
+  .cta-contact .phone::before { content: '📞'; }
+  .cta-contact .email::before { content: '✉️'; }
+  .cta-contact .loc::before { content: '📍'; }
+
+  /* FOOTER */
+  footer {
+    background: #07172E; color: #475569;
+    text-align: center; padding: 1.5rem 2rem;
+    font-size: .8rem;
+  }
+  footer a { color: #60A5FA; text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .stats { gap: 0; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .stat:last-child { border-bottom: none; }
+    .why-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#"><span>MM</span> CPA Services PLLC</a>
+  <a class="nav-cta" href="tel:8325984470">Free Consultation</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="badge">23+ Years of CPA Excellence · Katy, TX</div>
+  <h1>Simplifying Taxes.<br><span>Strengthening Businesses.</span></h1>
+  <p>MM CPA Services PLLC — trusted by 500+ businesses for tax planning, bookkeeping, IRS audits, and financial advisory services.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="tel:8325984470">Get a Free Consultation</a>
+    <a class="btn-outline" href="https://cpamahesh.taxdome.com/login" target="_blank">Client Portal →</a>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">23+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Businesses Served</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+  <div class="stat"><div class="stat-num">1,000+</div><div class="stat-label">Tax Returns Filed</div></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <div class="section-title">Comprehensive Financial Services</div>
+    <p class="section-sub">From tax compliance to strategic business advisory — we handle the numbers so you can focus on growth.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Tax Planning & Compliance</h3>
+        <p>Strategic tax planning to minimize liability and ensure full IRS compliance — for individuals and businesses alike.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📒</div>
+        <h3>Accounting & Bookkeeping</h3>
+        <p>Accurate, timely bookkeeping that keeps your financials organized and audit-ready year-round.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏛️</div>
+        <h3>IRS Tax Audits</h3>
+        <p>Expert representation and guidance through IRS audit processes, protecting your interests at every step.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>Business Advisory & Consulting</h3>
+        <p>Data-driven strategic advice to help you make informed decisions, reduce risk, and scale confidently.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👥</div>
+        <h3>Payroll Management</h3>
+        <p>End-to-end payroll processing with full compliance — accurate, on-time, and stress-free for your team.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Financial Reporting & Analysis</h3>
+        <p>Clear financial reports and in-depth analysis that give you real visibility into your business performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="container">
+    <div class="section-label">Why Choose Us</div>
+    <div class="section-title">More Than Just a CPA Firm</div>
+    <p class="section-sub">We combine technical expertise with a genuine commitment to your success.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <h4>Expert & Certified Professionals</h4>
+          <p>TXCPA, AICPA, Intuit ProAdvisor, and IRS eFile Authorized — credentials that matter.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <h4>Personalized, Client-Centric Approach</h4>
+          <p>Every client gets a tailored strategy — not a one-size-fits-all solution.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <h4>Accuracy & Compliance Focus</h4>
+          <p>Zero tolerance for errors. Every filing, every report, done right the first time.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <h4>Transparent & Ethical Practices</h4>
+          <p>No hidden fees, no surprises. Honest advice you can trust completely.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <h4>Proactive & Timely Support</h4>
+          <p>We reach out before deadlines, not after — keeping you ahead of obligations.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <h4>Confidential & Secure</h4>
+          <p>Your financial data is handled with the highest standards of security and discretion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="creds">
+  <div class="container">
+    <div class="section-label" style="color:#60A5FA">Credentials & Affiliations</div>
+    <div class="section-title">Certified. Trusted. Recognized.</div>
+    <p class="section-sub">Mahesh Mutyala holds the certifications that matter most for your financial peace of mind.</p>
+    <div class="creds-row">
+      <div class="cred-badge">Texas CPA (TXCPA)</div>
+      <div class="cred-badge">AICPA Member</div>
+      <div class="cred-badge">Intuit ProAdvisor</div>
+      <div class="cred-badge">IRS eFile Authorized</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section>
+  <div class="container">
+    <div style="text-align:center">
+      <div class="section-label">Client Testimonials</div>
+      <div class="section-title">Trusted by Hundreds of Businesses</div>
+    </div>
+    <div class="testimonial-box">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"He's a fantastic CPA — technically excellent and I trust him completely with both my business and personal taxes. He simplifies everything and always has my best interests in mind."</p>
+      <p class="testimonial-author">— Verified Client · MM CPA Services</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Simplify Your Finances?</h2>
+    <p>Book a free consultation today — no pressure, just clarity.</p>
+    <div class="cta-contact">
+      <a class="phone" href="tel:8325984470">832-598-4470</a>
+      <a class="email" href="mailto:hello@cpamahesh.com">hello@cpamahesh.com</a>
+      <a class="loc" href="#">1325 Main St, STE 401, Katy, TX 77494</a>
+    </div>
+    <a class="btn-primary" href="tel:8325984470">Get a Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 MM CPA Services PLLC · <a href="https://www.cpamahesh.com" target="_blank">cpamahesh.com</a> · <a href="https://cpamahesh.taxdome.com/login" target="_blank">Client Portal</a></p>
+</footer>
+
+</body>
+</html>
