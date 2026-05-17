@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Aspects Bookkeeping, LLC | Bookkeeper in Benton City, WA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; overflow-x: hidden; }
+
+  :root {
+    --primary: #2ec7b3;
+    --primary-dark: #249e8e;
+    --primary-darker: #1b7468;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --bg-light: #F5F6F8;
+    --white: #ffffff;
+    --gold: #F59E0B;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 50px; width: auto; object-fit: contain; }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; color: #333; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--primary-dark) !important; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 4px; background: none; border: none;
+  }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #333; border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; right: 0;
+    background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 24px 40px; z-index: 999; flex-direction: column; gap: 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none; color: #333; font-size: 1rem; font-weight: 500;
+    padding: 8px 0; border-bottom: 1px solid #eee;
+  }
+  .mobile-menu a:last-child { border: none; }
+  .mobile-menu .m-cta {
+    background: var(--primary); color: #fff; padding: 14px 22px;
+    border-radius: 6px; text-align: center; font-weight: 600;
+    border: none; margin-top: 4px;
+  }
+
+  /* HERO */
+  .hero {
+    background: #fff; padding: 90px 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 60px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.2; color: #1a1a1a; margin-bottom: 20px;
+  }
+  .hero-content p {
+    font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);
+    margin-bottom: 32px; max-width: 500px;
+  }
+  .hero-btn {
+    display: inline-block; background: var(--primary); color: #fff;
+    padding: 15px 32px; border-radius: 6px; text-decoration: none;
+    font-weight: 600; font-size: 1rem; margin-bottom: 20px; transition: background 0.2s;
+  }
+  .hero-btn:hover { background: var(--primary-dark); }
+  .hero-contact-link {
+    display: block; color: var(--primary); text-decoration: none;
+    font-size: 0.95rem; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+  .badge {
+    background: #f0fdfb; border: 1px solid #2ec7b340;
+    color: var(--primary-darker); padding: 6px 14px;
+    border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+  }
+  .hero-image { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .hero-image img { width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block; }
+
+  /* SOCIAL PROOF */
+  .social-proof { background: var(--bg-light); padding: 60px 40px; }
+  .social-proof-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 40px; text-align: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif; font-size: 2.5rem;
+    font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 8px;
+  }
+  .stat-label { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+  .stat-sep { width: 1px; background: #ddd; }
+
+  /* SERVICES */
+  .services { background: #fff; padding: 90px 40px; }
+  .section-header { text-align: center; max-width: 700px; margin: 0 auto 56px; }
+  .section-label {
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--primary); margin-bottom: 12px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+    font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 16px;
+  }
+  .section-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
+  .services-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .service-card {
+    background: #fff; border: 1px solid #eee; border-radius: 8px;
+    padding: 32px 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .service-icon {
+    width: 48px; height: 48px; background: #f0fdfb; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px; color: var(--primary);
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem;
+    font-weight: 700; color: #1a1a1a; margin-bottom: 10px;
+  }
+  .service-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--bg-light); padding: 90px 40px; }
+  .testimonials-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .testimonial-card {
+    background: #fff; border-radius: 8px; padding: 32px 28px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+  .testimonial-text {
+    font-size: 0.95rem; line-height: 1.7; color: #333;
+    margin-bottom: 20px; font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 42px; height: 42px; border-radius: 50%; background: #f0fdfb;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary); font-weight: 700; font-size: 1rem;
+    border: 2px solid #2ec7b330; flex-shrink: 0;
+  }
+  .author-name { font-weight: 600; font-size: 0.9rem; color: #1a1a1a; }
+  .author-label { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* HOW IT WORKS */
+  .how-it-works { background: #fff; padding: 90px 40px; }
+  .steps {
+    max-width: 1280px; margin: 0 auto 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 20px; position: relative;
+  }
+  .steps::before {
+    content: ''; position: absolute; top: 28px;
+    left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+    height: 2px; background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem; margin: 0 auto 16px;
+    box-shadow: 0 4px 16px rgba(46,199,179,0.35);
+    font-family: 'Playfair Display', serif;
+  }
+  .step-title { font-weight: 700; font-size: 0.95rem; color: #1a1a1a; margin-bottom: 8px; }
+  .step-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .hiw-cta-wrap { text-align: center; }
+  .hiw-cta {
+    display: inline-block; background: var(--primary); color: #fff;
+    padding: 14px 36px; border-radius: 6px; text-decoration: none;
+    font-weight: 600; font-size: 1rem; transition: background 0.2s;
+  }
+  .hiw-cta:hover { background: var(--primary-dark); }
+
+  /* ABOUT */
+  .about { background: var(--bg-light); padding: 90px 40px; }
+  .about-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .about-content .section-title { text-align: left; margin-bottom: 20px; }
+  .about-content p { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .about-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .about-image img { width: 100%; height: 460px; object-fit: cover; object-position: center top; display: block; }
+
+  /* CTA BAND */
+  .cta-band { background: var(--primary-darker); padding: 90px 40px; text-align: center; }
+  .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.3;
+  }
+  .cta-band p {
+    color: rgba(255,255,255,0.8); font-size: 1.05rem;
+    max-width: 560px; margin: 0 auto 36px; line-height: 1.7;
+  }
+  .cta-main-btn {
+    display: inline-block; background: #fff; color: var(--primary-darker);
+    padding: 16px 40px; border-radius: 6px; text-decoration: none;
+    font-weight: 700; font-size: 1.05rem; transition: background 0.2s;
+  }
+  .cta-main-btn:hover { background: #f0fdfb; }
+
+  /* FOOTER */
+  footer { background: #111; color: #aaa; padding: 60px 40px 30px; }
+  .footer-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px; padding-bottom: 40px;
+    border-bottom: 1px solid #222; margin-bottom: 28px;
+  }
+  .footer-brand img {
+    height: 44px; width: auto; object-fit: contain; margin-bottom: 14px; filter: brightness(1.2);
+  }
+  .footer-brand-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; margin-bottom: 14px; display: none; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; color: #888; max-width: 280px; }
+  .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: #888; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--primary); }
+  .footer-contact-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 12px; color: #888; font-size: 0.88rem;
+  }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 1px; color: var(--primary); }
+  .footer-bottom {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: #555;
+  }
+  .footer-bottom .mediactive { color: var(--primary); font-weight: 600; }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { padding: 24px 20px; }
+    .hero { grid-template-columns: 1fr; padding: 60px 20px; gap: 40px; }
+    .hero-image img { height: 320px; }
+    .hero-content h1 { font-size: 2rem; }
+    .social-proof { padding: 50px 20px; }
+    .social-proof-inner { grid-template-columns: 1fr; gap: 32px; }
+    .stat-sep { display: none; }
+    .services { padding: 70px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials { padding: 70px 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .how-it-works { padding: 70px 20px; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .about { padding: 70px 20px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-image img { height: 300px; }
+    .cta-band { padding: 70px 20px; }
+    .cta-main-btn { display: block; }
+    footer { padding: 50px 20px 24px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .steps { grid-template-columns: 1fr; }
+    .hero-badges { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" aria-label="All Aspects Bookkeeping">
+    <img
+      src="https://img77.uenicdn.com/image/upload/v1667202152/business/5211f4d4-1f6e-4b7c-a500-69ca9fd39330/New-Logo-with-backgroundpng.png"
+      alt="All Aspects Bookkeeping Logo"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    >
+    <span class="nav-logo-text">All Aspects Bookkeeping</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#how-it-works">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#testimonials" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Reviews</a>
+  <a href="#how-it-works" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#contact" class="m-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Free Consultation</a>
+</div>
+
+<!-- HERO -->
+<section style="background:#fff;">
+  <div class="hero">
+    <div class="hero-content fade-up">
+      <h1>Bookkeeping for Contractors, Wineries and Service Businesses</h1>
+      <p>Organized books, accurate financial reports, and tax-ready records for growing businesses. Over a decade of hands-on experience working for you.</p>
+      <a href="#contact" class="hero-btn">Get a Free Consultation</a>
+      <a href="tel:+15094971053" class="hero-contact-link">
+        <svg style="display:inline;vertical-align:middle;margin-right:6px;" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        (509) 497-1053
+      </a>
+      <div class="hero-badges">
+        <span class="badge">10+ Years Experience</span>
+        <span class="badge">Benton City, WA</span>
+        <span class="badge">Free Consultation</span>
+      </div>
+    </div>
+    <div class="hero-image fade-up" style="transition-delay:0.15s;">
+      <img
+        src="https://img77.uenicdn.com/image/upload/v1772352003/business/9f15ee21-23fc-4d3a-8204-66fa939125b0.jpg"
+        alt="All Aspects Bookkeeping"
+        onerror="this.src='https://img77.uenicdn.com/image/upload/v1772324314/business/80c9e546-2c87-4899-a33b-3ddd87565f35.png'"
+      >
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<section class="social-proof">
+  <div class="social-proof-inner fade-up">
+    <div>
+      <div class="stat-number">10+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div>
+      <div class="stat-number">3</div>
+      <div class="stat-label">Industries Specialized</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Tax-Ready Accuracy</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Bookkeeping Systems Built for Your Business</h2>
+    <p class="section-desc">Tailored financial solutions for contractors, wineries, and service-based businesses. No one-size-fits-all solutions.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="service-title">Monthly Bookkeeping</div>
+      <div class="service-desc">Transaction categorization, account reconciliations, and monthly financial reports to keep your books clean and current.</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.05s;">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="service-title">Catch-Up Bookkeeping</div>
+      <div class="service-desc">Behind on your books? We review your records, organize your finances, and ensure all filings are current to avoid penalties.</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s;">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="service-title">Payroll Processing</div>
+      <div class="service-desc">Seamless payroll management with dedicated specialist support, new hire reporting, and compliance guidance.</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="service-title">Tax Preparation</div>
+      <div class="service-desc">Accurate and timely tax preparation in partnership with trusted tax professionals. Maximize savings and stay compliant.</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.05s;">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="service-title">Year-End Finalization</div>
+      <div class="service-desc">Complete year-end bookkeeping, financial reports, and tax-ready record preparation before deadlines arrive.</div>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s;">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="service-title">Bill Management</div>
+      <div class="service-desc">We manage your vendor bills to ensure timely payments, maintain cash flow visibility, and keep vendor relationships strong.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <span class="section-label">Client Reviews</span>
+    <h2 class="section-title">What Business Owners Are Saying</h2>
+    <p class="section-desc">Real results from real clients who trust All Aspects Bookkeeping with their finances.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-text">"Jody is absolutely amazing! She is so knowledgeable and always willing to help our business in any way we need."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">J</div>
+        <div>
+          <div class="author-name">Verified Client</div>
+          <div class="author-label">Small Business Owner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up" style="transition-delay:0.1s;">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-text">"Having an accountant like Jody is one of the best decisions I've made for my business."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">M</div>
+        <div>
+          <div class="author-name">Verified Client</div>
+          <div class="author-label">Service Business Owner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up" style="transition-delay:0.2s;">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-text">"Jody does an excellent job each month keeping me informed so that our monthly calls are efficient and productive."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">R</div>
+        <div>
+          <div class="author-name">Verified Client</div>
+          <div class="author-label">Contractor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-header fade-up">
+    <span class="section-label">Our Process</span>
+    <h2 class="section-title">Getting Started Is Simple</h2>
+    <p class="section-desc">Clear, straightforward steps to get your books organized and working for your business.</p>
+  </div>
+  <div class="steps fade-up">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Free Consultation</div>
+      <div class="step-desc">Schedule a no-cost call to discuss your business, your current books, and what you need most.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Custom Plan</div>
+      <div class="step-desc">We design a bookkeeping package tailored to your industry, workflow, and specific goals.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Clean Your Books</div>
+      <div class="step-desc">We get your accounts organized, caught up, and set up for smooth ongoing management.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Ongoing Support</div>
+      <div class="step-desc">Monthly reports, reconciliations, and proactive communication keep you always in the know.</div>
+    </div>
+  </div>
+  <div class="hiw-cta-wrap fade-up">
+    <a href="#contact" class="hiw-cta">Start With a Free Consultation</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-content fade-up">
+      <span class="section-label">Meet the Bookkeeper</span>
+      <h2 class="section-title">Jody Wilder, CEO and Bookkeeper</h2>
+      <p>With over a decade of hands-on experience in bookkeeping, payroll, and tax-ready preparation, Jody understands what it takes to keep your books accurate, compliant, and working for you.</p>
+      <p>All Aspects Bookkeeping specializes in working with contractors, wineries, and service-based businesses, providing tailored support that aligns with the way your business actually operates.</p>
+      <p>Whether you are behind on your books, growing quickly, or preparing for year-end, the mission is to bring clarity, structure, and peace of mind to your finances. No confusion. No overwhelm. Just clean books and actionable insights.</p>
+      <div class="about-badges">
+        <span class="badge">10+ Years Experience</span>
+        <span class="badge">Benton City, WA</span>
+        <span class="badge">Contractors and Wineries</span>
+        <span class="badge">Service Businesses</span>
+      </div>
+    </div>
+    <div class="about-image fade-up" style="transition-delay:0.15s;">
+      <img
+        src="https://img77.uenicdn.com/image/upload/v1772324314/business/80c9e546-2c87-4899-a33b-3ddd87565f35.png"
+        alt="Jody Wilder, CEO and Bookkeeper at All Aspects Bookkeeping"
+        onerror="this.src='https://img77.uenicdn.com/image/upload/v1772352003/business/9f15ee21-23fc-4d3a-8204-66fa939125b0.jpg'"
+      >
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <div class="fade-up">
+    <h2>Ready to Get Your Books in Order?</h2>
+    <p>Schedule a free consultation with Jody and discover how structured bookkeeping gives you clarity, confidence, and time back in your business.</p>
+    <a href="mailto:jody@allaspectsbookkeeping.com" class="cta-main-btn">Book Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img
+        src="https://img77.uenicdn.com/image/upload/v1667202152/business/5211f4d4-1f6e-4b7c-a500-69ca9fd39330/New-Logo-with-backgroundpng.png"
+        alt="All Aspects Bookkeeping"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      >
+      <span class="footer-brand-text">All Aspects Bookkeeping, LLC</span>
+      <p>Specialized bookkeeping for contractors, wineries, and service businesses in Benton City, WA and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Monthly Bookkeeping</a></li>
+        <li><a href="#services">Catch-Up Bookkeeping</a></li>
+        <li><a href="#services">Payroll Processing</a></li>
+        <li><a href="#services">Tax Preparation</a></li>
+        <li><a href="#services">Year-End Finalization</a></li>
+        <li><a href="#services">Bill Management</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Benton City, WA</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>(509) 497-1053</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>jody@allaspectsbookkeeping.com</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Mon-Fri 9am-7pm, Sat 10am-2pm</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 All Aspects Bookkeeping, LLC. All rights reserved.</span>
+    <span>Website by <span class="mediactive">Mediactive</span></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
