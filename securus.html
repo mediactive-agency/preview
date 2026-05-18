@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securus Advisors - Comprehensive Accounting Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: #1a365d;
+            padding: 16px 0;
+            z-index: 1000;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            max-height: 40px;
+            width: auto;
+        }
+        .logo span {
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        nav ul {
+            display: none;
+            list-style: none;
+            gap: 32px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+        .nav-cta {
+            background: #3b82f6;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .nav-cta:hover {
+            background: #1d4ed8;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul { display: none; }
+            nav.mobile-open ul { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #0f172a; padding: 16px; }
+        }
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        .white-bg { background: #ffffff; }
+        .gray-bg { background: #f5f6f8; }
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a365d;
+        }
+        .hero-content p {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        .btn-secondary {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        .btn-secondary:hover {
+            color: #1d4ed8;
+        }
+        .hero-image {
+            position: relative;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
+        .credentials {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .cred-badge {
+            background: #dbeafe;
+            color: #1a365d;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            color: #3b82f6;
+        }
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .testimonial {
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+        .testimonial-text {
+            font-size: 16px;
+            color: #4b5563;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1f2937;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-member img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        .team-member h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .team-member p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+        .step {
+            text-align: center;
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 16px;
+        }
+        .step h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .step p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .about-text p {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        .cta-band {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .cta-band h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .cta-band .btn-primary {
+            background: white;
+            color: #1a365d;
+        }
+        .cta-band .btn-primary:hover {
+            background: #f0f4f8;
+        }
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        footer h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        footer a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #3b82f6;
+        }
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 13px;
+            color: #9ca3af;
+        }
+        .footer-bottom .mediactive {
+            color: #3b82f6;
+        }
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 32px; }
+            .about-content { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="https://cdn.prod.website-files.com/65a9cdd70cf5f2716daa221b/66396e91f05af4150712ce1f_securus-logo.svg" alt="Securus Advisors" onerror="this.style.display='none'">
+                <span>Securus Advisors</span>
+            </div>
+            <button class="menu-toggle">☰</button>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="white-bg">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Empowering Your Financial Success</h1>
+                    <p>Comprehensive accounting solutions and strategic tax planning to maximize your business growth and minimize your tax burden.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Schedule Consultation</a>
+                        <a href="tel:208.409.9925" class="btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                            208-409-9925
+                        </a>
+                    </div>
+                    <div class="credentials">
+                        <div class="cred-badge">CPA Certified</div>
+                        <div class="cred-badge">Tax Specialists</div>
+                        <div class="cred-badge">Utah Based</div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://cdn.prod.website-files.com/65a9cdd70cf5f2716daa221b/65b0015d5ea4b0242087ad8f_michael.jpeg" alt="Michael Bergloff, Partner">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg">
+        <div class="container">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">$10K+</div>
+                    <div class="stat-label">Min Tax Savings Guaranteed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Clients Served</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Retention</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-bg" id="services">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    <h3>Accounting & Bookkeeping</h3>
+                    <p>Complete accounting services and meticulous bookkeeping to maintain your financial records.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+                    <h3>Tax Strategy & Planning</h3>
+                    <p>Custom tax planning strategies designed to minimize liability and maximize savings.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+                    <h3>Tax Preparation & Filing</h3>
+                    <p>Expert preparation and timely filing of all tax returns for individuals and businesses.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                    <h3>Legal Tax Services</h3>
+                    <p>Tax representation and resolution services to address any tax matters.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
+                    <h3>Business Foundation Setup</h3>
+                    <p>Entity establishment and restructuring to optimize your business structure.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <h3>Year-Round Advisory</h3>
+                    <p>Ongoing guidance and support throughout the year to keep you on track.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg" id="testimonials">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Client Testimonials</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="stars">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">They are very responsive and have answered all my questions timely.</p>
+                    <p class="testimonial-author">Jake Waterman, Client</p>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Always available and thinking of new tax scenarios to save money. Michael has made the impossible possible.</p>
+                    <p class="testimonial-author">Knox Hutchinson, Client</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-bg" id="team">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://cdn.prod.website-files.com/65a9cdd70cf5f2716daa221b/65b0015d5ea4b0242087ad8f_michael.jpeg" alt="Michael Bergloff">
+                    <h4>Michael Bergloff</h4>
+                    <p>Partner, CPA</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://cdn.prod.website-files.com/65a9cdd70cf5f2716daa221b/65b0030594de8e7e07b85d34_abinadi.jpeg" alt="Abinadi Barrientos">
+                    <h4>Abinadi Barrientos</h4>
+                    <p>Partner</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://cdn.prod.website-files.com/65a9cdd70cf5f2716daa221b/663a2cf3d0787f0859fc8fbe_ephraim-olson.jpeg" alt="Ephraim Olson">
+                    <h4>Ephraim Olson</h4>
+                    <p>Partner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band" id="contact">
+        <div class="container">
+            <h2>Ready to Optimize Your Finances?</h2>
+            <a href="mailto:michael@securusadvisors.com" class="btn-primary">Start Your Free Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Services</h4>
+                <a href="#services">Accounting Services</a>
+                <a href="#services">Tax Planning</a>
+                <a href="#services">Tax Preparation</a>
+                <a href="#services">Business Setup</a>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <a href="#team">Meet Our Team</a>
+                <a href="#testimonials">Client Testimonials</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <a href="tel:208.409.9925">208-409-9925</a>
+                <a href="mailto:michael@securusadvisors.com">michael@securusadvisors.com</a>
+                <a href="#">Draper, UT 84020</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Securus Advisors. All rights reserved. | Website by <span class="mediactive">Mediactive</span>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav').classList.toggle('mobile-open');
+        });
+    </script>
+</body>
+</html>
