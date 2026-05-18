@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perkins Tax Services — Your Go-To Place for All Your Tax Needs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;color:#1a1a2e;line-height:1.65}.container{max-width:1200px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #dbeafe;z-index:1000}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo-wrap{display:flex;align-items:center;gap:10px}.logo-wrap img{height:40px;width:auto;object-fit:contain}.logo-text{font-weight:700;font-size:17px;color:#1d4ed8}
+nav ul{list-style:none;display:flex;align-items:center;gap:28px}nav ul a{text-decoration:none;color:#374151;font-size:14px;font-weight:500;transition:color .2s}nav ul a:hover{color:#1d4ed8}
+.nav-btn{background:#1d4ed8;color:#fff!important;padding:9px 22px;border-radius:6px;font-weight:600!important;transition:background .2s!important}.nav-btn:hover{background:#1e40af!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}.hamburger span{display:block;width:24px;height:2px;background:#374151;border-radius:2px}
+@media(max-width:768px){.hamburger{display:flex}nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:16px 24px 24px;border-bottom:1px solid #dbeafe;gap:4px;align-items:flex-start}nav.open ul{display:flex}.nav-btn{width:100%;text-align:center}}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.fade-in.visible{opacity:1;transform:none}
+.hero-section{background:linear-gradient(135deg,#eff6ff 0%,#ffffff 50%,#eff6ff 100%);padding:100px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#dbeafe;color:#1d4ed8;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
+.hero-h1{font-size:50px;font-weight:800;line-height:1.15;color:#0a1628;margin-bottom:20px;letter-spacing:-1px}
+.hero-h1 span{color:#1d4ed8}
+.hero-sub{font-size:18px;color:#4b5563;margin-bottom:32px;line-height:1.7}
+.hero-cta-group{display:flex;align-items:center;gap:20px;margin-bottom:36px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.btn-blue{background:#1d4ed8;color:#fff}.btn-blue:hover{background:#1e40af;transform:translateY(-1px);box-shadow:0 6px 20px rgba(29,78,216,.3)}
+.phone-link{display:inline-flex;align-items:center;gap:8px;color:#1d4ed8;font-weight:600;font-size:15px;text-decoration:none}.phone-link:hover{color:#1e40af}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{background:#fff;border:1.5px solid #bfdbfe;color:#1d4ed8;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600}
+.hero-team-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.team-img-wrap{position:relative;overflow:hidden;border-radius:12px}
+.team-img-wrap img{width:100%;aspect-ratio:.9;object-fit:cover;object-position:center top}
+.team-img-wrap.featured{grid-row:span 2;border-radius:14px}
+.team-img-wrap.featured img{aspect-ratio:.75}
+.team-img-badge{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:16px;border-radius:0 0 12px 12px}
+.team-img-badge span{font-size:13px;font-weight:600;color:#fff}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-h1{font-size:36px}.hero-team-grid{grid-template-columns:1fr}}
+.stats-section{background:#1d4ed8;padding:60px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{text-align:center;padding:20px 24px;border-right:1px solid rgba(255,255,255,.2)}.stat-item:last-child{border-right:none}
+.stat-num{font-size:36px;font-weight:800;color:#fff;line-height:1}.stat-label{font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;font-weight:500}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}.stat-item:nth-child(2){border-right:none}.stat-item:nth-child(3){border-top:1px solid rgba(255,255,255,.2)}}
+.section{padding:88px 0}
+.section-label{font-size:13px;font-weight:600;color:#1d4ed8;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.section-h2{font-size:38px;font-weight:800;color:#0a1628;letter-spacing:-0.5px;margin-bottom:16px}
+.section-sub{font-size:17px;color:#6b7280;max-width:560px;margin-bottom:52px}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.svc-card{background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;padding:28px;transition:.2s}
+.svc-card:hover{border-color:#1d4ed8;box-shadow:0 8px 30px rgba(29,78,216,.1);transform:translateY(-3px)}
+.svc-icon{width:44px;height:44px;background:#dbeafe;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#1d4ed8;margin-bottom:16px}
+.svc-card h3{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.svc-card p{font-size:13px;color:#6b7280;line-height:1.6}
+@media(max-width:768px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+.testi-section{background:#f5f6f8;padding:88px 0}
+.testi-card{background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;padding:36px;max-width:700px;margin:0 auto}
+.testi-stars{display:flex;gap:4px;margin-bottom:16px}
+.testi-text{font-size:18px;color:#374151;line-height:1.75;font-style:italic;margin-bottom:20px}
+.testi-author{font-weight:700;font-size:15px;color:#1a1a2e}
+.why-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;overflow:hidden}
+.why-item{padding:28px 20px;text-align:center;border-right:1px solid #e5e7eb}
+.why-item:last-child{border-right:none}
+.why-item strong{display:block;font-size:16px;font-weight:800;color:#1d4ed8;margin-bottom:4px}
+.why-item span{font-size:13px;color:#6b7280}
+@media(max-width:768px){.why-bar{grid-template-columns:1fr}.why-item{border-right:none;border-bottom:1px solid #e5e7eb}}
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-row::after{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#1d4ed8,#60a5fa);z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-circle{width:56px;height:56px;background:#1d4ed8;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;margin:0 auto 20px;box-shadow:0 4px 16px rgba(29,78,216,.3)}
+.step h4{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.step p{font-size:13px;color:#6b7280;line-height:1.55}
+@media(max-width:768px){.steps-row{grid-template-columns:1fr;gap:32px}.steps-row::after{display:none}}
+.cta-band{background:linear-gradient(135deg,#1d4ed8 0%,#1e40af 100%);padding:88px 0;text-align:center}
+.cta-band h2{font-size:40px;font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-0.5px}
+.cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:36px}
+.btn-white{background:#fff;color:#1d4ed8;padding:16px 36px;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;display:inline-block;transition:.2s}
+.btn-white:hover{background:#eff6ff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+footer{background:#0a1628;color:#d1d5db;padding:64px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand p{font-size:14px;color:#9ca3af;margin-top:12px;line-height:1.6}
+.footer-col h5{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:#d1d5db;text-decoration:none;margin-bottom:10px;transition:color .2s}.footer-col a:hover{color:#60a5fa}
+.footer-bottom{border-top:1px solid #1e3a5f;padding-top:20px;text-align:center;font-size:13px;color:#6b7280}
+.footer-bottom .accent{color:#60a5fa}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <img src="https://static.wixstatic.com/media/4c6dd6_0c7f5410505f4df182cb955fe89bc02c~mv2.png/v1/crop/x_93,y_0,w_856,h_1016/fill/w_124,h_146,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/perkins%20logo%20-%20Edited_edited.png" alt="Perkins Tax Services" onerror="this.style.display='none'">
+        <span class="logo-text">Perkins Tax Services</span>
+      </div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#how-it-works">Process</a></li>
+        <li><a href="#contact" class="nav-btn">Free Consultation</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-in">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Best Accountant in Alvin, TX — BusinessRate
+        </div>
+        <h1 class="hero-h1">Your <span>Go-To Place</span> for All Your Tax Needs</h1>
+        <p class="hero-sub">20 years of tax expertise, credit repair, payroll, and business services in Alvin, Texas. Friendly fees, individual care, and free consultations — every time.</p>
+        <div class="hero-cta-group">
+          <a href="tel:8323405467" class="btn btn-blue">Call for Free Consultation</a>
+          <a href="tel:8323405467" class="phone-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            832-340-5467
+          </a>
+        </div>
+        <div class="pills">
+          <span class="pill">20 Years Experience</span>
+          <span class="pill">Free Consultation</span>
+          <span class="pill">Alvin, TX</span>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="hero-team-grid">
+          <div class="team-img-wrap featured">
+            <img src="https://static.wixstatic.com/media/4c6dd6_4ecb5ac3bea84443a322d20617502136~mv2.jpg" alt="Perkins Tax Services Team">
+            <div class="team-img-badge"><span>Perkins Tax Services — Alvin, TX</span></div>
+          </div>
+          <div class="team-img-wrap">
+            <img src="https://static.wixstatic.com/media/4c6dd6_8ce4cabc546e46d78ae167da70043e28~mv2.jpg" alt="Tax Team">
+          </div>
+          <div class="team-img-wrap">
+            <img src="https://static.wixstatic.com/media/4c6dd6_f304c0f434c742fa824fc193a842164c~mv2.jpeg" alt="Tax Professionals">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid fade-in">
+      <div class="stat-item"><div class="stat-num">20</div><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Core Services</div></div>
+      <div class="stat-item"><div class="stat-num">Free</div><div class="stat-label">Initial Consultation</div></div>
+      <div class="stat-item"><div class="stat-num">#1</div><div class="stat-label">Best in Alvin, TX</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services" style="background:#fff">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-h2">Full-service tax and financial solutions</h2>
+      <p class="section-sub">From simple returns to complex business setup — everything you need under one roof in Alvin, Texas.</p>
+    </div>
+    <div style="margin-bottom:36px" class="fade-in">
+      <div class="why-bar">
+        <div class="why-item"><strong>100%</strong><span>Refund Guaranteed</span></div>
+        <div class="why-item"><strong>20 Yrs</strong><span>Experience</span></div>
+        <div class="why-item"><strong>Free</strong><span>Consultation</span></div>
+        <div class="why-item"><strong>1:1</strong><span>Individual Care</span></div>
+        <div class="why-item"><strong>Fair</strong><span>Friendly Fees</span></div>
+      </div>
+    </div>
+    <div class="services-grid fade-in">
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h3>Tax Return</h3>
+        <p>Accurate individual and business tax return preparation and filing.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Credit Repair</h3>
+        <p>Professional credit restoration to help you rebuild and improve your credit score.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Tax Planning</h3>
+        <p>Strategic tax planning to minimize your liability and prepare for next year.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>Payroll</h3>
+        <p>Complete payroll processing for businesses of all sizes, done right.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3>Audit Support</h3>
+        <p>Expert audit assistance and representation when you need it most.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.65L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h3>Business Set-Up</h3>
+        <p>Complete business formation services to launch your company the right way.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Notary Services</h3>
+        <p>Certified notary services for legal documents, contracts, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testi-section" id="testimonials">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;margin-bottom:48px">
+      <div class="section-label">Client Testimonials</div>
+      <h2 class="section-h2">Why clients keep coming back</h2>
+    </div>
+    <div class="testi-card fade-in">
+      <div class="testi-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-text">"I've used Perkins Tax Service for several years and have been very happy with them, especially Tramaine! Ms. Perkins is very clear and straightforward."</p>
+      <div class="testi-author">Sherry M., Multi-Year Client</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how-it-works" style="background:#fff">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;margin-bottom:60px">
+      <div class="section-label">The Process</div>
+      <h2 class="section-h2">Simple process, expert results</h2>
+    </div>
+    <div class="steps-row fade-in">
+      <div class="step"><div class="step-circle">1</div><h4>Free Consultation</h4><p>Call or come in — we listen to your needs at no charge.</p></div>
+      <div class="step"><div class="step-circle">2</div><h4>Document Review</h4><p>We review your documents and identify the best approach for your situation.</p></div>
+      <div class="step"><div class="step-circle">3</div><h4>Expert Preparation</h4><p>We prepare your return or service with 20 years of expertise behind every detail.</p></div>
+      <div class="step"><div class="step-circle">4</div><h4>Done Right</h4><p>Your return is filed accurately, on time, and with maximum savings.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:52px" class="fade-in">
+      <a href="tel:8323405467" class="btn btn-blue">Call for Your Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="container fade-in">
+    <h2>Your go-to tax experts in Alvin, Texas.</h2>
+    <p>20 years of experience. Free consultation. Friendly fees. Call us today.</p>
+    <a href="tel:8323405467" class="btn-white">Call 832-340-5467</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://static.wixstatic.com/media/4c6dd6_0c7f5410505f4df182cb955fe89bc02c~mv2.png/v1/crop/x_93,y_0,w_856,h_1016/fill/w_124,h_146,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/perkins%20logo%20-%20Edited_edited.png" alt="Perkins Tax Services" style="height:40px;width:auto;margin-bottom:12px" onerror="this.style.display='none'">
+        <p>Full-service tax preparation, credit repair, payroll, and business services in Alvin, Texas.</p>
+      </div>
+      <div class="footer-col"><h5>Services</h5><a href="#services">Tax Return</a><a href="#services">Credit Repair</a><a href="#services">Tax Planning</a><a href="#services">Payroll</a></div>
+      <div class="footer-col"><h5>More Services</h5><a href="#services">Audit Support</a><a href="#services">Business Set-Up</a><a href="#services">Notary Services</a></div>
+      <div class="footer-col"><h5>Contact</h5><a href="tel:8323405467">832-340-5467</a><a href="mailto:Perkinstax1956@gmail.com">Perkinstax1956@gmail.com</a><a href="#">199 Midtown Park Dr., Alvin, TX</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Perkins Tax Services. All rights reserved. | Website by <span class="accent">Mediactive</span></div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('mainNav').classList.toggle('open');});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')});},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
