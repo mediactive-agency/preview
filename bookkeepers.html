@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookkeepers & More - Business Accounting & Advisory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #1f2937; line-height: 1.6; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        nav { position: sticky; top: 0; background: #1e40af; padding: 16px 0; z-index: 1000; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 40px; display: flex; align-items: center; }
+        .logo img { max-height: 40px; width: auto; }
+        .logo span { color: white; font-weight: 700; font-size: 18px; }
+        nav ul { display: none; list-style: none; gap: 32px; }
+        nav ul li a { text-decoration: none; color: white; font-weight: 500; font-size: 14px; transition: color 0.3s; }
+        nav ul li a:hover { color: #93c5fd; }
+        .nav-cta { background: #3b82f6; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; transition: background 0.3s; }
+        .nav-cta:hover { background: #1d4ed8; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: white; }
+        @media (max-width: 768px) { .menu-toggle { display: block; } nav ul { display: none; } nav.mobile-open ul { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #1e3a8a; padding: 16px; } }
+        section { padding: 80px 0; opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        section:nth-child(2) { animation-delay: 0.1s; } section:nth-child(3) { animation-delay: 0.2s; }
+        .white-bg { background: #ffffff; } .gray-bg { background: #f5f6f8; }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-content h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; color: #1e40af; }
+        .hero-content p { font-size: 18px; color: #6b7280; margin-bottom: 24px; }
+        .hero-buttons { display: flex; gap: 16px; margin-bottom: 24px; }
+        .btn-primary { background: #3b82f6; color: white; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; transition: background 0.3s; border: none; cursor: pointer; font-size: 16px; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-secondary { color: #3b82f6; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-secondary:hover { color: #1d4ed8; }
+        .hero-image { position: relative; }
+        .hero-image img { width: 100%; border-radius: 8px; object-fit: cover; aspect-ratio: 1; }
+        .credentials { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .cred-badge { background: #dbeafe; color: #1e40af; padding: 8px 16px; border-radius: 24px; font-size: 13px; font-weight: 600; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat { display: flex; flex-direction: column; gap: 8px; }
+        .stat-number { font-size: 36px; font-weight: 700; color: #3b82f6; }
+        .stat-label { font-size: 14px; color: #6b7280; font-weight: 500; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .service-card { background: white; padding: 32px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s; }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .service-icon { width: 40px; height: 40px; margin-bottom: 16px; color: #3b82f6; }
+        .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: #6b7280; line-height: 1.6; }
+        .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 40px; }
+        .step { text-align: center; }
+        .step-number { width: 48px; height: 48px; background: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; margin: 0 auto 16px; }
+        .step h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .step p { font-size: 14px; color: #6b7280; }
+        .cta-band { background: #1e40af; color: white; text-align: center; padding: 80px 20px; }
+        .cta-band h2 { font-size: 36px; font-weight: 700; margin-bottom: 24px; }
+        .cta-band .btn-primary { background: white; color: #1e40af; }
+        .cta-band .btn-primary:hover { background: #f0f4f8; }
+        footer { background: #0f172a; color: white; padding: 60px 0 20px; }
+        footer .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        footer h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; }
+        footer a { display: block; color: #d1d5db; text-decoration: none; font-size: 14px; margin-bottom: 8px; transition: color 0.3s; }
+        footer a:hover { color: #3b82f6; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 24px; text-align: center; font-size: 13px; color: #9ca3af; }
+        .footer-bottom .mediactive { color: #3b82f6; }
+        @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .hero-content h1 { font-size: 32px; } .stats { grid-template-columns: 1fr; } section { padding: 60px 0; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="//img1.wsimg.com/isteam/ip/72bc890b-8e05-4066-acda-b568b80c8474/logo2.png/:/rs=h:100,cg:true,m/qt=q:100/ll" alt="Bookkeepers & More" onerror="this.style.display='none'">
+                <span>Bookkeepers & More</span>
+            </div>
+            <button class="menu-toggle">☰</button>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#philosophy">Our Philosophy</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="white-bg">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Accounting is the Language of Business</h1>
+                    <p>Expert bookkeeping and business advisory services to help your company speak clearly and grow with confidence.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Schedule Your Consultation</a>
+                        <a href="mailto:info@bookkeepersmore.com" class="btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                            info@bookkeepersmore.com
+                        </a>
+                    </div>
+                    <div class="credentials">
+                        <div class="cred-badge">Intuit Certified</div>
+                        <div class="cred-badge">QuickBooks Expert</div>
+                        <div class="cred-badge">Business Advisory</div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=400&fit=crop" alt="Business Accounting Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg">
+        <div class="container">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Businesses Served</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Hours Managed Annually</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-bg" id="services">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    <h3>Expert Bookkeeping</h3>
+                    <p>Comprehensive bookkeeping services to keep your financial records accurate and current.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <h3>Business Advisory</h3>
+                    <p>Strategic guidance to help your business navigate challenges and identify growth opportunities.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                    <h3>Business Management</h3>
+                    <p>Practical guidance to help you manage operations and make informed business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg" id="philosophy">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Our Philosophy</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 18px; color: #6b7280; margin-bottom: 24px;">We believe that every business goes through tough moments. Our mission is to support you through those challenges by identifying obstacles at the source and providing clear, practical guidance.</p>
+                <p style="font-size: 18px; color: #6b7280; margin-bottom: 24px;">We don't believe in one-size-fits-all solutions. Your business is unique, and your accounting should reflect that. We take the time to understand your specific situation and tailor our approach accordingly.</p>
+                <p style="font-size: 18px; color: #6b7280;">Accounting is the language of business. When your books are clear and organized, you can speak confidently about your company's financial health and make decisions with confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-bg" id="how-it-works">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">How We Work</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Understand Your Business</h4>
+                    <p>We take time to understand your unique situation and financial goals.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Create a Custom Plan</h4>
+                    <p>We develop a tailored bookkeeping and advisory plan for your needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Provide Clear Guidance</h4>
+                    <p>Regular updates and insights to keep you informed and confident.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Support Your Growth</h4>
+                    <p>Strategic advisory to help you identify opportunities and achieve your goals.</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="#contact" class="btn-primary">Start Your Consultation Today</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band" id="contact">
+        <div class="container">
+            <h2>Ready to Speak Your Business Language Clearly?</h2>
+            <a href="mailto:info@bookkeepersmore.com" class="btn-primary">Schedule Your Free Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Services</h4>
+                <a href="#services">Bookkeeping</a>
+                <a href="#services">Business Advisory</a>
+                <a href="#services">Business Management</a>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <a href="#philosophy">Our Philosophy</a>
+                <a href="#how-it-works">How We Work</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <a href="mailto:info@bookkeepersmore.com">info@bookkeepersmore.com</a>
+                <a href="#">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Bookkeepers & More. All rights reserved. | Website by <span class="mediactive">Mediactive</span>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav').classList.toggle('mobile-open');
+        });
+    </script>
+</body>
+</html>
