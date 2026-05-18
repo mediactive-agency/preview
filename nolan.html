@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nolan Nelson Accounting - Boutique CPA Services Seattle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #1f2937; line-height: 1.6; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        nav { position: sticky; top: 0; background: #000; padding: 16px 0; z-index: 1000; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 40px; display: flex; align-items: center; }
+        .logo img { max-height: 40px; width: auto; }
+        .logo span { color: white; font-weight: 700; font-size: 18px; }
+        nav ul { display: none; list-style: none; gap: 32px; }
+        nav ul li a { text-decoration: none; color: white; font-weight: 500; font-size: 14px; transition: color 0.3s; }
+        nav ul li a:hover { color: #bfdbfe; }
+        .nav-cta { background: #3b82f6; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; transition: background 0.3s; }
+        .nav-cta:hover { background: #1d4ed8; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: white; }
+        @media (max-width: 768px) { .menu-toggle { display: block; } nav ul { display: none; } nav.mobile-open ul { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #111; padding: 16px; } }
+        section { padding: 80px 0; opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        section:nth-child(2) { animation-delay: 0.1s; } section:nth-child(3) { animation-delay: 0.2s; }
+        .white-bg { background: #ffffff; } .gray-bg { background: #f5f6f8; }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-content h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; color: #000; }
+        .hero-content .tagline { font-size: 20px; color: #3b82f6; font-weight: 600; margin-bottom: 16px; }
+        .hero-content p { font-size: 18px; color: #6b7280; margin-bottom: 24px; }
+        .hero-buttons { display: flex; gap: 16px; margin-bottom: 24px; }
+        .btn-primary { background: #3b82f6; color: white; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; transition: background 0.3s; border: none; cursor: pointer; font-size: 16px; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-secondary { color: #3b82f6; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-secondary:hover { color: #1d4ed8; }
+        .hero-image { position: relative; }
+        .hero-image img { width: 100%; border-radius: 8px; object-fit: cover; aspect-ratio: 1; }
+        .credentials { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .cred-badge { background: #dbeafe; color: #0c4a6e; padding: 8px 16px; border-radius: 24px; font-size: 13px; font-weight: 600; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat { display: flex; flex-direction: column; gap: 8px; }
+        .stat-number { font-size: 36px; font-weight: 700; color: #3b82f6; }
+        .stat-label { font-size: 14px; color: #6b7280; font-weight: 500; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .service-card { background: white; padding: 32px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s; }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .service-icon { width: 40px; height: 40px; margin-bottom: 16px; color: #3b82f6; }
+        .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: #6b7280; line-height: 1.6; }
+        .cta-band { background: #000; color: white; text-align: center; padding: 80px 20px; }
+        .cta-band h2 { font-size: 36px; font-weight: 700; margin-bottom: 24px; }
+        .cta-band .btn-primary { background: white; color: #000; }
+        .cta-band .btn-primary:hover { background: #f0f4f8; }
+        footer { background: #111; color: white; padding: 60px 0 20px; }
+        footer .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        footer h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; }
+        footer a { display: block; color: #d1d5db; text-decoration: none; font-size: 14px; margin-bottom: 8px; transition: color 0.3s; }
+        footer a:hover { color: #3b82f6; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 24px; text-align: center; font-size: 13px; color: #9ca3af; }
+        .footer-bottom .mediactive { color: #3b82f6; }
+        @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .hero-content h1 { font-size: 32px; } .stats { grid-template-columns: 1fr; } section { padding: 60px 0; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="https://nolan-nelson-accounting-pllc-v1773961914.websitepro-cdn.com/wp-content/uploads/2026/02/Nolan-Nelson-Accounting-PLLC.png" alt="Nolan Nelson Accounting" onerror="this.style.display='none'">
+                <span>Nolan Nelson Accounting</span>
+            </div>
+            <button class="menu-toggle">☰</button>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#approach">Our Approach</a></li>
+                <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="white-bg">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="tagline">Boutique Accounting in Seattle</div>
+                    <h1>With a bit of an edge</h1>
+                    <p>CPA-led accounting for real estate brokerages and law firms that demand personalized service and expert guidance.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Schedule Your Free Consultation</a>
+                        <a href="tel:425-345-7791" class="btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                            425-345-7791
+                        </a>
+                    </div>
+                    <div class="credentials">
+                        <div class="cred-badge">CPA</div>
+                        <div class="cred-badge">Certified Internal Auditor</div>
+                        <div class="cred-badge">Master's in Accounting</div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="Ben Nelson, CPA">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg">
+        <div class="container">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Clients Served</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Hours Saved Annually</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-bg" id="services">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    <h3>Bookkeeping</h3>
+                    <p>Meticulous bookkeeping services tailored to your firm's unique accounting needs.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+                    <h3>Accounts Receivable & Payable</h3>
+                    <p>Expert management of client and vendor payments with meticulous attention to detail.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
+                    <h3>Payroll</h3>
+                    <p>Streamlined payroll processing to keep your team paid on time, every time.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <h3>Books Cleanup</h3>
+                    <p>Transform disorganized records into clean, accurate financial statements.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+                    <h3>Tax Services</h3>
+                    <p>Strategic tax planning and preparation for real estate and legal practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg" id="approach">
+        <div class="container">
+            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 48px;">Our Approach</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <h3>Personalized Service</h3>
+                    <p>Ben personally manages every client engagement. No outsourcing, no delegating to junior staff.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                    <h3>CPA-Led Excellence</h3>
+                    <p>Master's in Accounting, CIA, and years of experience at Costco ensuring top-tier guidance.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <h3>Clear Communication</h3>
+                    <p>We speak your language. No jargon. Just clear, practical accounting guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band" id="contact">
+        <div class="container">
+            <h2>Ready for Boutique Accounting with an Edge?</h2>
+            <a href="mailto:ben@nolannelsonacctg.com" class="btn-primary">Schedule Your Free Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Services</h4>
+                <a href="#services">Bookkeeping</a>
+                <a href="#services">Accounts Receivable</a>
+                <a href="#services">Payroll</a>
+                <a href="#services">Tax Services</a>
+            </div>
+            <div>
+                <h4>Specialties</h4>
+                <a href="#approach">Real Estate Brokerages</a>
+                <a href="#approach">Law Offices</a>
+                <a href="#approach">Our Approach</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <a href="tel:425-345-7791">425-345-7791</a>
+                <a href="mailto:ben@nolannelsonacctg.com">ben@nolannelsonacctg.com</a>
+                <a href="#">Seattle, WA</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Nolan Nelson Accounting PLLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav').classList.toggle('mobile-open');
+        });
+    </script>
+</body>
+</html>
