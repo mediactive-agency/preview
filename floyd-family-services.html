@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floyd Family Services | Accounting, Salesforce & Notary</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2D5F5E;
+    --accent: #4A8FA0;
+    --light-gray: #F5F6F8;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-light: #555555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); }
+
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo img { height: 52px; object-fit: contain; }
+  .nav-logo-text { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta { background: var(--primary); color: var(--white) !important; padding: 10px 24px; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--accent) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 24px 40px; z-index: 999; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu ul a { text-decoration: none; color: var(--text); font-weight: 500; }
+  .mobile-menu .nav-cta { display: block; text-align: center; margin-top: 8px; color: var(--white) !important; }
+
+  .hero { background: var(--white); padding: 100px 40px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1280px; margin: 0 auto; }
+  .hero-text { flex: 1; max-width: 580px; }
+  .hero-text h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; font-weight: 700; color: var(--primary); line-height: 1.25; margin-bottom: 20px; }
+  .hero-text p { font-size: 1.1rem; color: var(--text-light); line-height: 1.75; margin-bottom: 32px; }
+  .hero-cta { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-contact { display: block; margin-top: 16px; color: var(--primary); font-weight: 500; text-decoration: none; font-size: 0.95rem; }
+  .hero-contact:hover { text-decoration: underline; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .badge { background: var(--light-gray); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); }
+  .hero-image { flex: 1; max-width: 480px; }
+  .hero-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 20px 60px rgba(0,0,0,0.12); max-height: 520px; }
+
+  .social-proof { background: var(--light-gray); padding: 60px 40px; }
+  .social-proof-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Merriweather', serif; font-size: 2.8rem; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 0.95rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+  .services { padding: 100px 40px; background: var(--white); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label { font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .section-title { font-family: 'Merriweather', serif; font-size: 2.2rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+  .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin-bottom: 60px; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card { background: var(--white); border: 1px solid #E8E8E8; border-radius: 8px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .service-icon { width: 44px; height: 44px; background: rgba(45,95,94,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); }
+  .service-card h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; color: var(--primary); }
+  .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+  .testimonials { background: var(--light-gray); padding: 100px 40px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 60px; }
+  .testimonial-card { background: var(--white); border-radius: 8px; padding: 36px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .stars { display: flex; gap: 4px; margin-bottom: 20px; }
+  .testimonial-text { font-size: 1rem; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+  .testimonial-author { font-weight: 600; font-size: 0.9rem; color: var(--primary); }
+
+  .how-it-works { background: var(--white); padding: 100px 40px; }
+  .steps { display: flex; gap: 0; margin-top: 60px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 32px; left: calc(12.5% + 32px); right: calc(12.5% + 32px); height: 2px; background: #E8E8E8; z-index: 0; }
+  .step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px; }
+  .step-num { width: 64px; height: 64px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; margin: 0 auto 20px; }
+  .step h3 { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+  .step p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+  .how-cta { text-align: center; margin-top: 52px; }
+  .btn-primary { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--accent); }
+
+  .about { background: var(--light-gray); padding: 100px 40px; }
+  .about-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+  .about-text { flex: 1; }
+  .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+  .about-image { flex: 1; max-width: 440px; }
+  .about-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 12px 40px rgba(0,0,0,0.1); max-height: 480px; }
+  .cred-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .cred-badge { background: rgba(45,95,94,0.08); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); border: 1px solid rgba(45,95,94,0.2); }
+
+  .cta-band { background: var(--primary); padding: 100px 40px; text-align: center; }
+  .cta-band h2 { font-family: 'Merriweather', serif; font-size: 2.4rem; color: var(--white); margin-bottom: 20px; }
+  .cta-band p { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+  .btn-white { background: var(--white); color: var(--primary); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+  .btn-white:hover { opacity: 0.9; }
+
+  footer { background: #1A1A1A; color: rgba(255,255,255,0.7); padding: 60px 40px 30px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; }
+  .footer-brand { flex: 1.5; }
+  .footer-brand img { height: 48px; margin-bottom: 16px; }
+  .footer-brand-text { font-family: 'Merriweather', serif; font-size: 1.1rem; color: var(--white); font-weight: 700; margin-bottom: 16px; display: none; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+  .footer-links { flex: 1; }
+  .footer-links h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-contact { flex: 1.2; }
+  .footer-contact h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 0.9rem; }
+  .contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.82rem; }
+  .mediactive { color: var(--accent); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { flex-direction: column-reverse; padding: 60px 24px; }
+    .hero-image { max-width: 100%; }
+    .about-inner { flex-direction: column; }
+    .about-image { max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-text h1 { font-size: 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; gap: 32px; }
+    .steps::before { display: none; }
+    .social-proof-inner { flex-direction: column; gap: 32px; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .section-title { font-size: 1.8rem; }
+    .services, .testimonials, .how-it-works, .about, .cta-band { padding: 60px 24px; }
+    footer { padding: 40px 24px 24px; }
+    .btn-primary, .btn-white, .hero-cta { display: block; width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://img1.wsimg.com/isteam/ip/e8abad7f-5d08-4cc6-b9dd-05a7f5230c83/FLOYD%20FAMILY%20SERVICES%20logo8%20(1).jpg" alt="Floyd Family Services" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">Floyd Family Services</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact"><span class="nav-cta">Get in Touch</span></a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <ul>
+    <li><a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a></li>
+    <li><a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Get in Touch</a></li>
+  </ul>
+</div>
+
+<section class="hero">
+  <div class="hero-text fade-in">
+    <h1>Your Trusted Accounting, Salesforce Consulting &amp; Notary Service Provider</h1>
+    <p>Floyd Family Services is a truly homegrown small business built to help individuals and businesses thrive. We combine accounting expertise, Salesforce consulting, and professional notary services under one trusted roof.</p>
+    <a href="#contact" class="hero-cta">Work With Us</a>
+    <a href="tel:8432592644" class="hero-contact">(843) 259-2644</a>
+    <div class="hero-badges">
+      <span class="badge">Accounting Services</span>
+      <span class="badge">Salesforce Consulting</span>
+      <span class="badge">Notary Services</span>
+    </div>
+  </div>
+  <div class="hero-image fade-in">
+    <img src="https://img1.wsimg.com/isteam/ip/e8abad7f-5d08-4cc6-b9dd-05a7f5230c83/FloydFamily2022-11_websize.jpg" alt="Jade and Brandon Floyd" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80'">
+  </div>
+</section>
+
+<section class="social-proof">
+  <div class="social-proof-inner">
+    <div class="stat fade-in">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Service Disciplines</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">SC</div>
+      <div class="stat-label">Charleston Area Based</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Expert Co-Founders</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label fade-in">What We Do</div>
+    <h2 class="section-title fade-in">Services Designed to Help You Thrive</h2>
+    <p class="section-subtitle fade-in">We bring accounting expertise, Salesforce mastery, and professional notary services together so you get everything you need from people who genuinely care about your success.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Bookkeeping</h3>
+        <p>Reliable, organized bookkeeping for service businesses and hospitality operators. Clear financials, accurate records, and peace of mind.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Fractional CFO Services</h3>
+        <p>Strategic financial reporting, process improvement, and capital project oversight without the cost of a full-time CFO.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Salesforce Consulting</h3>
+        <p>Salesforce administration, workflow optimization, and operational infrastructure designed to scale your business systems.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Notary Services</h3>
+        <p>Professional notary services including loan signing agent services for individuals and businesses throughout the Charleston area.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Business Consulting</h3>
+        <p>Business analytics and software-as-a-service guidance to help your operation run leaner, smarter, and more profitably.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Notary Mentorship</h3>
+        <p>Brandon mentors local notary publics on building a professional practice, client relationships, and industry best practices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="section-label fade-in">Our Approach</div>
+    <h2 class="section-title fade-in">How We Work With You</h2>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Reach Out</h3>
+        <p>Contact us to share your needs. We make it easy to get started with a straightforward conversation.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>We Assess</h3>
+        <p>Jade and Brandon review your current systems, goals, and challenges to build a clear picture of what you need.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>Build Systems</h3>
+        <p>We put the right processes, tools, and workflows in place to support sustainable, organized growth.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <h3>Thrive Together</h3>
+        <p>Ongoing partnership with clear communication and focus on the results that matter most to you.</p>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#contact" class="btn-primary">Start the Conversation</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-label">Meet the Founders</div>
+      <h2 class="section-title">Jade &amp; Brandon Floyd</h2>
+      <p>Jade Floyd brings bookkeeping and fractional CFO expertise built from years in hospitality accounting, financial reporting, and capital project management. Clients value her steady partnership, clear communication, and systems that support sustainable growth.</p>
+      <p>Brandon Floyd brings business administration, analytics, and Salesforce expertise alongside his notary practice. A systems builder at heart, he focuses on workflow optimization and the operational infrastructure that makes businesses run smoothly.</p>
+      <p>Together they built Floyd Family Services from the ground up as a truly homegrown small business, committed to helping individuals and businesses in the Charleston area and beyond.</p>
+      <div class="cred-badges">
+        <span class="cred-badge">Breakaway Bookkeeping Network</span>
+        <span class="cred-badge">Fractional CFO</span>
+        <span class="cred-badge">Salesforce Administrator</span>
+        <span class="cred-badge">Loan Signing Agent</span>
+      </div>
+    </div>
+    <div class="about-image fade-in">
+      <img src="https://img1.wsimg.com/isteam/ip/e8abad7f-5d08-4cc6-b9dd-05a7f5230c83/FloydFamily2022-11_websize.jpg" alt="Jade and Brandon Floyd" onerror="this.src='https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80'">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Ready to Work With a Team That Truly Cares?</h2>
+  <p class="fade-in">Let Floyd Family Services bring clarity, systems, and expertise to your business.</p>
+  <a href="mailto:admin@floydfamilyservices.com" class="btn-white fade-in">Contact Us Today</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://img1.wsimg.com/isteam/ip/e8abad7f-5d08-4cc6-b9dd-05a7f5230c83/FLOYD%20FAMILY%20SERVICES%20logo8%20(1).jpg" alt="Floyd Family Services" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="footer-brand-text">Floyd Family Services</div>
+      <p>Accounting, Salesforce consulting, and notary services for individuals and businesses in the Charleston, SC area and beyond.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Accounting Services</a></li>
+        <li><a href="#services">Salesforce Consulting</a></li>
+        <li><a href="#services">Notary Services</a></li>
+        <li><a href="#services">Fractional CFO</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>(843) 259-2644</span>
+      </div>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>admin@floydfamilyservices.com</span>
+      </div>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Hanahan, SC 29410</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Floyd Family Services LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
