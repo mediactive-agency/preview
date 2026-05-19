@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluent Financials | Maximizing Your Dollar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1B4F72;
+    --accent: #2E86C1;
+    --gold: #D4AC0D;
+    --light-gray: #F5F6F8;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-light: #555555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); }
+
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+  .nav-logo img { height: 44px; object-fit: contain; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--primary); color: var(--white) !important; padding: 10px 24px; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--accent) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 24px 40px; z-index: 999; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu ul a { text-decoration: none; color: var(--text); font-weight: 500; }
+  .mobile-menu .nav-cta { display: block; text-align: center; margin-top: 8px; color: var(--white) !important; }
+
+  .hero { background: var(--white); padding: 100px 40px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1280px; margin: 0 auto; }
+  .hero-text { flex: 1; max-width: 580px; }
+  .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 700; color: var(--primary); line-height: 1.15; margin-bottom: 20px; }
+  .hero-text p { font-size: 1.1rem; color: var(--text-light); line-height: 1.75; margin-bottom: 32px; }
+  .hero-cta { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-contact { display: block; margin-top: 16px; color: var(--accent); font-weight: 500; text-decoration: none; font-size: 0.95rem; }
+  .hero-contact:hover { text-decoration: underline; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .badge { background: var(--light-gray); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); }
+  .hero-image { flex: 1; max-width: 460px; }
+  .hero-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 20px 60px rgba(0,0,0,0.12); max-height: 520px; }
+
+  .social-proof { background: var(--light-gray); padding: 60px 40px; }
+  .social-proof-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 0.95rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+  .services { padding: 100px 40px; background: var(--white); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label { font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+  .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin-bottom: 60px; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card { background: var(--white); border: 1px solid #E8E8E8; border-radius: 8px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .service-icon { width: 44px; height: 44px; background: rgba(27,79,114,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); }
+  .service-card h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; color: var(--primary); }
+  .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+  .testimonials { background: var(--light-gray); padding: 100px 40px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .testimonial-card { background: var(--white); border-radius: 8px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .stars { display: flex; gap: 4px; margin-bottom: 20px; }
+  .testimonial-text { font-size: 0.95rem; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+  .testimonial-author { font-weight: 600; font-size: 0.88rem; color: var(--primary); }
+
+  .how-it-works { background: var(--white); padding: 100px 40px; }
+  .steps { display: flex; gap: 0; margin-top: 60px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 32px; left: calc(12.5% + 32px); right: calc(12.5% + 32px); height: 2px; background: #E8E8E8; z-index: 0; }
+  .step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px; }
+  .step-num { width: 64px; height: 64px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; margin: 0 auto 20px; }
+  .step h3 { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+  .step p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+  .how-cta { text-align: center; margin-top: 52px; }
+  .btn-primary { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--accent); }
+
+  .about { background: var(--light-gray); padding: 100px 40px; }
+  .about-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+  .about-text { flex: 1; }
+  .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+  .about-image { flex: 1; max-width: 420px; }
+  .about-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 12px 40px rgba(0,0,0,0.1); max-height: 480px; }
+  .cred-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .cred-badge { background: rgba(27,79,114,0.07); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); border: 1px solid rgba(27,79,114,0.2); }
+
+  .cta-band { background: var(--primary); padding: 100px 40px; text-align: center; }
+  .cta-band h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--white); margin-bottom: 20px; }
+  .cta-band p { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+  .btn-white { background: var(--white); color: var(--primary); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+  .btn-white:hover { opacity: 0.9; }
+
+  footer { background: #0D2137; color: rgba(255,255,255,0.7); padding: 60px 40px 30px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; }
+  .footer-brand { flex: 1.5; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--white); font-weight: 700; margin-bottom: 16px; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+  .footer-links { flex: 1; }
+  .footer-links h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-contact { flex: 1.2; }
+  .footer-contact h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 0.9rem; }
+  .contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+  .hours { margin-top: 8px; font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.6); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.82rem; }
+  .mediactive { color: var(--accent); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { flex-direction: column-reverse; padding: 60px 24px; }
+    .hero-image { max-width: 100%; }
+    .about-inner { flex-direction: column; }
+    .about-image { max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-text h1 { font-size: 2.4rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; gap: 32px; }
+    .steps::before { display: none; }
+    .social-proof-inner { flex-direction: column; gap: 32px; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .section-title { font-size: 2rem; }
+    .services, .testimonials, .how-it-works, .about, .cta-band { padding: 60px 24px; }
+    footer { padding: 40px 24px 24px; }
+    .btn-primary, .btn-white, .hero-cta { display: block; width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-text">Fluent Financials</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact"><span class="nav-cta">Schedule a Call</span></a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <ul>
+    <li><a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a></li>
+    <li><a href="#testimonials" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Testimonials</a></li>
+    <li><a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Schedule a Call</a></li>
+  </ul>
+</div>
+
+<section class="hero">
+  <div class="hero-text fade-in">
+    <h1>Maximizing Your Dollar</h1>
+    <p>Fluent Financials brings a unique blend of personable and professional accounting to individuals and small to mid-sized businesses. Full-service accounting that works as hard as you do.</p>
+    <a href="#contact" class="hero-cta">Schedule a Call</a>
+    <a href="tel:4109294884" class="hero-contact">(410) 929-4884</a>
+    <div class="hero-badges">
+      <span class="badge">CPA — Maryland Licensed</span>
+      <span class="badge">Tax Planning</span>
+      <span class="badge">Full-Service Accounting</span>
+    </div>
+  </div>
+  <div class="hero-image fade-in">
+    <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUA1Iy1_Wm94y-2qRLOZeMCnBAy2_nIeZP0AcnrNM3Sf-ipDFZjvHVepgAWsbLzMfFOGWjmR6CjACFS-8C6gcOR_mk2gAFi0cJq9b-53Kj3CgK0FWB5mar0sJoL4zxWWurMeMeMVu25ULEGdi5rtFAvvSJIFVZny5waP9uVAhnvxCOLdMuyCxQQRmuNlM5YpwxqjlxWLbCmEyKLrLREOvLGcGL8Vshq-KS7NMs8=w1280" alt="Aviva Hendry, CPA" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80'">
+  </div>
+</section>
+
+<section class="social-proof">
+  <div class="social-proof-inner">
+    <div class="stat fade-in">
+      <div class="stat-number">CPA</div>
+      <div class="stat-label">Maryland Licensed</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">5★</div>
+      <div class="stat-label">Client Reviews</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">Full</div>
+      <div class="stat-label">Service Accounting Firm</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label fade-in">What We Offer</div>
+    <h2 class="section-title fade-in">Full-Service Accounting for Individuals &amp; Businesses</h2>
+    <p class="section-subtitle fade-in">From monthly accounting to CFO-level strategy, Fluent Financials delivers the financial expertise your business needs to grow with confidence.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Full-Close Monthly Accounting</h3>
+        <p>Complete monthly financial close with accurate books, reconciliations, and clear reports delivered on time every month.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Budget &amp; Financial Forecasting</h3>
+        <p>Data-driven budgets and forward-looking financial projections that give you a roadmap for growth and a handle on cash flow.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h3>Tax Planning &amp; Preparation</h3>
+        <p>Year-round tax strategy that legally minimizes your liability, backed by expert preparation when filing season arrives.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>CFO Services</h3>
+        <p>Fractional CFO advisory that brings executive-level financial strategy to growing businesses without the full-time cost.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Business Consulting</h3>
+        <p>Strategic guidance that connects your financial data to smart operational decisions and sustainable long-term growth.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>Bookkeeping</h3>
+        <p>Accurate, organized bookkeeping that keeps your records clean and gives you confidence in every financial decision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label fade-in">Client Reviews</div>
+    <h2 class="section-title fade-in">What Clients Say About Fluent Financials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Aviva got my taxes done quickly and painlessly... Super quick turnaround time."</p>
+        <div class="testimonial-author">Aviva B.</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Her friendly manner and quick, thorough work has helped us save time and money."</p>
+        <div class="testimonial-author">Yael S.</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Fluent Financials was able to significantly lower our taxable income through smart planning."</p>
+        <div class="testimonial-author">JJ Properties</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="section-label fade-in">Our Process</div>
+    <h2 class="section-title fade-in">Simple, Personable, Professional</h2>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Schedule a Call</h3>
+        <p>Book a consultation call to tell us about your financial situation and what you want to achieve.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Build Your Plan</h3>
+        <p>Aviva reviews your needs and designs a tailored accounting and tax strategy specific to your goals.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>We Get to Work</h3>
+        <p>Fluent Financials handles the numbers with speed, accuracy, and the communication you deserve.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <h3>Watch It Grow</h3>
+        <p>Ongoing accounting, reporting, and tax planning that keeps your dollar working harder every year.</p>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#contact" class="btn-primary">Schedule Your Call</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-label">Meet Your CPA</div>
+      <h2 class="section-title">Aviva Hendry, CPA</h2>
+      <p>Under Aviva's direction, Fluent Financials, LLC has built a reputation for delivering full-service accounting with a unique blend of personable warmth and professional precision. As a Maryland-licensed CPA, she serves individuals and small to mid-sized businesses who want an accountant who genuinely cares about their success.</p>
+      <p>Clients consistently describe Aviva as friendly, quick, and thorough. She brings not just compliance knowledge but strategic thinking that has helped businesses like JJ Properties significantly reduce taxable income while building stronger financial foundations.</p>
+      <div class="cred-badges">
+        <span class="cred-badge">Certified Public Accountant</span>
+        <span class="cred-badge">Maryland Licensed CPA</span>
+        <span class="cred-badge">Tax Planning Specialist</span>
+        <span class="cred-badge">CFO Advisory</span>
+      </div>
+    </div>
+    <div class="about-image fade-in">
+      <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUA1Iy1_Wm94y-2qRLOZeMCnBAy2_nIeZP0AcnrNM3Sf-ipDFZjvHVepgAWsbLzMfFOGWjmR6CjACFS-8C6gcOR_mk2gAFi0cJq9b-53Kj3CgK0FWB5mar0sJoL4zxWWurMeMeMVu25ULEGdi5rtFAvvSJIFVZny5waP9uVAhnvxCOLdMuyCxQQRmuNlM5YpwxqjlxWLbCmEyKLrLREOvLGcGL8Vshq-KS7NMs8=w1280" alt="Aviva Hendry, CPA" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80'">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Ready to Maximize Your Dollar?</h2>
+  <p class="fade-in">Let Aviva and Fluent Financials put their expertise to work for you. Quick turnaround, real results.</p>
+  <a href="tel:4109294884" class="btn-white fade-in">Call (410) 929-4884</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Fluent Financials, LLC</div>
+      <p>Full-service accounting for individuals and small to mid-sized businesses. Maryland-based, serving clients nationwide with speed and precision.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Monthly Accounting</a></li>
+        <li><a href="#services">Tax Planning</a></li>
+        <li><a href="#services">CFO Services</a></li>
+        <li><a href="#services">Bookkeeping</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>(410) 929-4884</span>
+      </div>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>info@fluentcpa.com</span>
+      </div>
+      <div class="hours">Mon–Thu: 9AM–5PM<br>Fri: 9AM–3PM</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Fluent Financials, LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
