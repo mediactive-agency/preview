@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tammie Vaughan Bookkeeping | Clean, Reliable Financial Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2A6041;
+    --accent: #4CAF78;
+    --light-gray: #F5F6F8;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-light: #555555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); }
+
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo-text { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta { background: var(--primary); color: var(--white) !important; padding: 10px 24px; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--accent) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 24px 40px; z-index: 999; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu ul a { text-decoration: none; color: var(--text); font-weight: 500; }
+  .mobile-menu .nav-cta { display: block; text-align: center; margin-top: 8px; color: var(--white) !important; }
+
+  .hero { background: var(--white); padding: 100px 40px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1280px; margin: 0 auto; }
+  .hero-text { flex: 1; max-width: 580px; }
+  .hero-text h1 { font-family: 'Lora', serif; font-size: 2.9rem; font-weight: 700; color: var(--primary); line-height: 1.25; margin-bottom: 20px; }
+  .hero-text p { font-size: 1.1rem; color: var(--text-light); line-height: 1.75; margin-bottom: 32px; }
+  .hero-cta { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-contact { display: block; margin-top: 16px; color: var(--primary); font-weight: 500; text-decoration: none; font-size: 0.9rem; }
+  .hero-contact:hover { text-decoration: underline; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .badge { background: var(--light-gray); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); }
+  .hero-image { flex: 1; max-width: 460px; }
+  .hero-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 20px 60px rgba(0,0,0,0.12); max-height: 520px; }
+
+  .social-proof { background: var(--light-gray); padding: 60px 40px; }
+  .social-proof-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Lora', serif; font-size: 2.8rem; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 0.95rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+  .services { padding: 100px 40px; background: var(--white); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label { font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .section-title { font-family: 'Lora', serif; font-size: 2.3rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+  .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin-bottom: 60px; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card { background: var(--white); border: 1px solid #E8E8E8; border-radius: 8px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .service-icon { width: 44px; height: 44px; background: rgba(42,96,65,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); }
+  .service-card h3 { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+  .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+  .how-it-works { background: var(--light-gray); padding: 100px 40px; }
+  .steps { display: flex; gap: 0; margin-top: 60px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 32px; left: calc(12.5% + 32px); right: calc(12.5% + 32px); height: 2px; background: #E0E0E0; z-index: 0; }
+  .step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px; }
+  .step-num { width: 64px; height: 64px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; margin: 0 auto 20px; }
+  .step h3 { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+  .step p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+  .how-cta { text-align: center; margin-top: 52px; }
+  .btn-primary { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--accent); }
+
+  .about { background: var(--white); padding: 100px 40px; }
+  .about-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+  .about-text { flex: 1; }
+  .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+  .about-image { flex: 1; max-width: 420px; }
+  .about-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 12px 40px rgba(0,0,0,0.1); max-height: 480px; }
+  .cred-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .cred-badge { background: rgba(42,96,65,0.08); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); border: 1px solid rgba(42,96,65,0.2); }
+
+  .cta-band { background: var(--primary); padding: 100px 40px; text-align: center; }
+  .cta-band h2 { font-family: 'Lora', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 20px; }
+  .cta-band p { font-size: 1.05rem; color: rgba(255,255,255,0.82); margin-bottom: 40px; }
+  .btn-white { background: var(--white); color: var(--primary); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+  .btn-white:hover { opacity: 0.9; }
+
+  footer { background: #111111; color: rgba(255,255,255,0.7); padding: 60px 40px 30px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; }
+  .footer-brand { flex: 1.5; }
+  .footer-brand-name { font-family: 'Lora', serif; font-size: 1.2rem; color: var(--white); font-weight: 700; margin-bottom: 16px; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+  .footer-links { flex: 1; }
+  .footer-links h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-contact { flex: 1.2; }
+  .footer-contact h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 0.9rem; }
+  .contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.82rem; }
+  .mediactive { color: var(--accent); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { flex-direction: column-reverse; padding: 60px 24px; }
+    .hero-image { max-width: 100%; }
+    .about-inner { flex-direction: column; }
+    .about-image { max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; gap: 32px; }
+    .steps::before { display: none; }
+    .social-proof-inner { flex-direction: column; gap: 32px; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .services, .how-it-works, .about, .cta-band { padding: 60px 24px; }
+    footer { padding: 40px 24px 24px; }
+    .btn-primary, .btn-white, .hero-cta { display: block; width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo-text">Tammie Vaughan Bookkeeping</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact"><span class="nav-cta">Book a Call</span></a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <ul>
+    <li><a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a></li>
+    <li><a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Book a Call</a></li>
+  </ul>
+</div>
+
+<section class="hero">
+  <div class="hero-text fade-in">
+    <h1>Helping Service-Based Business Owners Create Clean, Reliable Financial Systems</h1>
+    <p>Tammie Vaughan Bookkeeping gives you the organized records and financial clarity you need to understand your numbers, make confident decisions, and grow with freedom.</p>
+    <a href="#contact" class="hero-cta">Book a Discovery Call</a>
+    <a href="https://tammievaughanbookk.wixsite.com/tammie-vaughan-bookk" class="hero-contact">Schedule Online</a>
+    <div class="hero-badges">
+      <span class="badge">QuickBooks ProAdvisor</span>
+      <span class="badge">QBO Level 1 &amp; 2 Certified</span>
+      <span class="badge">QuickBooks Payroll Certified</span>
+    </div>
+  </div>
+  <div class="hero-image fade-in">
+    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80" alt="Tammie Vaughan" onerror="this.onerror=null">
+  </div>
+</section>
+
+<section class="social-proof">
+  <div class="social-proof-inner">
+    <div class="stat fade-in">
+      <div class="stat-number">3×</div>
+      <div class="stat-label">QuickBooks Certified</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Service-Based Businesses</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">QBO</div>
+      <div class="stat-label">ProAdvisor</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label fade-in">What I Offer</div>
+    <h2 class="section-title fade-in">Bookkeeping Services Built for Service Businesses</h2>
+    <p class="section-subtitle fade-in">Every service is designed to give you clear, accurate financials and the freedom to focus on what you actually do best.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Monthly Bookkeeping</h3>
+        <p>Transaction categorization, bank and credit card reconciliation, payroll processing, accounts receivable and payable, and 1099 filings.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Financial Reporting</h3>
+        <p>Profit and loss statements, balance sheets, job costing, inventory tracking, and fixed asset management — all delivered clearly.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Catch-Up Bookkeeping</h3>
+        <p>Behind on your books? I get you caught up quickly so you have clean, accurate records from day one going forward.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>QuickBooks Setup</h3>
+        <p>Full QuickBooks Online setup tailored to your service business so your books work the way your business actually works.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Payroll Processing</h3>
+        <p>Accurate, on-time payroll processing so your team gets paid right and your payroll records stay clean and compliant.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Ongoing Advisory</h3>
+        <p>Regular check-ins to review your numbers, answer questions, and help you understand what your financials are telling you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="section-label fade-in">How It Works</div>
+    <h2 class="section-title fade-in">Simple Steps to Financial Clarity</h2>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Book a Call</h3>
+        <p>Schedule a discovery call to talk through your bookkeeping challenges and what you need from a financial system.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Review Together</h3>
+        <p>We review your current books, tools, and gaps to design the right monthly bookkeeping plan for your business.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>Clean Systems</h3>
+        <p>Your books get organized, accurate, and set up on a reliable monthly system you can count on.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <h3>Move Forward</h3>
+        <p>Ongoing monthly bookkeeping keeps your records clean so you can make confident decisions and grow freely.</p>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#contact" class="btn-primary">Book Your Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-label">Meet Tammie</div>
+      <h2 class="section-title">Tammie Vaughan</h2>
+      <p>Tammie Vaughan is a certified QuickBooks ProAdvisor dedicated to helping service-based business owners build the clean, reliable financial systems they need to run their business with clarity and confidence.</p>
+      <p>With certifications in QuickBooks Online Level 1, Level 2, and Payroll, Tammie brings deep expertise in the tools that service businesses rely on. Her focus is always the same: organized records, accurate numbers, and the freedom that comes from truly understanding your finances.</p>
+      <p>Systems that support smarter decisions, steady growth, and more freedom. That is what Tammie builds for every client.</p>
+      <div class="cred-badges">
+        <span class="cred-badge">QuickBooks ProAdvisor</span>
+        <span class="cred-badge">QBO Level 1 Certified</span>
+        <span class="cred-badge">QBO Level 2 Certified</span>
+        <span class="cred-badge">QuickBooks Payroll Certified</span>
+      </div>
+    </div>
+    <div class="about-image fade-in">
+      <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80" alt="Tammie Vaughan" onerror="this.onerror=null">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Ready for Books You Can Actually Rely On?</h2>
+  <p class="fade-in">Book a discovery call with Tammie and take the first step toward clean, organized finances.</p>
+  <a href="https://tammievaughanbookk.wixsite.com/tammie-vaughan-bookk" class="btn-white fade-in">Book Your Discovery Call</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Tammie Vaughan Bookkeeping</div>
+      <p>QuickBooks-certified bookkeeping for service-based business owners. Clean records, reliable systems, and the financial clarity you need to grow.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Monthly Bookkeeping</a></li>
+        <li><a href="#services">Financial Reporting</a></li>
+        <li><a href="#services">Catch-Up Bookkeeping</a></li>
+        <li><a href="#services">QuickBooks Setup</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Book via scheduling link on the website.</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Tammie Vaughan Bookkeeping. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
