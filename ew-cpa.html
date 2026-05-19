@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EW CPA Tax & Bookkeeping | Trusted Tax Advisor Nationwide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1A3A5C;
+    --accent: #2563A8;
+    --teal: #0E7490;
+    --light-gray: #F5F6F8;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-light: #555555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); }
+
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--primary); color: var(--white) !important; padding: 10px 24px; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--accent) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 24px 40px; z-index: 999; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu ul a { text-decoration: none; color: var(--text); font-weight: 500; }
+  .mobile-menu .nav-cta { display: block; text-align: center; margin-top: 8px; color: var(--white) !important; }
+
+  .hero { background: var(--white); padding: 100px 40px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1280px; margin: 0 auto; }
+  .hero-text { flex: 1; max-width: 580px; }
+  .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 2.9rem; font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 20px; }
+  .hero-text p { font-size: 1.1rem; color: var(--text-light); line-height: 1.75; margin-bottom: 32px; }
+  .hero-cta { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-contact { display: block; margin-top: 16px; color: var(--accent); font-weight: 500; text-decoration: none; font-size: 0.95rem; }
+  .hero-contact:hover { text-decoration: underline; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .badge { background: var(--light-gray); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); }
+  .hero-image { flex: 1; max-width: 460px; }
+  .hero-image img { width: 100%; border-radius: 12px; object-fit: cover; object-position: center top; box-shadow: 0 20px 60px rgba(0,0,0,0.12); max-height: 520px; }
+
+  .social-proof { background: var(--light-gray); padding: 60px 40px; }
+  .social-proof-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 0.95rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+  .services { padding: 100px 40px; background: var(--white); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label { font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+  .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin-bottom: 60px; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card { background: var(--white); border: 1px solid #E8E8E8; border-radius: 8px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .service-icon { width: 44px; height: 44px; background: rgba(26,58,92,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); }
+  .service-card h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; color: var(--primary); }
+  .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+  .how-it-works { background: var(--light-gray); padding: 100px 40px; }
+  .steps { display: flex; gap: 0; margin-top: 60px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 32px; left: calc(12.5% + 32px); right: calc(12.5% + 32px); height: 2px; background: #D8D8D8; z-index: 0; }
+  .step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px; }
+  .step-num { width: 64px; height: 64px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; margin: 0 auto 20px; }
+  .step h3 { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+  .step p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+  .how-cta { text-align: center; margin-top: 52px; }
+  .btn-primary { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--accent); }
+
+  .about { background: var(--white); padding: 100px 40px; }
+  .about-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+  .about-text { flex: 1; }
+  .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+  .about-placeholder { flex: 1; max-width: 440px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.9); text-align: center; padding: 48px; }
+  .about-placeholder .initials { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 700; margin-bottom: 16px; }
+  .about-placeholder p { font-size: 1rem; font-weight: 500; }
+  .cred-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .cred-badge { background: rgba(26,58,92,0.07); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary); border: 1px solid rgba(26,58,92,0.2); }
+
+  .cta-band { background: var(--primary); padding: 100px 40px; text-align: center; }
+  .cta-band h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--white); margin-bottom: 20px; }
+  .cta-band p { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+  .btn-white { background: var(--white); color: var(--primary); padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+  .btn-white:hover { opacity: 0.9; }
+
+  footer { background: #0D1F35; color: rgba(255,255,255,0.7); padding: 60px 40px 30px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; }
+  .footer-brand { flex: 1.5; }
+  .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); font-weight: 700; margin-bottom: 16px; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+  .footer-links { flex: 1; }
+  .footer-links h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-contact { flex: 1.2; }
+  .footer-contact h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 0.9rem; }
+  .contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--teal); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.82rem; }
+  .mediactive { color: var(--teal); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { flex-direction: column-reverse; padding: 60px 24px; }
+    .hero-image { max-width: 100%; }
+    .about-inner { flex-direction: column; }
+    .about-placeholder { max-width: 100%; min-height: 280px; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; gap: 32px; }
+    .steps::before { display: none; }
+    .social-proof-inner { flex-direction: column; gap: 32px; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .section-title { font-size: 1.9rem; }
+    .services, .how-it-works, .about, .cta-band { padding: 60px 24px; }
+    footer { padding: 40px 24px 24px; }
+    .btn-primary, .btn-white, .hero-cta { display: block; width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-text">EW CPA</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact"><span class="nav-cta">Book a Consultation</span></a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <ul>
+    <li><a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a></li>
+    <li><a href="#how" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Process</a></li>
+    <li><a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Book a Consultation</a></li>
+  </ul>
+</div>
+
+<section class="hero">
+  <div class="hero-text fade-in">
+    <h1>Trusted Tax Advisor Nationwide</h1>
+    <p>EW CPA Tax &amp; Bookkeeping LLC brings over a decade of CPA expertise to individuals and businesses across the country. Expert tax planning, preparation, and bookkeeping from a licensed CPA, EA, and Certified Tax Planner.</p>
+    <a href="#contact" class="hero-cta">Book a Consultation</a>
+    <a href="tel:7372647589" class="hero-contact">(737) 264-7589</a>
+    <div class="hero-badges">
+      <span class="badge">CPA</span>
+      <span class="badge">Enrolled Agent</span>
+      <span class="badge">Certified Tax Planner</span>
+      <span class="badge">10+ Years Experience</span>
+    </div>
+  </div>
+  <div class="hero-image fade-in">
+    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Ekaterina Wong, CPA" onerror="this.onerror=null">
+  </div>
+</section>
+
+<section class="social-proof">
+  <div class="social-proof-inner">
+    <div class="stat fade-in">
+      <div class="stat-number">10+</div>
+      <div class="stat-label">Years of CPA Experience</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">3×</div>
+      <div class="stat-label">CPA, EA &amp; Certified Tax Planner</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">50</div>
+      <div class="stat-label">States Served Nationwide</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label fade-in">What We Offer</div>
+    <h2 class="section-title fade-in">Expert Tax &amp; Bookkeeping Services</h2>
+    <p class="section-subtitle fade-in">From proactive tax planning to accurate bookkeeping, EW CPA gives individuals and businesses across the country the expert financial guidance they deserve.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h3>Tax Planning</h3>
+        <p>Strategic, year-round tax planning that identifies every legal opportunity to minimize what you owe and keep more of what you earn.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Tax Preparation</h3>
+        <p>Accurate, timely tax return preparation for individuals, self-employed professionals, and businesses of all sizes, filed nationwide.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Bookkeeping for Growth</h3>
+        <p>Organized, accurate bookkeeping that gives growing businesses the clear financial picture they need to scale with confidence.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>IRS Representation</h3>
+        <p>As an Enrolled Agent, Ekaterina can represent you before the IRS for audits, appeals, and collection matters with full authority.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Business Tax Strategy</h3>
+        <p>Entity structure, deduction optimization, and proactive business tax strategy that saves money today and protects tomorrow.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Individual Tax Services</h3>
+        <p>Personalized tax preparation and planning for individuals, including complex returns with investments, real estate, and self-employment income.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="section-label fade-in">Our Process</div>
+    <h2 class="section-title fade-in">Simple Steps to Tax Confidence</h2>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Book a Consultation</h3>
+        <p>Schedule a call to discuss your tax situation, financial goals, and how EW CPA can help.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Share Your Documents</h3>
+        <p>Securely upload your financial documents and we will review everything thoroughly.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>We Build Your Strategy</h3>
+        <p>Ekaterina identifies every legal tax-saving opportunity and prepares your returns with precision.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <h3>File and Save</h3>
+        <p>Your return is filed, your strategy is in place, and you keep more of what you earn.</p>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-label">Meet Your CPA</div>
+      <h2 class="section-title">Ekaterina Wong, CPA, EA</h2>
+      <p>Ekaterina (Katia) Wong founded EW CPA Tax &amp; Bookkeeping LLC to give individuals and businesses across the country access to the kind of expert, proactive tax advisory previously reserved for those with large accounting firm budgets.</p>
+      <p>A CPA, Enrolled Agent, and Certified Tax Planner educated at the University of Denver, Ekaterina brings over 10 years of experience to every client engagement. She is licensed to practice before the IRS and takes a hands-on, strategic approach to every tax situation.</p>
+      <p>Whether you are an individual with a complex return, a growing business navigating quarterly taxes, or an entrepreneur optimizing your entity structure, Ekaterina has the credentials and experience to get it right.</p>
+      <div class="cred-badges">
+        <span class="cred-badge">Certified Public Accountant</span>
+        <span class="cred-badge">Enrolled Agent</span>
+        <span class="cred-badge">Certified Tax Planner</span>
+        <span class="cred-badge">University of Denver</span>
+        <span class="cred-badge">10+ Years Experience</span>
+      </div>
+    </div>
+    <div class="about-placeholder fade-in">
+      <div class="initials">EW</div>
+      <p>Ekaterina Wong<br>CPA, EA, Certified Tax Planner</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Stop Overpaying on Taxes. Start Today.</h2>
+  <p class="fade-in">Ekaterina serves clients nationwide. Book your consultation and put 10+ years of CPA expertise to work for you.</p>
+  <a href="tel:7372647589" class="btn-white fade-in">Call (737) 264-7589</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">EW CPA Tax &amp; Bookkeeping LLC</div>
+      <p>Expert tax planning, preparation, and bookkeeping for individuals and businesses nationwide. Trusted advisor. Real results.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Tax Planning</a></li>
+        <li><a href="#services">Tax Preparation</a></li>
+        <li><a href="#services">Bookkeeping</a></li>
+        <li><a href="#services">IRS Representation</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>(737) 264-7589</span>
+      </div>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>info@e-taxcpa.com</span>
+      </div>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Round Rock, TX<br>Serving Clients Nationwide</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 EW CPA Tax &amp; Bookkeeping LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
