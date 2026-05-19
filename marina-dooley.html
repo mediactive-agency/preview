@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marina Dooley Advisory | Identity Upgrade for Executives</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #111111;
+    --accent: #C4983A;
+    --light-gray: #F5F6F8;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-light: #666666;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); }
+
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--primary);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: rgba(255,255,255,0.75); font-weight: 400; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: var(--primary) !important; padding: 10px 24px; border-radius: 6px; font-weight: 600 !important; transition: opacity 0.2s !important; text-transform: uppercase !important; letter-spacing: 1px !important; }
+  .nav-cta:hover { opacity: 0.9 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--primary); padding: 24px 40px; z-index: 999; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu ul a { text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 400; font-size: 1rem; }
+  .mobile-menu .nav-cta { display: block; text-align: center; margin-top: 8px; color: var(--primary) !important; }
+
+  .hero {
+    background: var(--primary);
+    padding: 100px 40px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 60px; max-width: 1280px; margin: 0 auto;
+  }
+  .hero-text { flex: 1; max-width: 580px; }
+  .hero-text .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+  .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 24px; }
+  .hero-text h1 em { font-style: italic; color: var(--accent); }
+  .hero-text p { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 36px; }
+  .hero-cta { background: var(--accent); color: var(--primary); padding: 16px 40px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 2px; transition: opacity 0.2s; }
+  .hero-cta:hover { opacity: 0.9; }
+  .hero-contact { display: block; margin-top: 16px; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 8px 16px; font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.75); letter-spacing: 0.5px; }
+  .hero-image { flex: 1; max-width: 460px; }
+  .hero-image img { width: 100%; border-radius: 4px; object-fit: cover; object-position: center top; max-height: 520px; filter: grayscale(20%); }
+
+  .social-proof { background: #1A1A1A; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .social-proof-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+
+  .services { padding: 100px 40px; background: var(--light-gray); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
+  .section-subtitle { font-size: 1rem; color: var(--text-light); max-width: 580px; margin-bottom: 60px; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card { background: var(--white); border-radius: 4px; padding: 36px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); border-bottom: 3px solid transparent; transition: border-color 0.2s; }
+  .service-card:hover { border-bottom-color: var(--accent); }
+  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+  .service-card h3 { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--primary); letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.85rem; }
+  .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+  .how-it-works { background: var(--white); padding: 100px 40px; }
+  .steps { display: flex; gap: 0; margin-top: 60px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 32px; left: calc(12.5% + 32px); right: calc(12.5% + 32px); height: 1px; background: #E0E0E0; z-index: 0; }
+  .step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px; }
+  .step-num { width: 64px; height: 64px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; margin: 0 auto 20px; }
+  .step h3 { font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+  .step p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+  .how-cta { text-align: center; margin-top: 52px; }
+  .btn-primary { background: var(--primary); color: var(--white); padding: 16px 40px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 2px; transition: background 0.2s; }
+  .btn-primary:hover { background: #333; }
+
+  .about { background: var(--light-gray); padding: 100px 40px; }
+  .about-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+  .about-text { flex: 1; }
+  .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.85; margin-bottom: 20px; }
+  .about-image { flex: 1; max-width: 420px; }
+  .about-image img { width: 100%; border-radius: 4px; object-fit: cover; object-position: center top; max-height: 480px; filter: grayscale(15%); }
+  .cred-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .cred-badge { background: rgba(0,0,0,0.06); border-radius: 20px; padding: 8px 16px; font-size: 0.8rem; font-weight: 600; color: var(--primary); border: 1px solid rgba(0,0,0,0.12); }
+
+  .cta-band { background: var(--primary); padding: 100px 40px; text-align: center; }
+  .cta-band h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--white); margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: var(--accent); }
+  .cta-band p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 40px; letter-spacing: 0.5px; }
+  .btn-gold { background: var(--accent); color: var(--primary); padding: 16px 40px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 2px; transition: opacity 0.2s; }
+  .btn-gold:hover { opacity: 0.9; }
+
+  footer { background: #0A0A0A; color: rgba(255,255,255,0.6); padding: 60px 40px 30px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; }
+  .footer-brand { flex: 1.5; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); font-weight: 600; margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+  .footer-links { flex: 1; }
+  .footer-links h4 { color: var(--white); font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-contact { flex: 1.2; }
+  .footer-contact h4 { color: var(--white); font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 0.88rem; }
+  .contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; text-align: center; font-size: 0.8rem; }
+  .mediactive { color: var(--accent); }
+
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { flex-direction: column-reverse; padding: 60px 24px; }
+    .hero-image { max-width: 100%; }
+    .about-inner { flex-direction: column; }
+    .about-image { max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-text h1 { font-size: 2.6rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; gap: 32px; }
+    .steps::before { display: none; }
+    .social-proof-inner { flex-direction: column; gap: 32px; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .section-title { font-size: 2rem; }
+    .services, .how-it-works, .about, .cta-band { padding: 60px 24px; }
+    footer { padding: 40px 24px 24px; }
+    .btn-primary, .btn-gold, .hero-cta { display: block; width: 100%; text-align: center; }
+    .hero { background: var(--primary); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo-text">Marina Dooley</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#method">The Method</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#apply"><span class="nav-cta">Apply Now</span></a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <ul>
+    <li><a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a></li>
+    <li><a href="#method" onclick="document.querySelector('.mobile-menu').classList.remove('open')">The Method</a></li>
+    <li><a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a></li>
+    <li><a href="#apply" class="nav-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Apply Now</a></li>
+  </ul>
+</div>
+
+<section style="background:var(--primary)">
+<div class="hero">
+  <div class="hero-text fade-in">
+    <div class="eyebrow">Executive Advisory</div>
+    <h1>You do not need more information. You need an <em>identity upgrade.</em></h1>
+    <p>Marina Dooley Advisory works with business owners, CEOs, presidents, and senior executives who are ready to stop operating beneath their potential and step fully into who they are meant to be.</p>
+    <a href="#apply" class="hero-cta">Apply to Work with Marina</a>
+    <div class="hero-badges">
+      <span class="badge">Executive Advisory</span>
+      <span class="badge">Identity Upgrade Method</span>
+      <span class="badge">CEO &amp; Founder Clients</span>
+    </div>
+  </div>
+  <div class="hero-image fade-in">
+    <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&q=80" alt="Marina Dooley" onerror="this.onerror=null">
+  </div>
+</div>
+</section>
+
+<section class="social-proof">
+  <div class="social-proof-inner">
+    <div class="stat fade-in">
+      <div class="stat-number">CEO</div>
+      <div class="stat-label">Level Clientele</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">1:1</div>
+      <div class="stat-label">Advisory Method</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Application-Based Access</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Who It Serves</div>
+    <h2 class="section-title fade-in">Advisory for Leaders Ready to Operate at Their Highest Level</h2>
+    <p class="section-subtitle fade-in">Marina works exclusively with established executives who are ready for a transformation that goes beyond strategy — into identity.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-num">01</div>
+        <h3>Identity Upgrade</h3>
+        <p>A deep, transformational process that aligns your self-concept with your role so you lead from a place of genuine authority and clarity.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-num">02</div>
+        <h3>Executive Advisory</h3>
+        <p>Strategic advisory for business owners, CEOs, and senior executives navigating growth, transitions, and high-stakes decisions.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-num">03</div>
+        <h3>Leadership Development</h3>
+        <p>Programs designed to help leaders unlock their full potential, build presence, and operate at the level their business demands.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-num">04</div>
+        <h3>The Method</h3>
+        <p>Marina's proprietary approach to executive transformation — a framework built for leaders who have the knowledge but need the identity to match.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-num">05</div>
+        <h3>CEO Coaching</h3>
+        <p>One-on-one coaching engagements for chief executives ready to close the gap between who they are today and who they need to become.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-num">06</div>
+        <h3>President &amp; Founder Advisory</h3>
+        <p>Specialized advisory for founders and presidents who carry the full weight of their company's direction and culture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="method">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">The Process</div>
+    <h2 class="section-title fade-in">How the Identity Upgrade Works</h2>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Apply</h3>
+        <p>Submit an application. Marina reviews each one personally and selects clients she knows she can transform.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Assess</h3>
+        <p>A deep-dive session to understand where you are, the gap between your identity and your role, and what is holding you back.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>Transform</h3>
+        <p>Work directly with Marina through her proprietary method to upgrade your identity and rewire how you lead.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <h3>Lead</h3>
+        <p>Operate from your full potential — with the identity, presence, and authority your business has always needed from you.</p>
+      </div>
+    </div>
+    <div class="how-cta">
+      <a href="#apply" class="btn-primary">Apply to Work with Marina</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-eyebrow">About Marina</div>
+      <h2 class="section-title">Marina Dooley</h2>
+      <p>Marina Dooley Advisory exists for one reason: to work with the leaders at the top who are still not operating at their actual potential. Not because they lack skill or knowledge, but because their identity has not caught up with their role.</p>
+      <p>Marina works exclusively with business owners, CEOs, presidents, and senior executives who are ready to stop playing small inside big titles. Her methodology is not coaching in the traditional sense — it is an identity upgrade that changes how you see yourself and how you show up.</p>
+      <p>Access to Marina's advisory is application-only. She works with a small number of clients at a time to ensure every engagement gets her full attention and produces real transformation.</p>
+      <div class="cred-badges">
+        <span class="cred-badge">Executive Advisory</span>
+        <span class="cred-badge">Identity Transformation</span>
+        <span class="cred-badge">Application-Only Access</span>
+      </div>
+    </div>
+    <div class="about-image fade-in">
+      <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&q=80" alt="Marina Dooley" onerror="this.onerror=null">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="apply">
+  <h2 class="fade-in">Stop Operating Beneath Your <em>Potential.</em></h2>
+  <p class="fade-in">Apply to work with Marina Dooley Advisory. Spots are limited and access is by application only.</p>
+  <a href="https://marinadooley.com" class="btn-gold fade-in">Apply Now</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Marina Dooley Advisory</div>
+      <p>Executive advisory and identity transformation for business owners, CEOs, presidents, and senior executives who are ready to operate at their highest level.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#services">Who It Serves</a></li>
+        <li><a href="#method">The Method</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#apply">Apply</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Apply</h4>
+      <div class="contact-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Application-based access only.<br>Apply via the website.</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Marina Dooley Advisory. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
