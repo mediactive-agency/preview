@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Out of the Box Bookkeeping &amp; Tax | Vancouver, WA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&family=Roboto+Slab:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      color: #020101;
+      background: #fff;
+      line-height: 1.65;
+    }
+
+    /* ===== BRAND VARIABLES ===== */
+    :root {
+      --blue: #0067C4;
+      --tan: #BAA680;
+      --orange: #FFBC7D;
+      --dark: #020101;
+      --white: #FFFFFF;
+      --gray-bg: #F5F6F8;
+      --gray-text: #8A8A8A;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+    h3 { font-size: 1.15rem; }
+    p { font-family: 'Roboto', sans-serif; }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section { padding: 90px 0; }
+    section.gray-bg { background: var(--gray-bg); }
+    section.white-bg { background: var(--white); }
+
+    /* ===== FADE-IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover { background: #0054a0; transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--blue);
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 13px 30px;
+      border-radius: 6px;
+      border: 2px solid var(--blue);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+    .btn-outline:hover { background: var(--blue); color: #fff; transform: translateY(-2px); }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 2px solid #e8eaed;
+      box-shadow: 0 2px 12px rgba(0,103,196,0.08);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    .nav-logo span {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--blue);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { margin-left: 16px; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--blue);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #e8eaed;
+      padding: 24px;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      flex-direction: column;
+      gap: 16px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .mobile-menu a:hover { color: var(--blue); }
+    .mobile-menu .btn-primary { text-align: center; border: none; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: #fff;
+      padding: 90px 0;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-text {}
+    .hero-eyebrow {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .hero-phone {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-phone:hover { color: #0054a0; }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EEF5FD;
+      color: var(--blue);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,103,196,0.2);
+    }
+    .hero-image {
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(0,103,196,0.12);
+    }
+    .hero-accent {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 80px;
+      height: 80px;
+      background: var(--blue);
+      border-radius: 50%;
+      opacity: 0.12;
+      z-index: -1;
+    }
+
+    /* ===== SOCIAL PROOF BAR ===== */
+    .proof-bar {
+      background: var(--gray-bg);
+      padding: 56px 0;
+    }
+    .proof-bar-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .proof-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .proof-stat-number {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .proof-stat-label {
+      font-family: 'Roboto Slab', serif;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .proof-divider {
+      width: 1px;
+      background: #ddd;
+      display: none;
+    }
+
+    /* ===== SERVICES ===== */
+    .services { background: #fff; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-header h2 { color: var(--blue); margin-bottom: 12px; }
+    .section-header p {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid #e4e8ee;
+      border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 16px rgba(0,103,196,0.06);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .service-card:hover { box-shadow: 0 8px 28px rgba(0,103,196,0.14); transform: translateY(-3px); }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: #EEF5FD;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--blue);
+    }
+    .service-card h3 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--gray-bg); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+    .testimonial-card blockquote {
+      font-family: 'Roboto Slab', serif;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .testimonial-role {
+      font-size: 0.82rem;
+      color: var(--gray-text);
+      margin-top: 2px;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works { background: #fff; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-bottom: 56px;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--tan) 100%);
+      z-index: 0;
+    }
+    .step {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(0,103,196,0.25);
+    }
+    .step h3 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .step p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.6;
+    }
+    .how-it-works .cta-center { text-align: center; }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--gray-bg); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-text h2 { color: var(--blue); margin-bottom: 20px; }
+    .about-text p {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(0,103,196,0.12);
+    }
+
+    /* ===== CTA BAND ===== */
+    .cta-band {
+      background: var(--blue);
+      padding: 90px 0;
+      text-align: center;
+    }
+    .cta-band h2 {
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+    }
+    .cta-band p {
+      color: rgba(255,255,255,0.85);
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue);
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 15px 36px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-white:hover { background: #EEF5FD; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0a0a0a;
+      padding: 64px 0 32px;
+      color: #ccc;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand img {
+      height: 60px;
+      width: auto;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .footer-brand span {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: #aaa;
+      line-height: 1.6;
+      margin-top: 12px;
+      font-family: 'Roboto Slab', serif;
+    }
+    .footer-nav h4 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--tan);
+      margin-bottom: 16px;
+    }
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-nav a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-family: 'Roboto', sans-serif;
+      transition: color 0.2s ease;
+    }
+    .footer-nav a:hover { color: var(--blue); }
+    .footer-contact h4 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--tan);
+      margin-bottom: 16px;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: #bbb;
+      font-size: 0.88rem;
+    }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item a { color: #bbb; text-decoration: none; transition: color 0.2s; }
+    .footer-contact-item a:hover { color: var(--blue); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .footer-bottom a {
+      color: var(--tan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-bottom a:hover { color: var(--orange); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps::before { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-image { order: -1; }
+      .hero-image img { height: 300px; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+
+      .proof-bar-inner { grid-template-columns: 1fr; gap: 24px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .steps { grid-template-columns: 1fr; gap: 32px; }
+      .steps::before { display: none; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image { order: -1; }
+      .about-image img { height: 280px; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+      .btn-primary, .btn-outline, .btn-white { width: 100%; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="https://outoftheboxbookkeeping.com/wp-content/uploads/2023/12/ootb-logo-square-blue-white.png"
+           alt="Out of the Box Bookkeeping"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <span style="display:none;">Out of the Box</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta btn-primary">Get in Touch</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+    <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#contact" class="btn-primary" onclick="closeMenu()">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero white-bg" id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text fade-in">
+        <div class="hero-eyebrow">Bookkeeping &amp; Tax &mdash; Vancouver, WA</div>
+        <h1>Transparent.<br>Affordable.<br>Simple.</h1>
+        <p class="hero-sub">Accounting, tax preparation, and payroll services for individuals, small businesses, and non-profits across Washington, Oregon, and beyond.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Schedule a Free Consultation</a>
+          <a href="tel:3606930707" class="hero-phone">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            360.693.0707
+          </a>
+        </div>
+        <div class="hero-badges">
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            30+ Years Combined Experience
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Free Consultation
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Local PNW Firm Since 2011
+          </span>
+        </div>
+      </div>
+      <div class="hero-image fade-in">
+        <div class="hero-accent"></div>
+        <img src="https://outoftheboxbookkeeping.com/wp-content/uploads/2022/12/ootb-home.png"
+             alt="Small business owners working with bookkeeper"
+             onerror="this.src='https://outoftheboxbookkeeping.com/wp-content/uploads/2022/12/unnamed-file.png';" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOCIAL PROOF BAR ===== -->
+<section class="proof-bar">
+  <div class="container">
+    <div class="proof-bar-inner fade-in">
+      <div class="proof-stat">
+        <div class="proof-stat-number">30+</div>
+        <div class="proof-stat-label">Years of Combined Experience</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-number">2011</div>
+        <div class="proof-stat-label">Serving the PNW Since</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-number">3</div>
+        <div class="proof-stat-label">States Served: WA, OR &amp; Beyond</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services white-bg" id="services">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>What We Do</h2>
+      <p>Straightforward financial services with no jargon, no surprises, and no hidden fees.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Bookkeeping</h3>
+        <p>Ongoing accounting services billed hourly or as a simple monthly retainer, so your cash flow stays predictable and your books stay clean.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Tax Preparation</h3>
+        <p>Federal and state returns for individuals, small businesses, and non-profits, filed accurately and on time. Billed per return, never by the hour.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <h3>Payroll Services</h3>
+        <p>Accurate, timely payroll processing so your team gets paid right and your payroll taxes are handled without hassle. Hourly or retainer basis.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Small Business Accounting</h3>
+        <p>Comprehensive financial support for small businesses across Washington and Oregon. We become your trusted financial partner from day one.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Individual Tax Returns</h3>
+        <p>Personal federal and state returns prepared carefully and explained clearly so you actually understand what you owe and why.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Non-Profit Accounting</h3>
+        <p>Specialized bookkeeping and tax filing for non-profit organizations. We understand the unique reporting requirements that matter to your mission.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials gray-bg" id="testimonials">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>What Clients Say</h2>
+      <p>Real feedback from the people we work with across the Pacific Northwest.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"We've been going to Barb for years and she's always been great. She's fast, thorough, and knowledgeable with great rates."</blockquote>
+        <div class="testimonial-author">Satisfied Client</div>
+        <div class="testimonial-role">Long-term Client, Vancouver WA</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Barbara has been a pleasure to work with! She is very knowledgeable and I have been happy with her services. I recommend her to all my small business friends!"</blockquote>
+        <div class="testimonial-author">Small Business Owner</div>
+        <div class="testimonial-role">PNW Small Business Client</div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Finally found a bookkeeper who speaks plain English. Transparent pricing, fast turnaround, and they actually explain what they're doing. Exactly what a small business needs."</blockquote>
+        <div class="testimonial-author">Local Business Owner</div>
+        <div class="testimonial-role">Vancouver, WA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how-it-works white-bg" id="how-it-works">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>How It Works</h2>
+      <p>Getting started is simple. Here is the process from first call to clear books.</p>
+    </div>
+    <div class="steps fade-in">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Free Consultation</h3>
+        <p>Schedule a no-obligation call to discuss your needs. We figure out whether we're a good fit together, at no cost to you.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Tailored Plan</h3>
+        <p>We recommend a service approach that fits your situation, whether hourly, monthly retainer, or per-return for taxes.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>We Get to Work</h3>
+        <p>We handle your books, payroll, or returns with accuracy and transparency. You are kept in the loop every step of the way.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Clear, Simple Results</h3>
+        <p>Receive accurate financials explained in plain language. No jargon, no confusion, just clarity about where your money stands.</p>
+      </div>
+    </div>
+    <div class="cta-center fade-in">
+      <a href="#contact" class="btn-primary">Schedule Your Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about gray-bg" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-text fade-in">
+        <h2>A Local PNW Team You Can Trust</h2>
+        <p>Out of the Box Bookkeeping has been serving individuals, small businesses, and non-profits across the Pacific Northwest since 2011. With over 30 years of combined experience, our team brings real depth to every engagement.</p>
+        <p>We built this firm on three simple principles: transparency in everything we do, affordability so every business can access quality financial help, and simplicity so you actually understand your own numbers.</p>
+        <p>We believe financial education matters. When you work with us, we don't just file your returns or balance your books. We make sure you leave knowing more about your own financial picture than when you arrived.</p>
+        <div class="about-badges">
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Bookkeeping Services
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Tax Preparation
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Payroll Processing
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            WA &amp; OR Licensed
+          </span>
+        </div>
+      </div>
+      <div class="about-image fade-in">
+        <img src="https://outoftheboxbookkeeping.com/wp-content/uploads/2022/12/ootb-home-02.jpg"
+             alt="Out of the Box Bookkeeping team"
+             onerror="this.src='https://outoftheboxbookkeeping.com/wp-content/uploads/2022/12/unnamed-file.png';" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="cta-band" id="contact">
+  <div class="container fade-in">
+    <h2>Ready to Take Bookkeeping Off Your Plate?</h2>
+    <p>Schedule a free consultation today and find out whether Out of the Box Bookkeeping is the right fit for you or your business.</p>
+    <a href="mailto:scott@outoftheboxbk.com" class="btn-white">Schedule a Free Consultation</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://outoftheboxbookkeeping.com/wp-content/uploads/2023/12/ootb-logo-square-tan-white_1.png"
+             alt="Out of the Box Bookkeeping"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span style="display:none;">Out of the Box Bookkeeping &amp; Tax</span>
+        <p>Transparent, affordable, and simple accounting, tax preparation, and payroll services for the Pacific Northwest since 2011.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Client Reviews</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Get in Touch</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAA680" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <a href="tel:3606930707">360.693.0707</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAA680" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <a href="mailto:scott@outoftheboxbk.com">scott@outoftheboxbk.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BAA680" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>4400 NE 77th Ave #275<br>Vancouver, WA 98662</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Out of the Box Bookkeeping. All rights reserved.</p>
+      <p>Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  // Hamburger menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.hamburger');
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
