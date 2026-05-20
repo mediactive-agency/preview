@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creation Accounting | Modern Accounting for Tomorrow's Leaders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; color: #1C2B1C; background: #fff; overflow-x: hidden; }
+
+    /* === BRAND COLORS === */
+    /* Primary dark: #1C2B1C (deep forest green/almost black) */
+    /* Accent lime: #C8F135 (bright lime green) */
+    /* Text dark: #1C2B1C */
+    /* Light bg: #F5F6F8 */
+
+    /* === TYPOGRAPHY === */
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; }
+    h3 { font-size: 1.25rem; font-weight: 700; font-family: 'Inter', sans-serif; }
+    p { line-height: 1.7; color: #4A5A4A; }
+
+    /* === BUTTONS === */
+    .btn-primary {
+      display: inline-block;
+      background: #1C2B1C;
+      color: #C8F135;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .btn-primary:hover { background: #2E4030; color: #D9FF5C; }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #1C2B1C;
+      padding: 13px 30px;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid #1C2B1C;
+      letter-spacing: 0.3px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .btn-outline:hover { background: #1C2B1C; color: #C8F135; }
+
+    /* === NAV === */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid #E8EDE8;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #1C2B1C;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: #4A7C59; }
+    .nav-cta { margin-left: 12px; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1C2B1C;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #E8EDE8;
+      padding: 20px 5%;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: #1C2B1C;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 8px 0;
+      border-bottom: 1px solid #F0F4F0;
+    }
+    .mobile-menu .btn-primary { width: 100%; text-align: center; margin-top: 8px; }
+
+    /* === HERO === */
+    .hero {
+      background: #fff;
+      padding: 90px 5% 90px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hero-left { flex: 1; min-width: 0; }
+    .hero-right {
+      flex: 0 0 420px;
+      max-width: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #F0F9F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      min-height: 380px;
+    }
+    .hero-right img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center top;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: #E8FF8E;
+      color: #1C2B1C;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      color: #1C2B1C;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #4A7C59; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #4A5A4A;
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-contact-link {
+      color: #4A7C59;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-contact-link:hover { color: #1C2B1C; }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F0F9F0;
+      border: 1px solid #C8EAD0;
+      color: #2A4A2A;
+      padding: 7px 14px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge svg { flex-shrink: 0; color: #4A7C59; }
+
+    /* === SOCIAL PROOF BAR === */
+    .proof-bar {
+      background: #F5F6F8;
+      padding: 60px 5%;
+    }
+    .proof-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .proof-label {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #7A9A7A;
+      margin-bottom: 40px;
+    }
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .proof-stat {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      padding: 24px 40px;
+      border-right: 1px solid #D8E8D8;
+    }
+    .proof-stat:last-child { border-right: none; }
+    .proof-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1C2B1C;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .proof-stat-label {
+      font-size: 0.9rem;
+      color: #5A7A5A;
+      font-weight: 500;
+    }
+    .proof-clients {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+      opacity: 0.5;
+    }
+    .proof-clients span {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1C2B1C;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* === SERVICES === */
+    .services {
+      background: #fff;
+      padding: 90px 5%;
+    }
+    .services-inner { max-width: 1280px; margin: 0 auto; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-tag {
+      display: inline-block;
+      background: #E8FF8E;
+      color: #1C2B1C;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-header h2 { color: #1C2B1C; margin-bottom: 14px; }
+    .section-header p { max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: #F8FAF8;
+      border: 1px solid #E0EBE0;
+      border-radius: 8px;
+      padding: 36px 28px;
+      box-shadow: 0 2px 12px rgba(28,43,28,0.06);
+      transition: box-shadow 0.2s ease;
+      position: relative;
+    }
+    .service-card.featured {
+      background: #1C2B1C;
+      border-color: #1C2B1C;
+    }
+    .service-card.featured h3,
+    .service-card.featured p { color: #fff; }
+    .service-card.featured .service-tagline { color: #C8F135; }
+    .service-card.featured .service-icon-wrap { background: #2E4030; }
+    .service-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #C8F135;
+      color: #1C2B1C;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+    }
+    .service-icon-wrap {
+      width: 48px;
+      height: 48px;
+      background: #E8FF8E;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #1C2B1C;
+    }
+    .service-card h3 { margin-bottom: 6px; color: #1C2B1C; }
+    .service-tagline {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4A7C59;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .service-card p { font-size: 0.92rem; line-height: 1.7; }
+
+    /* === TESTIMONIALS === */
+    .testimonials {
+      background: #F5F6F8;
+      padding: 90px 5%;
+    }
+    .testimonials-inner { max-width: 1280px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(28,43,28,0.08);
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .testimonial-quote {
+      font-size: 0.97rem;
+      color: #2A3A2A;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #E8FF8E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1C2B1C;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1C2B1C;
+    }
+    .author-title {
+      font-size: 0.8rem;
+      color: #7A9A7A;
+      margin-top: 2px;
+    }
+
+    /* === HOW IT WORKS === */
+    .how-it-works {
+      background: #fff;
+      padding: 90px 5%;
+    }
+    .how-it-works-inner { max-width: 1280px; margin: 0 auto; }
+    .steps-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-top: 56px;
+      position: relative;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 24px);
+      right: calc(12.5% + 24px);
+      height: 2px;
+      background: #E8FF8E;
+      z-index: 0;
+    }
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: #1C2B1C;
+      color: #C8F135;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif;
+    }
+    .step h3 { font-size: 1rem; color: #1C2B1C; margin-bottom: 10px; }
+    .step p { font-size: 0.88rem; color: #5A7A5A; line-height: 1.65; }
+    .steps-cta { text-align: center; margin-top: 48px; }
+
+    /* === ABOUT === */
+    .about {
+      background: #F5F6F8;
+      padding: 90px 5%;
+    }
+    .about-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+    .about-text { flex: 1; }
+    .about-text h2 { color: #1C2B1C; margin-bottom: 20px; }
+    .about-text p { margin-bottom: 16px; font-size: 1rem; }
+    .about-text .badge { margin-top: 8px; }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .about-photo {
+      flex: 0 0 380px;
+      max-width: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #E8F4E8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+      padding: 40px;
+    }
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    /* === CTA BAND === */
+    .cta-band {
+      background: #1C2B1C;
+      padding: 90px 5%;
+      text-align: center;
+    }
+    .cta-band-inner { max-width: 720px; margin: 0 auto; }
+    .cta-band h2 {
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+    }
+    .cta-band p { color: #9ABA9A; margin-bottom: 36px; font-size: 1.05rem; }
+    .cta-band .btn-lime {
+      display: inline-block;
+      background: #C8F135;
+      color: #1C2B1C;
+      padding: 16px 40px;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cta-band .btn-lime:hover { background: #D9FF5C; transform: translateY(-1px); }
+
+    /* === FOOTER === */
+    footer {
+      background: #0F1A0F;
+      padding: 60px 5% 32px;
+      color: #9ABA9A;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 48px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .footer-brand img {
+      height: 34px;
+      width: auto;
+      margin-bottom: 16px;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+    .footer-brand p {
+      color: #7A9A7A;
+      font-size: 0.9rem;
+      max-width: 280px;
+      line-height: 1.7;
+    }
+    .footer-nav h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav ul a {
+      color: #7A9A7A;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+    .footer-nav ul a:hover { color: #C8F135; }
+    .footer-contact h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #7A9A7A;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: #4A7C59; }
+    .footer-bottom {
+      border-top: 1px solid #1E3020;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: #5A7A5A;
+    }
+    .footer-bottom a { color: #C8F135; text-decoration: none; }
+
+    /* === FADE-IN ANIMATION === */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+    .fade-up-delay-4 { transition-delay: 0.4s; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-right { flex: 0 0 340px; max-width: 340px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 5%; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero {
+        flex-direction: column-reverse;
+        padding: 60px 5%;
+        gap: 36px;
+      }
+      .hero-right {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        min-height: 240px;
+        padding: 28px;
+      }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; }
+
+      .proof-stats { flex-direction: column; gap: 0; }
+      .proof-stat { border-right: none; border-bottom: 1px solid #D8E8D8; padding: 20px; }
+      .proof-stat:last-child { border-bottom: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .steps-row {
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+      }
+      .steps-row::before { display: none; }
+      .step { max-width: 320px; width: 100%; }
+
+      .about-inner { flex-direction: column; gap: 40px; }
+      .about-photo {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        min-height: 240px;
+        padding: 28px;
+      }
+
+      .footer-top { flex-direction: column; gap: 36px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .hero-badges { flex-direction: column; }
+
+      .cta-band .btn-lime { width: 100%; display: block; }
+    }
+
+    @media (max-width: 390px) {
+      h1 { font-size: 1.85rem; }
+      h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img
+        src="https://app.pomly.ai/api/media/file/navbar-logo-2-20251103-235926.png"
+        alt="Creation Accounting"
+        onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-family:Inter,sans-serif;font-weight:800;font-size:1.1rem;color:#1C2B1C;\'>Creation Accounting</span>'"
+      />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#how-it-works">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="nav-cta"><a href="#contact" class="btn-primary">Get Started</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#testimonials" onclick="closeMobile()">Clients</a>
+    <a href="#how-it-works" onclick="closeMobile()">Process</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#contact" class="btn-primary" onclick="closeMobile()">Get Started</a>
+  </div>
+
+  <!-- HERO -->
+  <section style="background:#fff; padding: 0;">
+    <div class="hero">
+      <div class="hero-left fade-up">
+        <span class="hero-eyebrow">Modern Accounting</span>
+        <h1>Modern Accounting for <span>Tomorrow's Leaders</span></h1>
+        <p class="hero-sub">Accounting should serve people, not overwhelm them. Clear systems, honest communication, and peace of mind for founders who want to scale with confidence.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get Started Today</a>
+          <a href="#services" class="hero-contact-link">
+            Explore Services
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="hero-badges">
+          <div class="badge fade-up fade-up-delay-1">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Bookkeeping &amp; Payroll
+          </div>
+          <div class="badge fade-up fade-up-delay-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Fractional CFO Services
+          </div>
+          <div class="badge fade-up fade-up-delay-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full Service Accounting
+          </div>
+        </div>
+      </div>
+      <div class="hero-right fade-up fade-up-delay-2">
+        <img
+          src="https://app.pomly.ai/api/media/file/hero-20251103-235720.png"
+          alt="Creation Accounting - Financial Growth"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <section class="proof-bar">
+    <div class="proof-inner">
+      <p class="proof-label">Trusted by exceptional small businesses</p>
+      <div class="proof-stats">
+        <div class="proof-stat fade-up">
+          <div class="proof-stat-number">100+</div>
+          <div class="proof-stat-label">Entrepreneurs Served</div>
+        </div>
+        <div class="proof-stat fade-up fade-up-delay-1">
+          <div class="proof-stat-number">3</div>
+          <div class="proof-stat-label">Service Tiers to Match Your Stage</div>
+        </div>
+        <div class="proof-stat fade-up fade-up-delay-2">
+          <div class="proof-stat-number">100%</div>
+          <div class="proof-stat-label">People-First Approach</div>
+        </div>
+      </div>
+      <div class="proof-clients fade-up fade-up-delay-3">
+        <span>Home Run Electrical</span>
+        <span>Heart Recovery</span>
+        <span>Earth Origins</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="section-header fade-up">
+        <span class="section-tag">What We Offer</span>
+        <h2>A Full Suite of Financial Services</h2>
+        <p>From clean books to strategic guidance, we give you the financial clarity to grow with confidence.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card featured fade-up">
+          <span class="service-badge">Most Popular</span>
+          <div class="service-icon-wrap">
+            <!-- Book/folder icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="service-tagline">The Foundation of Clarity</div>
+          <h3>Bookkeeping</h3>
+          <p>We build a clean, reliable financial foundation. From transaction categorization and reconciliations to payroll and accounts management, our bookkeeping process is built around clarity, not confusion.</p>
+        </div>
+        <div class="service-card fade-up fade-up-delay-1">
+          <div class="service-icon-wrap">
+            <!-- Chart/trending icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="service-tagline">Strategy That Drives Growth</div>
+          <h3>Fractional CFO</h3>
+          <p>As your fractional CFO, we partner with you to create a clear financial roadmap, including forecasting, cash flow planning, budgeting, and strategic guidance to help you scale.</p>
+        </div>
+        <div class="service-card fade-up fade-up-delay-2">
+          <div class="service-icon-wrap">
+            <!-- Shield/check icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="service-tagline">Done For You Financial Management</div>
+          <h3>Full Service</h3>
+          <p>Total peace of mind with a full-scale, people-first accounting partnership. We manage your books, reporting, reconciliations, payroll, and ongoing advisory so you can focus on growing your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="section-header fade-up">
+        <span class="section-tag">Client Stories</span>
+        <h2>Join Hundreds of Entrepreneurs</h2>
+        <p>Founders and business owners trust Creation Accounting for clarity, reliability, and genuine care.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"Creation Accounting completely transformed how we see our finances. For the first time I actually understand where every dollar goes, and I feel confident making decisions. They don't just do the numbers, they genuinely care about your business."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Marcus T.</div>
+              <div class="author-title">Founder, Home Run Electrical</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up fade-up-delay-1">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"The fractional CFO service is a game changer. I used to avoid looking at my financials because they felt overwhelming. Now I look forward to our strategy sessions. The roadmap they built has given us a real plan for growth."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sarah K.</div>
+              <div class="author-title">CEO, Heart Recovery</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up fade-up-delay-2">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"Switching to Creation Accounting's full service package was the best business decision I made this year. I no longer stress about payroll, reconciliations, or end of year reporting. They handle everything with care and precision."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div>
+              <div class="author-name">James R.</div>
+              <div class="author-title">Owner, Earth Origins</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="how-it-works-inner">
+      <div class="section-header fade-up">
+        <span class="section-tag">Our Process</span>
+        <h2>From Chaos to Clarity in Four Steps</h2>
+        <p>A simple, structured onboarding that gets you financial peace of mind fast.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step fade-up">
+          <div class="step-number">01</div>
+          <h3>Discovery Call</h3>
+          <p>We start by understanding your business, goals, and current financial situation in a no-pressure conversation.</p>
+        </div>
+        <div class="step fade-up fade-up-delay-1">
+          <div class="step-number">02</div>
+          <h3>Custom Plan</h3>
+          <p>We recommend the right service tier and build a tailored engagement that fits your needs and budget.</p>
+        </div>
+        <div class="step fade-up fade-up-delay-2">
+          <div class="step-number">03</div>
+          <h3>Seamless Onboarding</h3>
+          <p>We handle the transition, clean up your books, and establish clear systems and communication rhythms.</p>
+        </div>
+        <div class="step fade-up fade-up-delay-3">
+          <div class="step-number">04</div>
+          <h3>Ongoing Partnership</h3>
+          <p>Monthly reporting, proactive advisory, and always-available support as your business grows.</p>
+        </div>
+      </div>
+      <div class="steps-cta fade-up">
+        <a href="#contact" class="btn-primary">Start Your Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text fade-up">
+        <span class="section-tag">About Us</span>
+        <h2>We Believe Great Businesses Are Made by the People Behind Them</h2>
+        <p>Creation Accounting was founded on a simple but powerful conviction: accounting should serve people, not overwhelm them. We exist to give founders and business owners the financial clarity and peace of mind they deserve.</p>
+        <p>We bring expertise and genuine care to every engagement. Whether you are just getting started or scaling fast, our team provides the financial foundation, strategic insight, and honest communication that lets you lead with confidence.</p>
+        <p>We are more than accountants. We are a long-term partner invested in your success, with clear systems built around what your business actually needs.</p>
+        <div class="about-badges">
+          <div class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            People-First Approach
+          </div>
+          <div class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Clear Communication
+          </div>
+          <div class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Strategic Financial Guidance
+          </div>
+          <div class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Trusted by Small Business Owners
+          </div>
+        </div>
+      </div>
+      <div class="about-photo fade-up fade-up-delay-2">
+        <img
+          src="https://app.pomly.ai/api/media/file/hero-20251103-235720.png"
+          alt="Creation Accounting Team"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band" id="contact">
+    <div class="cta-band-inner fade-up">
+      <h2>Ready to Take Control of Your Finances?</h2>
+      <p>Join hundreds of entrepreneurs who trust Creation Accounting for clarity, strategy, and peace of mind. Let's build your financial foundation together.</p>
+      <a href="https://www.creationengage.com/#contact" class="btn-lime">Get Started Today</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img
+            src="https://app.pomly.ai/api/media/file/footer-logo-20251104-030208.png"
+            alt="Creation Accounting"
+            onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('afterbegin','<span style=\'font-family:Inter,sans-serif;font-weight:800;font-size:1.1rem;color:#fff;display:block;margin-bottom:16px;\'>Creation Accounting</span>')"
+          />
+          <p>Accounting should serve people, not overwhelm them. Expertise and care for entrepreneurs who want to grow.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Clients</a></li>
+            <li><a href="#how-it-works">Process</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Get in Touch</h4>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Mesa, Arizona
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            <a href="https://www.creationengage.com/contact" style="color:#7A9A7A;text-decoration:none;">Contact via Website</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon to Fri, 9am to 5pm MST
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Creation Accounting. All rights reserved.</span>
+        <span>Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const btn = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+    function closeMobile() {
+      menu.classList.remove('open');
+    }
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
