@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Higher Level Accounting | Controller Services for Growth Companies</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  /* Brand Colors */
+  /* --brand-deep: #00433e (primary dark teal) */
+  /* --surface: #1b5e58 (medium teal) */
+  /* --mint: #72de88 (accent green) */
+  /* --cream: #faefcf (warm cream) */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Fade-in animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ======= NAV ======= */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #00433e;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 24px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+    filter: brightness(0) saturate(100%) invert(95%) sepia(13%) saturate(573%) hue-rotate(329deg) brightness(103%) contrast(95%);
+  }
+  .nav-logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #faefcf;
+    letter-spacing: -0.02em;
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #72de88; }
+  .nav-cta {
+    background: #72de88;
+    color: #00433e !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #5dd478 !important; color: #00433e !important; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #faefcf;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: #00433e;
+    z-index: 99;
+    padding: 16px 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: #72de88; }
+  .mobile-menu .mobile-cta {
+    display: block;
+    margin-top: 16px;
+    background: #72de88;
+    color: #00433e;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: none;
+  }
+
+  /* ======= HERO ======= */
+  .hero {
+    background: #00433e;
+    padding: 100px 24px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #72de88;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #faefcf;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(250,239,207,0.75);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+  .hero-cta-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #72de88;
+    color: #00433e;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #5dd478; }
+  .hero-email {
+    color: rgba(250,239,207,0.7);
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .hero-email:hover { color: #72de88; }
+  .hero-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    color: rgba(250,239,207,0.85);
+    font-weight: 500;
+  }
+  .badge svg { color: #72de88; flex-shrink: 0; }
+
+  /* Hero photo */
+  .hero-photo-wrap {
+    position: relative;
+  }
+  .hero-photo {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: center top;
+    height: 520px;
+    display: block;
+  }
+  .hero-photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, #00433e, transparent);
+    border-radius: 0 0 20px 20px;
+  }
+
+  /* ======= SOCIAL PROOF BAR ======= */
+  .proof-bar {
+    background: #F5F6F8;
+    padding: 60px 24px;
+  }
+  .proof-bar-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 42px;
+    font-weight: 700;
+    color: #00433e;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: #6a7282;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ======= SECTION HEADERS ======= */
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #00433e;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #0a1a18;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: #6a7282;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ======= SERVICES ======= */
+  .services-section {
+    background: #fff;
+    padding: 100px 24px;
+  }
+  .services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(0,67,62,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #00433e;
+  }
+  .service-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0a1a18;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: #6a7282;
+    line-height: 1.65;
+  }
+
+  /* ======= TESTIMONIALS ======= */
+  .testimonials-section {
+    background: #F5F6F8;
+    padding: 100px 24px;
+  }
+  .testimonials-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 20px;
+  }
+  .testimonial-quote {
+    font-size: 15px;
+    color: #364153;
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: #00433e;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .testimonial-role {
+    font-size: 12px;
+    color: #99a1af;
+    margin-top: 2px;
+  }
+
+  /* ======= HOW IT WORKS ======= */
+  .how-section {
+    background: #fff;
+    padding: 100px 24px;
+  }
+  .how-steps {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .how-line {
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 2px;
+    background: #e0f0ee;
+    z-index: 0;
+  }
+  .how-step {
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #00433e;
+    color: #72de88;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0a1a18;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: #6a7282;
+    line-height: 1.65;
+  }
+  .how-cta {
+    text-align: center;
+    margin-top: 56px;
+  }
+
+  /* ======= ABOUT ======= */
+  .about-section {
+    background: #F5F6F8;
+    padding: 100px 24px;
+  }
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #00433e;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .about-title {
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #0a1a18;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .about-text {
+    font-size: 15px;
+    color: #4a5565;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,67,62,0.07);
+    border: 1px solid rgba(0,67,62,0.12);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    color: #00433e;
+    font-weight: 600;
+  }
+  .about-photo {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: center top;
+    height: 540px;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0,67,62,0.15);
+  }
+
+  /* ======= CTA BAND ======= */
+  .cta-band {
+    background: #00433e;
+    padding: 100px 24px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 700;
+    color: #faefcf;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    max-width: 700px;
+    margin: 0 auto 16px;
+  }
+  .cta-band p {
+    font-size: 17px;
+    color: rgba(250,239,207,0.65);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ======= FOOTER ======= */
+  footer {
+    background: #001f1c;
+    padding: 60px 24px 32px;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-logo {
+    height: 26px;
+    width: auto;
+    filter: brightness(0) saturate(100%) invert(95%) sepia(13%) saturate(573%) hue-rotate(329deg) brightness(103%) contrast(95%);
+    margin-bottom: 16px;
+  }
+  .footer-tagline {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.45);
+    max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: #72de88; }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+  .footer-contact-item svg { margin-top: 2px; flex-shrink: 0; color: #72de88; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+  }
+  .footer-mediactive { color: #72de88; font-weight: 600; }
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .how-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .how-line { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { padding: 60px 20px; min-height: auto; }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-photo { height: 320px; order: -1; }
+    .hero h1 { font-size: 34px; }
+    .btn-primary { width: 100%; justify-content: center; }
+    .hero-cta-wrap { flex-direction: column; }
+
+    .proof-bar-inner { grid-template-columns: 1fr; gap: 32px; }
+
+    .services-section { padding: 72px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    .testimonials-section { padding: 72px 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .how-section { padding: 72px 20px; }
+    .how-steps { grid-template-columns: 1fr; gap: 36px; }
+
+    .about-section { padding: 72px 20px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-photo { height: 320px; }
+
+    .cta-band { padding: 72px 20px; }
+    .cta-band .btn-primary { width: 100%; justify-content: center; }
+
+    footer { padding: 48px 20px 24px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 30px; }
+    .hero-badges { flex-direction: column; }
+    .section-title { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" aria-label="Higher Level Accounting">
+    <img
+      src="https://www.higherlevelaccounting.co/images/logo/logo.svg"
+      alt="Higher Level Accounting"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    />
+    <span class="nav-logo-text" style="display:none;">Higher Level Accounting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:Info@higherlevelacct.com" class="nav-cta">Get a Consultation</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#testimonials" onclick="closeMenu()">Clients</a>
+  <a href="#how" onclick="closeMenu()">Process</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="mailto:Info@higherlevelacct.com" class="mobile-cta" onclick="closeMenu()">Get a Consultation</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="fade-up">
+      <span class="hero-label">Controller-Level Accounting</span>
+      <h1>Financial Clarity for Growth-Focused Businesses</h1>
+      <p class="hero-sub">Accrual-based bookkeeping and controller-level insights for SaaS companies, agencies, and highly regulated industries. Audit-ready books. Investor-ready reporting.</p>
+      <div class="hero-cta-wrap">
+        <a href="mailto:Info@higherlevelacct.com" class="btn-primary">
+          Schedule a Consultation
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="mailto:Info@higherlevelacct.com" class="hero-email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Info@higherlevelacct.com
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          MBA in Accounting
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Controller-Level Expertise
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Regulated Industries
+        </span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap fade-up">
+      <img
+        class="hero-photo"
+        src="https://www.higherlevelaccounting.co/_next/image?url=%2Fimages%2Fimage%2Fannie-spratt-tuJ3tXSayco-unsplash.jpg&w=1200&q=75"
+        alt="Higher Level Accounting team"
+        onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80';"
+      />
+      <div class="hero-photo-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<section class="proof-bar">
+  <div class="proof-bar-inner fade-up">
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Core verticals served: SaaS, Agencies, and Regulated Industries</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Accrual-based financials for audit-ready, investor-ready books</div>
+    </div>
+    <div>
+      <div class="stat-num">MBA</div>
+      <div class="stat-label">Accounting credentials backing every engagement</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">What We Do</span>
+    <h2 class="section-title">Controller-Level Services Built for Growth</h2>
+    <p class="section-sub">From monthly reconciliations to audit prep, we handle the financial complexity so you can focus on scaling.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="service-title">Accrual-Based Bookkeeping</div>
+      <div class="service-desc">Monthly reconciliations across multiple payment systems, revenue recognition for subscription models, and project profitability tracking with clear P&L, balance sheet, and cash flow statements.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="service-title">Controller-Level Oversight</div>
+      <div class="service-desc">Variance analysis, cost accounting, inventory tracking, accrual adjustments, and internal control oversight to ensure audit-ready books and investor-ready reporting at every stage.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="service-title">Compliance and Risk Management</div>
+      <div class="service-desc">1099 issuance, contractor oversight, tax-ready financial packages, and audit-prep documentation for regulated industries and high-growth companies operating in complex environments.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="service-title">Financial Reporting and KPI Tracking</div>
+      <div class="service-desc">Chart of accounts setup, KPI dashboard creation, and cash flow forecasting to give leadership the real-time visibility needed to make confident, data-backed decisions.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="service-title">Historical Financial Cleanup</div>
+      <div class="service-desc">Comprehensive review and correction of historical records, preparing your books for audits, funding rounds, or new ownership with clean, reliable financial documentation.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="service-title">Growth-Focused Advisory</div>
+      <div class="service-desc">Pricing and margin analysis, fundraising preparation for SaaS clients, and industry-specific advisory for agencies, cannabis retailers, and other growth-oriented businesses.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Client Results</span>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Real words from the founders and leaders we work with every day.</p>
+  </div>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"Working with Higher Level Accounting has been transformative for the Institute of the Black World 21st Century. They meticulously cleaned up our financial records, prepared us for audits, and introduced advanced solutions that boosted efficiency and transparency. Their professionalism, expertise, and dedication have been invaluable to our organization."</p>
+      <div>
+        <div class="testimonial-author">Dr. Ron Daniels</div>
+        <div class="testimonial-role">President, Institute of the Black World 21st Century, Inc.</div>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"Alvonn and his team are dedicated professionals who provide excellent accounting services. Alvonn is very detailed and conscientious in his work and has solved many bookkeeping and accounting problems."</p>
+      <div>
+        <div class="testimonial-author">Whitney Stone</div>
+        <div class="testimonial-role">CEO, MJ Admin</div>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"Higher Level Accounting brings controller-level thinking to every engagement. They do not just close the books, they give us the financial visibility we need to operate with confidence, make better decisions, and plan for growth."</p>
+      <div>
+        <div class="testimonial-author">Growth-Focused Client</div>
+        <div class="testimonial-role">SaaS Founder, Las Vegas, NV</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Our Process</span>
+    <h2 class="section-title">From Discovery to Ongoing Clarity</h2>
+    <p class="section-sub">A structured onboarding that delivers clean financials fast, then keeps you audit-ready month after month.</p>
+  </div>
+  <div style="max-width:1100px; margin: 0 auto; position: relative;">
+    <div class="how-line"></div>
+    <div class="how-steps">
+      <div class="how-step fade-up">
+        <div class="step-num">1</div>
+        <div class="step-title">Discovery Call</div>
+        <div class="step-desc">We learn your business model, current financial state, software stack, and goals to identify gaps and priorities.</div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="step-num">2</div>
+        <div class="step-title">Financial Assessment</div>
+        <div class="step-desc">We review your chart of accounts, historical records, and reporting structure, then deliver a clear roadmap.</div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="step-num">3</div>
+        <div class="step-title">Onboarding and Cleanup</div>
+        <div class="step-desc">We clean up historical books, integrate your payment systems, and establish your standardized reporting framework.</div>
+      </div>
+      <div class="how-step fade-up">
+        <div class="step-num">4</div>
+        <div class="step-title">Ongoing Controller Support</div>
+        <div class="step-desc">Monthly close, variance analysis, KPI reporting, and compliance documentation delivered consistently every period.</div>
+      </div>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a href="mailto:Info@higherlevelacct.com" class="btn-primary" style="background:#00433e; color:#72de88;">
+      Start the Conversation
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="fade-up">
+      <span class="about-eyebrow">About Higher Level Accounting</span>
+      <h2 class="about-title">Strategic Numbers. Confident Decisions.</h2>
+      <p class="about-text">Higher Level Accounting provides strategic, controller-level accounting services for growth-minded businesses. Our focus is on delivering accurate, accrual-based financials, actionable insights, and rock-solid compliance, so you can scale confidently and never wonder if your numbers are telling the truth.</p>
+      <p class="about-text">Over the years, we have worked closely with founders, operators, and leadership teams across our three core verticals and beyond. In every case, the business leaders we meet are experts in their craft. However, without the right financial processes, even great companies risk fines, lost licenses, missed funding rounds, or costly missteps.</p>
+      <p class="about-text">Founded by Alvonn Forsyth, MBA, Higher Level Accounting brings corporate accounting discipline to small and mid-size businesses. Alvonn's background spans corporate finance, pharmaceutical startups, cannabis retail, SaaS companies, and creative agencies, giving each client access to the kind of financial leadership typically reserved for enterprise teams.</p>
+      <div class="about-badges">
+        <span class="about-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          MBA in Accounting
+        </span>
+        <span class="about-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          QuickBooks and Xero Certified
+        </span>
+        <span class="about-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Las Vegas, Nevada Based
+        </span>
+        <span class="about-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Regulated Industry Specialist
+        </span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <img
+        class="about-photo"
+        src="https://www.higherlevelaccounting.co/_next/image?url=%2Fimages%2Fimage%2Falexander-grey-tn57JI3CewI-unsplash.jpg&w=1080&q=75"
+        alt="Higher Level Accounting team"
+        onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80';"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="fade-up">
+    <h2>Ready for Books You Can Actually Trust?</h2>
+    <p>Get controller-level financial oversight without the overhead of a full-time CFO. Let us show you what accurate, actionable financials look like.</p>
+    <a href="mailto:Info@higherlevelacct.com" class="btn-primary">
+      Book Your Free Consultation
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img
+        class="footer-logo"
+        src="https://www.higherlevelaccounting.co/images/logo/logo.svg"
+        alt="Higher Level Accounting"
+        onerror="this.style.display='none';"
+      />
+      <p class="footer-tagline">Controller-level accounting services for SaaS companies, agencies, and regulated industries. Based in Las Vegas, serving businesses nationwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Client Results</a></li>
+        <li><a href="#how">Our Process</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>Info@higherlevelacct.com</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>1930 Village Center Cir<br>Las Vegas, NV 89134</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Higher Level Accounting. All rights reserved. | Website by <span class="footer-mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Fade-in observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Stagger service cards
+  document.querySelectorAll('.service-card, .testimonial-card, .how-step').forEach((el, i) => {
+    el.style.transitionDelay = (i % 3) * 0.1 + 's';
+  });
+</script>
+</body>
+</html>
