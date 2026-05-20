@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Ink Bookkeeping, LLC | Expert Bookkeeping in Tulsa, OK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1A1A2E;
+      background: #FFFFFF;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --primary: #243FC6;
+      --primary-dark: #1A2E9E;
+      --primary-light: #D3DDF5;
+      --dark: #0F1B5C;
+      --text: #1A1A2E;
+      --text-muted: #4A5568;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F6F8;
+      --border: #E2E8F0;
+      --shadow-card: 0 2px 12px rgba(36, 63, 198, 0.08);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 90px 0; }
+
+    /* NAV */
+    #nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(36, 63, 198, 0.07);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 42px; height: 42px; object-fit: cover; border-radius: 8px; }
+    .nav-logo-text { font-size: 1.05rem; font-weight: 700; color: var(--primary); line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 0.7rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.04em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta { background: var(--primary); color: #FFFFFF !important; padding: 10px 22px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--primary-dark) !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .mobile-menu { display: none; background: #FFFFFF; border-top: 1px solid var(--border); padding: 20px 24px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 12px 0; text-decoration: none; color: var(--text); font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--primary); }
+    .mobile-menu-cta { display: block; margin-top: 16px; background: var(--primary); color: #FFFFFF !important; text-align: center; padding: 14px; border-radius: 6px; font-weight: 600; border-bottom: none !important; }
+    .mobile-menu-cta:hover { background: var(--primary-dark) !important; }
+
+    /* HERO */
+    #hero { background: var(--bg-white); padding: 90px 0 80px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-eyebrow { display: inline-block; background: var(--primary-light); color: var(--primary); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
+    .hero-title { font-size: 2.8rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .hero-title .highlight { color: var(--primary); }
+    .hero-subtitle { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 32px; line-height: 1.75; max-width: 500px; }
+    .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
+    .btn-primary { display: inline-block; background: var(--primary); color: #FFFFFF; padding: 14px 28px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .hero-phone { color: var(--primary); font-weight: 600; font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .hero-phone:hover { opacity: 0.75; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge-pill { background: var(--primary-light); color: var(--primary); font-size: 0.78rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; }
+    .hero-image-col { display: flex; justify-content: flex-end; align-items: flex-start; }
+    .hero-photo-wrapper { position: relative; width: 100%; max-width: 420px; }
+    .hero-photo-bg { position: absolute; inset: 0; background: var(--primary-light); border-radius: 16px; transform: translate(12px, 12px); }
+    .hero-photo { position: relative; width: 100%; border-radius: 16px; object-fit: cover; object-position: center top; display: block; min-height: 460px; background: var(--primary-light); }
+
+    /* SOCIAL PROOF */
+    #social-proof { background: var(--bg-light); padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+    .stat-number { font-size: 2.4rem; font-weight: 800; color: var(--primary); line-height: 1.1; margin-bottom: 8px; }
+    .stat-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+
+    /* SERVICES */
+    #services { background: var(--bg-white); }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag { display: inline-block; background: var(--primary-light); color: var(--primary); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+    .section-title { font-size: 2.1rem; font-weight: 800; color: var(--dark); margin-bottom: 14px; letter-spacing: -0.02em; }
+    .section-subtitle { font-size: 1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; box-shadow: var(--shadow-card); }
+    .service-icon { width: 46px; height: 46px; background: var(--primary-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--primary); }
+    .service-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .service-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--bg-light); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; box-shadow: var(--shadow-card); }
+    .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testimonial-quote { font-size: 0.95rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary); font-size: 1rem; flex-shrink: 0; }
+    .author-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .author-role { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* HOW IT WORKS */
+    #how-it-works { background: var(--bg-white); }
+    .steps-row { display: flex; gap: 0; align-items: flex-start; position: relative; margin-bottom: 52px; }
+    .steps-row::before { content: ''; position: absolute; top: 32px; left: 12%; right: 12%; height: 2px; background: var(--primary-light); z-index: 0; }
+    .step-item { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 12px; }
+    .step-number { width: 64px; height: 64px; border-radius: 50%; background: var(--primary); color: #FFFFFF; font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(36, 63, 198, 0.3); }
+    .step-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .step-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; max-width: 180px; margin: 0 auto; }
+    .how-cta { text-align: center; }
+
+    /* ABOUT */
+    #about { background: var(--bg-light); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-eyebrow { display: inline-block; background: var(--primary-light); color: var(--primary); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .about-title { font-size: 2rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.2; }
+    .about-text { font-size: 0.97rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 12px; }
+    .about-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .about-photo-col { display: flex; justify-content: center; }
+    .about-photo-wrapper { position: relative; width: 100%; max-width: 380px; }
+    .about-photo-bg { position: absolute; inset: 0; background: var(--primary-light); border-radius: 16px; transform: translate(-12px, -12px); }
+    .about-photo { position: relative; width: 100%; border-radius: 16px; object-fit: cover; object-position: center top; display: block; min-height: 420px; }
+
+    /* CTA BAND */
+    #cta-band { background: var(--primary); padding: 90px 0; text-align: center; }
+    .cta-band-title { font-size: 2.2rem; font-weight: 800; color: #FFFFFF; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.2; }
+    .cta-band-sub { font-size: 1.05rem; color: rgba(255,255,255,0.82); margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+    .btn-white { display: inline-block; background: #FFFFFF; color: var(--primary); padding: 15px 34px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .btn-white:hover { background: var(--primary-light); color: var(--primary-dark); }
+
+    /* FOOTER */
+    #footer { background: var(--dark); padding: 60px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; text-decoration: none; }
+    .footer-logo img { width: 38px; height: 38px; object-fit: cover; border-radius: 6px; }
+    .footer-logo-text { font-size: 1rem; font-weight: 700; color: #FFFFFF; line-height: 1.2; }
+    .footer-logo-text span { display: block; font-size: 0.7rem; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 280px; }
+    .footer-col-title { font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { text-decoration: none; color: rgba(255,255,255,0.72); font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #FFFFFF; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: rgba(255,255,255,0.72); font-size: 0.88rem; line-height: 1.5; }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--primary-light); }
+    .footer-contact-item a { color: rgba(255,255,255,0.72); text-decoration: none; transition: color 0.2s; }
+    .footer-contact-item a:hover { color: #FFFFFF; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; color: rgba(255,255,255,0.42); flex-wrap: wrap; gap: 8px; }
+    .footer-bottom a { color: var(--primary-light); text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
+    .footer-bottom a:hover { opacity: 0.8; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 2.2rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-image-col { justify-content: center; order: -1; }
+      .hero-photo-wrapper { max-width: 300px; }
+      .hero-title { font-size: 2rem; }
+      .stats-grid { grid-template-columns: 1fr; gap: 28px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .steps-row { flex-direction: column; align-items: center; gap: 32px; }
+      .steps-row::before { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-col { order: -1; }
+      .about-photo-wrapper { max-width: 300px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .section-title { font-size: 1.7rem; }
+      .cta-band-title { font-size: 1.7rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .btn-primary, .btn-white { width: 100%; text-align: center; max-width: 340px; }
+    }
+    @media (max-width: 430px) {
+      .section-pad { padding: 70px 0; }
+      .hero-title { font-size: 1.75rem; }
+      .section-title { font-size: 1.5rem; }
+      .cta-band-title { font-size: 1.5rem; }
+      .stat-number { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img src="https://blueinkbookkeeping.com/wp-content/uploads/2026/01/cropped-pen.jpg?w=50" alt="Blue Ink Bookkeeping Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div style="display:none;width:42px;height:42px;background:var(--primary);border-radius:8px;align-items:center;justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="nav-logo-text">Blue Ink Bookkeeping<span>LLC &mdash; Tulsa, Oklahoma</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#cta-band" class="nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobileMenu()">Services</a>
+    <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+    <a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+    <a href="#about" onclick="closeMobileMenu()">About Wesley</a>
+    <a href="#cta-band" class="mobile-menu-cta" onclick="closeMobileMenu()">Book a Free Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content fade-in">
+        <div class="hero-eyebrow">Certified Bookkeeping Expert &mdash; Tulsa, OK</div>
+        <h1 class="hero-title">Save <span class="highlight">60 to 80 Hours</span> a Year on Your Bookkeeping</h1>
+        <p class="hero-subtitle">Wesley Crenshaw helps Tulsa small businesses reclaim their time and save $5,000 to $10,000 annually with professional, QuickBooks-certified bookkeeping they can rely on.</p>
+        <div class="hero-actions">
+          <a href="#cta-band" class="btn-primary">Book a Free Consultation</a>
+          <a href="tel:4054665824" class="hero-phone">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            (405) 466-5824
+          </a>
+        </div>
+        <div class="hero-badges">
+          <div class="badge-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Certified Intuit Bookkeeper
+          </div>
+          <div class="badge-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            QuickBooks ProAdvisor Advanced
+          </div>
+          <div class="badge-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            QuickBooks ProAdvisor Payroll
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-col fade-in fade-in-delay-2">
+        <div class="hero-photo-wrapper">
+          <div class="hero-photo-bg"></div>
+          <img src="https://wkcbookkeeping.wordpress.com/wp-content/uploads/2026/01/proface-5.png?w=953" alt="Wesley Crenshaw, Owner of Blue Ink Bookkeeping" class="hero-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div style="display:none;position:relative;min-height:460px;border-radius:16px;background:var(--primary-light);align-items:center;justify-content:center;flex-direction:column;color:var(--primary);text-align:center;padding:40px;">
+            <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div style="font-weight:700;margin-top:14px;font-size:1.15rem;">Wesley Crenshaw</div>
+            <div style="font-size:0.85rem;opacity:0.7;margin-top:4px;">Owner / CEO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<section id="social-proof">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-in">
+        <div class="stat-number">60&ndash;80</div>
+        <div class="stat-label">Hours Saved Per Year on Average</div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-2">
+        <div class="stat-number">$5K&ndash;$10K</div>
+        <div class="stat-label">Estimated Annual Savings for Clients</div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-3">
+        <div class="stat-number">3</div>
+        <div class="stat-label">QuickBooks and Intuit Certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">What We Offer</div>
+      <h2 class="section-title">Complete Bookkeeping Services</h2>
+      <p class="section-subtitle">From monthly financials to payroll integration, we handle the numbers so you can stay focused on growing your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="service-title">Financial Statements</div>
+        <p class="service-desc">Accurate profit and loss reports, balance sheets, and cash flow statements delivered on time, every period.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="service-title">General Accounting</div>
+        <p class="service-desc">Day-to-day transaction recording, ledger maintenance, and reconciliation to keep your books clean and current.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="service-title">Payroll Integration</div>
+        <p class="service-desc">Seamless payroll processing synced with QuickBooks so your team gets paid accurately and on schedule every time.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="service-title">Business Insights</div>
+        <p class="service-desc">Actionable financial reporting and analysis to help you make smarter, faster decisions for your business.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="service-title">Accounts Payable and Receivable</div>
+        <p class="service-desc">Full-cycle AP and AR management to improve cash flow, reduce late payments, and keep vendors happy.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <div class="service-title">Budgeting, Forecasting, and Cash Flow</div>
+        <p class="service-desc">Forward-looking financial planning to keep your business healthy and prepared for whatever comes next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">Client Reviews</div>
+      <h2 class="section-title">What Business Owners Are Saying</h2>
+      <p class="section-subtitle">Trusted by small business owners across the Tulsa area to keep their finances accurate and stress-free.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Finally a bookkeeper who explains what is actually happening with my numbers. Wesley saved me hours every month and gave me peace of mind I never had before."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Sarah M.</div>
+            <div class="author-role">Small Business Owner, Tulsa OK</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in fade-in-delay-2">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Switching to Blue Ink Bookkeeping was the best financial decision I made for my business. Accurate, responsive, and professional every single time."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Robert K.</div>
+            <div class="author-role">Contractor, Tulsa OK</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in fade-in-delay-3">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"I dreaded tax season every year until I hired Wesley. Now my books are always ready, my stress is gone, and I can focus on what I love doing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Amanda T.</div>
+            <div class="author-role">Retail Owner, Tulsa OK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">The Process</div>
+      <h2 class="section-title">Getting Started Is Simple</h2>
+      <p class="section-subtitle">From your first call to clean, accurate books, onboarding is quick and built around your schedule.</p>
+    </div>
+    <div class="steps-row fade-in">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-title">Book a Free Call</div>
+        <p class="step-desc">Schedule a no-obligation consultation to discuss your business and current bookkeeping situation.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-title">Get a Custom Plan</div>
+        <p class="step-desc">Wesley reviews your books and builds a tailored bookkeeping plan that fits your business size and goals.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-title">We Handle Everything</div>
+        <p class="step-desc">Monthly bookkeeping, reconciliations, and reporting handled end to end while you focus on your business.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-title">Stay in Control</div>
+        <p class="step-desc">Clear reports and open communication keep you informed and confident in your financial picture.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-in">
+      <a href="#cta-band" class="btn-primary">Start Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-in">
+        <div class="about-eyebrow">About Wesley</div>
+        <h2 class="about-title">Your Dedicated Bookkeeping Partner in Tulsa</h2>
+        <p class="about-text">Wesley Crenshaw is the founder and CEO of Blue Ink Bookkeeping, LLC, a Tulsa-based bookkeeping firm built to serve small business owners who are tired of drowning in financial paperwork.</p>
+        <p class="about-text">As a Certified Intuit Bookkeeper and QuickBooks ProAdvisor Advanced, Wesley brings the credentials and expertise that give business owners real confidence in their numbers. He specializes in helping entrepreneurs reclaim their time and reduce financial stress by delivering accurate, reliable bookkeeping month after month.</p>
+        <p class="about-text">Available Monday through Friday from 8am to 8pm, Wesley is committed to being a responsive, trustworthy partner for every client he serves.</p>
+        <div class="about-badges">
+          <div class="badge-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Certified Intuit Bookkeeper
+          </div>
+          <div class="badge-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            QuickBooks ProAdvisor Advanced
+          </div>
+          <div class="badge-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            QuickBooks ProAdvisor Payroll
+          </div>
+        </div>
+      </div>
+      <div class="about-photo-col fade-in fade-in-delay-2">
+        <div class="about-photo-wrapper">
+          <div class="about-photo-bg"></div>
+          <img src="https://wkcbookkeeping.wordpress.com/wp-content/uploads/2026/01/proface-5.png?w=953" alt="Wesley Crenshaw, Owner of Blue Ink Bookkeeping" class="about-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div style="display:none;position:relative;min-height:420px;border-radius:16px;background:var(--primary-light);align-items:center;justify-content:center;flex-direction:column;color:var(--primary);text-align:center;padding:40px;">
+            <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div style="font-weight:700;margin-top:14px;font-size:1.1rem;">Wesley Crenshaw</div>
+            <div style="font-size:0.85rem;opacity:0.7;margin-top:4px;">Owner / CEO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <div class="container">
+    <div class="fade-in">
+      <h2 class="cta-band-title">Ready to Stop Stressing About Your Books?</h2>
+      <p class="cta-band-sub">Book a free consultation with Wesley and find out how much time and money professional bookkeeping can save your business every year.</p>
+      <a href="mailto:wesley.crenshaw@blueinkbookkeeping.com" class="btn-white">Book a Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#hero" class="footer-logo">
+          <img src="https://blueinkbookkeeping.com/wp-content/uploads/2026/01/cropped-pen.jpg?w=50" alt="Blue Ink Bookkeeping Logo" onerror="this.style.display='none'" />
+          <div class="footer-logo-text">Blue Ink Bookkeeping<span>LLC</span></div>
+        </a>
+        <p class="footer-tagline">Professional bookkeeping for Tulsa small businesses. Certified, reliable, and always responsive.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#about">About Wesley</a></li>
+          <li><a href="#cta-band">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <a href="tel:4054665824">(405) 466-5824</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <a href="mailto:wesley.crenshaw@blueinkbookkeeping.com">wesley.crenshaw@blueinkbookkeeping.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          5903 South Quincy Avenue, Tulsa, OK 74105
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Mon to Fri, 8am to 8pm
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <div class="footer-bottom">
+      <span>&copy; 2026 Blue Ink Bookkeeping, LLC. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
