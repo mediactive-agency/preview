@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stan P. Moore CPA, PLLC | Business Tax Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; color: #1E1E1E; background: #fff; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== BRAND COLORS ===== */
+    :root {
+      --green: #4A6B2A;
+      --green-dark: #3A5520;
+      --green-light: #5C8234;
+      --charcoal: #1E1E1E;
+      --gray-bg: #F5F6F8;
+      --text-muted: #6B7280;
+      --white: #FFFFFF;
+      --gold: #F59E0B;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800; line-height: 1.2; }
+    h3 { font-size: 1.15rem; font-weight: 700; }
+    p { color: #444; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-white {
+      background: #fff;
+      color: var(--green);
+    }
+    .btn-white:hover { background: #f0f0f0; transform: translateY(-1px); }
+
+    /* ===== CONTAINER ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-logo .logo-fallback {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--charcoal);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #444;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta { margin-left: 16px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      padding: 24px;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #444;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .mobile-menu .btn { width: 100%; margin-top: 8px; }
+
+    /* ===== HERO ===== */
+    #hero {
+      background: #fff;
+      padding: 90px 0;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-content { }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(74, 107, 42, 0.1);
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-content h1 { color: var(--charcoal); margin-bottom: 20px; }
+    .hero-content h1 span { color: var(--green); }
+    .hero-subheadline {
+      font-size: 1.15rem;
+      color: #555;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    .hero-phone {
+      font-size: 0.95rem;
+      color: var(--green);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-phone svg { stroke: var(--green); }
+    .credential-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gray-bg);
+      border: 1px solid #E2E4E8;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .pill svg { stroke: var(--green); flex-shrink: 0; }
+    .hero-photo {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      aspect-ratio: 4/5;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-photo-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 10px;
+      padding: 12px 18px;
+    }
+    .hero-photo-badge .badge-stat { font-size: 1.4rem; font-weight: 800; }
+    .hero-photo-badge .badge-label { font-size: 0.78rem; opacity: 0.9; }
+
+    /* ===== SOCIAL PROOF ===== */
+    #social-proof {
+      background: var(--gray-bg);
+      padding: 60px 0;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .stat-item { }
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .stat-divider {
+      width: 1px;
+      background: #D1D5DB;
+      height: 60px;
+      align-self: center;
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: #fff;
+      padding: 100px 0;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-tag {
+      display: inline-block;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .section-header h2 { color: var(--charcoal); margin-bottom: 16px; }
+    .section-header p { color: #6B7280; max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(74, 107, 42, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--green);
+    }
+    .service-icon svg { stroke: var(--green); }
+    .service-card h3 { margin-bottom: 10px; color: var(--charcoal); }
+    .service-card p { font-size: 0.92rem; color: #6B7280; line-height: 1.65; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials {
+      background: var(--gray-bg);
+      padding: 100px 0;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px 30px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .stars { display: flex; gap: 3px; margin-bottom: 20px; }
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; font-size: 0.95rem; color: var(--charcoal); }
+    .author-title { font-size: 0.82rem; color: #9CA3AF; }
+
+    /* ===== HOW IT WORKS ===== */
+    #how-it-works {
+      background: #fff;
+      padding: 100px 0;
+    }
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-bottom: 56px;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 2px;
+      background: linear-gradient(to right, var(--green), var(--green-light));
+      z-index: 0;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(74,107,42,0.35);
+    }
+    .step h3 { font-size: 1rem; margin-bottom: 8px; color: var(--charcoal); }
+    .step p { font-size: 0.88rem; color: #6B7280; line-height: 1.6; }
+    .how-cta { text-align: center; }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--gray-bg);
+      padding: 100px 0;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .about-content { }
+    .about-content h2 { color: var(--charcoal); margin-bottom: 20px; }
+    .about-content p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .about-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .about-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      aspect-ratio: 3/4;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ===== CTA BAND ===== */
+    #cta-band {
+      background: var(--green);
+      padding: 90px 0;
+      text-align: center;
+    }
+    #cta-band h2 {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    #cta-band p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      color: #D1D5DB;
+      padding: 60px 0 0;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+    }
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 16px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .footer-brand p {
+      color: #9CA3AF;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: #9CA3AF;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: #9CA3AF;
+      font-size: 0.92rem;
+    }
+    .footer-contact-item svg { stroke: var(--green-light); flex-shrink: 0; margin-top: 2px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0;
+      text-align: center;
+      color: #6B7280;
+      font-size: 0.85rem;
+    }
+    .footer-bottom span { color: #7CB342; font-weight: 600; }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-row { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps-row::before { display: none; }
+      .hero-inner { gap: 40px; }
+      .about-inner { gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      nav { position: sticky; top: 0; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-photo {
+        order: -1;
+        aspect-ratio: 4/3;
+        max-height: 360px;
+      }
+      .hero-photo img { object-position: center 20%; }
+
+      .stats-row { grid-template-columns: 1fr; gap: 24px; }
+      .stat-divider { display: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; gap: 32px; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 36px; }
+      .about-photo { aspect-ratio: 4/3; }
+      .about-photo img { object-position: center 20%; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+
+      .btn { width: 100%; display: block; text-align: center; }
+      .hero-actions { flex-direction: column; }
+
+      #hero, #services, #testimonials, #how-it-works, #about, #cta-band { padding: 70px 0; }
+    }
+
+    @media (max-width: 390px) {
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.4rem; }
+      .container { padding: 0 16px; }
+      .stats-row { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/6959fe07831bb92b721d52fe/699b98fd-f1a8-4489-8069-9bebef645550/Stan+Moore+CPA+Logo.png?format=1500w"
+          alt="Stan P. Moore CPA, PLLC"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <span class="logo-fallback" style="display:none;">Stan P. Moore CPA, PLLC</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <a href="https://www.stanmoorecpa.com/contact" target="_blank" class="btn btn-primary nav-cta">Schedule a Call</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+      <a href="#testimonials" onclick="document.getElementById('mobileMenu').classList.remove('open')">Results</a>
+      <a href="#how-it-works" onclick="document.getElementById('mobileMenu').classList.remove('open')">How It Works</a>
+      <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+      <a href="https://www.stanmoorecpa.com/contact" target="_blank" class="btn btn-primary">Schedule a Call</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content fade-up">
+          <div class="hero-eyebrow">Business Tax Specialist &mdash; Cary, NC</div>
+          <h1>More Time. <span>Less Tax.</span><br />Total Clarity.</h1>
+          <p class="hero-subheadline">Stan P. Moore CPA, PLLC gives serial entrepreneurs the time, peace, and clarity to confidently pursue innovation and profitable growth. Our value is your time.</p>
+          <div class="hero-actions">
+            <a href="https://www.stanmoorecpa.com/contact" target="_blank" class="btn btn-primary">Schedule a Free Discovery Call</a>
+            <a href="mailto:info@stanmoorecpa.com" class="hero-phone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              Contact Our Team
+            </a>
+          </div>
+          <div class="credential-pills">
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              CPA N.C. Certificate #32076
+            </span>
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Active Since 1992
+            </span>
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Enrolled Agent on Staff
+            </span>
+          </div>
+        </div>
+        <div class="hero-photo fade-up" style="transition-delay:0.15s;">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/6959fe07831bb92b721d52fe/82574995-2e99-4f24-b363-5545c44cbdba/Website+Photo_Stan_Outside_%238010.jpg"
+            alt="Stan P. Moore CPA"
+            onerror="this.src='https://images.squarespace-cdn.com/content/v1/6959fe07831bb92b721d52fe/95e5fb84-f39e-45b1-8d70-c2f86dbbcbc7/Website%2BPhoto_Group%2BOutide_%237954.jpg'"
+          />
+          <div class="hero-photo-badge">
+            <div class="badge-stat">30+</div>
+            <div class="badge-label">Years Serving Entrepreneurs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section id="social-proof">
+    <div class="container">
+      <div class="stats-row fade-up">
+        <div class="stat-item">
+          <div class="stat-number">$100K+</div>
+          <div class="stat-label">Tax Savings Delivered Per Client</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Years of Business Tax Expertise</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Focused on Privately Owned Businesses</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">What We Do</div>
+        <h2>Complete Business Accounting<br />Under One Roof</h2>
+        <p>From bookkeeping and tax strategy to cash flow optimization and QuickBooks setup, we handle the numbers so you can focus on growth.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Tax Battle Plans</h3>
+          <p>Proactive, year-round tax strategy that minimizes your liability, maximizes retirement contributions, and keeps you ahead of the IRS.</p>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.05s;">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Cash Flow Optimization</h3>
+          <p>We analyze your revenue streams, expenses, and timing to make sure your business always has the cash it needs to operate and grow.</p>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.1s;">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Bottom Line Clarity</h3>
+          <p>Monthly financial reporting and profitability analysis that gives you a clear picture of where your business stands and where it is headed.</p>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.15s;">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Accounting and Bookkeeping</h3>
+          <p>Annual, monthly, and quarterly accounting with on-time reporting so your books are always audit-ready and your decisions are data-driven.</p>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.2s;">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>QuickBooks Online Setup</h3>
+          <p>Expert system design, cloud migration, automation rules, app integrations, and hands-on staff training for your accounting software.</p>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.25s;">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Business Advisory</h3>
+          <p>Strategic guidance on entity structure, IRS resolution, compliance, forensic cleanup, and proactive planning to keep your business on track.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">Client Results</div>
+        <h2>Real Entrepreneurs.<br />Real Outcomes.</h2>
+        <p>These are the kinds of results our clients experience when they partner with Stan P. Moore CPA, PLLC.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"We optimized his tax structure to save him over $10,000 annually for the rest of his career. We linked his personal goals to his business, identified the best tax entity, and changed the company retirement and compensation methodology."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div>
+              <div class="author-name">Jay</div>
+              <div class="author-title">Serial Entrepreneur, Cary NC</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up" style="transition-delay:0.1s;">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"The result was in-depth tax projection scenarios providing maximum retirement contributions over $150,000 in one year, tax savings of $100,000 over two years, and a new holding-company business model for the future."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Michael and Stacie</div>
+              <div class="author-title">Multi-Entity Business Owners</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up" style="transition-delay:0.2s;">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"With on-time reporting, proactive tax moves, and hands-on training, Steve learned how to master his books and keep up with market changes. Now he has retirement, a valuable business, and serves large commercial distributors across North Carolina."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Steve</div>
+              <div class="author-title">Commercial Contractor, North Carolina</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">Our Process</div>
+        <h2>How We Work Together</h2>
+        <p>A clear, proven process that takes you from financial stress to confident, profitable growth.</p>
+      </div>
+      <div class="steps-row fade-up">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Discovery Call</h3>
+          <p>We learn your business goals, current challenges, and financial situation in a no-pressure conversation.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Deep Dive Review</h3>
+          <p>Stan takes a hands-on look at your books, tax history, and structure to uncover savings and risk areas.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Custom Battle Plan</h3>
+          <p>We build a personalized tax and accounting strategy aligned to your goals, timeline, and growth targets.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Ongoing Partnership</h3>
+          <p>Monthly reporting, proactive planning, and year-round support so you always have a trusted advisor in your corner.</p>
+        </div>
+      </div>
+      <div class="how-cta fade-up">
+        <a href="https://www.stanmoorecpa.com/contact" target="_blank" class="btn btn-primary">Start Your Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-content fade-up">
+          <div class="section-tag">About Stan</div>
+          <h2>A Trusted Advisor With Decades of Real-World Experience</h2>
+          <p>Stan P. Moore has served as a Commercial Banker, CFO, Controller, and Business Advisor. He brings a rare combination of financial depth and entrepreneurial empathy to every client relationship.</p>
+          <p>He has spoken at colleges, business events, CPA firms, and the NC Association of CPAs conference on topics including Business Tax, Improving Cash Flow, and Bank Financing. He has served on the boards of two local companies.</p>
+          <p>Stan's hands-on, deep-dive approach prioritizes educating clients on the "why" alongside the "how much" so you leave every meeting more confident and more informed.</p>
+          <div class="about-credentials">
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              CPA &mdash; N.C. Certificate #32076
+            </span>
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Former CFO and Commercial Banker
+            </span>
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              NC Association of CPAs Speaker
+            </span>
+            <span class="pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Stephen Farmer, EA, ABA on Staff
+            </span>
+          </div>
+        </div>
+        <div class="about-photo fade-up" style="transition-delay:0.15s;">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/6959fe07831bb92b721d52fe/82574995-2e99-4f24-b363-5545c44cbdba/Website+Photo_Stan_Outside_%238010.jpg"
+            alt="Stan P. Moore, CPA"
+            onerror="this.src='https://images.squarespace-cdn.com/content/v1/6959fe07831bb92b721d52fe/95e5fb84-f39e-45b1-8d70-c2f86dbbcbc7/Website%2BPhoto_Group%2BOutide_%237954.jpg'"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <section id="cta-band">
+    <div class="container">
+      <div class="fade-up">
+        <h2>Stop Leaving Money on the Table</h2>
+        <p>Most business owners overpay taxes by thousands every year. Let's find out exactly how much you could be saving.</p>
+        <a href="https://www.stanmoorecpa.com/contact" target="_blank" class="btn btn-white">Schedule Your Free Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/6959fe07831bb92b721d52fe/699b98fd-f1a8-4489-8069-9bebef645550/Stan+Moore+CPA+Logo.png?format=1500w"
+            alt="Stan P. Moore CPA, PLLC"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          />
+          <strong class="logo-fallback" style="display:none; color:#fff; font-size:1rem;">Stan P. Moore CPA, PLLC</strong>
+          <p style="margin-top:16px;">Giving serial entrepreneurs the time, peace, and clarity to confidently pursue innovation and profitable growth. Our value is your time.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Client Results</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#about">About Stan</a></li>
+            <li><a href="https://www.stanmoorecpa.com/contact" target="_blank">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>455 Swiftside Drive #102<br />Cary, NC 27518</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            <a href="https://www.stanmoorecpa.com/contact" target="_blank" style="color:#9CA3AF;">Contact Our Team</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Client Portal: stanmoorecpa.clientportal.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2026 Stan P. Moore CPA, PLLC. All rights reserved. | Website by <span>Mediactive</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Fade-in via Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
