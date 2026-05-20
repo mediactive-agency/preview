@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPA Coach for Women | Rose Y. C. Huie, C.P.A.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #F97316;
+      --primary-dark: #EA6C08;
+      --primary-light: #FED7AA;
+      --accent: #FBBF24;
+      --dark: #1C1917;
+      --dark-2: #292524;
+      --gray-1: #78716C;
+      --gray-2: #A8A29E;
+      --light: #F5F6F8;
+      --white: #FFFFFF;
+      --radius-card: 8px;
+      --radius-btn: 6px;
+      --shadow-card: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ===== FADE IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--white);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.1);
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-cta {
+      background: var(--primary);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: var(--radius-btn);
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      transition: background 0.2s !important;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: var(--primary-dark) !important; color: var(--white) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      z-index: 999;
+      padding: 24px 32px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 14px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 12px 30px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 96px 0; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--gray-1);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      padding-top: 168px;
+      padding-bottom: 96px;
+      background: var(--white);
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-content {}
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--gray-1);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .hero-phone svg { color: var(--primary); flex-shrink: 0; }
+
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--light);
+      border: 1px solid #E5E3E1;
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 20px;
+    }
+
+    .badge-pill svg { color: var(--primary); }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .hero-photo-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-photo-badge-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .hero-photo-badge-text {
+      font-size: 13px;
+      color: var(--gray-1);
+      line-height: 1.4;
+    }
+
+    .hero-photo-badge-text strong {
+      display: block;
+      font-size: 22px;
+      color: var(--dark);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    /* ===== STATS BAR ===== */
+    #stats {
+      background: var(--light);
+      padding: 60px 0;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-1);
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: var(--white);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .services-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid #E8E5E2;
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--gray-1);
+      line-height: 1.65;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials {
+      background: var(--light);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .testimonials-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-quote {
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    .testimonial-title {
+      font-size: 13px;
+      color: var(--gray-1);
+      margin-top: 2px;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    #process {
+      background: var(--white);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-bottom: 56px;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: calc(12.5% + 32px);
+      right: calc(12.5% + 32px);
+      height: 2px;
+      background: var(--primary-light);
+      z-index: 0;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--gray-1);
+      line-height: 1.6;
+    }
+
+    .process-cta {
+      text-align: center;
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--light);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-content {}
+
+    .about-bio {
+      font-size: 16px;
+      color: var(--gray-1);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-credentials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .about-photo {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .about-photo img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ===== CTA BAND ===== */
+    #cta-band {
+      background: var(--primary);
+      padding: 96px 0;
+    }
+
+    .cta-band-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      text-align: center;
+    }
+
+    .cta-band-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .cta-band-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--primary);
+      padding: 16px 40px;
+      border-radius: var(--radius-btn);
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-white:hover { background: #FFF7ED; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-2);
+      padding: 64px 0 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 32px;
+    }
+
+    .footer-logo-wrap {}
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .footer-logo-text span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--primary); }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .footer-contact-item svg { color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+
+    .footer-contact-item a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+    }
+
+    .footer-contact-item a:hover { color: var(--primary); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-copy a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr 380px; gap: 48px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-row { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps-row::before { display: none; }
+      .about-inner { grid-template-columns: 1fr 340px; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-logo-wrap { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { padding-top: 120px; padding-bottom: 64px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-photo-wrap { order: -1; }
+
+      .hero-photo {
+        aspect-ratio: 3/2;
+      }
+
+      .hero-photo-badge { display: none; }
+
+      .hero-title { font-size: 32px; }
+
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+      .btn-primary, .btn-outline { width: 100%; text-align: center; }
+
+      .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .steps-row { grid-template-columns: 1fr; gap: 32px; }
+
+      .about-inner { grid-template-columns: 1fr; }
+
+      .about-photo { order: -1; max-height: 320px; }
+
+      .about-photo img { max-height: 320px; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+
+      .footer-logo-wrap { grid-column: 1; }
+
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      section { padding: 64px 0; }
+
+      .container { padding: 0 20px; }
+
+      .hero-inner { padding: 0 20px; }
+
+      .stats-inner { padding: 0 20px; }
+
+      .cta-band-inner { padding: 0 20px; }
+
+      .footer-inner { padding: 0 20px; }
+    }
+
+    @media (max-width: 390px) {
+      .nav-inner { padding: 0 20px; }
+      .hero-title { font-size: 28px; }
+      .badge-pill { font-size: 12px; }
+      .stat-number { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img
+          src="https://lirp.cdn-website.com/f5c90bc4/dms3rep/multi/opt/Screenshot+2023-07-13+154104-558w.png"
+          alt="CPA Coach for Women"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <div class="nav-logo-text" style="display:none;">
+          CPA Coach for Women
+          <span>Rose Y.C. Huie, C.P.A.</span>
+        </div>
+        <div class="nav-logo-text">
+          CPA Coach for Women
+          <span>Rose Y.C. Huie, C.P.A.</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://www.cpacoach.org/book-now0768c124" class="nav-cta">Book Free Consultation</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
+    <a href="#process" onclick="closeMenu()">How It Works</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="https://www.cpacoach.org/book-now0768c124" style="background:var(--primary);color:var(--white);text-align:center;padding:14px;border-radius:6px;font-weight:600;border-bottom:none;">Book Free Consultation</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-inner fade-in">
+      <div class="hero-content">
+        <div class="hero-badge">Business Success Strategies for CPAs</div>
+        <h1 class="hero-title">
+          Grow Your CPA Practice.<br />
+          <em>Increase Income</em> and<br />
+          Happiness.
+        </h1>
+        <p class="hero-sub">
+          Rose Y. C. Huie, C.P.A. has spent 37+ years building, growing, and successfully selling her own accounting practice. Now she coaches CPAs and professionals to do the same, with proven strategies that work.
+        </p>
+        <div class="hero-actions">
+          <a href="https://www.cpacoach.org/book-now0768c124" class="btn-primary">Book Free Consultation</a>
+          <a href="tel:5109172287" class="hero-phone">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            (510) 917-2287
+          </a>
+        </div>
+        <div class="hero-badges">
+          <div class="badge-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Certified CPA
+          </div>
+          <div class="badge-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Certified CFP
+          </div>
+          <div class="badge-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            UC Berkeley MBA
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img
+            src="https://lirp.cdn-website.com/f5c90bc4/dms3rep/multi/opt/1670774298737-1920w.jpg"
+            alt="Rose Y.C. Huie, CPA Coach"
+            onerror="this.src='https://rosehuiecpa.com/wp-content/uploads/2025/02/selective-focus-of-beautiful-advisor-and-investor-4U59PLX.jpg'"
+          />
+        </div>
+        <div class="hero-photo-badge">
+          <div class="hero-photo-badge-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="hero-photo-badge-text">
+            <strong>37+</strong>
+            Years of Expertise
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR ===== -->
+  <section id="stats">
+    <div class="stats-inner fade-in">
+      <div class="stat-item">
+        <div class="stat-number">37+</div>
+        <div class="stat-label">Years of Professional Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Specialized Coaching Programs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3.91</div>
+        <div class="stat-label">UC Berkeley MBA GPA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header fade-in">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Coaching Programs Built for CPAs</h2>
+        <p class="section-sub">Whether you want to grow your accounting practice, manage stress better, or build deeper relationships, Rose has a proven program for you.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <div class="service-title">CPA Coaching</div>
+          <p class="service-desc">Practice-building strategies for CPAs ready to increase revenue, attract ideal clients, and manage their firm with confidence and clarity.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="service-title">PQ Coaching</div>
+          <p class="service-desc">Positive Intelligence (PQ) coaching to help professionals reduce stress, build mental resilience, and operate from a place of calm focus every day.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="service-title">Relationship Coaching</div>
+          <p class="service-desc">Communication frameworks, healthy boundaries, and tools to build meaningful personal and professional relationships that support your success.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <div class="service-title">Business Development</div>
+          <p class="service-desc">Strategic guidance on client acquisition, pricing, and positioning to help you build a profitable accounting practice that works for your lifestyle.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="service-title">Group Coaching</div>
+          <p class="service-desc">Join a community of like-minded CPAs in live group sessions to share challenges, celebrate wins, and accelerate your growth together.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="service-title">One-on-One Mentoring</div>
+          <p class="service-desc">Personalized one-on-one sessions where Rose tailors advice to your unique situation, helping you overcome specific obstacles and achieve your goals faster.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header fade-in">
+        <div class="section-label">Client Success Stories</div>
+        <h2 class="section-title">What Clients Say About Rose</h2>
+        <p class="section-sub">Real results from real CPAs and professionals who transformed their practices and lives with Rose's coaching.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card fade-in">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"Rose is approachable and very supportive. She takes time to understand my strengths and challenges while tailoring her advice to suit my individual needs."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <div class="testimonial-name">Minako Steel</div>
+              <div class="testimonial-title">CPA | Tax Advisor | Guiding Japanese Women in U.S. Business</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"She makes herself available late into the evenings and is truly invested in getting the job done. She has the expertise to navigate business matters and is highly recommended."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">N</div>
+            <div>
+              <div class="testimonial-name">Nancy Lin</div>
+              <div class="testimonial-title">Clinical Psychologist, Trauma and Sleep Specialist</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-quote">"Rose is a very detail oriented and conscientious professional in all that she does. She brings tremendous dedication and care to every client she works with."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <div class="testimonial-name">Sunil Bhaskaran</div>
+              <div class="testimonial-title">Global Business Community Builder, Mentor, Speaker, Author</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="process">
+    <div class="container">
+      <div class="process-header fade-in">
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">How We Work Together</h2>
+        <p class="section-sub">A simple, structured path from where you are to where you want your practice to be.</p>
+      </div>
+      <div class="steps-row fade-in">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-title">Free Consultation</div>
+          <p class="step-desc">Book your complimentary session so Rose can understand your current situation and goals for your accounting practice.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-title">Custom Strategy</div>
+          <p class="step-desc">Rose designs a personalized coaching roadmap based on your strengths, challenges, and the income and lifestyle you want to achieve.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-title">Guided Implementation</div>
+          <p class="step-desc">Work through proven frameworks with Rose's direct support, adjusting your approach as you gain momentum and see results.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <div class="step-title">Grow and Thrive</div>
+          <p class="step-desc">Watch your practice and your confidence grow as you apply the strategies that built and sold a multi-decade CPA firm.</p>
+        </div>
+      </div>
+      <div class="process-cta fade-in">
+        <a href="https://www.cpacoach.org/book-now0768c124" class="btn-primary">Book Your Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner fade-in">
+        <div class="about-content">
+          <div class="section-label">Meet Your Coach</div>
+          <h2 class="section-title">Rose Y.C. Huie, C.P.A.</h2>
+          <p class="about-bio">
+            Rose Y. C. Huie is an accounting practice coach and mentor with over 37 years of professional experience. She built and successfully sold a profitable accounting practice, giving her firsthand knowledge of what it truly takes to create a thriving CPA firm.
+          </p>
+          <p class="about-bio">
+            A graduate of UC Berkeley with both a B.S. in Accounting and Finance and an MBA in Accounting, Rose brings academic rigor and real-world experience to every coaching relationship. She is a Certified Public Accountant, a Certified Financial Planner, and a licensed insurance agent in California.
+          </p>
+          <p class="about-bio">
+            Today, Rose dedicates herself to helping CPAs and professionals increase their income and happiness through CPA coaching, Positive Intelligence coaching, and relationship coaching programs designed around each client's unique needs.
+          </p>
+          <div class="about-credentials">
+            <div class="badge-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              CPA, California
+            </div>
+            <div class="badge-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              CFP Certified
+            </div>
+            <div class="badge-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              MBA, UC Berkeley
+            </div>
+            <div class="badge-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              PQ Certified Coach
+            </div>
+          </div>
+        </div>
+        <div class="about-photo">
+          <img
+            src="https://lirp.cdn-website.com/f5c90bc4/dms3rep/multi/opt/1670774298737-1920w.jpg"
+            alt="Rose Y.C. Huie, CPA Coach for Women"
+            onerror="this.src='https://rosehuiecpa.com/wp-content/uploads/2025/02/selective-focus-of-beautiful-advisor-and-investor-4U59PLX.jpg'"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <section id="cta-band">
+    <div class="cta-band-inner fade-in">
+      <h2 class="cta-band-title">Ready to Build the Practice You Deserve?</h2>
+      <p class="cta-band-sub">Book a free consultation with Rose and take the first step toward a more profitable, fulfilling accounting career.</p>
+      <a href="https://www.cpacoach.org/book-now0768c124" class="btn-white">Book Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo-wrap">
+          <a href="#hero" class="footer-logo">
+            <img
+              src="https://lirp.cdn-website.com/f5c90bc4/dms3rep/multi/opt/Screenshot+2023-07-13+154104-558w.png"
+              alt="CPA Coach for Women"
+              onerror="this.style.display='none';"
+            />
+            <div class="footer-logo-text">
+              CPA Coach for Women
+              <span>Rose Y.C. Huie, C.P.A.</span>
+            </div>
+          </a>
+          <p class="footer-tagline">Business Success Strategies for CPAs and Professionals Looking to Increase Their Income and Happiness.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Quick Links</div>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#about">About Rose</a></li>
+            <li><a href="https://www.cpacoach.org/book-now0768c124">Book Consultation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <a href="tel:5109172287">(510) 917-2287</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            <a href="mailto:rhuiecpa@aol.com">rhuiecpa@aol.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            320 8th Street, Suite 2B<br />Oakland, CA 94607
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2026 CPA Coach for Women. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
