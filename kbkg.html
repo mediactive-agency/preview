@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KBKG | Proven Tax Strategies That Deliver Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --navy: #0D2B55;
+    --gold: #C4922A;
+    --gold-light: #E0A83A;
+    --white: #FFFFFF;
+    --gray-light: #F5F6F8;
+    --gray-mid: #E8EAF0;
+    --gray-text: #6B7280;
+    --dark-text: #111827;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    height: 72px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+  }
+  .nav-inner {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+  .nav-logo span {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--white) !important; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 20px 24px 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    z-index: 999;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark-text);
+    text-decoration: none;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--gray-mid);
+  }
+  .mobile-menu a:last-child {
+    margin-top: 16px;
+    border-bottom: none;
+    background: var(--gold);
+    color: var(--white);
+    text-align: center;
+    padding: 13px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 90px 40px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--gray-text);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  #hero {
+    background: var(--white);
+    padding: 80px 40px 80px;
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--gray-text);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .hero-phone {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .hero-phone:hover { color: var(--gold); }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gray-light);
+    border: 1px solid var(--gray-mid);
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .badge svg { flex-shrink: 0; }
+  .hero-photo {
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(13,43,85,0.18);
+  }
+  .hero-photo-caption {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    font-size: 13px;
+  }
+  .hero-photo-caption strong {
+    display: block;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .hero-photo-caption span { color: var(--gray-text); }
+
+  /* ===== SOCIAL PROOF BAR ===== */
+  #stats {
+    background: var(--gray-light);
+    padding: 56px 40px;
+  }
+  .stats-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+  .stat-item { padding: 24px 20px; }
+  .stat-number {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-number span { color: var(--gold); }
+  .stat-label {
+    font-size: 15px;
+    color: var(--gray-text);
+    font-weight: 500;
+  }
+  .stat-divider {
+    width: 1px;
+    background: var(--gray-mid);
+    margin: auto;
+  }
+
+  /* ===== SERVICES ===== */
+  #services { background: var(--white); }
+  .services-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .services-header .section-sub { margin: 0 auto; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 32px 28px;
+    border: 1px solid var(--gray-mid);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 28px rgba(13,43,85,0.1); transform: translateY(-2px); }
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    color: var(--white);
+  }
+  .service-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.65;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials { background: var(--gray-light); }
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .testimonials-header .section-sub { margin: 0 auto; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--gray-mid);
+    display: flex;
+    flex-direction: column;
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+  .testimonial-quote {
+    font-size: 15px;
+    color: var(--dark-text);
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .testimonial-author span {
+    font-size: 13px;
+    color: var(--gray-text);
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  #how-it-works { background: var(--white); }
+  .how-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .how-header .section-sub { margin: 0 auto; }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-bottom: 56px;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 10px);
+    right: calc(12.5% + 10px);
+    height: 2px;
+    background: var(--gray-mid);
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .step h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .step p {
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.6;
+  }
+  .how-cta { text-align: center; }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--gray-light); }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+  }
+  .about-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .about-title {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .about-text {
+    font-size: 16px;
+    color: var(--gray-text);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(13,43,85,0.14);
+  }
+
+  /* ===== CTA BAND ===== */
+  #cta-band {
+    background: var(--navy);
+    padding: 90px 40px;
+    text-align: center;
+  }
+  .cta-band-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .cta-band-title {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 16px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-band-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 36px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #081C3A;
+    padding: 60px 40px 32px;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 280px 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .footer-logo span {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .footer-desc {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col ul li a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-bottom a:hover { color: var(--gold-light); }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE: TABLET ===== */
+  @media (max-width: 900px) {
+    section { padding: 70px 24px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-photo { order: -1; }
+    .hero-photo img { height: 380px; }
+    .hero-photo-caption { bottom: 12px; }
+
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .steps-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .steps-row::before { display: none; }
+
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .about-photo img { height: 380px; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  /* ===== RESPONSIVE: MOBILE ===== */
+  @media (max-width: 600px) {
+    section { padding: 56px 20px; }
+    nav { padding: 0 20px; height: 64px; }
+
+    .hero-photo img { height: 300px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .btn-primary { width: 100%; text-align: center; }
+
+    .stats-grid { grid-template-columns: 1fr; gap: 0; }
+    .stat-item { border-bottom: 1px solid var(--gray-mid); padding: 24px 16px; }
+    .stat-item:last-child { border-bottom: none; }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .steps-row { grid-template-columns: 1fr; gap: 28px; }
+
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">
+      <img src="https://www.kbkg.com/wp-content/uploads/KBKG-logo-1.webp" alt="KBKG" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;">KBKG</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#how-it-works">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cta-band" class="nav-cta">Get a Free Assessment</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#testimonials" onclick="closeMenu()">Clients</a>
+  <a href="#how-it-works" onclick="closeMenu()">Process</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#cta-band" onclick="closeMenu()">Get a Free Assessment</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <p class="hero-label">Nationally Recognized Tax Experts Since 1999</p>
+      <h1 class="hero-title">Over $11 Billion in Tax Benefits Claimed</h1>
+      <p class="hero-sub">We help businesses, real estate owners, and CPAs unlock proven tax strategies and incentives created by Congress so they can invest in growth.</p>
+      <div class="hero-actions">
+        <a href="#cta-band" class="btn-primary">Request a Free Assessment</a>
+        <a href="tel:8775254462" class="hero-phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          877-525-4462
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          25+ Years in Practice
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Former Big 4 Leaders
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Trusted by Thousands of CPAs
+        </span>
+      </div>
+    </div>
+    <div class="hero-photo fade-up" style="transition-delay:0.15s;">
+      <img src="https://www.kbkg.com/wp-content/uploads/Jason-Melillo_KBKG-Background-copy.jpg" alt="Jason Melillo, CEO of KBKG" onerror="this.src='https://www.kbkg.com/wp-content/uploads/KBK00857-2.jpg'">
+      <div class="hero-photo-caption">
+        <strong>Jason C. Melillo, CPA</strong>
+        <span>CEO &amp; Principal, KBKG</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOCIAL PROOF BAR ===== -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item fade-up">
+      <div class="stat-number">$<span>11B</span>+</div>
+      <div class="stat-label">in Tax Benefits Claimed</div>
+    </div>
+    <div class="stat-item fade-up" style="transition-delay:0.1s;">
+      <div class="stat-number"><span>25</span>+</div>
+      <div class="stat-label">Years of Proven Experience</div>
+    </div>
+    <div class="stat-item fade-up" style="transition-delay:0.2s;">
+      <div class="stat-number"><span>1000</span>s</div>
+      <div class="stat-label">of CPAs and Businesses Served</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header fade-up">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Comprehensive Tax Incentive Services</h2>
+      <p class="section-sub">From cost segregation to R&D credits, we identify every dollar Congress has made available to your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Cost Segregation</h3>
+        <p>Accelerate depreciation on your real estate to generate significant upfront tax savings. Any building improvement over $1.5M should be reviewed.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.05s;">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>R&D Tax Credit</h3>
+        <p>Federal credit worth approximately 6.5% of qualifying wages for companies designing, developing, and improving products, processes, or software.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.1s;">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Section 179D Deduction</h3>
+        <p>Federal deduction worth up to $5.65 per square foot for energy efficient commercial and government buildings.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.05s;">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Section 45L Tax Credit</h3>
+        <p>$2,000 credit per unit for energy efficient residential properties including apartments, condominiums, and single family developments.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.1s;">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Negotiated Incentives</h3>
+        <p>State and local government incentive programs for business investment, facility expansion, and job creation. Location advisory included.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.15s;">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Repair vs. Capitalization Review</h3>
+        <p>Identify expenses that should be treated as current deductions rather than capitalized, covering HVAC systems, roofs, and parking lots.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="testimonials-header fade-up">
+      <p class="section-label">Client Stories</p>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-sub">From CPAs to real estate owners, here is what clients experience working with the KBKG team.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"I would highly recommend KBKG to anyone considering cost segregation. They saved my clients over $100,000 and the process was seamless from start to finish."</p>
+        <div class="testimonial-author">
+          <strong>David Hartsock, EA</strong>
+          <span>FirsTax, L.P.</span>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up" style="transition-delay:0.1s;">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"The KBKG team is extremely knowledgeable and their approach minimized the amount of time our team needed to invest. Incredibly easy to work with."</p>
+        <div class="testimonial-author">
+          <strong>Brian Roizen</strong>
+          <span>Chief Architect, Feedonomics</span>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up" style="transition-delay:0.2s;">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"We would recommend KBKG to anyone needing their services. They are truly experts at what they do. Their team made a complex process feel completely manageable."</p>
+        <div class="testimonial-author">
+          <strong>Monique von Lutzow</strong>
+          <span>Director of Tax, Sares-Regis Group</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <div class="how-header fade-up">
+      <p class="section-label">Our Process</p>
+      <h2 class="section-title">Simple, Thorough, and Audit Ready</h2>
+      <p class="section-sub">We handle the complexity so your team does not have to. Here is how we deliver results that hold up under scrutiny.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3>Free Discovery</h3>
+        <p>We review your situation at no cost and identify which tax incentives apply to your business or properties.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.1s;">
+        <div class="step-num">2</div>
+        <h3>Detailed Analysis</h3>
+        <p>Our engineers, attorneys, and tax specialists conduct a thorough technical study with minimal time required from your team.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.2s;">
+        <div class="step-num">3</div>
+        <h3>Report Delivery</h3>
+        <p>You receive a comprehensive, audit ready report with all supporting documentation prepared by our former Big 4 experts.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.3s;">
+        <div class="step-num">4</div>
+        <h3>Ongoing Support</h3>
+        <p>We stand behind every study with full IRS audit support, giving you lasting confidence in every dollar claimed.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="#cta-band" class="btn-primary">Start Your Free Assessment</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-inner">
+      <div class="about-text-col fade-up">
+        <p class="about-label">About KBKG</p>
+        <h2 class="about-title">25 Years of Helping Businesses Keep More of What They Earn</h2>
+        <p class="about-text">Founded in 1999, KBKG is an independent specialty tax firm staffed by engineers, attorneys, and former Big 4 leaders. We are not owned by or affiliated with any CPA firm, which means our only focus is maximizing your tax incentives with complete objectivity.</p>
+        <p class="about-text">Jason C. Melillo, CPA, leads the firm as CEO with over 20 years of experience working with companies and CPAs on employment tax credits and cost segregation studies. He currently chairs the AICPA Large Firms Group and is a frequent speaker at national CPA conferences. The KBKG team combines deep technical expertise with a practical, client first approach that has earned the trust of thousands of businesses and CPAs across the country.</p>
+        <div class="about-badges">
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            AICPA Large Firms Group Chair
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            NASBA CPE Sponsor
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            AIA Approved Provider
+          </span>
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            7 Offices Nationwide
+          </span>
+        </div>
+      </div>
+      <div class="about-photo fade-up" style="transition-delay:0.15s;">
+        <img src="https://www.kbkg.com/wp-content/uploads/KBK00857-2.jpg" alt="KBKG Team" onerror="this.src='https://www.kbkg.com/wp-content/uploads/Jason-Melillo_KBKG-Background-copy.jpg'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section id="cta-band">
+  <div class="section-inner">
+    <p class="cta-band-label">Ready to Get Started?</p>
+    <h2 class="cta-band-title">Find Out How Much You Could Be Saving in Taxes</h2>
+    <p class="cta-band-sub">Join thousands of businesses and CPAs who trust KBKG to deliver proven, audit ready tax strategies.</p>
+    <a href="mailto:info@kbkg.com" class="btn-primary">Request a Free Assessment</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand footer-col">
+        <img src="https://www.kbkg.com/wp-content/uploads/KBKG-logo-1.webp" alt="KBKG" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;">KBKG</span>
+        <p class="footer-desc">Nationally recognized specialty tax firm helping businesses and CPAs unlock over $11 billion in proven tax incentives since 1999.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Cost Segregation</a></li>
+          <li><a href="#services">R&amp;D Tax Credit</a></li>
+          <li><a href="#services">Section 179D</a></li>
+          <li><a href="#services">Section 45L Credit</a></li>
+          <li><a href="#services">Negotiated Incentives</a></li>
+          <li><a href="#services">Transfer Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>877-525-4462</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>info@kbkg.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Los Angeles · New York · Atlanta<br>Chicago · Dallas · Houston · Detroit</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KBKG. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
