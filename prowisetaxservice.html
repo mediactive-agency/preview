@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProWise Tax Service LLC | Expert Accounting &amp; Tax Services | Oak Ridge, TN</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Inter', sans-serif; color: #1a2332; background: #fff; }
+
+  /* Brand Colors */
+  :root {
+    --primary: #1565C0;
+    --primary-dark: #0D47A1;
+    --primary-light: #1E88E5;
+    --accent: #29B6F6;
+    --text-dark: #1a2332;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --gray-bg: #F5F6F8;
+    --white: #ffffff;
+    --gold: #F59E0B;
+    --border: #e2e8f0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 8px rgba(21,101,192,0.07);
+  }
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+  }
+  .nav-logo span {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--primary-dark) !important; color: #fff !important; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 5%;
+    z-index: 999;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu .mob-cta {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 12px;
+    border-bottom: none;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    background: #fff;
+    padding: 90px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .hero-left { display: flex; flex-direction: column; gap: 24px; }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(21,101,192,0.08);
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .hero-h1 {
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text-dark);
+  }
+  .hero-h1 span { color: var(--primary); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .hero-phone {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+  .badge {
+    background: var(--gray-bg);
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .hero-right { position: relative; }
+  .hero-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center top;
+    height: 480px;
+    box-shadow: 0 20px 60px rgba(21,101,192,0.15);
+  }
+
+  /* ── SOCIAL PROOF BAR ── */
+  #stats {
+    background: var(--gray-bg);
+    padding: 60px 5%;
+  }
+  .stats-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-item {}
+  .stat-number {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* ── SERVICES ── */
+  #services {
+    background: #fff;
+    padding: 90px 5%;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .section-label {
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .services-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .service-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s;
+  }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(21,101,192,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    color: var(--primary);
+  }
+  .service-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .service-desc {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    background: var(--gray-bg);
+    padding: 90px 5%;
+  }
+  .testimonials-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testimonial-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .stars { display: flex; gap: 4px; }
+  .testimonial-quote {
+    font-size: 0.96rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-style: italic;
+    flex: 1;
+  }
+  .testimonial-author {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+  }
+  .testimonial-location {
+    font-size: 0.82rem;
+    color: var(--text-light);
+  }
+
+  /* ── HOW IT WORKS ── */
+  #how {
+    background: #fff;
+    padding: 90px 5%;
+  }
+  .steps-row {
+    max-width: 960px;
+    margin: 0 auto 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 14px);
+    right: calc(12.5% + 14px);
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(21,101,192,0.25);
+  }
+  .step-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .how-cta { text-align: center; }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--gray-bg);
+    padding: 90px 5%;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-label {
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .about-title {
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .about-text {
+    font-size: 0.97rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .about-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+  .about-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center top;
+    height: 420px;
+    box-shadow: 0 16px 48px rgba(21,101,192,0.13);
+  }
+
+  /* ── CTA BAND ── */
+  #cta-band {
+    background: var(--primary);
+    padding: 90px 5%;
+    text-align: center;
+  }
+  .cta-band-title {
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .cta-band-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 36px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-white {
+    background: #fff;
+    color: var(--primary);
+    padding: 16px 36px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-white:hover { background: #e8f0fe; color: var(--primary-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0d1c30;
+    padding: 60px 5% 28px;
+    color: rgba(255,255,255,0.75);
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-logo img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1);
+  }
+  .footer-logo span {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    display: none;
+  }
+  .footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-col-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+  }
+  .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .steps-row::before { display: none; }
+    #hero { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    #hero {
+      grid-template-columns: 1fr;
+      padding: 60px 5%;
+      gap: 36px;
+    }
+    .hero-right { order: -1; }
+    .hero-img { height: 280px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .steps-row { grid-template-columns: 1fr; gap: 28px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-img { height: 280px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .btn-primary { width: 100%; text-align: center; }
+  }
+  @media (max-width: 390px) {
+    .hero-h1 { font-size: 1.75rem; }
+    .stat-number { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="https://prowisetaxservice.com/wp-content/uploads/2024/04/logoprowise5.png"
+         alt="ProWise Tax Service"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+    <span>ProWise Tax Service</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#cta-band" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#testimonials" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Reviews</a>
+  <a href="#how" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#cta-band" class="mob-cta" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Free Consultation</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left fade-up">
+    <span class="hero-eyebrow">Oak Ridge &amp; Knoxville, TN</span>
+    <h1 class="hero-h1">Personalized Tax &amp; Accounting That Gives You <span>Peace of Mind</span></h1>
+    <p class="hero-sub">ProWise Tax Service delivers accurate, compliant tax preparation and bookkeeping for individuals and small businesses. Trusted by clients across East Tennessee since 2010.</p>
+    <div class="hero-actions">
+      <a href="tel:8652729331" class="btn-primary">Call (865) 272-9331</a>
+      <a href="#cta-band" class="hero-phone">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Schedule a Free Consultation
+      </a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">BBB A+ Accredited</span>
+      <span class="badge">16+ Years Experience</span>
+      <span class="badge">Small Business Specialists</span>
+    </div>
+  </div>
+  <div class="hero-right fade-up">
+    <img
+      class="hero-img"
+      src="https://prowisetaxservice.com/wp-content/uploads/2024/05/61fe698293.jpg"
+      alt="ProWise Tax Service Team Consultation"
+      onerror="this.src='https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80';"
+    />
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-number">16+</div>
+      <div class="stat-label">Years Serving East Tennessee</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">A+</div>
+      <div class="stat-label">BBB Rating &amp; Accredited Business</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">77%</div>
+      <div class="stat-label">Of Taxpayers Benefit From a Pro Preparer*</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-up">
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title">Comprehensive Tax &amp; Accounting Solutions</h2>
+    <p class="section-sub">From individual returns to complex business filings, we handle it all so you can focus on what matters most.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="service-title">Individual Tax Preparation</div>
+      <p class="service-desc">Electronic filing for faster refunds with thorough review to maximize deductions, credits, and minimize IRS contact.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="service-title">Business Tax Solutions</div>
+      <p class="service-desc">Accurate and compliant business tax filing for small to mid-sized companies, including B&amp;O tax, excise filings, and more.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      </div>
+      <div class="service-title">Bookkeeping Services</div>
+      <p class="service-desc">Organized, accurate books so your business stays on track all year long, with monthly and quarterly reporting options.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="service-title">Excise &amp; B&amp;O Tax Filings</div>
+      <p class="service-desc">Quarterly and monthly excise tax and Business &amp; Occupation tax filing to keep your Tennessee business fully compliant.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="service-title">1099 Misc Preparation</div>
+      <p class="service-desc">Filing services for contractors and independent contractors, covering all income types required by the IRS.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      </div>
+      <div class="service-title">IRS Payment Plans &amp; Compliance</div>
+      <p class="service-desc">Assistance with non-filed returns, IRS payment arrangements, and compliance support with state departments of revenue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header fade-up">
+    <span class="section-label">Client Reviews</span>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Real feedback from real clients who trust ProWise with their most important financial decisions.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"My tax situation was complicated. I own a home and work as an independent contractor. Choosing ProWise Tax Service was the right decision. Their expertise made the process easy and they ensured all my details, including business expenses, were thoroughly covered."</p>
+      <div>
+        <div class="testimonial-author">Brian</div>
+        <div class="testimonial-location">Seattle, WA</div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"Marie always greets you with a smile and is very quick and efficient. I got in the same week I called and she was knowledgeable, friendly, and incredibly helpful with everything related to my taxes."</p>
+      <div>
+        <div class="testimonial-author">Verified Client</div>
+        <div class="testimonial-location">Oak Ridge, TN</div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"I have been with ProWise for 3 years now. They are very flexible and helpful. Marie does a great job completing returns quickly and professionally every single time. A true hidden gem for small businesses."</p>
+      <div>
+        <div class="testimonial-author">Long-term Client</div>
+        <div class="testimonial-location">East Tennessee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-header fade-up">
+    <span class="section-label">Our Process</span>
+    <h2 class="section-title">Simple. Transparent. Stress-Free.</h2>
+    <p class="section-sub">Getting your taxes done right has never been easier. Here is how we work together.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-title">Schedule a Consultation</div>
+      <p class="step-desc">Book a free appointment online or by phone. We work around your schedule, Monday through Friday.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-title">Share Your Documents</div>
+      <p class="step-desc">Securely submit your financial documents through our client portal for safe, encrypted handling.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-title">We Prepare and Review</div>
+      <p class="step-desc">Our professionals prepare your return, identify every deduction, and run a thorough compliance review.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-title">File and Relax</div>
+      <p class="step-desc">We file electronically for the fastest possible refund and provide year-round support for any questions.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a href="tel:8652729331" class="btn-primary">Get Started Today</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="fade-up">
+      <span class="about-label">About ProWise Tax Service</span>
+      <h2 class="about-title">Trusted Tax Professionals Serving East Tennessee Since 2010</h2>
+      <p class="about-text">ProWise Tax Service LLC was founded with one mission: to deliver exceptional, personalized tax and accounting service to individuals and small businesses across Oak Ridge and Knoxville. Our unwavering commitment to professionalism, responsiveness, and quality ensures every client receives unparalleled care.</p>
+      <p class="about-text">Led by Marie Bradley, our team brings over 16 years of hands-on experience to every return we prepare. Whether you are a first-time filer or a seasoned business owner navigating complex compliance, we bring the same dedication and attention to detail to every engagement.</p>
+      <p class="about-text">We are proud to be BBB Accredited with an A+ rating and listed across Yelp, Google, and Nextdoor as a trusted local resource. Our clients stay with us year after year because they know their finances are in capable hands.</p>
+      <div class="about-badges">
+        <span class="badge">BBB A+ Accredited</span>
+        <span class="badge">Founded 2010</span>
+        <span class="badge">Marie Bradley, Principal</span>
+        <span class="badge">Oak Ridge, TN</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <img
+        class="about-img"
+        src="https://prowisetaxservice.com/wp-content/uploads/2024/05/71a7fd5d5b.jpg"
+        alt="ProWise Tax Service Professional"
+        onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80';"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <div class="fade-up">
+    <h2 class="cta-band-title">Ready to Experience Stress-Free Tax Season?</h2>
+    <p class="cta-band-sub">Join the hundreds of individuals and businesses across East Tennessee who trust ProWise Tax Service for accurate, compliant filings every year.</p>
+    <a href="tel:8652729331" class="btn-white">Call (865) 272-9331 Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img
+          src="https://prowisetaxservice.com/wp-content/uploads/2024/04/logoprowise5.png"
+          alt="ProWise Tax Service"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
+        />
+        <span>ProWise Tax Service</span>
+      </div>
+      <p class="footer-tagline">Personalized tax and accounting solutions to give you peace of mind. Serving Oak Ridge, Knoxville, and East Tennessee since 2010.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#how">Our Process</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#cta-band">Free Consultation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>(865) 272-9331</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>106 Administration Rd, Ste 202<br>Oak Ridge, TN 37830</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Monday – Friday: 9am – 6:30pm</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ProWise Tax Service LLC. All rights reserved.</span>
+    <span>Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a></span>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
