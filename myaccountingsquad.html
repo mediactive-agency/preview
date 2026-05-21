@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Accounting Squad | Bookkeeping & Financial Guidance for Service Businesses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: #fff; }
+
+    /* Brand Colors */
+    :root {
+      --primary: #1b4f72;
+      --primary-dark: #154360;
+      --accent: #2e86c1;
+      --accent-light: #aed6f1;
+      --gold: #f59e0b;
+      --white: #ffffff;
+      --gray-light: #f5f6f8;
+      --gray-mid: #e8eaf0;
+      --text: #1a1a2e;
+      --text-muted: #5a6a7a;
+    }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--white);
+      box-shadow: 0 2px 16px rgba(27,79,114,0.10);
+      padding: 0 40px;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 44px; width: auto;
+    }
+    .nav-logo-text {
+      font-size: 1.1rem; font-weight: 700; color: var(--primary);
+      line-height: 1.2;
+    }
+    .nav-logo-text span { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-muted); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text); font-size: 0.92rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .btn-nav {
+      background: var(--primary); color: var(--white);
+      padding: 10px 22px; border-radius: 6px; font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-nav:hover { background: var(--primary-dark); }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      padding: 24px 32px 32px; z-index: 999;
+      flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; }
+    .mobile-menu .btn-nav { text-align: center; width: 100%; padding: 14px; font-size: 1rem; }
+
+    /* HERO */
+    .hero {
+      background: var(--white);
+      padding: 96px 40px;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-label {
+      font-size: 0.82rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.6rem; line-height: 1.25; color: var(--primary);
+      margin-bottom: 22px;
+    }
+    .hero p {
+      font-size: 1.08rem; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      background: var(--primary); color: var(--white);
+      padding: 14px 28px; border-radius: 6px; font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .hero-contact-link {
+      color: var(--accent); font-weight: 500; text-decoration: none; font-size: 0.95rem;
+    }
+    .hero-contact-link:hover { text-decoration: underline; }
+    .hero-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+    .badge {
+      background: var(--gray-light); border: 1px solid var(--gray-mid);
+      padding: 7px 14px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600; color: var(--primary);
+    }
+    .hero-photo-wrap {
+      position: relative;
+    }
+    .hero-photo-wrap img {
+      width: 100%; height: 540px;
+      object-fit: cover; object-position: center top;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(27,79,114,0.18);
+    }
+    .hero-photo-wrap .photo-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--white); border-radius: 10px;
+      padding: 12px 18px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      font-size: 0.85rem;
+    }
+    .photo-badge strong { display: block; color: var(--primary); font-size: 0.95rem; }
+    .photo-badge span { color: var(--text-muted); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--gray-light);
+      padding: 56px 40px;
+    }
+    .stats-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center;
+    }
+    .stat-item {}
+    .stat-number {
+      font-size: 2.5rem; font-weight: 800; color: var(--primary); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+
+    /* SERVICES */
+    .services {
+      background: var(--white);
+      padding: 96px 40px;
+    }
+    .section-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .section-eyebrow {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--accent); margin-bottom: 14px;
+    }
+    .section-header h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem; color: var(--primary); line-height: 1.35; margin-bottom: 16px;
+    }
+    .section-header p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+    .services-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .service-card {
+      background: var(--white); border-radius: 8px;
+      border: 1px solid var(--gray-mid);
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(27,79,114,0.07);
+      transition: box-shadow 0.2s;
+    }
+    .service-icon {
+      width: 44px; height: 44px; background: var(--gray-light);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; color: var(--accent);
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+    .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; }
+    .service-price { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: var(--gray-light);
+      padding: 96px 40px;
+    }
+    .testimonials-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--white); border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 18px rgba(27,79,114,0.07);
+    }
+    .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .testimonial-quote {
+      font-size: 0.95rem; color: var(--text); line-height: 1.75;
+      margin-bottom: 22px; font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--accent); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem;
+    }
+    .author-name { font-weight: 700; font-size: 0.9rem; color: var(--primary); }
+    .author-title { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* HOW IT WORKS */
+    .how-it-works {
+      background: var(--white);
+      padding: 96px 40px;
+    }
+    .steps-row {
+      max-width: 1000px; margin: 0 auto 48px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      position: relative;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 12.5%; right: 12.5%;
+      height: 2px; background: var(--accent-light);
+    }
+    .step-item { text-align: center; padding: 0 12px; position: relative; }
+    .step-number {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--primary); color: var(--white);
+      font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px; position: relative; z-index: 1;
+    }
+    .step-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .step-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .how-it-works .cta-center { text-align: center; }
+
+    /* ABOUT */
+    .about {
+      background: var(--gray-light);
+      padding: 96px 40px;
+    }
+    .about-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .about-text h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.9rem; color: var(--primary); margin-bottom: 20px; line-height: 1.35;
+    }
+    .about-text p { font-size: 0.97rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .about-photo img {
+      width: 100%; height: 480px;
+      object-fit: cover; object-position: center top;
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(27,79,114,0.15);
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--primary);
+      padding: 96px 40px; text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.2rem; color: var(--white); margin-bottom: 18px; line-height: 1.3;
+      max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .cta-band p {
+      color: var(--accent-light); font-size: 1.05rem; margin-bottom: 36px;
+      max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+    .btn-white {
+      background: var(--white); color: var(--primary);
+      padding: 16px 36px; border-radius: 6px; font-size: 1rem; font-weight: 700;
+      text-decoration: none; display: inline-block; transition: background 0.2s, color 0.2s;
+    }
+    .btn-white:hover { background: var(--accent-light); color: var(--primary-dark); }
+
+    /* FOOTER */
+    footer {
+      background: #0d2d44; color: #c8d8e8;
+      padding: 64px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {}
+    .footer-logo-text {
+      font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 14px;
+    }
+    .footer-logo-text img { height: 36px; width: auto; }
+    footer p { font-size: 0.9rem; line-height: 1.7; color: #99b5cc; max-width: 300px; }
+    .footer-heading { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--white); margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: #99b5cc; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; color: #99b5cc; font-size: 0.9rem; }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--accent-light); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      font-size: 0.82rem; color: #6a8aa8;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+    }
+    .footer-bottom a { color: var(--accent); text-decoration: none; }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-inner { gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 60px 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2rem; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-wrap img { height: 360px; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .btn-primary { width: 100%; text-align: center; }
+
+      .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+
+      .services { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      .testimonials { padding: 60px 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .how-it-works { padding: 60px 24px; }
+      .steps-row { grid-template-columns: 1fr; gap: 32px; }
+      .steps-row::before { display: none; }
+
+      .about { padding: 60px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo img { height: 340px; }
+
+      .cta-band { padding: 60px 24px; }
+      .cta-band h2 { font-size: 1.7rem; }
+      .btn-white { width: 100%; text-align: center; }
+
+      footer { padding: 48px 24px 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 390px) {
+      .hero h1 { font-size: 1.75rem; }
+      .section-header h2 { font-size: 1.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/667a6826183904239ac7776f/favicon.ico"
+        alt="My Accounting Squad"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      />
+      <div class="nav-logo-text" style="display:none;">
+        My Accounting Squad
+        <span>Bookkeeping &amp; Financial Guidance</span>
+      </div>
+      <div class="nav-logo-text">
+        My Accounting Squad
+        <span>Bookkeeping &amp; Financial Guidance</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://calendly.com/wilson-myaccountingsquad/profitcashreview" target="_blank" class="btn-nav">Free Consultation</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" onclick="closeMobileMenu()">Services</a>
+    <a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="https://calendly.com/wilson-myaccountingsquad/profitcashreview" target="_blank" class="btn-nav">Free Consultation</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="fade-in">
+        <div class="hero-label">Bookkeeping &amp; Financial Guidance</div>
+        <h1>Growing a Service Business Is Hard Enough Without the Financial Chaos</h1>
+        <p>We help service business owners keep their books organized, understand their numbers, and make confident decisions around cash flow, profit, and growth, without the stress of going it alone.</p>
+        <div class="hero-ctas">
+          <a href="https://calendly.com/wilson-myaccountingsquad/profitcashreview" target="_blank" class="btn-primary">Book Your Free Profit &amp; Cash Review</a>
+          <a href="#services" class="hero-contact-link">See Our Services</a>
+        </div>
+        <div class="hero-badges">
+          <span class="badge">MBA Babson College</span>
+          <span class="badge">15+ Years Finance Leadership</span>
+          <span class="badge">20+ Years Accounting</span>
+          <span class="badge">QuickBooks Online Experts</span>
+        </div>
+      </div>
+      <div class="hero-photo-wrap fade-in">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/667a6826183904239ac7776f/437a8105-c88b-4089-b632-f0fe40550d3d/Wilson+Bio+Photo.jpg"
+          alt="Wilson Li, Co-Founder, My Accounting Squad"
+          onerror="this.src='https://images.squarespace-cdn.com/content/v1/667a6826183904239ac7776f/e4d2dbe3-b938-4485-a534-5d869efec052/Wilson+Bio+Photo.jpg'"
+        />
+        <div class="photo-badge">
+          <strong>Wilson Li, MBA</strong>
+          <span>Profit Advisor &amp; Co-Founder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stats-inner fade-in">
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Years in Finance &amp; Operations Leadership</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years of Accounting Expertise</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Professional Service Firms Built from the Ground Up</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header fade-in">
+      <div class="section-eyebrow">Our Services</div>
+      <h2>Financial Support Built for Service Businesses in Growth Mode</h2>
+      <p>From clean books to strategic cash flow planning, we offer the right level of support at every stage of your growth journey.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Tax-Smart Bookkeeping</h3>
+        <p>Done-for-you bookkeeping with tax optimization built in. Your books stay clean, reconciled, and ready for tax season every month.</p>
+        <span class="service-price">Starting at $500/month</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Profit-Building Advisory</h3>
+        <p>Bookkeeping plus hands-on profit and cash flow guidance. Understand your numbers and make decisions that grow your bottom line.</p>
+        <span class="service-price">Starting at $1,000/month</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Growth-Ready Finance</h3>
+        <p>Full finance operations and advisory support. A dedicated CFO-level partner helping you plan, budget, and scale with confidence.</p>
+        <span class="service-price">Starting at $2,500/month</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Payroll Management</h3>
+        <p>Accurate, on-time payroll processing so you can focus on growing your team without the administrative burden or compliance risk.</p>
+        <span class="service-price">Included in packages</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Accounts Payable &amp; Receivable</h3>
+        <p>Stay on top of what you owe and what you are owed. We manage your A/P and A/R so your cash flow stays predictable and healthy.</p>
+        <span class="service-price">Included in packages</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Bookkeeping Cleanup</h3>
+        <p>Months or years behind on your books? We get you caught up, accurate, and audit-ready so you can move forward with a clean slate.</p>
+        <span class="service-price">Custom pricing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-header fade-in">
+      <div class="section-eyebrow">What Clients Say</div>
+      <h2>Trusted by Service Business Owners Across the US</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Wilson's strategic vision and budgeting acumen are highly respected, earning trust across departments. He brings a rare combination of financial expertise and operational insight that is genuinely invaluable."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">KL</div>
+          <div>
+            <div class="author-name">Kirk Liu</div>
+            <div class="author-title">Business Leader</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Wilson is smart, educated and studious. He proved to be a vital member of every team he worked with. His financial leadership and dedication to getting things right made a measurable difference to our operations."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RH</div>
+          <div>
+            <div class="author-name">Richard Horiuchi</div>
+            <div class="author-title">Executive Leader</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Finally, a bookkeeping partner that actually understands what it means to run a service business. They do not just enter data. They translate the numbers into decisions that help us grow and keep more of what we earn."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SC</div>
+          <div>
+            <div class="author-name">Service Business Owner</div>
+            <div class="author-title">Consulting Firm, California</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-header fade-in">
+      <div class="section-eyebrow">The Process</div>
+      <h2>From Messy Books to Financial Clarity in Four Steps</h2>
+      <p>A clear, structured process designed to get you organized fast and keep you growing confidently.</p>
+    </div>
+    <div class="steps-row fade-in">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <h4>Free Profit &amp; Cash Review</h4>
+        <p>We start with a no-obligation call to understand your business, goals, and current financial situation.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <h4>Onboarding &amp; Cleanup</h4>
+        <p>We get your QuickBooks Online set up correctly, clean up any backlog, and establish a solid foundation.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <h4>Monthly Financial Management</h4>
+        <p>Your books are kept current, reconciled, and reviewed monthly so you always know where your business stands.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <h4>Strategic Growth Support</h4>
+        <p>Regular advisory sessions translate your numbers into action, helping you make smarter decisions and grow profitably.</p>
+      </div>
+    </div>
+    <div class="how-it-works cta-center fade-in">
+      <a href="https://calendly.com/wilson-myaccountingsquad/profitcashreview" target="_blank" class="btn-primary">Start with a Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text fade-in">
+        <div class="section-eyebrow">About Us</div>
+        <h2>Your Financial Co-Pilots, Built From Real Business Experience</h2>
+        <p>My Accounting Squad was founded by Wilson Li, MBA, and Maria Li, CPA, two operators who have been in the trenches of building and running service businesses. Wilson brings 15+ years of finance and operations leadership and has built three professional service firms from the ground up. Maria brings 20+ years of accounting expertise, including serving as Controller at two fast-growing tech startups.</p>
+        <p>We are not a traditional accounting firm. We are financial co-pilots who build systems, translate numbers into strategy, and stay with you as your business grows. Our clients earn between $500K and $5M annually and are ready to stop guessing about their finances.</p>
+        <div class="about-badges">
+          <span class="badge">MBA, Babson College</span>
+          <span class="badge">20+ Years Accounting</span>
+          <span class="badge">QuickBooks Online Certified</span>
+          <span class="badge">SCORE Business Mentor</span>
+          <span class="badge">Remote-First, US-Wide</span>
+        </div>
+      </div>
+      <div class="about-photo fade-in">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/667a6826183904239ac7776f/daec9e91-ebec-4662-abeb-c37522c48101/Maria+Bio+Photo.png"
+          alt="Maria Li, Accounting Advisor and Co-Founder"
+          onerror="this.src='https://images.squarespace-cdn.com/content/v1/667a6826183904239ac7776f/6257dce1-2063-47bd-9b44-329756a36e2b/Maria+Bio+Photo.JPG'"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="fade-in">
+      <h2>Ready to Stop Guessing and Start Growing?</h2>
+      <p>Book your free Profit and Cash Review and find out exactly where your business stands and what it would take to reach the next level.</p>
+      <a href="https://calendly.com/wilson-myaccountingsquad/profitcashreview" target="_blank" class="btn-white">Book My Free Profit &amp; Cash Review</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-text">My Accounting Squad</div>
+        <p>Bookkeeping and financial guidance for service businesses earning $500K to $5M annually. Cloud-based, remote-first, and built for growth.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="https://calendly.com/wilson-myaccountingsquad/profitcashreview" target="_blank">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Get in Touch</div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Greater Sacramento, CA (Serving US-Wide)
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          myaccountingsquad.com
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          QuickBooks Online Required
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 My Accounting Squad. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
