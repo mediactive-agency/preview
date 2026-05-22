@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategic Navigators Inc | Advanced Tax Planning & Family Office Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1A2340; background: #fff; }
+
+    /* Colors */
+    :root {
+      --gold: #B8A36A;
+      --gold-dark: #9C8A56;
+      --navy: #1A2340;
+      --navy-light: #243059;
+      --white: #FFFFFF;
+      --gray-light: #F5F6F8;
+      --gray-mid: #E8E9ED;
+      --text-body: #3D4760;
+      --text-light: #6B7491;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--navy);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-logo-text {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 13px !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-dark) !important; color: var(--white) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      z-index: 999;
+      padding: 24px 32px;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu .mob-cta {
+      background: var(--gold);
+      color: var(--navy);
+      text-align: center;
+      padding: 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      border: none;
+      margin-top: 8px;
+    }
+
+    /* HERO */
+    #hero {
+      background: var(--navy);
+      padding: 100px 40px;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-content { }
+    .hero-eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero-headline span { color: var(--gold); }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 15px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-dark); color: var(--white); }
+    .hero-phone {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-phone svg { color: var(--gold); }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge {
+      background: rgba(184,163,106,0.15);
+      border: 1px solid rgba(184,163,106,0.35);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .hero-photo {
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      display: block;
+    }
+    .hero-photo-frame {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    /* STATS BAR */
+    #stats {
+      background: var(--gray-light);
+      padding: 56px 40px;
+    }
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-number span { color: var(--gold); }
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* SERVICES */
+    #services {
+      background: var(--white);
+      padding: 100px 40px;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 60px;
+    }
+    .section-eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.7;
+    }
+    .services-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      border-radius: 8px;
+      padding: 36px 28px;
+      box-shadow: 0 2px 12px rgba(26,35,64,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 28px rgba(26,35,64,0.12); }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(184,163,106,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background: var(--gray-light);
+      padding: 100px 40px;
+    }
+    .testimonials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 36px 28px;
+      box-shadow: 0 2px 12px rgba(26,35,64,0.06);
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+    .testimonial-quote {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 14px;
+    }
+    .testimonial-role {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
+
+    /* HOW IT WORKS */
+    #how-it-works {
+      background: var(--white);
+      padding: 100px 40px;
+    }
+    .steps-row {
+      max-width: 1000px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 28px);
+      right: calc(12.5% + 28px);
+      height: 2px;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+    .how-cta { text-align: center; }
+
+    /* ABOUT */
+    #about {
+      background: var(--gray-light);
+      padding: 100px 40px;
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 70px;
+      align-items: center;
+    }
+    .about-eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .about-text {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      box-shadow: 0 12px 40px rgba(26,35,64,0.14);
+      display: block;
+    }
+
+    /* CTA BAND */
+    #cta-band {
+      background: var(--navy);
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-band::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(184,163,106,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-band-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-band-eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .cta-band-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .cta-band-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0F1628;
+      padding: 64px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .footer-logo img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+    .footer-logo-text {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+    .footer-col-title {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer-contact-item svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-bottom .mediactive { color: var(--gold); }
+
+    /* FADE-IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-photo { order: -1; max-width: 400px; margin: 0 auto; }
+      .hero-photo img { height: 380px; }
+      .hero-sub { max-width: 100%; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo { order: -1; }
+      .about-photo img { height: 360px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .steps-row::before { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      #hero, #stats, #services, #testimonials, #how-it-works, #about, #cta-band { padding: 80px 20px; }
+      .hero-inner { gap: 36px; }
+      .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .stat-number { font-size: 30px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; gap: 28px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      footer { padding: 48px 20px 24px; }
+      .btn-primary { width: 100%; text-align: center; display: block; }
+      .hero-actions { flex-direction: column; gap: 16px; }
+    }
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+      .stat-number { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img
+      src="https://static.wixstatic.com/media/8ff984_bbbc28b2ebe94550b080ec243f6b0ba8~mv2.png"
+      alt="Strategic Navigators Inc"
+      onerror="this.style.display='none'"
+    />
+    <span class="nav-logo-text">Strategic Navigators</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#how-it-works">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
+  <a href="#how-it-works" onclick="closeMenu()">Process</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#contact" class="mob-cta" onclick="closeMenu()">Free Consultation</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content fade-in">
+      <span class="hero-eyebrow">From Success to Significance</span>
+      <h1 class="hero-headline">
+        Reduce Your Tax Burden<br /><span>by 40 to 60%</span><br />While Building Tax-Free Wealth
+      </h1>
+      <p class="hero-sub">
+        Strategic Navigators is a nationwide family office services group helping business owners, high-income earners, and high-net-worth individuals strategically apply the tax code to maximize cashflow and protect generational wealth.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.stratnavinc.com/contact" class="btn-primary">Schedule a Free Consultation</a>
+        <a href="tel:6309372622" class="hero-phone">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          630-937-2622
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Tax Planning</span>
+        <span class="badge">All 50 States</span>
+        <span class="badge">Family Office Services</span>
+        <span class="badge">JD &amp; LLM Tax Counsel</span>
+      </div>
+    </div>
+    <div class="hero-photo fade-in">
+      <img
+        src="https://static.wixstatic.com/media/8ff984_0dd8690957be43f3a65af85ccfda20b8~mv2.jpg"
+        alt="Joshua R. Sherrard, President & CEO"
+        onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=440&q=80'"
+      />
+      <div class="hero-photo-frame"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-number">40<span>-60%</span></div>
+      <div class="stat-label">Average Tax Reduction</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-number">50<span>+</span></div>
+      <div class="stat-label">States We File In</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-number"><span>$</span>4B</div>
+      <div class="stat-label">Assets Managed Background</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">Our Offerings</span>
+    <h2 class="section-title">Comprehensive Strategies for the Wealth You Have Built</h2>
+    <p class="section-sub">We harmonize tax planning, accounting, finance, estate planning, and corporate structure to give you peace of mind that you are efficiently and appropriately positioned.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="service-title">Tax Planning</div>
+      <p class="service-desc">Strategically apply the tax code and case law to reduce income and capital gains taxes across business growth, transitions, and generational transfers in all 50 states.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      </div>
+      <div class="service-title">Family Office Services</div>
+      <p class="service-desc">Utilize the tax code to develop strategies that maximize cashflow through integrated income and strategic planning for high-net-worth families.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="service-title">Business Coaching</div>
+      <p class="service-desc">A comprehensive planning approach that eliminates unnecessary taxes, reduces fees, and protects against market volatility including retirement account management.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="service-title">Estate Planning</div>
+      <p class="service-desc">Structure wills, trusts, and comprehensive plans to minimize taxes, protect assets, and accomplish your goals in a way that is simple for your heirs to understand.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="service-title">Accounting &amp; Bookkeeping</div>
+      <p class="service-desc">Best-in-class accounting services filing in all 50 states with forensic CPAs, business valuation experts, and tax attorneys focused on compliance and cashflow maximization.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      </div>
+      <div class="service-title">Financial Coaching</div>
+      <p class="service-desc">Personalized financial guidance that aligns your investment strategy, retirement planning, and wealth-building goals with your overall tax and estate structure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">Client Results</span>
+    <h2 class="section-title">What Our Clients Are Saying</h2>
+    <p class="section-sub">Real outcomes for business owners and high-income earners who trusted Strategic Navigators to transform their financial future.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"I am blown away by my tax savings with SNI. This is more than I thought was possible!"</p>
+      <div class="testimonial-author">Medical Doctor</div>
+      <div class="testimonial-role">High-Income Professional, Strategic Navigators Client</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"Strategic Navigators gave us the clarity and structure we needed. The way they harmonize tax, legal, and financial planning is unlike anything we had experienced before."</p>
+      <div class="testimonial-author">Business Owner</div>
+      <div class="testimonial-role">Entrepreneur, Strategic Navigators Client</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"Working with the SNI team has given me peace of mind that my assets are protected and my tax strategy is actually working for me instead of against me."</p>
+      <div class="testimonial-author">High-Net-Worth Individual</div>
+      <div class="testimonial-role">Investor, Strategic Navigators Client</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">Our Process</span>
+    <h2 class="section-title">How We Navigate Your Financial Future</h2>
+    <p class="section-sub">A proven four-step process designed to uncover opportunities and build a strategy that works across every dimension of your wealth.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <div class="step-title">Discovery Call</div>
+      <p class="step-desc">We learn about your business, income, goals, and current tax situation to identify the biggest opportunities for savings.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <div class="step-title">Tax Analysis</div>
+      <p class="step-desc">Our tax counsel reviews your structure and applies the tax code strategically to reveal your true savings potential.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <div class="step-title">Custom Strategy</div>
+      <p class="step-desc">We build a harmonized plan covering tax, estate, accounting, and financial planning tailored specifically to your situation.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">4</div>
+      <div class="step-title">Ongoing Navigation</div>
+      <p class="step-desc">We manage and adapt your strategy as your business and life evolve, ensuring you always stay ahead of the tax code.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="https://www.stratnavinc.com/contact" class="btn-primary">Start Your Strategy Today</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-text-col fade-in">
+      <span class="about-eyebrow">Meet the Leadership</span>
+      <h2 class="about-title">A Team Built for the Complexity of Significant Wealth</h2>
+      <p class="about-text">
+        <strong>Joshua R. Sherrard</strong>, President and CEO, started his first business at age twelve and brings over a decade of executive management experience spanning business, finance, real estate, and operations. His vision drives SNI's mission to move clients from success to significance.
+      </p>
+      <p class="about-text">
+        <strong>Sunjay Sterling</strong>, Chief Tax Counsel (JD, LLM), specializes in tax planning and business structure with experience across all 50 states, having practiced in government, law firms, and the financial industry.
+      </p>
+      <p class="about-text">
+        <strong>Jeff Stukey</strong>, CEO of Strategic Navigators Asset Management, brings twenty years in financial services and executive-level experience helping grow a firm from $100 million to $4 billion in client assets.
+      </p>
+      <div class="about-badges">
+        <span class="badge">JD &amp; LLM Credentialed</span>
+        <span class="badge">Nationwide Practice</span>
+        <span class="badge">Executive Team</span>
+      </div>
+    </div>
+    <div class="about-photo fade-in">
+      <img
+        src="https://static.wixstatic.com/media/8ff984_0dd8690957be43f3a65af85ccfda20b8~mv2.jpg"
+        alt="Joshua R. Sherrard, President & CEO of Strategic Navigators Inc"
+        onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=440&q=80'"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <div class="cta-band-inner">
+    <span class="cta-band-eyebrow">Ready to Transform Your Tax Strategy?</span>
+    <h2 class="cta-band-title">Stop Overpaying the IRS. Start Building Tax-Free Wealth.</h2>
+    <p class="cta-band-sub">
+      Join business owners and high-income earners nationwide who have already reduced their tax burden by 40 to 60% and redirected that money toward building lasting, generational wealth.
+    </p>
+    <a href="https://www.stratnavinc.com/contact" class="btn-primary">Schedule Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img
+            src="https://static.wixstatic.com/media/8ff984_bbbc28b2ebe94550b080ec243f6b0ba8~mv2.png"
+            alt="Strategic Navigators Inc"
+            onerror="this.style.display='none'"
+          />
+          <span class="footer-logo-text">Strategic Navigators</span>
+        </div>
+        <p class="footer-tagline">From Success to Significance. A nationwide family office services group serving business owners and high-net-worth individuals.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#testimonials">Client Results</a></li>
+          <li><a href="#how-it-works">Our Process</a></li>
+          <li><a href="#about">About the Team</a></li>
+          <li><a href="https://www.stratnavinc.com/contact">Free Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact Us</div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          209 N Hale Street, Wheaton, IL 60187
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          630-937-2622
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          info@stratnavinc.com
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <p class="footer-bottom">
+      &copy; 2026 Strategic Navigators Inc. All rights reserved. | Website by <span class="mediactive">Mediactive</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
