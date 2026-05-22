@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milk and Honey Financial Services, LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; }
+
+  :root {
+    --primary: #C8A84B;
+    --primary-dark: #2D2D2A;
+    --accent: #3374FF;
+    --gray-dark: #4D4D4D;
+    --gray-light: #F5F6F8;
+    --white: #ffffff;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #111111;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo img {
+    height: 48px;
+    width: 48px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  .nav-logo-text {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: #e6e6e6;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta {
+    background: var(--primary) !important;
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    border-radius: 6px !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: #b8933f !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #e6e6e6;
+    border-radius: 2px;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #111111;
+    padding: 20px;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: #e6e6e6;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 16px;
+    border-radius: 6px;
+    display: block;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--primary); }
+  .mobile-menu .mob-cta {
+    background: var(--primary);
+    color: #1a1a1a !important;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--white);
+    padding: 96px 40px;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--primary); }
+  .hero p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
+  .btn-primary {
+    background: var(--primary);
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #b8933f; transform: translateY(-2px); }
+  .hero-phone {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .badge-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #F5F6F8;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #444;
+  }
+  .hero-photo { display: flex; justify-content: center; }
+  .photo-box {
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 4/5;
+    background: linear-gradient(145deg, #C8A84B 0%, #e0c46a 35%, #4D4D4D 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .photo-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 4px;
+    text-align: center;
+  }
+  .photo-subtitle {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* SOCIAL PROOF BAR */
+  .proof-bar {
+    background: var(--gray-light);
+    padding: 64px 40px;
+  }
+  .proof-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .proof-divider {
+    border-left: 1px solid #dde0e6;
+  }
+  .proof-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .proof-stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--white);
+    padding: 96px 40px;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px;
+  }
+  .section-tag {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-header p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+  }
+  .services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid #e8ecf0;
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: #FEF3C7;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #92400E;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.65;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--gray-light);
+    padding: 96px 40px;
+  }
+  .testimonials-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+  .testimonial-card blockquote {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .testimonial-author {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 0.88rem;
+  }
+
+  /* HOW IT WORKS */
+  .how-it-works {
+    background: var(--white);
+    padding: 96px 40px;
+  }
+  .steps-row {
+    max-width: 1100px;
+    margin: 0 auto 52px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(12.5% + 4px);
+    right: calc(12.5% + 4px);
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 16px;
+  }
+  .step-num {
+    width: 64px;
+    height: 64px;
+    background: var(--primary);
+    color: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 12px rgba(200,168,75,0.3);
+  }
+  .step h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+  }
+  .how-cta { text-align: center; }
+
+  /* ABOUT */
+  .about {
+    background: var(--gray-light);
+    padding: 96px 40px;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .about-tag {
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .about p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .about-creds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .about-photo { display: flex; justify-content: center; }
+  .about-photo .photo-box { max-width: 400px; }
+
+  /* CTA BAND */
+  .cta-band {
+    background: #1a1a18;
+    padding: 92px 40px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .cta-band p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+  .btn-gold {
+    background: var(--primary);
+    color: #1a1a1a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 16px 38px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-gold:hover { background: #b8933f; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-dark);
+    padding: 64px 40px 32px;
+    color: #ccc;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-logo img {
+    height: 52px;
+    width: 52px;
+    object-fit: contain;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .footer-logo-text {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .footer-tagline {
+    font-size: 0.875rem;
+    color: #999;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  footer h4 {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; }
+  footer ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  footer ul li a:hover { color: var(--primary); }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 0.88rem;
+    color: #aaa;
+    line-height: 1.5;
+  }
+  .footer-contact-item a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-contact-item a:hover { color: var(--primary); }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 0.83rem;
+    color: #777;
+  }
+  .footer-bottom .mediactive { color: var(--primary); font-weight: 500; }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .steps-row::before { display: none; }
+    .hero h1 { font-size: 2.4rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { padding: 72px 20px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { order: -1; }
+    .photo-box { max-width: 340px; margin: 0 auto; }
+    .hero h1 { font-size: 2rem; }
+    .hero p { max-width: 100%; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn-primary { text-align: center; }
+
+    .proof-bar { padding: 52px 20px; }
+    .proof-bar-inner { grid-template-columns: 1fr; gap: 28px; }
+    .proof-divider { border-left: none; border-top: 1px solid #dde0e6; padding-top: 28px; }
+
+    .services { padding: 72px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    .testimonials { padding: 72px 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .how-it-works { padding: 72px 20px; }
+    .steps-row { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+    .about { padding: 72px 20px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-photo { order: -1; }
+    .about-photo .photo-box { max-width: 340px; margin: 0 auto; }
+
+    .cta-band { padding: 72px 20px; }
+    .cta-band h2 { font-size: 1.9rem; }
+    .btn-gold { width: 100%; max-width: 340px; text-align: center; }
+
+    footer { padding: 52px 20px 28px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+
+    .section-header h2 { font-size: 1.85rem; }
+  }
+
+  @media (max-width: 390px) {
+    .hero h1 { font-size: 1.75rem; }
+    .steps-row { grid-template-columns: 1fr; }
+    .hero-badges { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://6d4b027702791154e4af.cdn6.editmysite.com/uploads/b/54dbac70-08e9-11f0-b46e-bb2d475a6fd4/logo_BC649D8B-0AD3-4D2E-973F-9E6DD8220148.png" alt="Milk and Honey Financial Services logo" onerror="this.style.display='none'">
+    <span class="nav-logo-text">Milk &amp; Honey Financial</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.hirejen.com/become-a-client" class="nav-cta" target="_blank">Become a Client</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Toggle menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#services" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#testimonials" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Testimonials</a>
+  <a href="#how-it-works" onclick="document.querySelector('.mobile-menu').classList.remove('open')">How It Works</a>
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Contact</a>
+  <a href="https://www.hirejen.com/become-a-client" class="mob-cta" target="_blank">Become a Client</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <span class="hero-badge">Now Accepting New Clients</span>
+      <h1>Your Finances, <span>Handled with Precision</span> and Care</h1>
+      <p>Hi there! I'm Jen, an Army wife and small business owner. I work with CPA firms and small business owners to bring accuracy, consistency, and simple systems that make business easier.</p>
+      <div class="hero-actions">
+        <a href="https://www.hirejen.com/become-a-client" class="btn-primary" target="_blank">Become a Client</a>
+        <a href="tel:3165500145" class="hero-phone">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          (316) 550-0145
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A84B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          QuickBooks Online Certified
+        </span>
+        <span class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A84B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Intuit Tax Level 1
+        </span>
+        <span class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A84B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Fully Insured
+        </span>
+      </div>
+    </div>
+    <div class="hero-photo fade-up">
+      <div class="photo-box">
+        <div style="text-align:center">
+          <div class="photo-initials">JEN</div>
+        </div>
+        <div class="photo-subtitle">Milk &amp; Honey Financial Services</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<section class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="fade-up">
+      <div class="proof-stat-num">3+</div>
+      <div class="proof-stat-label">Core Certifications Held<br>QBO, Intuit Tax, Insured</div>
+    </div>
+    <div class="proof-divider fade-up">
+      <div class="proof-stat-num">2</div>
+      <div class="proof-stat-label">Service Tracks Available<br>Startups and Established Businesses</div>
+    </div>
+    <div class="proof-divider fade-up">
+      <div class="proof-stat-num">7+</div>
+      <div class="proof-stat-label">Glowing Client Testimonials<br>Verified from Real Clients</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <span class="section-tag">What I Offer</span>
+    <h2>Financial Services Built Around Your Business</h2>
+    <p>Whether you're just starting out or running an established operation, I bring the expertise and tools to keep your finances in perfect order.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Full Cycle Bookkeeping</h3>
+      <p>End to end bookkeeping management including transaction categorization, reconciliations, and monthly financial reporting.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Custom Spreadsheets</h3>
+      <p>Beautifully organized, trackable spreadsheets built around your workflow, designed to impress your team and clients.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <h3>Tax Preparation</h3>
+      <p>Intuit Tax Level 1 certified tax prep ensuring your filings are accurate, timely, and compliant every single season.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+      </div>
+      <h3>QuickBooks Online Setup</h3>
+      <p>Certified QuickBooks Online setup, cleanup, training, and ongoing management so your accounting software works for you.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>New Business Startup</h3>
+      <p>Specialized onboarding for brand new businesses and those launching soon, building strong financial foundations from day one.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Ongoing Monthly Support</h3>
+      <p>Consistent monthly bookkeeping and financial support for established businesses who need a dependable partner in their corner.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <span class="section-tag">Client Testimonials</span>
+    <h2>What Clients Are Saying</h2>
+    <p>Real words from real clients who trust Jen with their business finances and operations.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Jen is exceptional. She's saved me both time and money. Her spreadsheets are incredible, and she's become a key part of how we operate."</blockquote>
+      <div class="testimonial-author">Markus</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Jennifer is dependable, communicates clearly, and truly goes above and beyond. I can always count on her. She even gave me her personal number so I'd never feel stuck."</blockquote>
+      <div class="testimonial-author">Kaitlyn</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"I value Jennifer's input and insight more than words can say. She's thoughtful, efficient, and always brings clarity to every project."</blockquote>
+      <div class="testimonial-author">Taryn</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-header fade-up">
+    <span class="section-tag">The Process</span>
+    <h2>Getting Started Is Simple</h2>
+    <p>Four clear steps from first contact to clean, organized financials you can rely on.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h4>Submit Your Intake Form</h4>
+      <p>Choose the form that matches your business stage and share a bit about your financial needs.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h4>Initial Consultation</h4>
+      <p>We connect to discuss your goals, current financial setup, and the best services to get you there.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h4>Onboarding and Setup</h4>
+      <p>Jen connects your accounts, sets up your systems, and gets everything organized for a clean start.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <h4>Ongoing Partnership</h4>
+      <p>Enjoy consistent, accurate financial management with clear communication every step of the way.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a href="https://www.hirejen.com/become-a-client" class="btn-primary" target="_blank">Start Your Intake Form</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <span class="about-tag">About Jen</span>
+      <h2>Rooted in Values. Resilient in Business.</h2>
+      <p>Hi there! I'm Jen, an Army wife, small business owner, and financial professional with years of hands on experience in business operations and accounting.</p>
+      <p>I work with CPA firms and small business owners, providing everything from full cycle bookkeeping to custom spreadsheets and tax preparation. Some clients utilize me for ongoing support, while others bring me in for specific projects.</p>
+      <p>My work is grounded in accuracy, consistency, and simple systems that make business easier. I'm a QuickBooks Online Certified Bookkeeper, hold my Intuit Tax Level 1 certification, am fully insured, and bring a genuine commitment to every client relationship.</p>
+      <div class="about-creds">
+        <span class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A84B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          QuickBooks Online Certified
+        </span>
+        <span class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A84B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Intuit Tax Level 1
+        </span>
+        <span class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A84B" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Fully Insured
+        </span>
+      </div>
+    </div>
+    <div class="about-photo fade-up">
+      <div class="photo-box">
+        <div style="text-align:center">
+          <div class="photo-initials">JEN</div>
+        </div>
+        <div class="photo-subtitle">Milk &amp; Honey Financial Services</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="fade-up">
+    <h2>Ready to Simplify Your Finances?</h2>
+    <p>Jen is currently accepting new clients. Whether you're just starting out or need reliable ongoing bookkeeping support, let's build something solid together.</p>
+    <a href="https://www.hirejen.com/become-a-client" class="btn-gold" target="_blank">Become a Client Today</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="https://6d4b027702791154e4af.cdn6.editmysite.com/uploads/b/54dbac70-08e9-11f0-b46e-bb2d475a6fd4/logo_BC649D8B-0AD3-4D2E-973F-9E6DD8220148.png" alt="Milk and Honey Financial Services logo" onerror="this.style.display='none'">
+      </div>
+      <span class="footer-logo-text">Milk and Honey Financial Services, LLC</span>
+      <p class="footer-tagline">Rooted in values. Resilient in business.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About Jen</a></li>
+        <li><a href="https://www.hirejen.com/become-a-client" target="_blank">Become a Client</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>11905 W Cedar Ln<br>Maize, Kansas 67101-9584</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <a href="tel:3165500145">(316) 550-0145</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <a href="mailto:milkhoneyfinancialservices@gmail.com">milkhoneyfinancialservices@gmail.com</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Tue to Thu 9am to 3pm<br>Fri 9am to 12 noon</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Milk and Honey Financial Services, LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Close mobile menu on resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    document.querySelector('.mobile-menu').classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
