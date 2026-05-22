@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parker Bookkeeping | CPA-Backed Bookkeeping for Portland Small Businesses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: #fff; }
+
+    /* Colors */
+    :root {
+      --primary: #2d5f4f;
+      --primary-dark: #1e4035;
+      --accent: #c8a96e;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --light-bg: #F5F6F8;
+      --white: #ffffff;
+    }
+
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 40px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 48px; width: auto; display: block; }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary); font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .btn-nav {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s !important;
+    }
+    .btn-nav:hover { background: var(--primary-dark) !important; color: #fff !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 24px 24px 32px;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .mobile-menu .btn-mobile {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 8px;
+      border: none;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--primary); color: #fff; }
+
+    /* HERO */
+    #hero {
+      background: var(--white);
+      padding: 90px 40px;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.9rem;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero-content h1 span { color: var(--primary); }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-secondary {
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-secondary svg { stroke: var(--primary); }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f7f4;
+      border: 1px solid #c2ddd6;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+    .badge svg { stroke: var(--primary); flex-shrink: 0; }
+    .hero-image {
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      display: block;
+    }
+    .hero-image-fallback {
+      width: 100%;
+      height: 520px;
+      background: linear-gradient(135deg, #2d5f4f 0%, #1e4035 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-image-fallback span {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: rgba(255,255,255,0.3);
+      font-weight: 700;
+    }
+
+    /* SOCIAL PROOF BAR */
+    #stats {
+      background: var(--light-bg);
+      padding: 64px 40px;
+    }
+    .stats-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* SERVICES */
+    #services {
+      background: var(--white);
+      padding: 96px 40px;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 56px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .section-header p { font-size: 1rem; color: var(--muted); line-height: 1.7; }
+    .services-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s;
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: #f0f7f4;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--primary);
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background: var(--light-bg);
+      padding: 96px 40px;
+    }
+    .testimonials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .testimonial-author { font-size: 0.88rem; font-weight: 700; color: var(--primary); }
+
+    /* HOW IT WORKS */
+    #process {
+      background: var(--white);
+      padding: 96px 40px;
+    }
+    .steps-row {
+      max-width: 1000px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 2px;
+      background: #d1e8e2;
+      z-index: 0;
+    }
+    .step {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin: 0 auto 18px;
+    }
+    .step h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    .process-cta { text-align: center; }
+
+    /* ABOUT */
+    #about {
+      background: var(--light-bg);
+      padding: 96px 40px;
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .about-content .section-label { display: block; margin-bottom: 12px; }
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .about-content p { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* CTA BAND */
+    #cta-band {
+      background: var(--primary);
+      padding: 96px 40px;
+      text-align: center;
+    }
+    #cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #cta-band p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-cta-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--primary);
+      padding: 16px 40px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-cta-white:hover { background: var(--accent); color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #0f1f1a;
+      color: rgba(255,255,255,0.7);
+      padding: 56px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 28px;
+    }
+    .footer-brand img { height: 40px; width: auto; margin-bottom: 16px; display: block; }
+    .footer-brand span { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; font-weight: 700; display: block; margin-bottom: 12px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.6; max-width: 280px; }
+    .footer-col h4 { color: #fff; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.65); font-size: 0.88rem; text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.88rem; }
+    .footer-contact-item svg { stroke: var(--accent); flex-shrink: 0; margin-top: 1px; }
+    .footer-bottom { text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .footer-bottom a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { gap: 40px; }
+      .hero-content h1 { font-size: 2.3rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-row { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .steps-row::before { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { padding: 64px 20px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-image { order: -1; }
+      .hero-image img { height: 320px; }
+      .hero-content h1 { font-size: 2rem; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .btn-primary { width: 100%; text-align: center; }
+
+      #stats { padding: 56px 20px; }
+      .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+
+      #services { padding: 72px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      #testimonials { padding: 72px 20px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      #process { padding: 72px 20px; }
+      .steps-row { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+      #about { padding: 72px 20px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image { order: -1; }
+      .about-image img { height: 320px; }
+
+      #cta-band { padding: 72px 20px; }
+      #cta-band h2 { font-size: 1.8rem; }
+      .btn-cta-white { width: 100%; max-width: 360px; }
+
+      footer { padding: 48px 20px 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-content h1 { font-size: 1.7rem; }
+      .steps-row { grid-template-columns: 1fr; }
+      .section-header h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/68bb2c3e65af9911501b28b0/30e22c55-df5c-4241-b0c1-1adfe3bba188/PB+logo.png"
+      alt="Parker Bookkeeping"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    />
+    <span style="display:none;">Parker Bookkeeping</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#process">How It Works</a>
+    <a href="#about">About</a>
+    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ" target="_blank" class="btn-nav">Book a Call</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#testimonials" onclick="toggleMenu()">Testimonials</a>
+  <a href="#process" onclick="toggleMenu()">How It Works</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ" target="_blank" class="btn-mobile">Book a Free Call</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content fade-in">
+      <h1>CPA-Backed Bookkeeping for <span>Portland Small Businesses</span></h1>
+      <p>Clean books, real clarity, and a financial partner who helps you plan ahead, not just catch up. Stop guessing at your numbers and start making confident decisions.</p>
+      <div class="hero-ctas">
+        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ" target="_blank" class="btn-primary">Book a Free Consultation</a>
+        <a href="tel:5035679465" class="hero-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          (503) 567-9465
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          CPA Backed
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          QuickBooks ProAdvisor
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          BBB Accredited
+        </span>
+      </div>
+    </div>
+    <div class="hero-image fade-in">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/68bb2c3e65af9911501b28b0/acd4a100-13f3-4ea0-aba1-b29763000c7f/elaine+and+cody.jpg"
+        alt="Elaine Parker, founder of Parker Bookkeeping"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hero-image-fallback" style="display:none;"><span>EP</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <span class="stat-number">120+</span>
+      <span class="stat-label">Hours saved per client annually</span>
+    </div>
+    <div class="stat-item fade-in">
+      <span class="stat-number">$3,500+</span>
+      <span class="stat-label">Average yearly savings in accounting fees</span>
+    </div>
+    <div class="stat-item fade-in">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Portland small business focused</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-in">
+    <span class="section-label">What We Offer</span>
+    <h2>Bookkeeping Services Built Around Your Business</h2>
+    <p>From monthly reconciliations to strategic advisory, we handle your finances so you can focus on what you do best.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Business Advisory</h3>
+      <p>Monthly financial reviews, cash flow forecasting, budget analysis, and decision support to keep your business on track.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3>Bookkeeping</h3>
+      <p>AP/AR management, transaction categorization, bank reconciliations, payroll recording, and sales tax tracking done right.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Financial Reporting</h3>
+      <p>Monthly, quarterly, and annual close with full P&amp;L, balance sheet, and cash flow statements tailored to your goals.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>QuickBooks Setup</h3>
+      <p>Expert QuickBooks Online setup, configuration, and training to get your accounting system running properly from day one.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+      </div>
+      <h3>Catch-Up Bookkeeping</h3>
+      <p>Months or years behind? We clean up the backlog, get you current, and organize your records for tax season.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Tax-Ready Financials</h3>
+      <p>Year-round organized books that make tax season stress-free, and help your CPA work faster and more accurately.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header fade-in">
+    <span class="section-label">Client Stories</span>
+    <h2>What Portland Business Owners Are Saying</h2>
+    <p>Real results from real clients who trusted Parker Bookkeeping with their finances.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Working with Elaine at Parker Bookkeeping has been a game-changer for my business. After just a few months, she has my financials in perfect order, which made tax season this year completely stress-free. She is punctual, thorough, and highly communicative. If you're looking for someone who treats your books with genuine care and precision, I can't recommend Parker Bookkeeping enough."</blockquote>
+      <div class="testimonial-author">Kathi T.</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Elaine was super patient and working with her, I don't dread our monthly close anymore."</blockquote>
+      <div class="testimonial-author">Levi &mdash; Gallant Metals</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"I just met Ms. Parker, but she impressed me. She came out to my office and reviewed my systems. She seemed to have an immediate grasp on the matters. She was prompt and friendly. She sent the information I requested. Frankly, I am very impressed."</blockquote>
+      <div class="testimonial-author">Karen O.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="section-header fade-in">
+    <span class="section-label">The Process</span>
+    <h2>Getting Started Is Simple</h2>
+    <p>Four straightforward steps to clean books and financial peace of mind.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-number">1</div>
+      <h3>Book a Free Call</h3>
+      <p>Schedule a no-pressure consultation to discuss your business and bookkeeping needs.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">2</div>
+      <h3>We Review Your Books</h3>
+      <p>Elaine assesses your current situation and identifies any gaps, errors, or missed opportunities.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">3</div>
+      <h3>Custom Plan Built</h3>
+      <p>You receive a tailored service plan built around your business goals and budget.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">4</div>
+      <h3>Ongoing Support</h3>
+      <p>Monthly check-ins, clean reports, and a financial partner who grows with your business.</p>
+    </div>
+  </div>
+  <div class="process-cta fade-in">
+    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ" target="_blank" class="btn-primary">Book Your Free Call Today</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-content fade-in">
+      <span class="section-label">About Elaine</span>
+      <h2>A Financial Partner Who Truly Understands Small Business</h2>
+      <p>Elaine Parker is a CPA-backed bookkeeper based in Portland, Oregon, dedicated to helping small business owners gain clarity and confidence in their numbers. With deep expertise in QuickBooks Online and a Gold Tier ProAdvisor certification, she brings both precision and approachability to every client relationship.</p>
+      <p>Parker Bookkeeping was founded on a simple belief: small business owners deserve the same quality financial support as large companies, without the overhead. Elaine works as a true partner, not just a data entry service, delivering monthly insights, proactive communication, and tax-ready books year round.</p>
+      <p>Based in Portland, OR, she serves clients across the metro area and remotely throughout Oregon, with a particular focus on service-based businesses, trades, and creative industries.</p>
+      <div class="about-badges">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          CPA Backed
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          QuickBooks Gold ProAdvisor
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          BBB Accredited
+        </span>
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Portland Local
+        </span>
+      </div>
+    </div>
+    <div class="about-image fade-in">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/68bb2c3e65af9911501b28b0/acd4a100-13f3-4ea0-aba1-b29763000c7f/elaine+and+cody.jpg"
+        alt="Elaine Parker"
+        onerror="this.style.display='none';"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <div class="fade-in">
+    <h2>Ready for Books You Can Actually Trust?</h2>
+    <p>Join Portland small business owners who have traded financial stress for clarity, confidence, and time back in their day.</p>
+    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ" target="_blank" class="btn-cta-white">Schedule Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/68bb2c3e65af9911501b28b0/30e22c55-df5c-4241-b0c1-1adfe3bba188/PB+logo.png"
+        alt="Parker Bookkeeping"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      />
+      <span style="display:none;">Parker Bookkeeping</span>
+      <p>CPA-backed bookkeeping and advisory services for Portland small businesses. Clean books, real clarity, and a partner who helps you plan ahead.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Business Advisory</a>
+      <a href="#services">Bookkeeping</a>
+      <a href="#services">Financial Reporting</a>
+      <a href="#services">QuickBooks Setup</a>
+      <a href="#services">Catch-Up Bookkeeping</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>(503) 567-9465</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>elaine@ParkerBookkeeping.com</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>5441 S Macadam Ave, Portland, OR 97239</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Parker Bookkeeping. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
