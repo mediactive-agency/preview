@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CME Accounting LLC | Not Your Traditional Accounting Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#1F2937;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+:root{
+  --primary:#7C3AED;
+  --accent:#F59E0B;
+  --dark:#2D1B69;
+  --gray:#F5F6F8;
+  --text:#1F2937;
+  --muted:#6B7280;
+}
+
+nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #E5E7EB;padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;width:auto}
+.nav-logo span{font-size:1.25rem;font-weight:700;color:var(--primary)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.9rem;font-weight:500;color:#374151;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:#fff;padding:.6rem 1.4rem;border-radius:6px;font-weight:600;font-size:.9rem;transition:background .2s}
+.nav-cta:hover{background:var(--dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#374151;border-radius:2px}
+.mobile-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid #E5E7EB;padding:1.5rem 5%}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:.75rem 0;font-weight:500;color:#374151;border-bottom:1px solid #F3F4F6}
+.mobile-menu .mob-cta{margin-top:1rem;background:var(--primary);color:#fff;padding:.75rem;border-radius:6px;font-weight:600;text-align:center}
+
+.hero{background:#fff;padding:100px 5%}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.badge{background:#F5F3FF;color:var(--primary);padding:.35rem .9rem;border-radius:50px;font-size:.8rem;font-weight:600}
+.hero h1{font-size:2.75rem;font-weight:800;line-height:1.2;color:var(--dark);margin-bottom:1.25rem}
+.hero h1 span{color:var(--primary)}
+.hero p{font-size:1.1rem;color:#4B5563;margin-bottom:2rem;max-width:520px}
+.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn-primary{background:var(--primary);color:#fff;padding:.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:background .2s}
+.btn-primary:hover{background:var(--dark)}
+.hero-contact{font-size:.95rem;color:#6B7280;display:flex;align-items:center;gap:.5rem}
+.hero-contact svg{color:var(--primary)}
+.hero-img{border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.hero-img img{width:100%;height:480px;object-fit:cover;object-position:center top}
+.hero-img .img-placeholder{width:100%;height:480px;background:linear-gradient(135deg,var(--primary) 0%,var(--dark) 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:1.1rem;font-weight:500}
+
+.stats{background:var(--gray);padding:60px 5%}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:2.5rem;font-weight:800;color:var(--primary)}
+.stat-label{color:#6B7280;font-size:.95rem;margin-top:.25rem}
+
+.services{background:#fff;padding:100px 5%}
+.section-header{text-align:center;max-width:640px;margin:0 auto 3.5rem}
+.section-label{color:var(--primary);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.section-header h2{font-size:2.2rem;font-weight:800;color:var(--dark);line-height:1.25}
+.cards-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:2rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card-icon{width:44px;height:44px;background:#F5F3FF;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:1.25rem}
+.card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.card p{font-size:.9rem;color:#6B7280;line-height:1.6}
+
+.testimonials{background:var(--gray);padding:100px 5%}
+.testi-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.testi-card{background:#fff;border-radius:8px;padding:2rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stars{display:flex;gap:3px;margin-bottom:1rem}
+.testi-card blockquote{font-size:.95rem;color:#374151;line-height:1.7;font-style:italic;margin-bottom:1.25rem}
+.testi-author{font-weight:700;font-size:.9rem;color:var(--dark)}
+.testi-role{font-size:.82rem;color:#9CA3AF}
+
+.hiw{background:#fff;padding:100px 5%}
+.steps-row{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-row::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:#E5E7EB;z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 1rem}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.step h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.4rem}
+.step p{font-size:.85rem;color:#6B7280}
+.hiw-cta{text-align:center;margin-top:3rem}
+
+.about{background:var(--gray);padding:100px 5%}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text h2{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:1.25rem}
+.about-text p{color:#4B5563;margin-bottom:1rem;line-height:1.8}
+.about-badges{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.about-photo{border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.about-photo img{width:100%;height:420px;object-fit:cover;object-position:center top}
+.about-photo .img-placeholder{width:100%;height:420px;background:linear-gradient(135deg,var(--primary) 0%,var(--dark) 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:1.1rem}
+
+.cta-band{background:var(--primary);padding:90px 5%;text-align:center}
+.cta-band h2{font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:1rem}
+.cta-band p{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:2rem}
+.btn-white{background:#fff;color:var(--primary);padding:.9rem 2.2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:background .2s}
+.btn-white:hover{background:#F5F3FF}
+
+footer{background:var(--dark);padding:60px 5% 30px;color:rgba(255,255,255,.7)}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.75rem;max-width:280px}
+.footer-logo{font-size:1.2rem;font-weight:800;color:#fff}
+footer h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:1rem}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+footer ul a{font-size:.88rem;color:rgba(255,255,255,.55);transition:color .2s}
+footer ul a:hover{color:#fff}
+.footer-contact li{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.55)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:.82rem;color:rgba(255,255,255,.4)}
+.footer-bottom .mediactive{color:var(--accent);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-img,.about-photo{order:-1}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:2rem}
+  .cards-grid,.testi-grid,.stats-inner{grid-template-columns:1fr}
+  .steps-row{grid-template-columns:1fr 1fr;gap:2rem}
+  .steps-row::before{display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .btn-primary,.btn-white{width:100%;text-align:center;display:block}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://static.wixstatic.com/media/cme-accounting-logo.png" alt="CME Accounting LLC" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none">CME Accounting</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Started</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="mob-cta">Get Started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <div class="hero-badge-row">
+        <span class="badge">Bookkeeping</span>
+        <span class="badge">Tax Services</span>
+        <span class="badge">Business Consulting</span>
+      </div>
+      <h1>We're Not Your <span>Traditional Accounting Firm</span></h1>
+      <p>CME Accounting LLC brings a fresh, modern approach to accounting and tax services. We combine expert financial guidance with a personal touch that traditional firms simply do not offer.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="mailto:admin@cmeaccountingllc.com" class="hero-contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          admin@cmeaccountingllc.com
+        </a>
+      </div>
+    </div>
+    <div class="hero-img fade-up">
+      <img src="https://static.wixstatic.com/media/cme-accounting-team.jpg" alt="CME Accounting Team" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder">CME Accounting Team</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="fade-up">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Clients Served</div>
+    </div>
+    <div class="fade-up">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+    <div class="fade-up">
+      <div class="stat-num">5-Star</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <div class="section-label">What We Offer</div>
+    <h2>Modern Accounting Services for Modern Businesses</h2>
+  </div>
+  <div class="cards-grid">
+    <div class="card fade-up">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Bookkeeping</h3>
+      <p>Accurate, organized monthly bookkeeping that keeps your finances clean, current, and ready for any decision.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3>Tax Preparation</h3>
+      <p>Business and personal tax returns prepared with precision, filed on time, and optimized to reduce your tax liability.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Payroll Management</h3>
+      <p>Reliable payroll processing so your team gets paid accurately and on time, every pay period without fail.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Financial Consulting</h3>
+      <p>Strategic business consulting that helps you understand your numbers and use them to drive smarter decisions.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+      </div>
+      <h3>Business Formation</h3>
+      <p>Launch your business the right way with proper entity formation, EIN registration, and initial accounting setup.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>QuickBooks Setup</h3>
+      <p>Professional QuickBooks setup, cleanup, and training so your accounting software works the way it should.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <div class="section-label">Client Reviews</div>
+    <h2>What Our Clients Are Saying</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Clarita and the CME team have been an absolute game changer for my business. They are proactive, responsive, and genuinely care about your success."</blockquote>
+      <div class="testi-author">Julia Thomas</div>
+      <div class="testi-role">Owner, Campika LLC</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"I have worked with several accounting firms over the years and none of them compare to CME. They actually explain everything in a way that makes sense."</blockquote>
+      <div class="testi-author">Marcus P.</div>
+      <div class="testi-role">Small Business Owner</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Switching to CME was one of the best business decisions I made. My books are always clean, my taxes are filed early, and I actually feel in control of my finances."</blockquote>
+      <div class="testi-author">Denise R.</div>
+      <div class="testi-role">Entrepreneur</div>
+    </div>
+  </div>
+</section>
+
+<section class="hiw">
+  <div class="section-header fade-up">
+    <div class="section-label">How It Works</div>
+    <h2>A Better Accounting Experience Starts Here</h2>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h4>Free Consultation</h4>
+      <p>We learn about your business and identify exactly what you need</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h4>Tailored Plan</h4>
+      <p>We design a service package customized to your size, industry, and goals</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h4>Seamless Onboarding</h4>
+      <p>We handle the transition smoothly so there is zero disruption to your business</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <h4>Ongoing Partnership</h4>
+      <p>Monthly check-ins and proactive guidance keep your finances on track year-round</p>
+    </div>
+  </div>
+  <div class="hiw-cta fade-up">
+    <a href="#contact" class="btn-primary">Book Your Free Consultation</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <div class="section-label">About Clarita</div>
+      <h2>An Accounting Firm That Actually Cares About Your Success</h2>
+      <p>CME Accounting LLC was founded with a clear mission: to deliver accounting services that are personal, proactive, and unlike anything you have experienced at a traditional firm. We do not just process numbers, we build relationships.</p>
+      <p>Led by Clarita, CME Accounting brings a modern, client-first philosophy to every engagement. We take the time to understand your business, explain your finances in plain language, and proactively identify opportunities to save you money and grow.</p>
+      <p>Whether you are a startup just getting off the ground or an established business ready to scale, CME Accounting has the expertise and the personal touch to be a true financial partner.</p>
+      <div class="about-badges">
+        <span class="badge">Client-First</span>
+        <span class="badge">Modern Approach</span>
+        <span class="badge">Proactive Guidance</span>
+      </div>
+    </div>
+    <div class="about-photo fade-up">
+      <img src="https://static.wixstatic.com/media/cme-accounting-clarita.jpg" alt="Clarita, CME Accounting LLC" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder">Clarita, CME Accounting</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-up">Ready to Experience Accounting Done Differently?</h2>
+  <p class="fade-up">Book a free consultation and discover what a truly modern accounting firm feels like.</p>
+  <a href="mailto:admin@cmeaccountingllc.com" class="btn-white fade-up">Book Your Free Consultation</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">CME Accounting LLC</div>
+      <p>Modern accounting and tax services with a personal touch for businesses that deserve better.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Bookkeeping</a></li>
+        <li><a href="#services">Tax Preparation</a></li>
+        <li><a href="#services">Payroll Management</a></li>
+        <li><a href="#services">Business Formation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-contact">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          admin@cmeaccountingllc.com
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          cmeaccountingllc.com
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 CME Accounting LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.12});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
