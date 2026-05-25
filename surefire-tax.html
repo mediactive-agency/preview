@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surefire Tax &amp; Accounting LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+:root{--primary:#0F172A;--accent:#38BDF8;--dark:#020617;--gray:#F5F6F8;--text:#374151}
+body{color:var(--text);font-size:16px;line-height:1.6}
+nav{position:sticky;top:0;z-index:100;background:#0F172A;padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;color:#fff;text-decoration:none}
+.logo img{height:36px;object-fit:contain}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.7);font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#000!important;padding:10px 22px;border-radius:6px;font-weight:700;transition:opacity .2s!important}
+.nav-cta:hover{opacity:.85!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.mobile-menu{display:none;position:absolute;top:70px;left:0;right:0;background:#0F172A;padding:20px 5%;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:12px 0;text-decoration:none;color:rgba(255,255,255,.8);font-weight:500;border-bottom:1px solid rgba(255,255,255,.1)}
+.mobile-menu .nav-cta{display:inline-block;margin-top:12px;border-bottom:none;color:#000!important}
+section{padding:90px 5%}.container{max-width:1280px;margin:0 auto}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}.fade-in.visible{opacity:1;transform:none}
+.hero{background:#0F172A;padding:110px 5% 100px}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.badge{background:rgba(56,189,248,.15);color:var(--accent);padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:600;display:inline-block;margin-right:8px;margin-bottom:8px;border:1px solid rgba(56,189,248,.25)}
+h1{font-size:2.8rem;font-weight:800;line-height:1.2;color:#fff;margin-bottom:16px}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.65);margin-bottom:30px}
+.hero-cta{display:inline-block;background:var(--accent);color:#000;padding:14px 30px;border-radius:6px;font-weight:700;text-decoration:none;transition:opacity .2s}
+.hero-cta:hover{opacity:.85}
+.hero-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.hero-img img{width:100%;height:480px;object-fit:cover;object-position:center top}
+.stats-bar{background:#111827;padding:50px 5%;border-top:1px solid rgba(56,189,248,.1);border-bottom:1px solid rgba(56,189,248,.1)}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.stat-num{font-size:2.5rem;font-weight:800;color:var(--accent)}
+.stat-label{font-size:.95rem;color:rgba(255,255,255,.5);margin-top:4px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px}
+.card{background:#fff;border-radius:8px;padding:30px;box-shadow:0 2px 12px rgba(0,0,0,.06);border:1px solid #E5E7EB}
+.card-icon{width:44px;height:44px;background:rgba(15,23,42,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--primary)}
+.card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.card p{font-size:.9rem;color:#6B7280}
+.section-label{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h2{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:16px}
+.section-sub{font-size:1rem;color:#6B7280;max-width:560px}
+.testi-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:28px;margin-top:50px;max-width:760px}
+.testi-card{background:#fff;border-radius:8px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:4px solid var(--accent)}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.testi-text{font-size:1.05rem;line-height:1.7;color:#374151;margin-bottom:16px;font-style:italic}
+.testi-author{font-weight:700;font-size:.95rem;color:var(--dark)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px;position:relative}
+.steps::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:rgba(56,189,248,.2)}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--primary);color:var(--accent);font-size:1.2rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:2px solid var(--accent)}
+.step h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.step p{font-size:.85rem;color:#6B7280}
+.steps-cta{text-align:center;margin-top:40px}
+.btn-dark{display:inline-block;background:var(--primary);color:#fff;padding:14px 30px;border-radius:6px;font-weight:700;text-decoration:none;transition:background .2s}
+.btn-dark:hover{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:50px}
+.about-img img{width:100%;height:420px;object-fit:cover;object-position:center top;border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.cta-band{background:#0F172A;text-align:center;padding:80px 5%;border-top:1px solid rgba(56,189,248,.15)}
+.cta-band h2{color:#fff;margin-bottom:16px}
+.cta-band p{color:rgba(255,255,255,.65);margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-accent{display:inline-block;background:var(--accent);color:#000;padding:14px 32px;border-radius:6px;font-weight:700;text-decoration:none;transition:opacity .2s}
+.btn-accent:hover{opacity:.85}
+footer{background:#020617;padding:60px 5% 30px;color:rgba(255,255,255,.5)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;max-width:1280px;margin:0 auto;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07)}
+footer h4{color:rgba(255,255,255,.8);font-size:.95rem;margin-bottom:16px}
+footer ul{list-style:none}footer ul li{margin-bottom:10px}
+footer ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.9rem;transition:color .2s}
+footer ul a:hover{color:var(--accent)}
+.footer-bottom{max-width:1280px;margin:24px auto 0;font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.mediactive{color:var(--accent)}
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .hero-inner,.about-grid{grid-template-columns:1fr}
+  .hero-img{order:-1}.hero-img img{height:300px}
+  h1{font-size:2rem}.services-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr;gap:24px}
+  .steps{grid-template-columns:1fr 1fr}.steps::before{display:none}
+  .footer-grid{grid-template-columns:1fr}.hero-cta{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="https://surefiretaxco.com/logo-new.png" alt="Surefire Tax" onerror="this.style.display='none'">
+      Surefire Tax &amp; Accounting
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="#contact" class="nav-cta" onclick="toggleMenu()">Get Started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <div>
+      <div style="margin-bottom:20px">
+        <span class="badge">CPA</span>
+        <span class="badge">CRE Operators</span>
+        <span class="badge">Syndicates and Funds</span>
+        <span class="badge">Family Offices</span>
+      </div>
+      <h1>Your Back Office. Your Tax Strategy. One Firm.</h1>
+      <p class="hero-sub">Matt Hamilton, CPA, delivers integrated bookkeeping, tax compliance, and strategic advisory for real estate investors, syndicates, family offices, and STR operators.</p>
+      <a href="#contact" class="hero-cta">Schedule a Strategy Call</a>
+      <div style="margin-top:14px">
+        <a href="mailto:matt@surefiretaxco.com" style="color:var(--accent);text-decoration:none;font-weight:600;font-size:.9rem">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>matt@surefiretaxco.com
+        </a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://surefiretaxco.com/pfp.png" alt="Matt Hamilton, CPA" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800'">
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner fade-in">
+    <div><div class="stat-num">CPA</div><div class="stat-label">Subchapter K Partnership Tax Specialist</div></div>
+    <div><div class="stat-num">$500</div><div class="stat-label">Flat-Fee 60-Min Strategy Sessions Available</div></div>
+    <div><div class="stat-num">1031</div><div class="stat-label">Cost Seg, Exchanges, Bonus Depreciation Expert</div></div>
+  </div>
+</div>
+
+<section id="services" style="background:var(--gray)">
+  <div class="container fade-in">
+    <div class="section-label">Services</div>
+    <h2>Integrated Back Office and Tax Strategy for Real Estate</h2>
+    <p class="section-sub">When your CPA closes your books and advises on exit timing, you get better advice. That is the Surefire difference.</p>
+    <div class="services-grid">
+      <div class="card">
+        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Monthly Bookkeeping</h3>
+        <p>Entity-level monthly close for real estate operators, syndicates, and funds with CRE-specific expertise.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h3>Tax Compliance</h3>
+        <p>Partnership returns, K-1 preparation, and multi-entity compliance for complex real estate structures.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Strategic Advisory</h3>
+        <p>Flat-fee recurring advisory on exit timing, deal structure, and how gains and losses flow to each partner.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Cost Segregation</h3>
+        <p>Expert cost segregation studies to accelerate depreciation and maximize your after-tax returns.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>1031 Exchange Planning</h3>
+        <p>Strategic 1031 exchange structuring to defer capital gains and compound your real estate portfolio.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <h3>STR Loophole Strategy</h3>
+        <p>Short-term rental tax strategies and bonus depreciation planning for STR investors and operators.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" style="background:#fff">
+  <div class="container fade-in">
+    <div class="section-label">The Surefire Difference</div>
+    <h2>Integrated Advice. Better Outcomes.</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="testi-text">"When the same advisor who closes your books every month also advises you on exit timing, deal structure, and how gains and losses flow to each partner, you get better advice."</p>
+        <div class="testi-author">Matt Hamilton, CPA — Surefire Tax &amp; Accounting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--gray)">
+  <div class="container fade-in">
+    <div class="section-label">Process</div>
+    <h2>One Integrated Engagement</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Strategy Call</h3><p>$500 flat-fee 60-minute session to assess your structure and identify tax opportunities.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Engagement Design</h3><p>A custom monthly engagement covering bookkeeping, compliance, and advisory.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Monthly Close</h3><p>Consistent entity-level bookkeeping with CRE-specific expertise every month.</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Strategic Alignment</h3><p>Your CPA knows your books and your strategy. Integrated advice on every major decision.</p></div>
+    </div>
+    <div class="steps-cta"><a href="#contact" class="btn-dark">Book a Strategy Call</a></div>
+  </div>
+</section>
+
+<section id="about" style="background:#fff">
+  <div class="container fade-in">
+    <div class="section-label">About</div>
+    <h2>Meet Matt Hamilton, CPA</h2>
+    <div class="about-grid">
+      <div>
+        <p style="margin-bottom:16px">Matt Hamilton, CPA, founded Surefire Tax and Accounting to solve a specific problem: most real estate investors get their books done by one firm and their tax advice from another, and those two advisors never talk to each other.</p>
+        <p style="margin-bottom:16px">Surefire integrates bookkeeping and strategic advisory into a single engagement, so the advisor who closes your books also advises on your exits, deal structures, and partner allocations. Specializing in Subchapter K partnership taxation, cost segregation, 1031 exchanges, bonus depreciation, and the STR loophole, Matt brings niche depth to every engagement.</p>
+        <p>Featured at the F Street Summit 2025. Serving syndicates, CRE operators, family offices, and STR investors.</p>
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="badge">CPA</span>
+          <span class="badge">Subchapter K Specialist</span>
+          <span class="badge">Cost Segregation</span>
+          <span class="badge">1031 Exchanges</span>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://surefiretaxco.com/pfp.png" alt="Matt Hamilton, CPA" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band" id="contact">
+  <div class="container fade-in">
+    <h2>Your Back Office. Your Tax Strategy. One Call.</h2>
+    <p>Integrated bookkeeping and advisory for real estate investors, syndicates, and family offices. Start with a $500 strategy session.</p>
+    <a href="mailto:matt@surefiretaxco.com" class="btn-accent">Email matt@surefiretaxco.com</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div style="font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:12px">Surefire Tax &amp; Accounting LLC</div>
+      <p style="font-size:.9rem;max-width:300px">Integrated bookkeeping and tax advisory for CRE operators, syndicates, family offices, and STR investors.</p>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="#services">Bookkeeping</a></li>
+      <li><a href="#services">Tax Compliance</a></li>
+      <li><a href="#services">Strategic Advisory</a></li>
+      <li><a href="#services">Cost Segregation</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="mailto:matt@surefiretaxco.com">matt@surefiretaxco.com</a></li>
+      <li><a href="https://surefiretaxco.com">surefiretaxco.com</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Surefire Tax &amp; Accounting LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span></span>
+  </div>
+</footer>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
