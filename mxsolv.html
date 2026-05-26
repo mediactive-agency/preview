@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MX Solv — Unlock Hidden Margin Inside Your Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0D1B3E;
+      --navy2:  #162247;
+      --orange: #F47B20;
+      --orange2:#E06010;
+      --light:  #F8F9FC;
+      --muted:  #6B7280;
+      --white:  #FFFFFF;
+      --border: #E5E7EB;
+      --grad:   linear-gradient(135deg, #0D1B3E 0%, #162D5A 60%, #1B3C7A 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(13,27,62,0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--white); letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange); color: var(--white);
+      padding: 0.5rem 1.4rem; border-radius: 6px;
+      font-weight: 600; font-size: 0.88rem;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--orange2); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--grad);
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(244,123,32,0.15); border: 1px solid rgba(244,123,32,0.35);
+      color: var(--orange); border-radius: 100px;
+      padding: 0.35rem 1rem; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.6rem; }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.1; letter-spacing: -1px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero p {
+      font-size: 1.15rem; color: rgba(255,255,255,0.75);
+      max-width: 520px; margin-bottom: 2.5rem; line-height: 1.75;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+      box-shadow: 0 4px 20px rgba(244,123,32,0.4);
+    }
+    .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(244,123,32,0.5); }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 8px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.07); }
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;
+    }
+    .hero-stat { border-left: 2px solid var(--orange); padding-left: 1rem; }
+    .hero-stat strong { display: block; font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .hero-stat small { color: rgba(255,255,255,0.55); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* hero visual card */
+    .hero-visual {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 2.5rem;
+      backdrop-filter: blur(12px);
+    }
+    .hero-visual h3 {
+      font-family: 'Sora', sans-serif;
+      color: var(--white); font-size: 1.1rem; margin-bottom: 1.5rem;
+    }
+    .metric-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1rem;
+      background: rgba(255,255,255,0.07); border-radius: 10px;
+      margin-bottom: 0.75rem;
+    }
+    .metric-row:last-child { margin-bottom: 0; }
+    .metric-label { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+    .metric-val { font-weight: 700; color: var(--white); font-size: 1.05rem; }
+    .metric-tag {
+      font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+    .tag-green { background: rgba(34,197,94,0.2); color: #4ade80; }
+    .tag-orange { background: rgba(244,123,32,0.2); color: var(--orange); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--light); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 5%;
+      display: flex; align-items: center; justify-content: center;
+      gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: var(--muted); font-size: 0.88rem; font-weight: 500;
+    }
+    .trust-icon { font-size: 1.1rem; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 96px 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; color: var(--navy);
+      line-height: 1.2; letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 580px; line-height: 1.75;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: all 0.25s; cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--orange); opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 12px 40px rgba(13,27,62,0.08);
+      transform: translateY(-4px);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(244,123,32,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.6rem;
+    }
+    .service-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1rem; }
+    .service-price {
+      font-weight: 700; color: var(--orange); font-size: 1rem;
+      border-top: 1px solid var(--border); padding-top: 1rem;
+    }
+    .service-tag {
+      display: inline-block;
+      background: rgba(244,123,32,0.1); color: var(--orange);
+      border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+      padding: 0.2rem 0.75rem; margin-bottom: 1rem;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--light); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 12.5%; right: 12.5%;
+      height: 2px; background: linear-gradient(90deg, var(--orange), #1B3C7A);
+      z-index: 0;
+    }
+    .process-step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+    .step-num {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--orange);
+    }
+    .process-step:first-child .step-num { background: var(--orange); box-shadow: 0 0 0 3px var(--navy); }
+    .process-step h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;
+    }
+    .process-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── 3 PILLARS ── */
+    #pillars { background: var(--navy); }
+    #pillars .section-title { color: var(--white); }
+    #pillars .section-sub { color: rgba(255,255,255,0.65); }
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .pillar-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 2.5rem 2rem;
+      text-align: center;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .pillar-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-4px); }
+    .pillar-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+    .pillar-card h3 {
+      font-family: 'Sora', sans-serif;
+      color: var(--white); font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .pillar-card p { color: rgba(255,255,255,0.6); font-size: 0.93rem; line-height: 1.65; }
+    .pillar-highlight {
+      display: inline-block; color: var(--orange);
+      font-weight: 700; font-size: 0.85rem;
+      margin-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1rem; width: 100%;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-tag {
+      display: inline-block;
+      background: rgba(244,123,32,0.1); color: var(--orange);
+      border-radius: 100px; font-size: 0.8rem; font-weight: 700;
+      padding: 0.3rem 1rem; margin-bottom: 1rem; letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
+    .about-checklist { list-style: none; margin: 1.5rem 0 2rem; }
+    .about-checklist li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      color: var(--navy); font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .about-checklist li::before {
+      content: '✓'; color: var(--orange);
+      font-weight: 800; font-size: 1rem; line-height: 1.4; flex-shrink: 0;
+    }
+    .about-card {
+      background: var(--grad); border-radius: 20px; padding: 3rem;
+      color: var(--white); position: relative; overflow: hidden;
+    }
+    .about-card::after {
+      content: '"';
+      position: absolute; top: -1rem; right: 1.5rem;
+      font-size: 10rem; color: rgba(244,123,32,0.15);
+      font-family: 'Sora', sans-serif; line-height: 1;
+    }
+    .about-card blockquote {
+      font-size: 1.15rem; line-height: 1.75; font-style: italic;
+      color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .about-card .contact-info { position: relative; z-index: 1; }
+    .about-card .contact-info p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.4rem; }
+    .about-card .contact-info strong { color: var(--white); }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--grad); padding: 96px 5%;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; top: -50%; left: -10%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,123,32,0.12), transparent 70%);
+    }
+    #cta::after {
+      content: '';
+      position: absolute; bottom: -50%; right: -10%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,123,32,0.08), transparent 70%);
+    }
+    #cta .section-inner { position: relative; z-index: 2; }
+    #cta .section-title { color: var(--white); max-width: 680px; margin: 0 auto 1rem; }
+    #cta .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 2.5rem; text-align: center; max-width: 540px; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .cta-note {
+      color: rgba(255,255,255,0.5); font-size: 0.85rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080F24; color: rgba(255,255,255,0.5);
+      padding: 3rem 5%; text-align: center;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-logo {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--orange); }
+    footer p { font-size: 0.88rem; margin-bottom: 0.4rem; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
+      .about-inner { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; }
+      section { padding: 64px 4%; }
+      .hero { padding: 100px 4% 60px; }
+      .process-steps { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MX<span>Solv</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pillars">Approach</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="tel:9736721667" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">East Orange, NJ · Strategy & Finance Consulting</div>
+      <h1>Unlock <span>Hidden Margin</span> Inside Your Business</h1>
+      <p>MX Solv removes friction across strategy, finance, and visibility — so you keep more of every dollar you earn. We reveal the value that's already there.</p>
+      <div class="hero-ctas">
+        <a href="tel:9736721667" class="btn-primary">Book a Free Call</a>
+        <a href="#services" class="btn-secondary">See How We Help →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>3</strong>
+          <small>Core Domains</small>
+        </div>
+        <div class="hero-stat">
+          <strong>60–90%</strong>
+          <small>Resource Focus</small>
+        </div>
+        <div class="hero-stat">
+          <strong>NJ-Based</strong>
+          <small>National Reach</small>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <h3>Business Health Dashboard</h3>
+      <div class="metric-row">
+        <span class="metric-label">IP Value Untapped</span>
+        <span class="metric-val">High</span>
+        <span class="metric-tag tag-orange">Opportunity</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Margin Recovery</span>
+        <span class="metric-val">In Progress</span>
+        <span class="metric-tag tag-green">Active</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Executive Visibility</span>
+        <span class="metric-val">Expanding</span>
+        <span class="metric-tag tag-green">Growing</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Friction Removed</span>
+        <span class="metric-val">Ongoing</span>
+        <span class="metric-tag tag-orange">MX Solv™</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">🏛️</span> Strategy Consulting</div>
+  <div class="trust-item"><span class="trust-icon">📊</span> Finance Analysis</div>
+  <div class="trust-item"><span class="trust-icon">🎯</span> Visibility Coaching</div>
+  <div class="trust-item"><span class="trust-icon">🔒</span> IP Value Review</div>
+  <div class="trust-item"><span class="trust-icon">📍</span> East Orange, NJ 07017</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Our Engagements</div>
+      <h2 class="section-title">Three Precision Services.<br>One Clear Outcome.</h2>
+      <p class="section-sub">Each MX Solv engagement is scoped, priced, and built to deliver real, measurable results — not endless retainers.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <span class="service-tag">Strategy</span>
+        <h3>IP Value Mine Review™</h3>
+        <p>A diagnostic deep dive that surfaces untapped intellectual property and strategic assets hidden within your business. Know what you own — and what it's worth.</p>
+        <div class="service-price">Starting at $3,000</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <span class="service-tag">Finance</span>
+        <h3>Margin Shark Brief™</h3>
+        <p>A focused financial analysis that identifies where you're bleeding margin, where your highest ROI levers are, and how to realign spending for maximum impact.</p>
+        <div class="service-price">Starting at $4,000</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎤</div>
+        <span class="service-tag">Visibility</span>
+        <h3>EPI™ Executive Presence Immersion</h3>
+        <p>An elite coaching intensive to build executive-level authority and market visibility — so decision-makers know your name before you're in the room.</p>
+        <div class="service-price">Starting at $5,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From Friction to Margin in 4 Steps</h2>
+      <p class="section-sub" style="margin:0 auto;">A clear, structured path from your first call to measurable business results.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Discovery Call</h4>
+        <p>We learn your business — where friction lives, what margin is escaping, and where the hidden value is buried.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>Diagnostic Review</h4>
+        <p>MX Solv audits your strategy, financials, and visibility architecture using our proprietary frameworks.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Strategic Brief</h4>
+        <p>You receive a clear, actionable brief — exactly where to focus 60–90% of your energy for maximum return.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Execution &amp; Growth</h4>
+        <p>We guide implementation, remove remaining friction, and track your margin recovery in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-label" style="color:rgba(244,123,32,0.9);">The MX Solv Approach</div>
+      <h2 class="section-title">We Unlock Value Across Three Domains</h2>
+      <p class="section-sub" style="margin:0 auto; color:rgba(255,255,255,0.65);">Every business leaks value across strategy, finance, and visibility. We find it and give it back.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-emoji">🧭</div>
+        <h3>Strategy</h3>
+        <p>Surface your most valuable hidden assets, clarify your competitive position, and build a concentrated plan that wins — not one that hedges everything.</p>
+        <span class="pillar-highlight">IP Value Mine Review™ · Strategic Asymmetry™</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-emoji">💰</div>
+        <h3>Finance</h3>
+        <p>Stop the margin bleed. We analyze your P&amp;L, expose inefficiencies, and realign capital allocation so your financial engine works harder for you.</p>
+        <span class="pillar-highlight">Margin Shark Brief™ · 60/40 System™</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-emoji">📡</div>
+        <h3>Visibility</h3>
+        <p>Executive presence is a business asset. We build the authority and market positioning that makes your best opportunities come to you — not the other way around.</p>
+        <span class="pillar-highlight">EPI™ Executive Presence Immersion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="about-tag">About MX Solv</span>
+        <h2 class="section-title">We Remove Friction.<br>You Keep the Margin.</h2>
+        <p>MX Solv is a strategy, finance, and visibility consultancy built for business owners who know they're leaving money on the table — and are ready to stop.</p>
+        <p>Our proprietary frameworks — including the 60/40 System™ and Strategic Asymmetry™ — are designed to concentrate your effort where it creates the most value, and eliminate everything else.</p>
+        <ul class="about-checklist">
+          <li>Proprietary diagnostic frameworks, not generic advice</li>
+          <li>Fixed-scope engagements with clear deliverables</li>
+          <li>Strategy, finance, and visibility under one roof</li>
+          <li>Based in East Orange, NJ · serving clients nationally</li>
+        </ul>
+        <a href="tel:9736721667" class="btn-primary">Start Your Engagement →</a>
+      </div>
+      <div class="about-card">
+        <blockquote>"MX Solv removes friction. You keep the margin."</blockquote>
+        <div class="contact-info">
+          <p>📞 <strong>(973) 672-1667</strong></p>
+          <p>✉️ <strong>info@mxsolv.com</strong></p>
+          <p>📍 <strong>7 Glenwood Avenue, Suite 400<br>East Orange, NJ 07017</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="section-label" style="color:rgba(244,123,32,0.9); text-align:center;">Ready to Unlock Your Margin?</div>
+    <h2 class="section-title">Stop Leaving Money on the Table</h2>
+    <p class="section-sub">Book a discovery call today. We'll identify exactly where your business is losing margin — and how to get it back.</p>
+    <div class="cta-buttons">
+      <a href="tel:9736721667" class="btn-primary">Book a Call — (973) 672-1667</a>
+      <a href="mailto:info@mxsolv.com" class="btn-secondary" style="border-color:rgba(255,255,255,0.3); color:#fff;">Email Us Directly</a>
+    </div>
+    <p class="cta-note">No obligation. 30-minute strategy call. East Orange, NJ · National clients welcome.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">MX<span>Solv</span></div>
+    <p>Unlock Hidden Margin Inside Your Business</p>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="tel:9736721667">(973) 672-1667</a>
+      <a href="mailto:info@mxsolv.com">info@mxsolv.com</a>
+    </div>
+    <p>7 Glenwood Avenue, Suite 400 · East Orange, NJ 07017</p>
+    <p style="margin-top:1rem; font-size:0.8rem;">© 2025 MX Solv. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
