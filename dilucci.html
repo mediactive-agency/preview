@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiLucci CPA Firm | Tax, IRS Resolution & Bookkeeping — Dallas, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B8963E;
+      --gold-light: #D4AF5A;
+      --gold-dark: #8A6E2A;
+      --navy: #0D1B2A;
+      --navy-mid: #1A2E45;
+      --navy-light: #243B55;
+      --white: #FFFFFF;
+      --off-white: #F8F6F2;
+      --gray-light: #F1EDE6;
+      --gray-mid: #A0978A;
+      --text-dark: #1A1A1A;
+      --text-mid: #4A4540;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(13, 27, 42, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      border-bottom: 1px solid rgba(184, 150, 62, 0.25);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #1e3a5f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(184,150,62,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(184,150,62,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(184,150,62,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,150,62,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(184,150,62,0.15);
+      border: 1px solid rgba(184,150,62,0.4);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-badge::before { content: '✦'; font-size: 0.65rem; }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 600px;
+      margin: 0 auto 2.6rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(184,150,62,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(184,150,62,0.45);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      background: rgba(184,150,62,0.1);
+      color: var(--gold-light);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--off-white);
+      padding: 1.4rem 5%;
+      border-bottom: 1px solid #E8E2D8;
+    }
+
+    .trust-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .trust-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-mid);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .centered { text-align: center; }
+    .centered .section-sub { margin: 0 auto; }
+
+    .max-w { max-width: 1160px; margin: 0 auto; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--off-white);
+      border: 1px solid #E8E2D8;
+      border-radius: 12px;
+      padding: 2.2rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.3s;
+      border-radius: 4px 0 0 0;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      border-color: rgba(184,150,62,0.3);
+    }
+
+    .service-card:hover::before { height: 100%; }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p {
+      font-size: 0.925rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ── RESULTS / PROOF ── */
+    .results { background: var(--navy); }
+
+    .results .section-title { color: var(--white); }
+    .results .section-sub { color: rgba(255,255,255,0.6); }
+    .results .section-label { color: var(--gold); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .result-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(184,150,62,0.2);
+      border-radius: 12px;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .result-card:hover {
+      background: rgba(184,150,62,0.08);
+      border-color: rgba(184,150,62,0.45);
+    }
+
+    .result-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .result-label {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--gray-light); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::after {
+      content: '"';
+      position: absolute;
+      bottom: -1rem;
+      right: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 12rem;
+      color: rgba(184,150,62,0.1);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .about-card-accent {
+      width: 48px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-card p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-badges {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.8rem;
+    }
+
+    .badge {
+      background: rgba(184,150,62,0.15);
+      border: 1px solid rgba(184,150,62,0.35);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    .about-text h2 { color: var(--navy); }
+
+    .about-text p {
+      color: var(--text-mid);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+
+    .team-member {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid #E8E2D8;
+      border-radius: 10px;
+      padding: 1.4rem;
+      margin-top: 1.5rem;
+    }
+
+    .member-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .member-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .member-creds {
+      font-size: 0.78rem;
+      color: var(--gold-dark);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .member-info p {
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border: 1px solid #E8E2D8;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.25;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.2rem;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .star { color: var(--gold); font-size: 0.9rem; }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    .author-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy);
+      display: block;
+    }
+
+    .author-role {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(184,150,62,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-section .section-title { color: var(--white); }
+    .cta-section .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 2.5rem; }
+
+    .cta-inner { position: relative; z-index: 1; }
+
+    .cta-features {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0 2.8rem;
+    }
+
+    .cta-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    .cta-feature::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--navy);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .contact-info-row {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+    }
+
+    .contact-item strong { color: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080F17;
+      padding: 2.5rem 5%;
+      text-align: center;
+      border-top: 1px solid rgba(184,150,62,0.2);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+
+      section { padding: 60px 5%; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-stats { gap: 1.5rem; }
+
+      .contact-info-row { gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 100px 5% 60px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-logo">Di<span>Lucci</span> <span style="font-size:0.85rem;font-weight:400;opacity:0.6">CPA</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Dallas, TX · Est. 2005 · 35+ Person Team</div>
+      <h1>
+        Stop Overpaying.<br />
+        Start <em>Keeping More</em><br />
+        of What You Earn.
+      </h1>
+      <p class="hero-sub">
+        DiLucci CPA Firm is a full-service accounting firm built for business owners and real estate investors — with expert tax strategy, IRS resolution, and bookkeeping that actually moves the needle.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://jasminedilucci.com/discovery-call-booking" class="btn-primary">Book Free Consultation →</a>
+        <a href="#services" class="btn-secondary">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">19+</span>
+          <span class="hero-stat-label">Years in Business</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">35+</span>
+          <span class="hero-stat-label">Team Members</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3</span>
+          <span class="hero-stat-label">Credentials (JD, CPA, EA)</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">2</span>
+          <span class="hero-stat-label">Dallas-Area Offices</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        Certified Public Accountants (CPA)
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        Enrolled Agents (EA)
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        IRS Tax Lawyers (JD)
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        Certified Tax Resolution Specialists
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        Licensed in Texas
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="max-w">
+      <div class="centered">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Comprehensive Financial Services<br />for Business Owners</h2>
+        <p class="section-sub">From resolving IRS problems to building long-term tax strategy, our firm handles every financial challenge so you can focus on growing your business.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">⚖️</span>
+          <h3>IRS Tax Resolution</h3>
+          <p>Facing back taxes, audits, liens, or levies? Our Enrolled Agents and Tax Lawyers negotiate directly with the IRS on your behalf to resolve your situation favorably — and fast.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📋</span>
+          <h3>Tax Return Preparation</h3>
+          <p>Accurate, strategic tax return filing for individuals, business owners, and real estate investors. We don't just file — we optimize every return to minimize your liability.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📊</span>
+          <h3>Tax Planning</h3>
+          <p>Proactive tax planning throughout the year means fewer surprises at year-end. We build customized strategies to reduce your tax burden legally and sustainably.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📒</span>
+          <h3>Bookkeeping Services</h3>
+          <p>Clean, accurate books are the foundation of every good financial decision. Our bookkeeping team keeps your records organized and ready for tax time year-round.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📈</span>
+          <h3>Financial Analysis</h3>
+          <p>Understand where your money is going and where opportunities lie. We deliver clear financial reporting and analysis that empowers smarter business decisions.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🏦</span>
+          <h3>Fractional CFO</h3>
+          <p>Get the strategic financial leadership of a CFO without the full-time cost. Our Fractional CFO services give growing businesses the guidance they need to scale confidently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+    <div class="max-w">
+      <div class="centered">
+        <span class="section-label">Why DiLucci</span>
+        <h2 class="section-title">A Firm Built on Results,<br />Not Just Compliance</h2>
+        <p class="section-sub">We measure success by the outcomes we deliver for our clients — not just the returns we file.</p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">19+</span>
+          <span class="result-label">Years Serving Dallas Business Owners</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">35+</span>
+          <span class="result-label">Credentialed Accounting Professionals</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">3</span>
+          <span class="result-label">Elite Designations: JD · CPA · EA</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">100%</span>
+          <span class="result-label">Focus on Business Owners & Investors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="max-w">
+      <div class="about-inner">
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="about-card-accent"></div>
+            <p>"Our mission is simple: financially empower business owners. We believe every entrepreneur deserves access to the kind of expert tax strategy that used to be reserved for large corporations — and we've spent nearly two decades building a firm that delivers exactly that."</p>
+            <div class="about-badges">
+              <span class="badge">JD · Tax Lawyer</span>
+              <span class="badge">CPA</span>
+              <span class="badge">Enrolled Agent</span>
+              <span class="badge">CTRS</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">A Father-Daughter Firm with Deep Roots in Dallas</h2>
+          <p>DiLucci CPA Firm was founded in 2005 on a simple idea: business owners deserve more than a tax preparer — they deserve a financial partner. Jasmine DiLucci, JD, CPA, EA, built the firm into a full-service powerhouse, joined by her father John DiLucci, EA, CTRS.</p>
+          <p>Together, they lead a 35+ person team of credentialed accountants, enrolled agents, and financial specialists — all focused on one thing: helping you keep more of what you earn.</p>
+
+          <div class="team-member">
+            <div class="member-avatar">JD</div>
+            <div class="member-info">
+              <h4>Jasmine DiLucci</h4>
+              <span class="member-creds">JD · CPA · EA — Tax Lawyer & Managing Principal</span>
+              <p>Tax lawyer, CPA, and enrolled agent with over a decade of experience running tax and accounting firms. Jasmine brings rare legal and accounting depth to complex tax situations.</p>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-avatar">JH</div>
+            <div class="member-info">
+              <h4>John DiLucci</h4>
+              <span class="member-creds">EA · CTRS — Enrolled Agent & Tax Resolution Specialist</span>
+              <p>Certified Tax Resolution Specialist with a specialization in IRS problem resolution. John negotiates directly with IRS agents to achieve the best possible outcomes for clients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="max-w">
+      <div class="centered">
+        <span class="section-label">Client Reviews</span>
+        <h2 class="section-title">Trusted by Business Owners<br />Across the Dallas Area</h2>
+        <p class="section-sub">Don't take our word for it — hear from the business owners and investors we've helped transform their financial situation.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"DiLucci completely changed how I look at my finances. They didn't just file my return — they showed me strategies I never knew existed. I saved more in one year than I had in the previous five combined."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MB</div>
+            <div>
+              <span class="author-name">M. Baxter</span>
+              <span class="author-role">Small Business Owner, Dallas TX</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"I came to DiLucci with a serious IRS problem — back taxes, penalties, the works. Their team negotiated a settlement that was a fraction of what I owed. Professional, thorough, and genuinely on your side."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RL</div>
+            <div>
+              <span class="author-name">R. Langston</span>
+              <span class="author-role">Real Estate Investor, Irving TX</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"The fractional CFO service alone has been worth 10x the investment. Having an expert financial strategist without the full-time salary is a game-changer for a growing company like ours."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SP</div>
+            <div>
+              <span class="author-name">S. Patterson</span>
+              <span class="author-role">CEO, Tech Startup, Coppell TX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="max-w">
+      <div class="cta-inner">
+        <span class="section-label">Get Started</span>
+        <h2 class="section-title">Ready to Stop Overpaying<br />and Start Winning?</h2>
+        <p class="section-sub">Book a free discovery call with our team. No obligation, no pressure — just a clear picture of where you stand and how we can help.</p>
+        <div class="cta-features">
+          <div class="cta-feature">No-obligation discovery call</div>
+          <div class="cta-feature">Speak directly with a credentialed expert</div>
+          <div class="cta-feature">Custom strategy for your situation</div>
+          <div class="cta-feature">Dallas-based, available remotely</div>
+        </div>
+        <a href="https://jasminedilucci.com/discovery-call-booking" class="btn-primary" style="font-size:1.1rem;padding:1.05rem 2.8rem;">
+          Book My Free Consultation →
+        </a>
+        <div class="contact-info-row">
+          <div class="contact-item">📞 <span><strong>972.444.9934</strong></span></div>
+          <div class="contact-item">📍 <span><strong>Coppell:</strong> 1507 E Sandy Lake Rd. #120, TX 75019</span></div>
+          <div class="contact-item">📍 <span><strong>Irving:</strong> 6565 N MacArthur Blvd #225, TX 75039</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Di<span>Lucci</span> CPA Firm</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://dilucci.com">dilucci.com</a>
+    </div>
+    <p>© 2005–2024 DiLucci CPA Firm · Coppell & Irving, Texas · All Rights Reserved<br />
+    CPA · EA · JD · CTRS — Licensed in the State of Texas</p>
+  </footer>
+
+</body>
+</html>
