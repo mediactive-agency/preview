@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar Accounting + Technology | Your Complete Financial System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1A3A5C;
+      --primary-dark: #0F2540;
+      --accent: #2E7D6E;
+      --accent-light: #3AA08E;
+      --gold: #C9932A;
+      --gold-light: #E4B04A;
+      --light-bg: #F4F7FA;
+      --card-bg: #FFFFFF;
+      --text-dark: #0F2540;
+      --text-body: #374151;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --white: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(15, 37, 64, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: white;
+    }
+
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--accent-light) !important; color: white !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #1A4A6E 100%);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(46,125,110,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,147,42,0.12) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(46,125,110,0.2);
+      border: 1px solid rgba(46,125,110,0.4);
+      color: #5ECDB8;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #5ECDB8;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 900;
+      color: white;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      padding: 15px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(201,147,42,0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,147,42,0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 15px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: white;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    /* Hero visual card */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-card-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .hero-card-title {
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .hero-card-subtitle {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+    }
+
+    .hero-card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .hero-card-row:last-child { border-bottom: none; }
+
+    .hero-card-row-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-card-row-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dot-green { background: #22C55E; }
+    .dot-blue { background: #60A5FA; }
+    .dot-gold { background: var(--gold-light); }
+    .dot-teal { background: #5ECDB8; }
+
+    .hero-card-row-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .hero-card-row-value.up { color: #22C55E; }
+
+    .hero-float-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--gold);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(201,147,42,0.4);
+    }
+
+    .hero-float-badge strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--light-bg);
+      padding: 28px 5%;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .trust-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .trust-items {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .trust-item-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 5%; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
+    .section-header { margin-bottom: 64px; }
+
+    /* ── PROBLEM / VALUE ── */
+    .value-section {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .value-left .section-title { color: white; }
+    .value-left .section-lead { color: rgba(255,255,255,0.65); }
+    .value-left .section-tag { color: var(--gold-light); }
+
+    .value-quote {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.4;
+      margin: 32px 0;
+      padding-left: 20px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .value-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .value-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      background: rgba(46,125,110,0.3);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: #5ECDB8;
+    }
+
+    .value-right-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .value-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .value-card:hover { border-color: rgba(46,125,110,0.5); }
+
+    .value-card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(46,125,110,0.3), rgba(46,125,110,0.1));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .value-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .value-card-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+    }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--white); }
+
+    .services-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .services-tab {
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .services-tab.active, .services-tab:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 12px 40px rgba(15,37,64,0.1);
+      transform: translateY(-4px);
+      border-color: transparent;
+    }
+
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-card.featured {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-color: transparent;
+      color: white;
+    }
+
+    .service-card.featured .service-title,
+    .service-card.featured .service-desc { color: rgba(255,255,255,0.9); }
+
+    .service-card.featured .service-tag { color: var(--gold-light); }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, rgba(46,125,110,0.12), rgba(46,125,110,0.05));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(46,125,110,0.2);
+    }
+
+    .service-card.featured .service-icon {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .service-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .service-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-features li {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-card.featured .service-features li { color: rgba(255,255,255,0.65); }
+
+    .service-features li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .service-card.featured .service-features li::before { color: var(--gold-light); }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--light-bg); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      z-index: 0;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 72px;
+      height: 72px;
+      background: white;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--accent);
+      margin: 0 auto 24px;
+      box-shadow: 0 4px 16px rgba(46,125,110,0.15);
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── TECH STACK ── */
+    .tech-section { background: white; }
+
+    .tech-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .tech-badge {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 14px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .tech-badge:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(46,125,110,0.12);
+      transform: translateY(-2px);
+    }
+
+    .tech-badge-icon { font-size: 26px; margin-bottom: 8px; }
+
+    .tech-badge-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .tech-badge-type {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof-section { background: var(--light-bg); }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .proof-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+
+    .proof-card:hover { box-shadow: 0 8px 32px rgba(15,37,64,0.08); }
+
+    .proof-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .proof-quote {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .proof-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .proof-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .proof-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .proof-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: white; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-block {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: 24px;
+      aspect-ratio: 4/5;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-img-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 60%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: white;
+      border-radius: 16px;
+      padding: 18px 22px;
+      box-shadow: 0 8px 32px rgba(15,37,64,0.15);
+      text-align: center;
+    }
+
+    .about-badge-num {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .about-badge-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .about-right .section-title { max-width: 480px; }
+
+    .about-bio {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .about-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .about-pill {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      color: var(--text-dark);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 100px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #1A4A6E 100%);
+      padding: 96px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 50% 0%, rgba(46,125,110,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 90%, rgba(201,147,42,0.1) 0%, transparent 50%);
+    }
+
+    .cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section .section-tag { color: var(--gold-light); }
+
+    .cta-section .section-title { color: white; margin: 0 auto 18px; }
+
+    .cta-section .section-lead {
+      color: rgba(255,255,255,0.65);
+      margin: 0 auto 48px;
+      max-width: 520px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 20px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 48px 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: white;
+    }
+
+    .footer-logo-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .value-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .steps-grid::before { display: none; }
+      .tech-grid { grid-template-columns: repeat(3, 1fr); }
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-wrap { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+      section { padding: 64px 4%; }
+      .hero { padding: 100px 4% 64px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">P</div>
+      <div class="nav-logo-text">
+        Pillar Accounting
+        <span>+ Technology</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cta" class="nav-cta">Book Strategy Session</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge">Jacksonville, FL &bull; Serving Clients Nationwide</div>
+        <h1>Your <em>Complete</em> Financial System, Finally.</h1>
+        <p class="hero-sub">
+          Most businesses don't need another disconnected service provider.
+          They need clean books, integrated technology, clear reporting, and expert guidance &mdash; all working together.
+          That's what Pillar delivers.
+        </p>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn-primary">Build Your Financial Pillar &rarr;</a>
+          <a href="#services" class="btn-secondary">Explore Services</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">3-in-1</div>
+            <div class="hero-stat-label">Accounting + Tech + Advisory</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">Cloud-Based Delivery</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">CPA</div>
+            <div class="hero-stat-label">Licensed Professionals</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-icon">&#128200;</div>
+            <div>
+              <div class="hero-card-title">Financial Dashboard</div>
+              <div class="hero-card-subtitle">Updated in real-time</div>
+            </div>
+          </div>
+          <div class="hero-card-row">
+            <span class="hero-card-row-label"><span class="hero-card-row-dot dot-green"></span>Cash Position</span>
+            <span class="hero-card-row-value up">&#8679; $84,320</span>
+          </div>
+          <div class="hero-card-row">
+            <span class="hero-card-row-label"><span class="hero-card-row-dot dot-blue"></span>A/R Outstanding</span>
+            <span class="hero-card-row-value">$22,150</span>
+          </div>
+          <div class="hero-card-row">
+            <span class="hero-card-row-label"><span class="hero-card-row-dot dot-gold"></span>Monthly Revenue</span>
+            <span class="hero-card-row-value up">&#8679; $143,800</span>
+          </div>
+          <div class="hero-card-row">
+            <span class="hero-card-row-label"><span class="hero-card-row-dot dot-teal"></span>Net Profit Margin</span>
+            <span class="hero-card-row-value up">28.4%</span>
+          </div>
+        </div>
+        <div class="hero-float-badge">
+          <strong>Top 50</strong>
+          Women in Accounting
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-label">Trusted tools &amp; integrations</span>
+      <div class="trust-items">
+        <div class="trust-item"><div class="trust-item-icon">&#9679;</div> QuickBooks Online</div>
+        <div class="trust-item"><div class="trust-item-icon">&#9679;</div> Xero</div>
+        <div class="trust-item"><div class="trust-item-icon">&#9679;</div> A2X</div>
+        <div class="trust-item"><div class="trust-item-icon">&#9679;</div> Cin7 Core</div>
+        <div class="trust-item"><div class="trust-item-icon">&#9679;</div> AI Automation</div>
+        <div class="trust-item"><div class="trust-item-icon">&#9679;</div> Cloud Hosting</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUE PROP -->
+  <section class="value-section" id="value">
+    <div class="section-inner">
+      <div class="value-grid">
+        <div class="value-left">
+          <span class="section-tag">The Pillar Difference</span>
+          <h2 class="section-title">Accounting expertise meets <em style="color:var(--gold-light)">technology mastery</em></h2>
+          <p class="section-lead" style="color:rgba(255,255,255,0.65)">
+            Other firms give you software. Or bookkeeping. Or advice. Pillar gives you all three woven into one connected system &mdash; so your numbers are always clean, your tech stack actually works, and you finally have clarity to make real decisions.
+          </p>
+          <blockquote class="value-quote">
+            "Most businesses don't need more tools. They need a system that makes everything work together."
+            <footer style="font-family:Inter;font-size:14px;font-weight:500;color:rgba(255,255,255,0.5);margin-top:10px;">
+              &mdash; Shelly Lingor, Founder
+            </footer>
+          </blockquote>
+          <ul class="value-list">
+            <li><span class="check-icon">&#10003;</span> No-judgment partnership &mdash; we meet you where you are</li>
+            <li><span class="check-icon">&#10003;</span> CPA-licensed team with deep tech expertise</li>
+            <li><span class="check-icon">&#10003;</span> Scalable systems that grow with your business</li>
+            <li><span class="check-icon">&#10003;</span> Nationwide cloud delivery from Jacksonville, FL</li>
+          </ul>
+        </div>
+        <div class="value-right-cards">
+          <div class="value-card">
+            <div class="value-card-icon">&#128203;</div>
+            <div>
+              <div class="value-card-title">Clean, Trustworthy Financials</div>
+              <div class="value-card-desc">Consistent, accurate books you can rely on for tax prep, lending, and strategic decisions &mdash; every month, without drama.</div>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">&#128187;</div>
+            <div>
+              <div class="value-card-title">Technology That Actually Works</div>
+              <div class="value-card-desc">We evaluate, implement, and manage the right cloud accounting stack for your business &mdash; no more Frankenstein setups.</div>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">&#128202;</div>
+            <div>
+              <div class="value-card-title">Reporting &amp; Strategic Clarity</div>
+              <div class="value-card-desc">From cash flow forecasts to fractional CFO support, you'll always know where you stand and where you're headed.</div>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">&#128101;</div>
+            <div>
+              <div class="value-card-title">CPA Firm Partnerships</div>
+              <div class="value-card-desc">We serve as an outsourced accounting backbone for CPA firms &mdash; expanding their capacity without adding headcount.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">What We Offer</span>
+        <h2 class="section-title">Accounting + Technology, <em>as one system</em></h2>
+        <p class="section-lead">Every service is designed to connect seamlessly &mdash; so your books, tools, and strategy all reinforce each other.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Accounting Services -->
+        <div class="service-card">
+          <div class="service-icon">&#128176;</div>
+          <div class="service-tag">Accounting</div>
+          <div class="service-title">Outsourced Client Accounting Services</div>
+          <div class="service-desc">Full-service accounting from day-to-day operations to period close &mdash; handled by a team of experts, delivered in the cloud.</div>
+          <ul class="service-features">
+            <li>Accounts payable &amp; receivable</li>
+            <li>Bank &amp; credit card reconciliation</li>
+            <li>Month-end close &amp; reporting</li>
+            <li>Payroll coordination</li>
+          </ul>
+        </div>
+
+        <div class="service-card featured">
+          <div class="service-icon">&#9889;</div>
+          <div class="service-tag">Signature Service</div>
+          <div class="service-title">Complete Accounting System Build</div>
+          <div class="service-desc">We design, implement, and manage your entire accounting ecosystem &mdash; software, workflows, team structure, and reporting.</div>
+          <ul class="service-features">
+            <li>System architecture &amp; tech selection</li>
+            <li>Cloud migration &amp; setup</li>
+            <li>Workflow automation</li>
+            <li>Ongoing management &amp; optimization</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#128736;</div>
+          <div class="service-tag">Technology</div>
+          <div class="service-title">Virtual CTO (VCTO) Practice</div>
+          <div class="service-desc">Strategic technology leadership without the cost of a full-time hire. We evaluate your stack and drive smart tech decisions.</div>
+          <ul class="service-features">
+            <li>Tech stack audit &amp; roadmap</li>
+            <li>Software evaluation &amp; selection</li>
+            <li>AI &amp; automation integration</li>
+            <li>Vendor management</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#128200;</div>
+          <div class="service-tag">Advisory</div>
+          <div class="service-title">Fractional CFO &amp; Advisory</div>
+          <div class="service-desc">Strategic financial guidance from seasoned CPAs &mdash; cash flow management, budgeting, forecasting, and growth planning.</div>
+          <ul class="service-features">
+            <li>Cash flow forecasting</li>
+            <li>Budget development</li>
+            <li>KPI dashboards</li>
+            <li>Growth strategy support</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#127760;</div>
+          <div class="service-tag">Outsourced</div>
+          <div class="service-title">CPA Firm Outsourcing Partner</div>
+          <div class="service-desc">Expand your firm's capacity without hiring. We serve as your back-office accounting team, operating under your brand.</div>
+          <ul class="service-features">
+            <li>White-label client delivery</li>
+            <li>Scalable team capacity</li>
+            <li>Technology-enabled workflows</li>
+            <li>CAS program setup</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">&#127881;</div>
+          <div class="service-tag">Specialty</div>
+          <div class="service-title">Nonprofit &amp; Multi-Entity Accounting</div>
+          <div class="service-desc">Specialized expertise for nonprofits, e-commerce brands, and multi-entity businesses with complex accounting needs.</div>
+          <ul class="service-features">
+            <li>Fund accounting for nonprofits</li>
+            <li>E-commerce integrations (A2X)</li>
+            <li>Inventory management (Cin7)</li>
+            <li>Multi-entity consolidation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center">
+        <span class="section-tag">Our Process</span>
+        <h2 class="section-title" style="margin:0 auto 18px">From messy to a system that works</h2>
+        <p class="section-lead" style="margin:0 auto">Four straightforward steps to get you from chaos to clarity &mdash; and keep you there.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Discovery Call</div>
+          <div class="step-desc">We start with a no-judgment conversation about where you are, what's broken, and where you want to go.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">System Audit</div>
+          <div class="step-desc">Our team reviews your current books, software, and workflows to identify gaps, risks, and opportunities.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">System Build</div>
+          <div class="step-desc">We design and implement your complete accounting system &mdash; right-sized tools, clean data, automated workflows.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-title">Ongoing Partnership</div>
+          <div class="step-desc">We manage, optimize, and advise on a continuous basis &mdash; so your system keeps pace as your business grows.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="tech-section" id="tech">
+    <div class="section-inner">
+      <div class="tech-header">
+        <div>
+          <span class="section-tag">Technology Stack</span>
+          <h2 class="section-title" style="margin-bottom:0">Tools we know <em>inside and out</em></h2>
+        </div>
+        <p style="max-width:360px;font-size:15px;color:var(--text-muted);line-height:1.65">
+          We don't just recommend software &mdash; we implement it, integrate it, and make it sing together.
+        </p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-badge"><div class="tech-badge-icon">&#128196;</div><div class="tech-badge-name">QuickBooks Online</div><div class="tech-badge-type">Accounting</div></div>
+        <div class="tech-badge"><div class="tech-badge-icon">&#9989;</div><div class="tech-badge-name">Xero</div><div class="tech-badge-type">Accounting</div></div>
+        <div class="tech-badge"><div class="tech-badge-icon">&#128722;</div><div class="tech-badge-name">A2X</div><div class="tech-badge-type">E-Commerce</div></div>
+        <div class="tech-badge"><div class="tech-badge-icon">&#128230;</div><div class="tech-badge-name">Cin7 Core</div><div class="tech-badge-type">Inventory</div></div>
+        <div class="tech-badge"><div class="tech-badge-icon">&#128640;</div><div class="tech-badge-name">AI Automation</div><div class="tech-badge-type">Workflow</div></div>
+        <div class="tech-badge"><div class="tech-badge-icon">&#9729;</div><div class="tech-badge-name">Secure Cloud</div><div class="tech-badge-type">Hosting</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof-section" id="proof">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center">
+        <span class="section-tag">Client Experiences</span>
+        <h2 class="section-title" style="margin:0 auto 18px">Real results for real businesses</h2>
+        <p class="section-lead" style="margin:0 auto">From CPA firms to nonprofits to growing e-commerce brands &mdash; here's what a complete accounting system changes.</p>
+      </div>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="proof-quote">"Pillar didn't just clean up our books &mdash; they built us a system we actually understand. For the first time in years, I know exactly where my business stands financially."</p>
+          <div class="proof-author">
+            <div class="proof-avatar" style="background:linear-gradient(135deg,#1A3A5C,#2E7D6E)">M</div>
+            <div>
+              <div class="proof-name">Michael T.</div>
+              <div class="proof-role">Owner, Multi-entity Business</div>
+            </div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="proof-quote">"We partnered with Pillar to expand our CAS offering without adding staff. The technology integration and white-label delivery are seamless &mdash; our clients love it."</p>
+          <div class="proof-author">
+            <div class="proof-avatar" style="background:linear-gradient(135deg,#2E7D6E,#3AA08E)">S</div>
+            <div>
+              <div class="proof-name">Sarah K.</div>
+              <div class="proof-role">Managing Partner, CPA Firm</div>
+            </div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="proof-quote">"The no-judgment approach meant I wasn't embarrassed about the mess we were in. Six months later, our reporting is clean, our tech stack is lean, and our CFO decisions are data-driven."</p>
+          <div class="proof-author">
+            <div class="proof-avatar" style="background:linear-gradient(135deg,#C9932A,#E4B04A)">R</div>
+            <div>
+              <div class="proof-name">Rachel D.</div>
+              <div class="proof-role">Executive Director, Nonprofit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <div class="about-img-block">&#128105;&#8205;&#128187;</div>
+          <div class="about-badge">
+            <div class="about-badge-num">Top 50</div>
+            <div class="about-badge-label">Women in Accounting</div>
+          </div>
+        </div>
+        <div class="about-right">
+          <span class="section-tag">Meet the Founder</span>
+          <h2 class="section-title">Built by someone who's seen <em>what breaks</em></h2>
+          <p class="about-bio">
+            Shelly Lingor founded Pillar Accounting + Technology after 25 years in public accounting &mdash; watching businesses and CPA firms struggle not from lack of effort, but from lack of a system.
+          </p>
+          <p class="about-bio">
+            She built Pillar to be the firm she wished existed: one that combines rigorous accounting expertise with real technology know-how, wrapped in a no-judgment partnership philosophy.
+          </p>
+          <p class="about-bio">
+            Named a Top 50 Women in Accounting, Shelly is joined by Jay Kimelman (COO, CPA) and a team of accounting and technology specialists serving clients from Jacksonville, Florida to coast to coast.
+          </p>
+          <div class="about-pills">
+            <span class="about-pill">&#127979; 25+ Years Experience</span>
+            <span class="about-pill">&#127942; Top 50 Women in Accounting</span>
+            <span class="about-pill">&#9999;&#65039; Florida CPA Licensed</span>
+            <span class="about-pill">&#127968; Jacksonville, FL</span>
+            <span class="about-pill">&#127760; Serving Clients Nationwide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="cta-inner">
+      <span class="section-tag">Get Started Today</span>
+      <h2 class="section-title">Ready to build your financial pillar?</h2>
+      <p class="section-lead">
+        Book a free strategy session with our team. We'll listen, assess your current situation, and show you exactly what a complete accounting system could look like for your business.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://pillaraccountingandtechnology.com" class="btn-primary">Book Free Strategy Session &rarr;</a>
+        <a href="https://pillaraccountingandtechnology.com" class="btn-secondary">Learn More</a>
+      </div>
+      <p class="cta-note">No commitment. No judgment. Just clarity.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">P</div>
+        <div>
+          <div class="footer-logo-name">Pillar Accounting + Technology</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;">Jacksonville, FL &bull; Serving clients nationwide</div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#about">About</a>
+        <a href="https://pillaraccountingandtechnology.com/privacy-terms/">Privacy &amp; Terms</a>
+        <a href="https://pillaraccountingandtechnology.com">Website</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Pillar Accounting + Technology. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
