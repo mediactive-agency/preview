@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketoe CPA, PLLC | The Communicative Public Accountant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-dark: #0f1829;
+      --navy-mid: #243058;
+      --gold: #c49a2e;
+      --gold-light: #e2b84a;
+      --cream: #f8f5ef;
+      --cream-dark: #ede8de;
+      --white: #ffffff;
+      --gray-light: #f4f4f6;
+      --gray: #8a8fa8;
+      --text-dark: #1a1e2e;
+      --text-body: #3d4156;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26,39,68,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,154,46,0.2);
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .nav-name span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy-dark);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(196,154,46,0.08) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+      display: flex;
+      align-items: center;
+      padding: 100px 6vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c49a2e' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(196,154,46,0.15);
+      border: 1px solid rgba(196,154,46,0.35);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(196,154,46,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196,154,46,0.45);
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Hero right side card */
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(196,154,46,0.3);
+    }
+
+    .pain-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .pain-check {
+      width: 22px;
+      height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pain-check svg { width: 12px; height: 12px; }
+
+    .pain-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    .hero-phone {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-phone-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(196,154,46,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-phone-label { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; }
+    .hero-phone-num { font-size: 18px; font-weight: 700; color: var(--white); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--cream);
+      border-top: 3px solid var(--gold);
+      border-bottom: 1px solid var(--cream-dark);
+      padding: 32px 6vw;
+    }
+
+    .trust-bar-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .trust-label {
+      font-size: 13px;
+      color: var(--gray);
+      font-weight: 500;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .trust-divider {
+      width: 1px;
+      height: 50px;
+      background: var(--cream-dark);
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 6vw; }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-body);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .section-header { margin-bottom: 56px; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .service-card {
+      background: var(--gray-light);
+      border-radius: 14px;
+      padding: 36px 30px;
+      border: 2px solid transparent;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(196,154,46,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,39,68,0.1);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(26,39,68,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .service-icon svg { width: 26px; height: 26px; color: var(--navy); }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .service-starting {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── WHY US ── */
+    .why-us {
+      background: var(--navy-dark);
+      background-image: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+    }
+
+    .why-us .section-title { color: var(--white); }
+    .why-us .section-sub { color: rgba(255,255,255,0.7); }
+    .why-us .section-tag { color: var(--gold); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .diff-list { list-style: none; margin-top: 40px; }
+
+    .diff-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      align-items: flex-start;
+    }
+
+    .diff-num {
+      width: 36px;
+      height: 36px;
+      background: rgba(196,154,46,0.15);
+      border: 1px solid rgba(196,154,46,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .diff-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .diff-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+
+    .cta-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(196,154,46,0.25);
+      border-radius: 16px;
+      padding: 50px 40px;
+    }
+
+    .cta-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--white);
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+
+    .cta-card p {
+      color: rgba(255,255,255,0.7);
+      font-size: 16px;
+      line-height: 1.65;
+      margin-bottom: 30px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--cream); }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-placeholder {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 16px;
+      height: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .about-avatar {
+      width: 100px;
+      height: 100px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
+
+    .about-photo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .about-photo-cred {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--gold);
+      border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: 0 8px 30px rgba(196,154,46,0.4);
+    }
+
+    .about-badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1;
+    }
+
+    .about-badge-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy-dark);
+      opacity: 0.75;
+    }
+
+    .about-content .section-tag { margin-bottom: 10px; }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      border-left: 4px solid var(--gold);
+      padding-left: 22px;
+      margin: 30px 0;
+    }
+
+    .about-bio {
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .creds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .cred-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .cred-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── PAIN POINTS BANNER ── */
+    .pain-banner {
+      background: var(--navy);
+      padding: 70px 6vw;
+    }
+
+    .pain-banner-inner {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .pain-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 3vw, 40px);
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .pain-banner p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      max-width: 680px;
+      margin: 0 auto 48px;
+      line-height: 1.65;
+    }
+
+    .not-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto 48px;
+      text-align: left;
+    }
+
+    .not-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .not-x {
+      width: 22px;
+      height: 22px;
+      background: rgba(255,80,80,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #ff6464;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .not-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--gray-light); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 34px 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+
+    .star {
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 42px;
+      height: 42px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .author-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .author-role {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: var(--gold);
+      padding: 90px 6vw;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 52px);
+      color: var(--navy-dark);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .final-cta p {
+      font-size: 18px;
+      color: rgba(26,39,68,0.75);
+      max-width: 560px;
+      margin: 0 auto 42px;
+      line-height: 1.65;
+    }
+
+    .final-cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: 18px 38px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .btn-dark:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .btn-light {
+      border: 2px solid rgba(26,39,68,0.4);
+      color: var(--navy-dark);
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-light:hover {
+      border-color: var(--navy-dark);
+      background: rgba(26,39,68,0.06);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      padding: 50px 6vw 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-sub {
+      font-size: 13px;
+      color: var(--gold);
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-contact {
+      text-align: right;
+    }
+
+    .footer-phone {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .footer-email {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 32px;
+      padding-top: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .not-list { grid-template-columns: 1fr; }
+      .trust-divider { display: none; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-contact { text-align: center; }
+      .about-badge { bottom: -10px; right: 10px; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      nav .btn-outline { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo-mark">S</div>
+    <div class="nav-name">
+      Sketoe CPA, PLLC
+      <span>The Communicative Public Accountant</span>
+    </div>
+  </a>
+  <a href="tel:8323232258" class="nav-cta">Call: 832-323-2258</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Licensed CPA &bull; Big 4 Background &bull; Virtual Firm</div>
+      <h1>Stop Guessing.<br/>Start Growing<br/>with a CPA Who <em>Talks to You.</em></h1>
+      <p class="hero-sub">
+        Tax preparation, bookkeeping, and advisory for self-employed professionals, small business owners, and contractors — delivered with the transparency and communication you actually deserve.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.sketoecpa.com/appointments" class="btn-primary" target="_blank">Schedule Your Free Consultation</a>
+        <a href="tel:8323232258" class="btn-outline">Call 832-323-2258</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-title">Sound familiar?</div>
+
+      <div class="pain-point">
+        <div class="pain-check">
+          <svg fill="none" viewBox="0 0 12 12" stroke="white" stroke-width="2"><polyline points="2,6 5,9 10,3"/></svg>
+        </div>
+        <div class="pain-text">You're self-employed or a small business owner and taxes are getting complicated</div>
+      </div>
+
+      <div class="pain-point">
+        <div class="pain-check">
+          <svg fill="none" viewBox="0 0 12 12" stroke="white" stroke-width="2"><polyline points="2,6 5,9 10,3"/></svg>
+        </div>
+        <div class="pain-text">Your current CPA never calls you back or explains anything clearly</div>
+      </div>
+
+      <div class="pain-point">
+        <div class="pain-check">
+          <svg fill="none" viewBox="0 0 12 12" stroke="white" stroke-width="2"><polyline points="2,6 5,9 10,3"/></svg>
+        </div>
+        <div class="pain-text">You want a real professional, not a TurboTax workaround or an uncredentialed preparer</div>
+      </div>
+
+      <div class="pain-point">
+        <div class="pain-check">
+          <svg fill="none" viewBox="0 0 12 12" stroke="white" stroke-width="2"><polyline points="2,6 5,9 10,3"/></svg>
+        </div>
+        <div class="pain-text">You need someone who understands both your business goals and your tax strategy</div>
+      </div>
+
+      <div class="hero-phone">
+        <div class="hero-phone-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#c49a2e" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.22 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hero-phone-label">Call Directly</div>
+          <div class="hero-phone-num">832-323-2258</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-num">CPA</div>
+      <div class="trust-label">Licensed &amp; Credentialed</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">Big 4</div>
+      <div class="trust-label">Audit Experience</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">MS</div>
+      <div class="trust-label">Master's in Accountancy</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">100%</div>
+      <div class="trust-label">Virtual &amp; Tech-Driven</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">White-Glove</div>
+      <div class="trust-label">Personalized Service</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div style="max-width:1200px; margin:auto;">
+    <div class="section-header">
+      <div class="section-tag">What We Offer</div>
+      <h2 class="section-title">Services Built for<br/>Real Business Owners</h2>
+      <p class="section-sub">Transparent, flat-fee pricing. No surprise bills. No hidden fees. No ghost preparers — Cody signs every return personally.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M9 7l6-4 4 4-6 4-4-4zM9 7v4"/>
+          </svg>
+        </div>
+        <div class="service-title">Monthly Bookkeeping</div>
+        <div class="service-desc">CPA-prepared books backed by Big 4 audit experience. From cash-basis essentials to GAAP-compliant enhanced financials — with Loom video walkthroughs so you actually understand your numbers.</div>
+        <div class="service-starting">Starting at $500/mo &bull; New businesses: 50% off Year 1</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h11l5 5v9a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <div class="service-title">Individual Tax</div>
+        <div class="service-desc">Complete, accurate, and optimized 1040 preparation. Flat-fee pricing, K-1 fee waiver for business clients, and no charge for calls and emails. IRS letter support included.</div>
+        <div class="service-starting">Starting at $500 &bull; New businesses: 50% off Year 1</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <div class="service-title">Business Tax</div>
+        <div class="service-desc">Multi-member LLCs, Partnerships, C-Corps, S-Corps — if there's one place to not DIY, this is it. Includes basis tracking, Schedule L/M-1/M-2 reconciliations, and a full Loom walkthrough.</div>
+        <div class="service-starting">Starting at $1,800 &bull; Bookkeeping clients: no cleanup fee</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <div class="service-title">Advisory &amp; Insights</div>
+        <div class="service-desc">Don't just know your numbers — understand them. Get tailored insights that balance your tax strategy with your operational goals, from cash flow analysis to growth planning.</div>
+        <div class="service-starting">Insights Upgrade: $250/mo add-on</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div class="service-title">Compliance Support</div>
+        <div class="service-desc">Secretary of State filings, FinCEN, IRS, Comptroller of Public Accounts — new business formation to amendments and ownership changes. Handle it right the first time.</div>
+        <div class="service-starting">Complimentary initial consultation</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+        <div class="service-title">Financial Diagnostics</div>
+        <div class="service-desc">Wondering why profits look great but cash is tight? Leveraging a Senior Auditor's eye to dig into your financials, identify abnormalities, and implement solutions that restore your bottom line.</div>
+        <div class="service-starting">Project &amp; retainer basis — inquire for quote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE'RE NOT -->
+<div class="pain-banner">
+  <div class="pain-banner-inner">
+    <h2>This Firm Is Different. Here's How.</h2>
+    <p>Many accountants are transaction-focused. Cody is relationship-focused — and that changes everything about how your finances get managed.</p>
+    <div class="not-list">
+      <div class="not-item">
+        <div class="not-x">✕</div>
+        <div class="not-text">Not a ghost preparer who won't sign your return</div>
+      </div>
+      <div class="not-item">
+        <div class="not-x">✕</div>
+        <div class="not-text">Not a high-volume "churn and burn" tax mill</div>
+      </div>
+      <div class="not-item">
+        <div class="not-x">✕</div>
+        <div class="not-text">Not a TurboTax or H&amp;R Block substitute</div>
+      </div>
+      <div class="not-item">
+        <div class="not-x">✕</div>
+        <div class="not-text">Not uncredentialed with limited accountability</div>
+      </div>
+    </div>
+    <a href="https://www.sketoecpa.com/appointments" class="btn-primary" target="_blank" style="font-size:16px; padding:16px 36px;">Let's Talk About Your Taxes</a>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why-us" id="why">
+  <div class="why-grid">
+    <div>
+      <div class="section-tag">Why Choose Sketoe CPA</div>
+      <h2 class="section-title" style="color:white;">The Communicative Public Accountant — What That Actually Means</h2>
+      <p class="section-sub">Communication isn't a feature here, it's the foundation. You'll never be left wondering what's happening with your money.</p>
+      <ul class="diff-list">
+        <li class="diff-item">
+          <div class="diff-num">01</div>
+          <div>
+            <div class="diff-title">You'll Actually Understand Your Finances</div>
+            <div class="diff-desc">Loom video walkthroughs of your books and tax return. Plain-English explanations. No jargon, no condescension.</div>
+          </div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-num">02</div>
+          <div>
+            <div class="diff-title">Strategic, Not Just Transactional</div>
+            <div class="diff-desc">I balance your tax minimization goals with your operational needs — sometimes you need to look profitable, not minimize taxes. That's what a real advisor does.</div>
+          </div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-num">03</div>
+          <div>
+            <div class="diff-title">Big 4 Expertise at Boutique Pricing</div>
+            <div class="diff-desc">Former Senior Auditor at a Big 4 firm. Master's in Accountancy. CPA licensed. You get top-tier technical expertise with personal, direct access.</div>
+          </div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-num">04</div>
+          <div>
+            <div class="diff-title">Calls and Emails Are Free</div>
+            <div class="diff-desc">No billing the clock every time you have a question. Communication is built into the relationship — not an upsell.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="cta-card">
+      <h3>Ready to Work with a CPA Who Actually Communicates?</h3>
+      <p>Whether you need help with taxes, bookkeeping, or big-picture advisory, start with a conversation. No pressure, no obligation — just a straightforward discussion to see if we're a good fit.</p>
+      <a href="https://www.sketoecpa.com/appointments" class="btn-primary" style="display:inline-block; width:100%; text-align:center; margin-bottom:16px;" target="_blank">Schedule Your Free Consultation</a>
+      <a href="https://www.sketoecpa.com/contact" class="btn-outline" style="display:inline-block; width:100%; text-align:center;" target="_blank">Send a Message</a>
+      <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.1); font-size:14px; color:rgba(255,255,255,0.55); text-align:center;">
+        Currently accepting clients on extension for the 2025 tax year.<br/>Reach out to get started today.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo-wrap">
+      <div class="about-photo-placeholder">
+        <div class="about-avatar">CS</div>
+        <div class="about-photo-name">Cody Sketoe</div>
+        <div class="about-photo-cred">CPA, MS Accountancy</div>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">Big 4</div>
+        <div class="about-badge-label">Audit Background</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <div class="section-tag">Meet Your CPA</div>
+      <h2 class="section-title">Cody Sketoe,<br/>CPA, MS Accountancy</h2>
+      <div class="about-quote">"I am not in the business of high-volume churn and burn. My services are centered around a personal, tailored, white-glove experience."</div>
+      <p class="about-bio">Cody is a licensed CPA running a virtual, tech-driven firm that helps individuals and businesses manage their taxes, bookkeeping, and financial strategy. With a background as a Senior Auditor at a Big 4 accounting firm and a Master's degree in Accountancy, Cody brings institutional-grade expertise to every engagement — without the institutional overhead or impersonal service.</p>
+      <p class="about-bio">Whether you're a first-time business owner, a seasoned contractor, or someone who just wants a CPA who actually picks up the phone, Sketoe CPA is built for you.</p>
+
+      <div class="creds-list">
+        <div class="cred-item"><div class="cred-dot"></div>Licensed Certified Public Accountant (CPA)</div>
+        <div class="cred-item"><div class="cred-dot"></div>Master of Science in Accountancy</div>
+        <div class="cred-item"><div class="cred-dot"></div>Former Senior Auditor, Big 4 Accounting Firm</div>
+        <div class="cred-item"><div class="cred-dot"></div>Specializes in small business, self-employed, and contractors</div>
+        <div class="cred-item"><div class="cred-dot"></div>Virtual firm — serving clients anywhere in the US</div>
+        <div class="cred-item"><div class="cred-dot"></div>Flat-fee, transparent pricing — no surprise bills</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div style="max-width:1200px; margin:auto;">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-tag" style="text-align:center;">Client Experiences</div>
+      <h2 class="section-title">What Business Owners Say</h2>
+      <p class="section-sub" style="margin:0 auto;">When you work with Sketoe CPA, you get a real CPA who communicates clearly, delivers quality, and actually cares about your outcome.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">"Finally, a CPA who explains things in plain English. I've never felt more confident about my business finances. Cody actually walks me through everything — no more guessing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div>
+            <div class="author-name">M. Rodriguez</div>
+            <div class="author-role">Self-Employed Contractor</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">"Switched from a big tax firm that never called back. Cody responded within hours and actually took the time to understand my LLC. The Loom videos of my books are a game changer."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JL</div>
+          <div>
+            <div class="author-name">J. Lee</div>
+            <div class="author-role">Small Business Owner, LLC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">"As a new S-Corp owner, I was totally lost on taxes. Cody walked me through every step, explained basis tracking, and saved me from several costly mistakes. Worth every penny."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AS</div>
+          <div>
+            <div class="author-name">A. Smith</div>
+            <div class="author-role">S-Corp Owner, Consulting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Your Taxes. Your Business.<br/>Handled by a CPA Who Cares.</h2>
+  <p>Stop settling for accountants who don't communicate. Get expert CPA service with the transparency and personal attention your business deserves.</p>
+  <div class="final-cta-actions">
+    <a href="https://www.sketoecpa.com/appointments" class="btn-dark" target="_blank">Schedule Your Free Consultation</a>
+    <a href="tel:8323232258" class="btn-light">Call 832-323-2258</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Sketoe CPA, PLLC</div>
+      <div class="footer-sub">The Communicative Public Accountant</div>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:8323232258" class="footer-phone">832-323-2258</a>
+      <a href="https://www.sketoecpa.com" class="footer-email" target="_blank">www.sketoecpa.com</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    &copy; 2025 Sketoe CPA, PLLC. All rights reserved. | CPA License Holder | Virtual Firm Serving the US
+  </div>
+</footer>
+
+</body>
+</html>
