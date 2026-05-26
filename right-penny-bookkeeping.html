@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Right Penny Bookkeeping | Financial Peace of Mind for Small Businesses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #2D7D6F;
+      --teal-light: #3a9e8d;
+      --teal-dark:  #1f5a50;
+      --gold:       #C9A84C;
+      --gold-light: #e0bf72;
+      --cream:      #FDF8F0;
+      --warm-white: #FFFCF7;
+      --charcoal:   #2C2C2C;
+      --slate:      #5A6472;
+      --light-gray: #F4F1EC;
+      --border:     #E8E0D5;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,252,247,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: white; font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+    .nav-logo-text span { color: var(--teal); }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--slate);
+      font-size: 0.88rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: white !important;
+      padding: 8px 18px; border-radius: 6px;
+      font-weight: 600 !important; font-size: 0.85rem !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; color: white !important; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      padding: 140px 2rem 80px;
+      background: linear-gradient(135deg, #f0f9f7 0%, var(--cream) 60%, #fef9ef 100%);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(45,125,111,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 50px; padding: 6px 16px;
+      font-size: 0.78rem; font-weight: 600; color: var(--teal);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .hero-badge::before { content: '✦'; color: var(--gold); }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.2;
+      max-width: 800px; margin: 0 auto 1.5rem;
+    }
+    .hero h1 em {
+      font-style: normal; color: var(--teal);
+      border-bottom: 3px solid var(--gold);
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--slate);
+      max-width: 560px; margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal); color: white;
+      padding: 14px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(45,125,111,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      box-shadow: 0 6px 20px rgba(45,125,111,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--teal);
+      padding: 13px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid var(--teal);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: var(--teal); color: white;
+    }
+    .hero-trust {
+      margin-top: 3.5rem;
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.88rem; color: var(--slate); font-weight: 500;
+    }
+    .trust-item span { color: var(--teal); font-size: 1rem; }
+
+    /* ── PAIN POINTS BANNER ───────────────────────────────── */
+    .pain-banner {
+      background: var(--charcoal);
+      padding: 18px 2rem;
+      text-align: center;
+    }
+    .pain-banner p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.92rem;
+    }
+    .pain-banner strong { color: var(--gold); }
+
+    /* ── SECTION WRAPPER ──────────────────────────────────── */
+    .section {
+      padding: 90px 2rem;
+    }
+    .section-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700; color: var(--charcoal);
+      line-height: 1.25; margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--slate);
+      max-width: 560px; margin-bottom: 3rem;
+    }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ── SERVICES ─────────────────────────────────────────── */
+    #services { background: var(--light-gray); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--teal);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(45,125,111,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.92rem; color: var(--slate); line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .service-bullets {
+      list-style: none;
+    }
+    .service-bullets li {
+      font-size: 0.85rem; color: var(--slate);
+      padding: 4px 0; display: flex; align-items: center; gap: 8px;
+    }
+    .service-bullets li::before {
+      content: '✓';
+      color: var(--teal); font-weight: 700; font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.25rem;
+      background: rgba(45,125,111,0.1);
+      color: var(--teal); font-size: 0.78rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+    }
+
+    /* ── WHY US ───────────────────────────────────────────── */
+    #why {
+      background: white;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .why-visual {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      border-radius: 20px;
+      padding: 2.5rem;
+      color: white;
+    }
+    .why-visual h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .why-visual p {
+      font-size: 0.9rem; opacity: 0.85; margin-bottom: 2rem;
+    }
+    .why-stat {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 1.1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .why-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--gold-light);
+      flex-shrink: 0; min-width: 60px;
+    }
+    .why-stat-label { font-size: 0.88rem; opacity: 0.9; }
+    .cert-badges {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;
+    }
+    .cert-badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 0.8rem; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .why-points { list-style: none; }
+    .why-point {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.75rem;
+    }
+    .why-point-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: rgba(45,125,111,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .why-point h4 {
+      font-weight: 700; font-size: 1rem;
+      color: var(--charcoal); margin-bottom: 0.3rem;
+    }
+    .why-point p {
+      font-size: 0.9rem; color: var(--slate); line-height: 1.6;
+    }
+
+    /* ── TESTIMONIALS ─────────────────────────────────────── */
+    #testimonials { background: var(--cream); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--teal);
+      opacity: 0.15;
+      position: absolute; top: 0.5rem; left: 1.2rem;
+      line-height: 1;
+    }
+    .testi-stars {
+      color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem;
+    }
+    .testi-text {
+      font-size: 0.96rem; color: var(--slate); line-height: 1.75;
+      margin-bottom: 1.5rem; font-style: italic;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: white;
+      font-family: 'Playfair Display', serif;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.92rem; color: var(--charcoal); }
+    .testi-role { font-size: 0.8rem; color: var(--slate); }
+
+    /* ── ABOUT ────────────────────────────────────────────── */
+    #about { background: white; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .about-card {
+      background: linear-gradient(135deg, var(--cream) 0%, #fef9ef 100%);
+      border-radius: 20px; padding: 2.5rem;
+      border: 1px solid var(--border);
+    }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .about-card .about-title {
+      color: var(--teal); font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.05em; margin-bottom: 1.25rem;
+    }
+    .about-card p {
+      font-size: 0.95rem; color: var(--slate); line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .about-honor {
+      display: flex; gap: 10px; align-items: flex-start;
+      background: rgba(45,125,111,0.06);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 14px; margin-top: 1.25rem;
+    }
+    .about-honor p {
+      font-size: 0.85rem; color: var(--slate);
+      margin: 0; font-style: italic;
+    }
+    .about-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--charcoal);
+      margin-bottom: 1rem; line-height: 1.3;
+    }
+    .about-content p {
+      font-size: 0.98rem; color: var(--slate); line-height: 1.8; margin-bottom: 1rem;
+    }
+    .about-values {
+      display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem;
+    }
+    .about-value {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.9rem; font-weight: 500; color: var(--charcoal);
+    }
+    .about-value::before {
+      content: '';
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ── VETERAN BANNER ───────────────────────────────────── */
+    .veteran-banner {
+      background: var(--charcoal);
+      padding: 48px 2rem; text-align: center;
+    }
+    .veteran-banner h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: white;
+      margin-bottom: 0.75rem;
+    }
+    .veteran-banner p {
+      color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 0;
+    }
+    .veteran-banner strong { color: var(--gold); }
+
+    /* ── FINAL CTA ────────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+      padding: 100px 2rem; text-align: center;
+    }
+    #contact .section-label { color: var(--gold-light); }
+    #contact .section-title { color: white; }
+    #contact .section-sub { color: rgba(255,255,255,0.8); margin: 0 auto 2.5rem; }
+    .cta-box {
+      max-width: 600px; margin: 0 auto;
+    }
+    .cta-cards {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .cta-info {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px; padding: 12px 20px;
+      text-align: left;
+    }
+    .cta-info-label {
+      font-size: 0.72rem; color: rgba(255,255,255,0.6);
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+    .cta-info-val {
+      font-size: 0.92rem; color: white; font-weight: 500;
+    }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--charcoal);
+      padding: 15px 32px; border-radius: 8px;
+      font-weight: 700; font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+    }
+    .cta-note {
+      margin-top: 1rem;
+      color: rgba(255,255,255,0.6); font-size: 0.82rem;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: #1a1a1a;
+      padding: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.82rem;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--teal-light); }
+
+    /* ── ANIMATIONS ───────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge, .hero h1, .hero p, .hero-ctas, .hero-trust {
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero h1    { animation-delay: 0.1s; }
+    .hero p     { animation-delay: 0.2s; }
+    .hero-ctas  { animation-delay: 0.3s; }
+    .hero-trust { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">RP</div>
+    <div class="nav-logo-text">Right Penny<br><span>Bookkeeping</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:rightpennybookkeeping@gmail.com" class="nav-cta">Free Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">New Albany, Indiana · QuickBooks & Xero Certified</div>
+  <h1>Every <em>Penny</em> Counts.<br>Let Us Count Every One.</h1>
+  <p>Financial peace of mind for small businesses — clean books, audit-ready records, and zero bookkeeping stress, so you can focus on the work you love.</p>
+  <div class="hero-ctas">
+    <a href="mailto:rightpennybookkeeping@gmail.com" class="btn-primary">📅 Book Free Consultation</a>
+    <a href="#services" class="btn-secondary">See Our Services</a>
+  </div>
+  <div class="hero-trust">
+    <div class="trust-item"><span>✓</span> QuickBooks Certified</div>
+    <div class="trust-item"><span>✓</span> Xero Certified</div>
+    <div class="trust-item"><span>✓</span> Flat Monthly Pricing</div>
+    <div class="trust-item"><span>✓</span> 20% Discount for Veterans</div>
+  </div>
+</section>
+
+<!-- PAIN BANNER -->
+<div class="pain-banner">
+  <p>Drowning in receipts? Behind on reconciling? Dreading tax season? <strong>We fix messy books fast — and keep them clean.</strong></p>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Bookkeeping That Works<br>As Hard As You Do</h2>
+      <p class="section-sub">Transparent packages built for startups and small businesses — no surprises, no hourly billing, no jargon.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">📒</div>
+        <h3>Monthly Bookkeeping</h3>
+        <p>Your finances handled every month, like clockwork. We reconcile accounts, categorize transactions, and deliver clean, organized records you can actually rely on.</p>
+        <ul class="service-bullets">
+          <li>Bank & credit card reconciliation</li>
+          <li>Transaction categorization</li>
+          <li>Monthly financial reports</li>
+          <li>Audit-ready records</li>
+          <li>Flat monthly rate — no surprises</li>
+        </ul>
+        <span class="service-tag">Most Popular</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <h3>Cleanup & Catch-Up</h3>
+        <p>Behind on your books? Whether it's a few months or a few years, we dig in and get everything squared away — cleanly, accurately, and completely.</p>
+        <ul class="service-bullets">
+          <li>Months or years of backlog cleared</li>
+          <li>Transaction review & correction</li>
+          <li>Account reconciliation from scratch</li>
+          <li>Tax-ready financials delivered</li>
+          <li>Custom quote for your situation</li>
+        </ul>
+        <span class="service-tag">Fresh Start</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3>Educational Consulting</h3>
+        <p>Want to understand your own numbers? We teach you the basics — how to read your reports, track expenses, and make smarter financial decisions for your business.</p>
+        <ul class="service-bullets">
+          <li>1-on-1 financial literacy sessions</li>
+          <li>Software walkthroughs (QuickBooks, Xero)</li>
+          <li>DIY bookkeeping guidance</li>
+          <li>Custom workflow setup</li>
+          <li>Ongoing Q&A support</li>
+        </ul>
+        <span class="service-tag">Build Confidence</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-visual">
+        <h3>No Penny Left Behind</h3>
+        <p>We handle every transaction with the care your business deserves.</p>
+        <div class="why-stat">
+          <div class="why-stat-num">100%</div>
+          <div class="why-stat-label">Accuracy focus — every transaction reviewed and reconciled</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">3</div>
+          <div class="why-stat-label">Core services designed specifically for small businesses & startups</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">20%</div>
+          <div class="why-stat-label">Discount for veteran-owned businesses, proudly offered</div>
+        </div>
+        <div class="cert-badges">
+          <div class="cert-badge">⚡ QuickBooks Certified</div>
+          <div class="cert-badge">✦ Xero Certified</div>
+          <div class="cert-badge">📁 Hubdoc Ready</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="section-label">Why Right Penny</span>
+        <h2 class="section-title">We're Not Just Another Bookkeeper</h2>
+        <ul class="why-points">
+          <li class="why-point">
+            <div class="why-point-icon">🎯</div>
+            <div>
+              <h4>Precision You Can Count On</h4>
+              <p>Every penny tracked, every account reconciled. Our obsession with accuracy means you never have to wonder if your books are right.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-point-icon">💚</div>
+            <div>
+              <h4>Built for Small Business</h4>
+              <p>We specialize in startups and growing businesses — so our services and pricing are designed around what you actually need, not bloated enterprise packages.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-point-icon">🕐</div>
+            <div>
+              <h4>Your Time Back</h4>
+              <p>Stop spending evenings fighting spreadsheets. Hand off your books and reclaim the hours you need to grow the business you love.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-point-icon">🛡️</div>
+            <div>
+              <h4>Audit-Ready, Always</h4>
+              <p>Your records are organized, accurate, and ready for tax season — or any other moment you need clean financials fast.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">Client Stories</span>
+      <h2 class="section-title">Small Businesses. Real Results.</h2>
+      <p class="section-sub">See what happens when your books are finally in the right hands.</p>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I used to dread tax season every single year. After working with Right Penny, I handed my accountant perfectly organized books and it was the smoothest filing I've ever had. I can't recommend them enough."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Maria S.</div>
+            <div class="testi-role">Owner, Local Boutique · New Albany, IN</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Two years of messy books cleaned up in just a few weeks. I didn't know my business was actually profitable until I could see the real numbers. This was a total game-changer for how I make decisions."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">J</div>
+          <div>
+            <div class="testi-name">James T.</div>
+            <div class="testi-role">Founder, Service Business · Indiana</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"As a veteran, the discount was a great touch — but the quality of service is what keeps me here. Professional, responsive, and they actually explain things in a way that makes sense. My books have never been cleaner."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Robert K.</div>
+            <div class="testi-role">Veteran Business Owner · New Albany, IN</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>Right Penny Bookkeeping</h3>
+        <p class="about-title">New Albany, Indiana · Est. with Purpose</p>
+        <p>Founded with a mission to bring financial clarity to small businesses who deserve the same quality of bookkeeping that big companies take for granted.</p>
+        <p>We believe every small business owner should have access to accurate, professional books — without the enterprise price tag and without the overwhelm.</p>
+        <div class="about-honor">
+          <span style="font-size:1.2rem;">🎖️</span>
+          <p>In honor of grandfather Oscar Torres (Vietnam Veteran), Right Penny Bookkeeping proudly offers a <strong>20% discount to all veteran-owned businesses.</strong></p>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <h4>Your Business Deserves the Right Financial Foundation</h4>
+        <p>Right Penny was built on a simple belief: that your finances should never be the thing holding your business back. Clean books give you clarity. Clarity gives you confidence. Confidence helps you grow.</p>
+        <p>We work with startups and small businesses across Indiana who are ready to stop guessing and start knowing exactly where their money goes.</p>
+        <div class="about-values">
+          <div class="about-value">Flat, transparent pricing — no hourly billing surprises</div>
+          <div class="about-value">QuickBooks & Xero certified for accurate digital bookkeeping</div>
+          <div class="about-value">Hubdoc & Google Drive for seamless document management</div>
+          <div class="about-value">Dedicated office hours: Tue–Fri, 9 AM – 4 PM EST</div>
+          <div class="about-value">Free consultation to find the right fit for your business</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VETERAN BANNER -->
+<div class="veteran-banner">
+  <h3>🎖️ Proud to Support Those Who Served</h3>
+  <p>Right Penny Bookkeeping offers <strong>20% off all services</strong> for veteran-owned businesses — in honor of Oscar Torres, Vietnam Veteran.</p>
+</div>
+
+<!-- FINAL CTA -->
+<section id="contact">
+  <div class="cta-box">
+    <span class="section-label">Get Started Today</span>
+    <h2 class="section-title">Ready to Get Your Books Right?</h2>
+    <p class="section-sub">Book your free consultation and find out exactly what clean, accurate bookkeeping can do for your business.</p>
+    <div class="cta-cards">
+      <div class="cta-info">
+        <div class="cta-info-label">Email Us</div>
+        <div class="cta-info-val">rightpennybookkeeping@gmail.com</div>
+      </div>
+      <div class="cta-info">
+        <div class="cta-info-label">Office Hours</div>
+        <div class="cta-info-val">Tue–Fri · 9 AM – 4 PM EST</div>
+      </div>
+    </div>
+    <a href="mailto:rightpennybookkeeping@gmail.com?subject=Free%20Consultation%20Request" class="btn-gold">📅 Book Your Free Consultation</a>
+    <p class="cta-note">No commitment. No pressure. Just a conversation about your books.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Right Penny Bookkeeping · New Albany, Indiana ·
+    <a href="mailto:rightpennybookkeeping@gmail.com">rightpennybookkeeping@gmail.com</a>
+  </p>
+  <p style="margin-top:6px; font-size:0.75rem;">QuickBooks Certified · Xero Certified · Serving Small Businesses & Startups</p>
+</footer>
+
+</body>
+</html>
