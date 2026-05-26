@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tifone's Bookkeeping Services | Making Bookkeeping Simple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #6B3FA0;
+      --purple-dark: #4A2975;
+      --purple-light: #9B6ED0;
+      --orange: #F47B20;
+      --orange-light: #FFA050;
+      --pink: #E0579A;
+      --gradient: linear-gradient(135deg, #6B3FA0 0%, #E0579A 50%, #F47B20 100%);
+      --gradient-soft: linear-gradient(135deg, #7B4FB0 0%, #C06798 60%, #F47B20 100%);
+      --white: #FFFFFF;
+      --off-white: #FAF8FF;
+      --gray-light: #F3F0FA;
+      --gray: #7A7090;
+      --dark: #1E1230;
+      --shadow: 0 4px 24px rgba(107,63,160,0.12);
+      --shadow-lg: 0 12px 48px rgba(107,63,160,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 5%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(107,63,160,0.08);
+      box-shadow: 0 2px 16px rgba(107,63,160,0.06);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-cta {
+      background: var(--gradient);
+      color: var(--white); border: none; border-radius: 8px;
+      padding: 10px 22px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white); border-radius: 100px;
+      padding: 6px 18px; font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 24px; letter-spacing: 0.04em;
+      backdrop-filter: blur(4px);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.15; margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .hero h1 span { color: #FFD580; }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.88);
+      max-width: 580px; margin: 0 auto 40px;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--white); color: var(--purple);
+      border: none; border-radius: 10px;
+      padding: 16px 36px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6); border-radius: 10px;
+      padding: 14px 34px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: white; }
+
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 800; color: var(--white);
+    }
+    .hero-stat .label { font-size: 0.82rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+
+    /* ─── SECTION SHARED ─── */
+    section { padding: 90px 5%; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(107,63,160,0.1); color: var(--purple);
+      border-radius: 100px; padding: 5px 16px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 1.05rem; color: var(--gray); max-width: 560px; }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--gray-light); padding: 28px 5%;
+      display: flex; gap: 40px; justify-content: center; align-items: center;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.9rem; font-weight: 600; color: var(--purple-dark);
+    }
+    .trust-item .icon { font-size: 1.3rem; }
+
+    /* ─── SERVICES ─── */
+    .services { background: var(--off-white); }
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px; max-width: 1100px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white); border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(107,63,160,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--dark);
+    }
+    .service-card p { font-size: 0.92rem; color: var(--gray); line-height: 1.65; }
+
+    /* ─── ABOUT ─── */
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-placeholder {
+      width: 100%; aspect-ratio: 4/5;
+      background: var(--gradient);
+      border-radius: 24px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: white; font-size: 5rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-img-placeholder p {
+      font-size: 1.1rem; font-weight: 700;
+      margin-top: 16px; opacity: 0.9;
+    }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--orange); color: white;
+      border-radius: 14px; padding: 18px 24px;
+      text-align: center; box-shadow: var(--shadow-lg);
+    }
+    .about-badge .big { font-size: 2rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+    .about-badge .sm { font-size: 0.75rem; font-weight: 600; opacity: 0.9; }
+    .about-content {}
+    .about-content .section-title { margin-bottom: 20px; }
+    .about-content p { color: var(--gray); margin-bottom: 16px; line-height: 1.8; }
+    .about-content p strong { color: var(--dark); }
+    .about-highlights { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .highlight-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .highlight-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gradient);
+      flex-shrink: 0; margin-top: 7px;
+    }
+    .highlight-item span { font-size: 0.95rem; color: var(--dark); font-weight: 500; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: var(--gray-light); }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px; max-width: 1000px; margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--white); border-radius: 16px;
+      padding: 32px; box-shadow: var(--shadow);
+      border: 1px solid rgba(107,63,160,0.06);
+      transition: transform 0.2s;
+    }
+    .testi-card:hover { transform: translateY(-4px); }
+    .stars { color: #F59E0B; font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-card blockquote { font-size: 0.97rem; color: var(--dark); line-height: 1.75; font-style: italic; margin-bottom: 20px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1rem; flex-shrink: 0;
+    }
+    .author-info .name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .author-info .role { font-size: 0.8rem; color: var(--gray); }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--gradient);
+      text-align: center;
+      padding: 100px 5%;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='40' cy='40' r='35' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; color: var(--white); margin-bottom: 16px; position: relative;
+    }
+    .cta-section p { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; position: relative; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-white {
+      background: var(--white); color: var(--purple);
+      border: none; border-radius: 10px;
+      padding: 16px 36px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+    .cta-phone {
+      color: rgba(255,255,255,0.9); font-size: 0.95rem;
+      margin-top: 28px; position: relative;
+    }
+    .cta-phone a { color: var(--white); font-weight: 700; text-decoration: none; }
+    .cta-phone a:hover { text-decoration: underline; }
+
+    /* ─── CONTACT ─── */
+    .contact-section {
+      padding: 90px 5%;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .contact-card {
+      background: var(--gray-light); border-radius: 16px;
+      padding: 32px 24px; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .contact-icon { font-size: 2rem; margin-bottom: 14px; }
+    .contact-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .contact-card a, .contact-card p { font-size: 1rem; font-weight: 600; color: var(--purple); text-decoration: none; }
+    .contact-card a:hover { color: var(--purple-dark); text-decoration: underline; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.6);
+      text-align: center; padding: 36px 5%;
+      font-size: 0.85rem;
+    }
+    footer span { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about { grid-template-columns: 1fr; gap: 40px; }
+      .about-badge { right: 10px; bottom: -10px; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Tifone's Bookkeeping</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+14127596984" class="nav-cta">Call Us Now</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">🏆 Pittsburgh's Trusted Bookkeeping Experts</div>
+      <h1>Making the World of<br/><span>Bookkeeping, Simple.</span></h1>
+      <p>We handle the numbers so you can focus on what you do best — growing your business. Small business bookkeeping, payroll, and financial reporting done right.</p>
+      <div class="hero-btns">
+        <a href="tel:+14127596984" class="btn-primary">📅 Book Free Consultation</a>
+        <a href="#services" class="btn-secondary">See Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">100+</div>
+          <div class="label">Happy Clients</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">5★</div>
+          <div class="label">Average Rating</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">$27k+</div>
+          <div class="label">Saved for Clients</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">Pittsburgh</div>
+          <div class="label">PA & Nationwide</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="icon">✅</span> QuickBooks Certified</div>
+    <div class="trust-item"><span class="icon">🔒</span> 100% Confidential</div>
+    <div class="trust-item"><span class="icon">📞</span> Responsive & Personal</div>
+    <div class="trust-item"><span class="icon">🌎</span> Serving Clients Nationwide</div>
+    <div class="trust-item"><span class="icon">⭐</span> 5-Star Rated Service</div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Everything Your Books Need,<br/>All in One Place</h2>
+      <p class="section-sub">From QuickBooks setup to payroll and 1099 filings — we've got every corner of your finances covered.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>QuickBooks Setup &amp; Consulting</h3>
+        <p>Get your QuickBooks configured correctly from day one. We set it up, train your team, and make sure it works perfectly for your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <h3>Book Cleanup</h3>
+        <p>Messy books? No problem. We dig in, find the errors, and restore order — often uncovering money you didn't know you had.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>Comprehensive Payroll</h3>
+        <p>We handle your entire payroll process — accurate, timely, and fully compliant. Your team gets paid right, every time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📄</div>
+        <h3>1099 Filing</h3>
+        <p>Contractor payments made easy. We track, prepare, and file all your 1099s so you stay compliant and penalty-free.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Financial Reporting</h3>
+        <p>Understand your numbers with clear, actionable financial reports. Profit &amp; loss, balance sheets, and cash flow — all explained in plain English.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>Inventory Management</h3>
+        <p>Track your inventory with precision. We integrate bookkeeping with your stock levels so you always know exactly where you stand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="padding: 90px 5%;">
+    <div class="about">
+      <div class="about-img-wrap">
+        <div class="about-img-placeholder">
+          <div style="font-size:5rem;">👤</div>
+          <p>Adam Tifone</p>
+        </div>
+        <div class="about-badge">
+          <div class="big">5★</div>
+          <div class="sm">Client Rated</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">Meet Adam</div>
+        <h2 class="section-title">Your Partner in Financial Clarity</h2>
+        <p>Hi, I'm <strong>Adam Tifone</strong>, the founder of Tifone's Bookkeeping Services. I started this business with one goal: <strong>help small businesses succeed and thrive.</strong></p>
+        <p>Based in Pittsburgh, PA, I work with business owners across the country who are tired of drowning in paperwork and worried about their finances. I believe you shouldn't have to be an accountant to run a great business — that's what I'm here for.</p>
+        <p>My mission is simple: <em>"We don't win unless you do."</em> Every client relationship is personal, responsive, and built on trust.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-dot"></div>
+            <span>QuickBooks-certified with deep hands-on expertise</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-dot"></div>
+            <span>Serving small businesses in Pittsburgh and nationwide</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-dot"></div>
+            <span>Potential to save your business tens of thousands annually</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-dot"></div>
+            <span>Personal, responsive service — you're never just a ticket number</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-header">
+      <div class="section-tag">Client Love</div>
+      <h2 class="section-title">Real Results, Real Clients</h2>
+      <p class="section-sub">Don't just take our word for it — here's what business owners across the country are saying.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Can't deny that Adam has been a great help in business. 5 stars would recommend. He's knowledgeable, responsive, and genuinely cares about your success."</blockquote>
+        <div class="testi-author">
+          <div class="author-avatar">SW</div>
+          <div class="author-info">
+            <div class="name">Spencer Williams</div>
+            <div class="role">Small Business Owner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"After Adam cleaned up our books we found an extra $27,000 we didn't even know we had. Game changer for our business. Can't recommend him enough!"</blockquote>
+        <div class="testi-author">
+          <div class="author-avatar">JD</div>
+          <div class="author-info">
+            <div class="name">Verified Client</div>
+            <div class="role">Pittsburgh Business Owner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Finally someone who explains the numbers in a way I can actually understand. Adam simplified everything and now I feel in control of my finances for the first time."</blockquote>
+        <div class="testi-author">
+          <div class="author-avatar">MR</div>
+          <div class="author-info">
+            <div class="name">Satisfied Client</div>
+            <div class="role">Nationwide Client</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <h2>Ready to Simplify Your Bookkeeping?</h2>
+    <p>Book a free, no-pressure consultation with Adam today. Let's talk about your business and how we can save you time, money, and stress.</p>
+    <div class="cta-btns">
+      <a href="tel:+14127596984" class="btn-white">📅 Book Free Consultation</a>
+      <a href="tel:+14127596984" class="btn-secondary">Call Now: (412) 759-6984</a>
+    </div>
+    <div class="cta-phone">Or call us directly: <a href="tel:+14127596984">(412) 759-6984</a></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-section">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Let's Start the Conversation</h2>
+      <p class="section-sub" style="margin: 0 auto;">We're friendly, fast, and here to help. Reach out today and let's see how we can simplify your financial life.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h4>Phone</h4>
+          <a href="tel:+14127596984">(412) 759-6984</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h4>Location</h4>
+          <p>Pittsburgh, PA<br/><span style="font-size:0.85rem;font-weight:400;color:var(--gray);">Serving clients nationwide</span></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🌐</div>
+          <h4>Website</h4>
+          <a href="https://tifonesbookkeepingservices.com" target="_blank">tifonesbookkeeping<br/>services.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 <span>Tifone's Bookkeeping Services</span>. All rights reserved. | Pittsburgh, PA &amp; Nationwide | <a href="tel:+14127596984" style="color: rgba(255,255,255,0.7); text-decoration:none;">(412) 759-6984</a></p>
+    <p style="margin-top:8px; font-size:0.78rem;">"Making the World of Bookkeeping, Simple!"</p>
+  </footer>
+
+</body>
+</html>
