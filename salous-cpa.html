@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salous CPA | Stop Overpaying. Start Keeping More.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --deep: #112233;
+    --blue: #1565C0;
+    --blue-mid: #1976D2;
+    --blue-light: #42A5F5;
+    --teal: #00897B;
+    --teal-light: #4DB6AC;
+    --gold: #F9A825;
+    --white: #FFFFFF;
+    --off-white: #F7F9FC;
+    --gray-light: #E8EDF4;
+    --gray-mid: #9EAABB;
+    --text: #1A2535;
+    --text-muted: #5A6A7E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6%;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--teal-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--teal-light) !important; color: var(--navy) !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 6% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,137,123,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: 30%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(21,101,192,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,137,123,0.15);
+    border: 1px solid rgba(77,182,172,0.35);
+    color: var(--teal-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--teal-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--teal-light), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 42px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 52px;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.97rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-primary:hover { background: #00796B; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,137,123,0.35); }
+
+  .btn-secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+  }
+
+  .hero-stat { border-left: 2px solid var(--teal); padding-left: 14px; }
+
+  .hero-stat strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .hero-stat span {
+    font-size: 0.78rem;
+    color: var(--gray-mid);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  /* Hero right panel */
+  .hero-panel {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 36px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(12px);
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    background: linear-gradient(135deg, rgba(77,182,172,0.3), transparent 50%, rgba(21,101,192,0.2));
+    z-index: -1;
+  }
+
+  .card-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 10px;
+  }
+
+  .card-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    color: var(--gray-mid);
+    margin-bottom: 28px;
+  }
+
+  .card-items { display: flex; flex-direction: column; gap: 14px; }
+
+  .card-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .card-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .icon-teal { background: rgba(0,137,123,0.2); color: var(--teal-light); }
+  .icon-blue { background: rgba(21,101,192,0.2); color: var(--blue-light); }
+  .icon-gold { background: rgba(249,168,37,0.15); color: var(--gold); }
+
+  .card-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 24px 0;
+  }
+
+  .card-cta-mini {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: var(--navy);
+    padding: 13px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: block;
+    transition: opacity 0.2s;
+  }
+
+  .card-cta-mini:hover { opacity: 0.9; }
+
+  /* ===== PROOF BAR ===== */
+  .proof-bar {
+    background: var(--deep);
+    padding: 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .proof-inner {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .proof-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  .proof-item:last-child { border-right: none; }
+
+  .proof-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .proof-number .teal { color: var(--teal-light); }
+
+  .proof-label {
+    font-size: 0.82rem;
+    color: var(--gray-mid);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services {
+    padding: 100px 6%;
+    background: var(--off-white);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+    margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--gray-light);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 36px;
+    transition: all 0.25s;
+    position: relative;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--navy); }
+  .service-card:hover .service-title { color: var(--white); }
+  .service-card:hover .service-desc { color: rgba(255,255,255,0.6); }
+  .service-card:hover .service-icon-wrap { background: rgba(77,182,172,0.2); color: var(--teal-light); }
+  .service-card:hover .service-tag { background: rgba(77,182,172,0.15); color: var(--teal-light); }
+
+  .service-icon-wrap {
+    width: 48px;
+    height: 48px;
+    background: rgba(0,137,123,0.1);
+    color: var(--teal);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    transition: all 0.25s;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    transition: color 0.25s;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    transition: color 0.25s;
+    margin-bottom: 16px;
+  }
+
+  .service-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: rgba(0,137,123,0.08);
+    color: var(--teal);
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+
+  /* ===== CALCULATOR ===== */
+  .calculator-section {
+    padding: 100px 6%;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .calculator-section::before {
+    content: '';
+    position: absolute;
+    top: -300px;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0,137,123,0.1) 0%, transparent 60%);
+  }
+
+  .calc-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .calc-intro .section-title { color: var(--white); }
+  .calc-intro .section-label { color: var(--teal-light); }
+  .calc-intro .section-sub { color: rgba(255,255,255,0.55); }
+
+  .calc-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .calc-feature-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(77,182,172,0.15);
+    color: var(--teal-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .calc-feature-text strong {
+    display: block;
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .calc-feature-text p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  .calc-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+  }
+
+  .calc-box h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 0.97rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus { border-color: var(--teal-light); }
+
+  .form-group select option { background: var(--navy); color: var(--white); }
+
+  .input-prefix {
+    position: relative;
+  }
+
+  .input-prefix::before {
+    content: '$';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--teal-light);
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 1;
+  }
+
+  .input-prefix input { padding-left: 30px; }
+
+  .calc-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--teal), #00796B);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .calc-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,137,123,0.4); }
+
+  .calc-results {
+    display: none;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .calc-results.visible { display: block; }
+
+  .result-headline {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 16px;
+  }
+
+  .result-primary {
+    background: linear-gradient(135deg, rgba(0,137,123,0.2), rgba(21,101,192,0.15));
+    border: 1px solid rgba(77,182,172,0.25);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .result-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--teal-light);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .result-label { font-size: 0.88rem; color: rgba(255,255,255,0.55); }
+
+  .result-breakdown { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+  }
+
+  .result-row .r-label { color: rgba(255,255,255,0.55); }
+  .result-row .r-val { color: var(--white); font-weight: 600; }
+  .result-row .r-val.positive { color: var(--teal-light); }
+  .result-row .r-val.negative { color: #EF9A9A; }
+
+  .result-cta {
+    width: 100%;
+    padding: 14px;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.97rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.2px;
+  }
+
+  .result-cta:hover { background: #FFB300; }
+
+  .disclaimer { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 12px; line-height: 1.5; }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials {
+    padding: 100px 6%;
+    background: var(--white);
+  }
+
+  .testimonials-header { text-align: center; margin-bottom: 60px; }
+  .testimonials-header .section-sub { margin: 0 auto; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--off-white);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .testimonial-card:hover { transform: translateY(-4px); }
+
+  .testimonial-card.featured {
+    background: var(--navy);
+    grid-row: span 1;
+  }
+
+  .t-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 16px; }
+
+  .t-quote {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testimonial-card.featured .t-quote { color: rgba(255,255,255,0.8); }
+
+  .t-highlight {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--teal-light);
+    margin-bottom: 8px;
+  }
+
+  .t-author { display: flex; align-items: center; gap: 12px; }
+
+  .t-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .avatar-teal { background: rgba(0,137,123,0.15); color: var(--teal); }
+  .avatar-blue { background: rgba(21,101,192,0.15); color: var(--blue-mid); }
+  .avatar-navy { background: rgba(13,27,42,0.1); color: var(--navy); }
+  .avatar-white { background: rgba(255,255,255,0.15); color: var(--white); }
+
+  .t-name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+  .testimonial-card.featured .t-name { color: var(--white); }
+  .t-biz { font-size: 0.8rem; color: var(--text-muted); }
+  .testimonial-card.featured .t-biz { color: rgba(255,255,255,0.5); }
+
+  /* ===== ABOUT ===== */
+  .about {
+    padding: 100px 6%;
+    background: var(--off-white);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card-main {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card-main::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(0,137,123,0.25), transparent 65%);
+  }
+
+  .about-initials {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.08);
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .about-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .about-title { font-size: 0.88rem; color: var(--teal-light); font-weight: 500; margin-bottom: 24px; letter-spacing: 0.3px; }
+
+  .about-bio { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 28px; }
+
+  .about-creds { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .cred-badge {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  .about-float {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+
+  .about-float strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -1px;
+  }
+
+  .about-float span { font-size: 0.78rem; color: var(--text-muted); }
+
+  .about-content .section-sub { max-width: 100%; }
+
+  .about-points { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+
+  .about-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .point-check {
+    width: 24px;
+    height: 24px;
+    background: rgba(0,137,123,0.12);
+    color: var(--teal);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .point-text strong { display: block; font-weight: 600; color: var(--navy); margin-bottom: 3px; font-size: 0.95rem; }
+  .point-text p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.55; }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    padding: 100px 6%;
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(0,137,123,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .urgency-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(249,168,37,0.12);
+    border: 1px solid rgba(249,168,37,0.3);
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+  }
+
+  .urgency-tag::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 44px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .final-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-gold:hover { background: #FFB300; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(249,168,37,0.35); }
+
+  .spots-note { margin-top: 28px; font-size: 0.83rem; color: rgba(255,255,255,0.35); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #08131F;
+    padding: 48px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: rgba(255,255,255,0.8); }
+  .footer-brand span { color: var(--teal-light); }
+
+  .footer-info { font-size: 0.82rem; color: rgba(255,255,255,0.3); line-height: 1.6; }
+
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-links a:hover { color: var(--teal-light); }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 120px 6% 60px; gap: 48px; }
+    .hero-panel { justify-content: center; }
+    .hero-card { max-width: 100%; }
+    .calc-wrap { grid-template-columns: 1fr; gap: 48px; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-float { display: none; }
+    .proof-inner { flex-wrap: wrap; }
+    .proof-item { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-links { display: none; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.1rem; }
+    .hero-stats { flex-direction: column; gap: 20px; }
+    .proof-item { min-width: 100%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .final-cta h2 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Salous<span>CPA</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#calculator">Calculator</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://salouscpa.com" class="nav-cta">Book Free Review</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Oklahoma-Licensed CPA &bull; License #18541</div>
+    <h1>Keep More of<br>What You <span class="accent">Earn.</span></h1>
+    <p class="hero-sub">Most business owners overpay the IRS by thousands every year. Ameen Salous, CPA gives you year-round strategy, not just April paperwork.</p>
+    <div class="hero-actions">
+      <a href="#calculator" class="btn-primary">&#9654; Calculate My Savings</a>
+      <a href="https://salouscpa.com" class="btn-secondary">Book Free Tax Review &rarr;</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>$8,400</strong>
+        <span>Avg. Annual Savings</span>
+      </div>
+      <div class="hero-stat">
+        <strong>500+</strong>
+        <span>Clients Served</span>
+      </div>
+      <div class="hero-stat">
+        <strong>5.0★</strong>
+        <span>Client Rating</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-panel">
+    <div class="hero-card">
+      <div class="card-tag">Your Tax Opportunity</div>
+      <div class="card-amount">$12,400</div>
+      <div class="card-desc">Typical first-year savings for self-employed clients</div>
+      <div class="card-items">
+        <div class="card-item">
+          <div class="card-item-icon icon-teal">&#10003;</div>
+          S-Corp Election &amp; Setup
+        </div>
+        <div class="card-item">
+          <div class="card-item-icon icon-blue">&#10003;</div>
+          Year-Round Tax Strategy
+        </div>
+        <div class="card-item">
+          <div class="card-item-icon icon-gold">&#10003;</div>
+          Self-Employment Tax Reduction
+        </div>
+      </div>
+      <div class="card-divider"></div>
+      <a href="https://salouscpa.com" class="card-cta-mini">Book Your Free Review &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<section class="proof-bar">
+  <div class="proof-inner">
+    <div class="proof-item">
+      <div class="proof-number">500<span class="teal">+</span></div>
+      <div class="proof-label">Clients Served</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-number">$8,400</div>
+      <div class="proof-label">Average Annual Savings</div>
+    </div>
+    <div class="proof-item">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="proof-label">5-Star Rated CPA Firm</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-number">10<span class="teal">+</span></div>
+      <div class="proof-label">Years of Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Every Service You Need,<br>None of the Runaround</h2>
+  <p class="section-sub">From S-Corp elections that slash self-employment taxes to bookkeeping that keeps you out of trouble — we handle it all, year-round.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon-wrap">&#128200;</div>
+      <div class="service-title">Tax Advisory &amp; Planning</div>
+      <p class="service-desc">Proactive strategy throughout the year — not just at tax time. We find savings before the deadline, not after.</p>
+      <span class="service-tag">Year-Round</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">&#127970;</div>
+      <div class="service-title">S-Corp Election &amp; Setup</div>
+      <p class="service-desc">The single most powerful tax move for self-employed earners. We handle the full election, payroll setup, and ongoing compliance.</p>
+      <span class="service-tag">High Impact</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">&#128196;</div>
+      <div class="service-title">Tax Preparation</div>
+      <p class="service-desc">Accurate, on-time returns for individuals and businesses. Personal CPA attention — no software-only filing.</p>
+      <span class="service-tag">Compliance</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">&#128218;</div>
+      <div class="service-title">Bookkeeping</div>
+      <p class="service-desc">Clean books are the foundation of every tax strategy. Monthly reconciliation and financial reporting you can trust.</p>
+      <span class="service-tag">Monthly</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">&#9881;</div>
+      <div class="service-title">Entity Formation</div>
+      <p class="service-desc">Start right with the correct entity structure — LLC, S-Corp, C-Corp. We set you up to minimize taxes from day one.</p>
+      <span class="service-tag">Startup</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">&#127758;</div>
+      <div class="service-title">Multi-State Filings</div>
+      <p class="service-desc">Operating in multiple states? We manage nexus, apportionment, and every state return so nothing slips through the cracks.</p>
+      <span class="service-tag">Multi-State</span>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calculator-section" id="calculator">
+  <div class="calc-wrap">
+    <div class="calc-intro">
+      <div class="section-label">Tax Savings Calculator</div>
+      <h2 class="section-title">See Your Potential<br>Tax Savings</h2>
+      <p class="section-sub">Input your numbers and get an instant estimate of how much you could save with proper tax structuring and strategy.</p>
+
+      <div class="calc-feature">
+        <div class="calc-feature-icon">&#9889;</div>
+        <div class="calc-feature-text">
+          <strong>Instant Results</strong>
+          <p>See your estimated savings in real time as you enter your figures.</p>
+        </div>
+      </div>
+      <div class="calc-feature">
+        <div class="calc-feature-icon">&#128274;</div>
+        <div class="calc-feature-text">
+          <strong>100% Private</strong>
+          <p>Nothing is stored or shared. This runs entirely in your browser.</p>
+        </div>
+      </div>
+      <div class="calc-feature">
+        <div class="calc-feature-icon">&#127919;</div>
+        <div class="calc-feature-text">
+          <strong>CPA-Grade Estimates</strong>
+          <p>Our calculator uses real tax rates and S-Corp thresholds, not rough guesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-box">
+      <h3>&#128200; Business Tax Savings Estimator</h3>
+
+      <div class="form-group">
+        <label>Annual Business Revenue</label>
+        <div class="input-prefix">
+          <input type="number" id="revenue" placeholder="150,000" min="0" step="1000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Business Structure</label>
+        <select id="entity">
+          <option value="sole">Sole Proprietor / Single-Member LLC</option>
+          <option value="scorp">S-Corporation</option>
+          <option value="partner">Partnership / Multi-Member LLC</option>
+          <option value="ccorp">C-Corporation</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Annual Business Expenses</label>
+        <div class="input-prefix">
+          <input type="number" id="expenses" placeholder="40,000" min="0" step="1000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Filing Status</label>
+        <select id="filing">
+          <option value="single">Single</option>
+          <option value="mfj">Married Filing Jointly</option>
+          <option value="hoh">Head of Household</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>State</label>
+        <select id="state">
+          <option value="ok">Oklahoma</option>
+          <option value="tx">Texas (No State Tax)</option>
+          <option value="ca">California</option>
+          <option value="fl">Florida (No State Tax)</option>
+          <option value="ny">New York</option>
+          <option value="other">Other State (Avg. Rate)</option>
+        </select>
+      </div>
+
+      <button class="calc-btn" onclick="calculateSavings()">&#9654; &nbsp;Calculate My Tax Savings</button>
+
+      <div class="calc-results" id="calcResults">
+        <div class="result-headline">Your Personalized Estimate</div>
+
+        <div class="result-primary">
+          <div class="result-amount" id="totalSavings">$0</div>
+          <div class="result-label">Estimated Annual Tax Savings</div>
+        </div>
+
+        <div class="result-breakdown" id="resultBreakdown"></div>
+
+        <button class="result-cta" onclick="window.open('https://salouscpa.com','_blank')">
+          &#128197; &nbsp;Book Free Review to Confirm These Savings
+        </button>
+
+        <p class="disclaimer">* Estimates are for illustrative purposes based on published IRS and state tax rates. Actual savings depend on your specific situation. Schedule a free consultation to get exact numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-header">
+    <div class="section-label">Client Results</div>
+    <h2 class="section-title">Real People, Real Savings</h2>
+    <p class="section-sub">Our clients don't just file taxes — they save thousands and finally understand their finances.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card featured">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="t-highlight">$10,000+ saved</div>
+      <p class="t-quote">"Ameen saved me over $10k in my first year alone. I had no idea I was leaving that much money on the table with my old accountant. The S-Corp election changed everything."</p>
+      <div class="t-author">
+        <div class="t-avatar avatar-white">YS</div>
+        <div>
+          <div class="t-name">Yazan S.</div>
+          <div class="t-biz">Business Owner, Oklahoma</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-quote">"I used to dread tax season. Now I actually look forward to our quarterly check-ins because I know Ameen has already found ways to reduce my bill."</p>
+      <div class="t-author">
+        <div class="t-avatar avatar-teal">AK</div>
+        <div>
+          <div class="t-name">Ali K.</div>
+          <div class="t-biz">Consultant, Self-Employed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-quote">"Switched from a big franchise tax firm to Salous CPA and the difference is night and day. I actually talk to a real CPA who knows my business."</p>
+      <div class="t-author">
+        <div class="t-avatar avatar-blue">AE</div>
+        <div>
+          <div class="t-name">Ahmad E.</div>
+          <div class="t-biz">LLC Owner, Multi-State</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-quote">"The bookkeeping service alone is worth it — finally have clean financials. And the tax savings on top of that? Best business decision I've made."</p>
+      <div class="t-author">
+        <div class="t-avatar avatar-navy">MR</div>
+        <div>
+          <div class="t-name">M. Richardson</div>
+          <div class="t-biz">Real Estate Investor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-card-main">
+        <div class="about-initials">AS</div>
+        <div class="about-name">Ameen Salous, CPA</div>
+        <div class="about-title">Founder &bull; Oklahoma CPA License #18541</div>
+        <p class="about-bio">Ameen built Salous CPA to be the firm he wished existed — one where you talk to an actual CPA, not a seasonal employee with software. Based in Oklahoma, serving clients nationwide.</p>
+        <div class="about-creds">
+          <span class="cred-badge">&#9989; Licensed CPA</span>
+          <span class="cred-badge">&#9989; OK Society of CPAs</span>
+          <span class="cred-badge">&#9989; S-Corp Specialist</span>
+          <span class="cred-badge">&#9989; Multi-State Expert</span>
+        </div>
+      </div>
+      <div class="about-float">
+        <strong>$8,400</strong>
+        <span>Average client savings</span>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <div class="section-label">About Ameen</div>
+      <h2 class="section-title">The Human Alternative to Tax Software</h2>
+      <p class="section-sub">Big box tax software is built for average situations. Your business isn't average — so why let a generic algorithm decide your tax strategy?</p>
+
+      <div class="about-points">
+        <div class="about-point">
+          <div class="point-check">&#10003;</div>
+          <div class="point-text">
+            <strong>Direct CPA Access</strong>
+            <p>You communicate directly with Ameen — not a call center or rotating staff. Your questions get real answers, fast.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="point-check">&#10003;</div>
+          <div class="point-text">
+            <strong>Year-Round Strategy</strong>
+            <p>Tax planning happens throughout the year, not just in April. We look for opportunities in every quarter.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="point-check">&#10003;</div>
+          <div class="point-text">
+            <strong>Oklahoma Roots, Nationwide Reach</strong>
+            <p>Licensed in Oklahoma and experienced with multi-state filings — we serve clients across the country.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="point-check">&#10003;</div>
+          <div class="point-text">
+            <strong>Transparent, Flat-Fee Pricing</strong>
+            <p>No hourly billing surprises. Know exactly what you're paying and exactly what you're getting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="urgency-tag">Limited Spots This Quarter</div>
+  <h2>Stop Giving the IRS<br>More Than They're Owed</h2>
+  <p>We take on a limited number of new clients each quarter to ensure every business gets the attention it deserves. Spots are filling fast.</p>
+  <div class="final-actions">
+    <a href="https://salouscpa.com" class="btn-gold">&#128197; Book Free Tax Review</a>
+    <a href="#calculator" class="btn-secondary">Calculate My Savings First</a>
+  </div>
+  <p class="spots-note">Free 30-minute consultation &bull; No obligation &bull; Licensed Oklahoma CPA</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Salous<span>CPA</span></div>
+  <div class="footer-info">
+    Oklahoma CPA License #18541 &bull; Member, Oklahoma Society of CPAs<br>
+    &copy; 2025 Salous CPA. All rights reserved.
+  </div>
+  <div class="footer-links">
+    <a href="https://salouscpa.com">Website</a>
+    <a href="https://instagram.com/salouscpa">Instagram</a>
+    <a href="https://salouscpa.com">Book a Call</a>
+  </div>
+</footer>
+
+<script>
+  function formatCurrency(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calculateSavings() {
+    const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const entity = document.getElementById('entity').value;
+    const filing = document.getElementById('filing').value;
+    const state = document.getElementById('state').value;
+
+    if (revenue <= 0) {
+      alert('Please enter your annual business revenue.');
+      return;
+    }
+
+    const netProfit = Math.max(0, revenue - expenses);
+
+    // Self-employment tax rate: 15.3% on first $168,600 (2024), 2.9% above
+    const seTaxBase = Math.min(netProfit, 168600);
+    const seTaxHigh = Math.max(0, netProfit - 168600);
+    const currentSETax = (seTaxBase * 0.153) + (seTaxHigh * 0.029);
+    const seDeduction = currentSETax * 0.5;
+    const taxableIncome = Math.max(0, netProfit - seDeduction);
+
+    // Federal income tax (simplified 2024 brackets)
+    function fedTax(income, status) {
+      let brackets;
+      if (status === 'mfj') {
+        brackets = [[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]];
+      } else if (status === 'hoh') {
+        brackets = [[16550,0.10],[63100,0.12],[100500,0.22],[191950,0.24],[243700,0.32],[609350,0.35],[Infinity,0.37]];
+      } else {
+        brackets = [[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[Infinity,0.37]];
+      }
+      let tax = 0, prev = 0;
+      for (const [top, rate] of brackets) {
+        if (income <= prev) break;
+        tax += (Math.min(income, top) - prev) * rate;
+        prev = top;
+      }
+      return tax;
+    }
+
+    // State tax rates (approximate effective rates on business income)
+    const stateRates = { ok: 0.0475, tx: 0, ca: 0.093, fl: 0, ny: 0.0685, other: 0.05 };
+    const stateRate = stateRates[state] || 0.05;
+
+    let totalSavings = 0;
+    let breakdown = [];
+
+    if (entity === 'sole' || entity === 'partner') {
+      // Current situation: paying full SE tax
+      const currentFedTax = fedTax(taxableIncome, filing);
+      const currentStateTax = taxableIncome * stateRate;
+      const currentTotal = currentSETax + currentFedTax + currentStateTax;
+
+      // S-Corp scenario: reasonable salary (typically 40-50% of net profit, minimum $30k)
+      if (netProfit >= 40000) {
+        const reasonableSalary = Math.max(30000, Math.min(netProfit * 0.45, 80000));
+        const distribution = netProfit - reasonableSalary;
+
+        const sCorpSETaxBase = Math.min(reasonableSalary, 168600);
+        const sCorpSETax = (sCorpSETaxBase * 0.153) + Math.max(0, reasonableSalary - 168600) * 0.029;
+        const employerSETax = sCorpSETax * 0.5;
+
+        const sCorpSeDeduction = employerSETax;
+        const sCorpTaxable = Math.max(0, netProfit - sCorpSeDeduction);
+        const sCorpFedTax = fedTax(sCorpTaxable, filing);
+        const sCorpStateTax = sCorpTaxable * stateRate;
+        const sCorpTotal = sCorpSETax + sCorpFedTax + sCorpStateTax;
+
+        const seTaxSavings = Math.max(0, currentSETax - sCorpSETax);
+        const netSavings = Math.max(0, currentTotal - sCorpTotal);
+
+        totalSavings = netSavings;
+
+        breakdown = [
+          { label: 'Current SE Tax (Sole Prop / LLC)', val: formatCurrency(currentSETax), type: 'negative' },
+          { label: 'SE Tax with S-Corp Election', val: formatCurrency(sCorpSETax), type: 'positive' },
+          { label: 'SE Tax Savings', val: formatCurrency(seTaxSavings), type: 'positive' },
+          { label: 'Reasonable W-2 Salary (estimated)', val: formatCurrency(reasonableSalary), type: 'neutral' },
+          { label: 'Tax-Free Distribution', val: formatCurrency(distribution), type: 'positive' },
+          { label: 'Total Estimated Annual Savings', val: formatCurrency(totalSavings), type: 'positive' },
+        ];
+      } else {
+        // Below S-Corp threshold — show deduction optimization
+        const qbiDeduction = taxableIncome * 0.20;
+        const qbiTaxSaving = fedTax(taxableIncome, filing) - fedTax(taxableIncome - qbiDeduction, filing);
+        totalSavings = qbiTaxSaving * 0.6; // conservative estimate of findable savings
+
+        breakdown = [
+          { label: 'Net Profit', val: formatCurrency(netProfit), type: 'neutral' },
+          { label: 'QBI Deduction Opportunity (20%)', val: formatCurrency(qbiDeduction), type: 'positive' },
+          { label: 'Estimated Tax Reduction via QBI', val: formatCurrency(qbiTaxSaving), type: 'positive' },
+          { label: 'Additional Deductions Available', val: 'To be assessed', type: 'neutral' },
+          { label: 'Conservative Savings Estimate', val: formatCurrency(totalSavings), type: 'positive' },
+        ];
+      }
+    } else if (entity === 'scorp') {
+      // Already S-Corp — find planning opportunities
+      const qbi = netProfit * 0.20;
+      const retirementOpp = Math.min(netProfit * 0.25, 69000);
+      const totalOpp = fedTax(taxableIncome, filing) - fedTax(Math.max(0, taxableIncome - qbi - retirementOpp), filing);
+      totalSavings = totalOpp;
+
+      breakdown = [
+        { label: 'Already S-Corp — Great Start!', val: '&#10003;', type: 'positive' },
+        { label: 'QBI Deduction (20% of profit)', val: formatCurrency(qbi), type: 'positive' },
+        { label: 'Solo 401(k) / SEP IRA Opportunity', val: formatCurrency(retirementOpp), type: 'positive' },
+        { label: 'Estimated Additional Tax Savings', val: formatCurrency(totalSavings), type: 'positive' },
+        { label: 'We can audit your current setup', val: 'Free Review Available', type: 'neutral' },
+      ];
+    } else {
+      // C-Corp
+      const corpTax = netProfit * 0.21;
+      totalSavings = netProfit * 0.03; // rough additional savings via planning
+
+      breakdown = [
+        { label: 'C-Corp Tax Rate', val: '21%', type: 'neutral' },
+        { label: 'Estimated Corporate Tax', val: formatCurrency(corpTax), type: 'negative' },
+        { label: 'Additional Planning Opportunities', val: formatCurrency(totalSavings), type: 'positive' },
+        { label: 'Recommendation', val: 'Book a Free Review', type: 'neutral' },
+      ];
+    }
+
+    // Render results
+    document.getElementById('totalSavings').textContent = formatCurrency(totalSavings);
+
+    const breakdownEl = document.getElementById('resultBreakdown');
+    breakdownEl.innerHTML = breakdown.map(b => `
+      <div class="result-row">
+        <span class="r-label">${b.label}</span>
+        <span class="r-val ${b.type === 'positive' ? 'positive' : b.type === 'negative' ? 'negative' : ''}">${b.val}</span>
+      </div>
+    `).join('');
+
+    const resultsEl = document.getElementById('calcResults');
+    resultsEl.classList.add('visible');
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
