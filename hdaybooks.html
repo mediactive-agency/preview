@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Honest Day's Bookkeeping | Clean Books, Clear Mind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1B2B4B;
+      --teal:   #2A7F7F;
+      --teal-light: #3AAFAF;
+      --cream:  #F9F6F0;
+      --warm:   #E8DFD0;
+      --gold:   #C89B3C;
+      --text:   #2D2D2D;
+      --muted:  #6B7280;
+      --white:  #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(27, 43, 75, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--teal-light); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal-light); }
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-light) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #243960 55%, #1a4a5a 100%);
+      display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(42,127,127,0.25);
+      border: 1px solid rgba(58,175,175,0.4);
+      color: var(--teal-light);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal-light);
+    }
+    .hero p {
+      color: rgba(255,255,255,0.78);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(42,127,127,0.4);
+    }
+    .btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(42,127,127,0.5);
+    }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--teal-light);
+      background: rgba(58,175,175,0.12);
+    }
+
+    /* Hero card */
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 36px 32px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+    .hero-card p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-bottom: 24px; }
+    .pain-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .pain-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.95rem;
+    }
+    .pain-list li .icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(42,127,127,0.3);
+      border: 1px solid var(--teal-light);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+      font-size: 0.7rem; color: var(--teal-light);
+    }
+    .divider-line {
+      border: none; border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 24px 0;
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--teal-light);
+      display: block;
+    }
+    .hero-stat .lbl {
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--cream);
+      padding: 22px 5%;
+      border-bottom: 1px solid var(--warm);
+    }
+    .trust-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.88rem; color: var(--muted); font-weight: 500;
+    }
+    .trust-item .dot {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 540px; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 0 auto; }
+
+    /* ── PAIN POINTS ── */
+    .pain-section { background: var(--cream); }
+    .pain-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+    .pain-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px 28px;
+      border-top: 4px solid var(--teal);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .pain-card .emoji { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .pain-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .pain-card p { color: var(--muted); font-size: 0.92rem; }
+    .pain-card .solution {
+      margin-top: 14px; padding-top: 14px;
+      border-top: 1px solid var(--warm);
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--teal);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--white); }
+    .services-inner { max-width: 1100px; margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 36px 30px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(27,43,75,0.12);
+    }
+    .service-card.featured {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .service-card.featured .svc-title { color: var(--white); }
+    .service-card.featured .svc-desc { color: rgba(255,255,255,0.72); }
+    .service-card.featured .svc-list li { color: rgba(255,255,255,0.82); }
+    .service-card.featured .svc-list li::before { color: var(--teal-light); }
+    .featured-badge {
+      position: absolute; top: -12px; right: 24px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .svc-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .service-card.featured .svc-icon { background: rgba(58,175,175,0.25); }
+    .svc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .svc-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 18px; }
+    .svc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .svc-list li {
+      font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .svc-list li::before {
+      content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ── WHY US ── */
+    .why-section { background: var(--cream); }
+    .why-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .why-points { display: flex; flex-direction: column; gap: 28px; }
+    .why-point { display: flex; gap: 18px; }
+    .why-num {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .why-point h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .why-point p { color: var(--muted); font-size: 0.92rem; }
+    .why-visual {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 40px 36px;
+      color: var(--white);
+    }
+    .why-visual h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; margin-bottom: 6px;
+    }
+    .why-visual p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-bottom: 30px; }
+    .cert-list { display: flex; flex-direction: column; gap: 14px; }
+    .cert-item {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .cert-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .cert-name { font-weight: 600; font-size: 0.92rem; }
+    .cert-tag { color: rgba(255,255,255,0.55); font-size: 0.78rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { background: var(--white); }
+    .testi-inner { max-width: 1100px; margin: 0 auto; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .testi-card {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .testi-card::before {
+      content: '"';
+      position: absolute; top: 16px; right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; color: var(--warm);
+      line-height: 1;
+    }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-text {
+      font-size: 0.97rem; color: var(--text);
+      line-height: 1.7; margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 700; font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+    .testi-role { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── PROCESS ── */
+    .process-section { background: var(--navy); }
+    .process-inner { max-width: 1000px; margin: 0 auto; }
+    .process-section .section-label { color: var(--teal-light); }
+    .process-section .section-title { color: var(--white); }
+    .process-section .section-sub { color: rgba(255,255,255,0.65); }
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute; top: 28px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    }
+    .step { text-align: center; padding: 20px 16px; }
+    .step-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 0 6px rgba(42,127,127,0.2);
+    }
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1rem; margin-bottom: 8px;
+    }
+    .step p { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+    /* ── CTA BANNER ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--teal) 0%, #1a7070 100%);
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      max-width: 540px;
+      margin-left: auto; margin-right: auto;
+    }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white);
+      color: var(--teal);
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,0,0,0.2); }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--cream); }
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+    }
+    .contact-form {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px 36px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .contact-form .sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 0.85rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--warm);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); background: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      padding: 15px;
+      border: none; border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(42,127,127,0.3);
+    }
+    .form-submit:hover { background: var(--teal-light); transform: translateY(-1px); }
+    .contact-info { padding-top: 12px; }
+    .contact-info .section-title { margin-bottom: 12px; }
+    .contact-info .section-sub { margin-bottom: 32px; }
+    .contact-points { display: flex; flex-direction: column; gap: 20px; }
+    .contact-point { display: flex; gap: 16px; align-items: flex-start; }
+    .cp-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .cp-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+    .cp-value { font-size: 0.95rem; color: var(--navy); font-weight: 500; }
+    .guarantee-box {
+      margin-top: 32px;
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 24px;
+      color: var(--white);
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .guarantee-box .icon { font-size: 1.8rem; flex-shrink: 0; }
+    .guarantee-box h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
+    .guarantee-box p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0E1927;
+      color: rgba(255,255,255,0.55);
+      padding: 40px 5%;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .footer-brand span { color: var(--teal-light); }
+    footer p { font-size: 0.85rem; }
+    .footer-tagline {
+      font-style: italic;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.82rem;
+      margin-top: 6px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .why-inner { grid-template-columns: 1fr; }
+      .why-visual { display: none; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 60px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-brand">Honest Day's <span>Bookkeeping</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Honest. Organized. Accurate.</div>
+      <h1>An Honest Day's Work Deserves <em>Honest Books</em></h1>
+      <p>Stop losing sleep over messy financials and tax-time chaos. We keep your books clean, accurate, and stress-free — so you can focus on running your business.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get Your Books in Order →</a>
+        <a href="#services" class="btn-outline">See Our Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Sound familiar?</h3>
+      <p>These are the top reasons small business owners reach out to us:</p>
+      <ul class="pain-list">
+        <li><span class="icon">!</span> "I have no idea if I'm actually profitable"</li>
+        <li><span class="icon">!</span> "Tax time is a nightmare every single year"</li>
+        <li><span class="icon">!</span> "My bank account and books never match"</li>
+        <li><span class="icon">!</span> "I'm months behind on reconciliations"</li>
+        <li><span class="icon">!</span> "I need a loan but my books are a mess"</li>
+      </ul>
+      <hr class="divider-line" />
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="num">100%</span>
+          <span class="lbl">Accuracy<br>Guarantee</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">5★</span>
+          <span class="lbl">Client<br>Satisfaction</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">Fast</span>
+          <span class="lbl">Turnaround<br>Time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="dot">📊</div>
+      QuickBooks Certified
+    </div>
+    <div class="trust-item">
+      <div class="dot">🔒</div>
+      Fully Confidential
+    </div>
+    <div class="trust-item">
+      <div class="dot">📆</div>
+      Monthly Reporting
+    </div>
+    <div class="trust-item">
+      <div class="dot">✅</div>
+      Tax-Ready Financials
+    </div>
+    <div class="trust-item">
+      <div class="dot">💬</div>
+      Responsive Communication
+    </div>
+  </div>
+</div>
+
+<!-- ── PAIN POINTS ── -->
+<section class="pain-section" id="pain">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header centered">
+      <div class="section-label">We Understand Your Struggles</div>
+      <h2 class="section-title">Bookkeeping Headaches We Solve Every Day</h2>
+      <p class="section-sub">You didn't start your business to spend hours wrestling with spreadsheets. That's what we're here for.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="emoji">😰</span>
+        <h4>Tax Time Panic</h4>
+        <p>Every year feels like scrambling to pull together a year's worth of transactions in two weeks.</p>
+        <div class="solution">→ We keep you tax-ready year-round</div>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">📉</span>
+        <h4>Unknown Cash Position</h4>
+        <p>You're not sure if you're actually making money until you check the bank — and even then you're not sure.</p>
+        <div class="solution">→ Clear P&amp;L reports every month</div>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🔁</span>
+        <h4>Months Behind on Reconciling</h4>
+        <p>The backlog keeps growing. You've been meaning to catch up for months but never find the time.</p>
+        <div class="solution">→ Catch-up bookkeeping available</div>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🤝</span>
+        <h4>Lender-Ready Financials</h4>
+        <p>You need a business loan or investor, but your books aren't in shape to show anyone.</p>
+        <div class="solution">→ Clean, presentable financial statements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="section-header">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Bookkeeping Services Tailored<br>to Your Business</h2>
+      <p class="section-sub">From monthly maintenance to full catch-up projects, we have a solution for where you are right now.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">📒</div>
+        <div class="svc-title">Monthly Bookkeeping</div>
+        <div class="svc-desc">Consistent, accurate books every month — no surprises, no backlogs.</div>
+        <ul class="svc-list">
+          <li>Transaction categorization</li>
+          <li>Bank &amp; credit card reconciliation</li>
+          <li>Monthly financial reports</li>
+          <li>Accounts payable &amp; receivable tracking</li>
+        </ul>
+      </div>
+      <div class="service-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="svc-icon">🚀</div>
+        <div class="svc-title">Full-Service Package</div>
+        <div class="svc-desc">Everything in monthly bookkeeping plus deeper financial management support.</div>
+        <ul class="svc-list">
+          <li>Everything in Monthly plan</li>
+          <li>Payroll processing support</li>
+          <li>Cash flow forecasting</li>
+          <li>Quarterly tax estimates</li>
+          <li>Dedicated bookkeeper</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🔧</div>
+        <div class="svc-title">Catch-Up Bookkeeping</div>
+        <div class="svc-desc">Months or years behind? We'll get you fully caught up — fast, accurate, stress-free.</div>
+        <ul class="svc-list">
+          <li>Historical transaction entry</li>
+          <li>Full account reconciliation</li>
+          <li>Clean-up of prior errors</li>
+          <li>Tax-ready deliverable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section class="why-section" id="why-us">
+  <div class="why-inner">
+    <div>
+      <div class="section-header">
+        <div class="section-label">Why Honest Day's Bookkeeping</div>
+        <h2 class="section-title">Real Integrity.<br>Real Results.</h2>
+        <p class="section-sub">Our name says it all. We believe every business owner deserves bookkeeping they can actually trust.</p>
+      </div>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-num">1</div>
+          <div>
+            <h4>Accuracy You Can Rely On</h4>
+            <p>Every transaction is reviewed with care. We reconcile regularly so nothing slips through the cracks.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-num">2</div>
+          <div>
+            <h4>Transparent Communication</h4>
+            <p>No jargon, no surprises. We explain your finances in plain language and respond promptly.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-num">3</div>
+          <div>
+            <h4>Small Business Focused</h4>
+            <p>We specialize in small and mid-sized businesses. We understand the real-world challenges you face.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-num">4</div>
+          <div>
+            <h4>Fully Confidential</h4>
+            <p>Your financial data is treated with complete discretion and professional confidentiality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <h3>Software & Certifications</h3>
+      <p>We work with the tools your business already uses.</p>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-icon">📗</div>
+          <div>
+            <div class="cert-name">QuickBooks Online</div>
+            <div class="cert-tag">Certified ProAdvisor</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">📘</div>
+          <div>
+            <div class="cert-name">Xero Accounting</div>
+            <div class="cert-tag">Certified Partner</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">📊</div>
+          <div>
+            <div class="cert-name">Excel / Google Sheets</div>
+            <div class="cert-tag">Advanced Reporting</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🔐</div>
+          <div>
+            <div class="cert-name">Bank-Level Security</div>
+            <div class="cert-tag">256-bit Encryption</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testi-section" id="testimonials">
+  <div class="testi-inner">
+    <div class="section-header centered">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-title">Small Business Owners Love Working With Us</h2>
+      <p class="section-sub">Don't take our word for it. Here's what our clients say after getting their books in order.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"I was 8 months behind on my books and dreading tax season. They had everything caught up within two weeks. I finally feel in control of my business finances."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Marcus R.</div>
+            <div class="testi-role">Owner, MR Landscaping</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Working with Honest Day's Bookkeeping has been a game-changer. I used to dread looking at my finances — now I get a clean report every month and actually understand it."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JL</div>
+          <div>
+            <div class="testi-name">Jasmine L.</div>
+            <div class="testi-role">Founder, Bloom &amp; Candle Co.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"They are incredibly detail-oriented and communicate clearly. I finally got a small business loan because my financials were actually in order. Could not recommend them more."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TW</div>
+          <div>
+            <div class="testi-name">Tom W.</div>
+            <div class="testi-role">CEO, Westfield Contracting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process-section" id="process">
+  <div class="process-inner">
+    <div class="section-header centered">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Getting Started Is Simple</h2>
+      <p class="section-sub">We make the onboarding process smooth and painless. You'll have clean books faster than you think.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <h4>Free Consultation</h4>
+        <p>15-minute call to understand your needs, software, and current situation.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <h4>Onboarding</h4>
+        <p>We set up access to your accounts and get fully oriented with your business.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <h4>Clean-Up / Catch-Up</h4>
+        <p>We address any backlog or historical issues so your starting point is solid.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <h4>Ongoing Partnership</h4>
+        <p>Monthly bookkeeping, reports, and proactive communication — you're covered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-section">
+  <h2>Ready for Books You Can Actually Trust?</h2>
+  <p>Get a free 15-minute consultation. No pressure, no obligation — just clarity on what your books need.</p>
+  <div class="cta-btns">
+    <a href="#contact" class="btn-white">Book Free Consultation</a>
+    <a href="#contact" class="btn-outline-white">Clean Up My Books →</a>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-form">
+      <h3>Drop Us a Line</h3>
+      <p class="sub">Fill out the form and we'll respond within one business day.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" placeholder="jane@yourbusiness.com" />
+      </div>
+      <div class="form-group">
+        <label>Business Type</label>
+        <select>
+          <option value="">Select your industry...</option>
+          <option>Retail / E-commerce</option>
+          <option>Contractor / Trades</option>
+          <option>Professional Services</option>
+          <option>Hospitality / Food Service</option>
+          <option>Healthcare / Wellness</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>What's your biggest bookkeeping challenge?</label>
+        <textarea placeholder="e.g. I'm months behind, need help with tax prep, payroll issues..."></textarea>
+      </div>
+      <button class="form-submit">Send My Message →</button>
+    </div>
+    <div class="contact-info">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Talk About Your Books</h2>
+      <p class="section-sub">Whether you're starting fresh or cleaning up years of backlog — we're ready to help.</p>
+      <div class="contact-points">
+        <div class="contact-point">
+          <div class="cp-icon">📧</div>
+          <div>
+            <div class="cp-label">Email</div>
+            <div class="cp-value">hello@hdaybooks.com</div>
+          </div>
+        </div>
+        <div class="contact-point">
+          <div class="cp-icon">🕐</div>
+          <div>
+            <div class="cp-label">Response Time</div>
+            <div class="cp-value">Within 1 Business Day</div>
+          </div>
+        </div>
+        <div class="contact-point">
+          <div class="cp-icon">📋</div>
+          <div>
+            <div class="cp-label">Free Consultation</div>
+            <div class="cp-value">15-Minute Discovery Call</div>
+          </div>
+        </div>
+      </div>
+      <div class="guarantee-box">
+        <div class="icon">🛡️</div>
+        <div>
+          <h4>Our Honesty Guarantee</h4>
+          <p>We'll give you an honest assessment of your books — even if that means telling you something you don't want to hear. That's what honest bookkeeping looks like.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">Honest Day's <span>Bookkeeping</span></div>
+  <p class="footer-tagline">"An honest day's work deserves honest books."</p>
+  <p style="margin-top:16px;">© 2025 Honest Day's Bookkeeping. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
