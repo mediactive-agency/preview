@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Go Joe CPA | Tax Strategy That Actually Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1A2744;
+      --gold:    #D4A017;
+      --gold-light: #F0BC2E;
+      --white:   #FFFFFF;
+      --off-white: #F7F8FC;
+      --gray:    #6B7280;
+      --light-gray: #E8ECF4;
+      --text:    #1F2937;
+      --red:     #C0392B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #0F1B36 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner { position: relative; max-width: 860px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-h1 .accent { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(212,160,23,0.4);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(212,160,23,0.5); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 15px 36px;
+      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.07); }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 36px;
+    }
+    .hero-stat-item { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── URGENCY BANNER ─── */
+    .urgency-bar {
+      background: var(--gold);
+      color: var(--navy);
+      text-align: center;
+      padding: 12px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+    .urgency-bar a { color: var(--navy); text-decoration: underline; }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin-bottom: 56px;
+    }
+    .centered { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* ─── WHO I HELP ─── */
+    #who { background: var(--off-white); }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .who-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 36px 30px;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .who-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    .who-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .who-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .who-desc { font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .service-card {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .service-icon { font-size: 2.6rem; margin-bottom: 20px; }
+    .service-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .service-outcome {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .service-desc { font-size: 0.95rem; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
+    .service-bullets { list-style: none; }
+    .service-bullets li {
+      font-size: 0.9rem;
+      color: var(--text);
+      padding: 5px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .service-bullets li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+    /* ─── PROOF ─── */
+    #proof { background: var(--navy); color: var(--white); }
+    #proof .section-title { color: var(--white); }
+    #proof .section-sub { color: rgba(255,255,255,0.65); }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .proof-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .proof-card:hover { background: rgba(255,255,255,0.1); }
+    .proof-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .proof-label { font-size: 0.9rem; color: rgba(255,255,255,0.65); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 36px;
+    }
+    .testimonial-quote {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .testimonial-quote::before { content: '"'; color: var(--gold); font-size: 1.4rem; font-style: normal; }
+    .testimonial-quote::after  { content: '"'; color: var(--gold); font-size: 1.4rem; font-style: normal; }
+    .testimonial-author {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+    .testimonial-role { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 2px; }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--off-white); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; gap: 40px; } }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .about-avatar {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--navy) 0%, #2A3F6F 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 10px 18px;
+      border-radius: 6px;
+    }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .about-highlight {
+      background: var(--white);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 28px 0;
+      font-style: italic;
+    }
+    .about-facts { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 8px; }
+    .about-fact-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--navy);
+    }
+    .about-fact-label { font-size: 0.82rem; color: var(--gray); }
+
+    /* ─── PROCESS ─── */
+    #process { background: var(--white); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .process-step {
+      text-align: center;
+      padding: 20px 24px;
+      position: relative;
+    }
+    .process-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 40px;
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 900;
+    }
+    .step-num {
+      width: 60px;
+      height: 60px;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .step-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .step-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+    @media (max-width: 640px) {
+      .process-step:not(:last-child)::after { display: none; }
+    }
+
+    /* ─── WHY DIFFERENT ─── */
+    #why { background: var(--off-white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-item {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .why-item:hover { transform: translateY(-3px); }
+    .why-check {
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .why-content-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .why-content-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.65; }
+
+    /* ─── FINAL CTA ─── */
+    #cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #0F1B36 100%);
+      text-align: center;
+      padding: 100px 24px;
+    }
+    #cta .section-title { color: var(--white); margin-bottom: 16px; }
+    #cta .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 14px; }
+    .cta-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-bottom: 36px;
+    }
+    .cta-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .cta-note { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0B1325;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer strong { color: rgba(255,255,255,0.75); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      section { padding: 72px 20px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Let's Go <span>Joe</span> CPA</a>
+  <a href="https://letsgojoecpa.com" class="nav-cta" target="_blank">Book Free Call →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">⚡ Lehi, Utah · CPA · Tax Strategist · 20+ Years</div>
+    <h1 class="hero-h1">
+      Your Taxes Won't<br>
+      <span class="accent">Solve Themselves.</span><br>
+      Let's Go.
+    </h1>
+    <p class="hero-sub">
+      Joe Holloway, CPA helps small business owners, content creators, and high-earning athletes stop overpaying the IRS — with a proactive tax strategy that works year-round, not just in April.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://letsgojoecpa.com" target="_blank" class="btn-primary">Let's Go! Book Your Free Call →</a>
+      <a href="#services" class="btn-secondary">See What Joe Does</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">20+</span>
+        <span class="hero-stat-label">Years CPA Experience</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">PwC</span>
+        <span class="hero-stat-label">Fortune 500 Background</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">24hr</span>
+        <span class="hero-stat-label">Response Guarantee</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="hero-stat-num">$0</span>
+        <span class="hero-stat-label">Surprise Bills (Fixed Pricing)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY BANNER -->
+<div class="urgency-bar">
+  🔥 Only a few new client spots available this quarter — <a href="https://letsgojoecpa.com" target="_blank">lock yours in now</a>
+</div>
+
+<!-- WHO I HELP -->
+<section id="who">
+  <div class="container">
+    <div class="section-label">Who Joe Works With</div>
+    <h2 class="section-title">Built for People the Big Firms Ignore</h2>
+    <p class="section-sub">Joe left the Fortune 500 world on purpose. He wanted to serve the business owners who actually needed a real strategist — not a seasonal return-filer.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">🏢</div>
+        <div class="who-title">Small Business Owners</div>
+        <div class="who-desc">You're pulling in $200K–$2M and still writing giant checks to the IRS every April. That changes when you have an actual tax strategy — not just a tax preparer.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🎥</div>
+        <div class="who-title">Content Creators & Digital Entrepreneurs</div>
+        <div class="who-desc">Brand deals, ad revenue, merch, courses — your income is complex. Joe has seen it all and knows exactly how to structure your business to keep more of it.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🏆</div>
+        <div class="who-title">Athletes & High Earners</div>
+        <div class="who-desc">Multi-state filings, signing bonuses, endorsements, off-season income — high earning comes with high complexity. Joe handles it all with PwC-level precision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">Stop Filing. Start Strategizing.</h2>
+    <p class="section-sub">Every service is built around one outcome: you keeping more of what you earn — this year, next year, and the year after that.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🧭</div>
+        <div class="service-name">Tax Strategy & Planning</div>
+        <div class="service-outcome">Outcome: Pay Less, Legally</div>
+        <div class="service-desc">This is the work that actually moves the needle. Joe meets with you quarterly to build a forward-looking tax plan — not a backward-looking return.</div>
+        <ul class="service-bullets">
+          <li>Quarterly strategy sessions</li>
+          <li>Entity structure optimization</li>
+          <li>Estimated payment planning</li>
+          <li>Multi-year tax projections</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-name">Tax Preparation & Compliance</div>
+        <div class="service-outcome">Outcome: Done Right, Every Time</div>
+        <div class="service-desc">Accurate, on-time filings with zero surprises. Joe handles the complex stuff most CPAs shy away from — multi-state returns, S-corps, LLCs, and more.</div>
+        <ul class="service-bullets">
+          <li>Business & personal returns</li>
+          <li>Multi-state filings</li>
+          <li>Audit support & representation</li>
+          <li>Prior year amendments</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-name">Monthly Accounting & Bookkeeping</div>
+        <div class="service-outcome">Outcome: Know Your Numbers</div>
+        <div class="service-desc">Real-time financials so you can make confident business decisions. No more guessing your margin or being blindsided at year-end.</div>
+        <ul class="service-bullets">
+          <li>Monthly reconciliation</li>
+          <li>Financial statements</li>
+          <li>Cash flow analysis</li>
+          <li>Live dashboard access</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="proof">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Results & Social Proof</div>
+    <h2 class="section-title">Real Clients. Real Wins.</h2>
+    <p class="section-sub">Joe's background at PwC means Fortune 500-level strategy — delivered to businesses that actually need it.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <span class="proof-num">20+</span>
+        <div class="proof-label">Years of Hands-On CPA Experience</div>
+      </div>
+      <div class="proof-card">
+        <span class="proof-num">PwC</span>
+        <div class="proof-label">Big-4 Firm Foundation</div>
+      </div>
+      <div class="proof-card">
+        <span class="proof-num">3</span>
+        <div class="proof-label">Client Niches Mastered</div>
+      </div>
+      <div class="proof-card">
+        <span class="proof-num">24hr</span>
+        <div class="proof-label">Guaranteed Response Time</div>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">I used to dread tax season. Joe turned it into something I actually look forward to — because I know we've already planned for it. My liability dropped significantly in the first year.</div>
+        <div class="testimonial-author">Sarah M.</div>
+        <div class="testimonial-role">E-commerce Business Owner, $400K Revenue</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">As a content creator, my finances were a mess — brand deals, AdSense, merch, multiple platforms. Joe cleaned it all up, structured my LLC correctly, and I saved more than I expected.</div>
+        <div class="testimonial-author">Marcus T.</div>
+        <div class="testimonial-role">YouTube Creator & Digital Entrepreneur</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">Joe doesn't just file your taxes. He asks questions my old CPA never thought to ask. The proactive approach alone was worth switching. I get quarterly check-ins and always know where I stand.</div>
+        <div class="testimonial-author">David R.</div>
+        <div class="testimonial-role">Small Business Owner, Service Industry</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img-wrap">
+        <div class="about-avatar">🤝</div>
+        <div class="about-badge">Joe Holloway, CPA · Lehi, UT</div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About Joe</div>
+        <h2 class="section-title">From PwC to Main Street — On Purpose</h2>
+        <p class="section-sub" style="margin-bottom:0;">Joe Holloway started his career at PwC, working with Fortune 500 companies and getting the highest-level tax training in the industry.</p>
+        <div class="about-highlight">
+          "I could have stayed in the corporate world forever. But the businesses that needed me most weren't the billion-dollar companies — they were the $500K small business owners getting crushed by taxes because no one was actually planning for them."
+        </div>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:24px;">
+          After 15 years in Ohio, Joe relocated to Lehi, Utah to build his own practice from the ground up. Today he's a husband, father of five, youth sports coach, and proud Ohio State fan — who also happens to be one of the most proactive CPAs you'll ever meet.
+        </p>
+        <div class="about-facts">
+          <div>
+            <div class="about-fact-num">20+</div>
+            <div class="about-fact-label">Years Experience</div>
+          </div>
+          <div>
+            <div class="about-fact-num">PwC</div>
+            <div class="about-fact-label">Career Start</div>
+          </div>
+          <div>
+            <div class="about-fact-num">5</div>
+            <div class="about-fact-label">Kids at Home</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-label centered">What Happens Next</div>
+    <h2 class="section-title centered">Working With Joe Is Simpler Than You Think</h2>
+    <p class="section-sub centered">No confusing onboarding. No mystery bills. Just a straightforward path to paying less in taxes.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Free Discovery Call</div>
+        <div class="step-desc">15 minutes. You share where you're at, Joe tells you exactly how he can help and what it costs.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Strategy Session</div>
+        <div class="step-desc">Joe digs into your numbers and builds your custom tax strategy. Most clients find opportunities they didn't know existed.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Ongoing Partnership</div>
+        <div class="step-desc">Quarterly check-ins, real-time access to your financials, and 24-hour response time. Always.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Keep More Money</div>
+        <div class="step-desc">Year after year, you build wealth instead of writing checks to the IRS. That's the whole point.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DIFFERENT -->
+<section id="why">
+  <div class="container">
+    <div class="section-label centered">Why Joe</div>
+    <h2 class="section-title centered">Not Your Dad's CPA</h2>
+    <p class="section-sub centered" style="margin-left:auto;margin-right:auto;">The old model — call your CPA in March, panic in April — doesn't work for growing businesses. Here's what's different.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <div class="why-content-title">Year-Round Proactive Planning</div>
+          <div class="why-content-desc">Joe doesn't wait for tax season. He's already working on reducing your bill for next year — starting now.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <div class="why-content-title">Fixed Monthly Pricing</div>
+          <div class="why-content-desc">You know exactly what you pay. No hourly surprises, no mystery invoices, no reason to avoid calling.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <div class="why-content-title">24–48 Hour Response Guarantee</div>
+          <div class="why-content-desc">Questions get answered fast. You'll never be left chasing your CPA down for a week.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <div class="why-content-title">Cloud-Based & Real-Time</div>
+          <div class="why-content-desc">Your financials live in the cloud. You have 24/7 access to your own data through a modern client dashboard.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <div class="why-content-title">Big-4 Experience, Small-Firm Care</div>
+          <div class="why-content-desc">Joe trained at PwC. He brings that level of expertise to every single client — without the big-firm price tag or attitude.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">✓</div>
+        <div>
+          <div class="why-content-title">Audit Support Included</div>
+          <div class="why-content-desc">If the IRS comes knocking, Joe is right there with you — prepared, professional, and ready to fight for you.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Ready to Go?</div>
+    <h2 class="section-title">Stop Overpaying. Start Strategizing.</h2>
+    <p class="section-sub" style="max-width:560px;">Book a free 15-minute call with Joe. No pressure, no pitch — just a straight conversation about where you're at and how much you could be keeping.</p>
+    <div class="cta-urgency">
+      <div class="cta-dot"></div>
+      Limited spots this quarter — don't wait until April
+    </div>
+    <div class="cta-buttons">
+      <a href="https://letsgojoecpa.com" target="_blank" class="btn-primary">Let's Go! Book My Free Call →</a>
+      <a href="tel:3853803831" class="btn-secondary">📞 (385) 380-3831</a>
+    </div>
+    <div class="cta-note">Free 15-min call · No obligation · Lehi, UT · Serving clients nationwide</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px;">
+    <strong>Let's Go Joe CPA</strong> · Joe Holloway, CPA<br>
+    3450 Triumph Blvd Suite, Lehi, UT 84043 · <a href="tel:3853803831">(385) 380-3831</a>
+  </p>
+  <p>© 2026 Let's Go Joe CPA · <a href="https://letsgojoecpa.com" target="_blank">letsgojoecpa.com</a></p>
+</footer>
+
+</body>
+</html>
