@@ -1,871 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Podel CPA | Tax & Business Advisory | Ocoee, FL</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podel CPA | Tax &amp; Business Advisory | Ocoee, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Roboto', sans-serif; color: #333; background: #fff; }
 
-    :root {
-      --navy:   #0D2B4E;
-      --gold:   #C5963A;
-      --gold-lt:#E8B455;
-      --light:  #F7F5F0;
-      --white:  #FFFFFF;
-      --gray:   #6B7280;
-      --dark:   #111827;
-      --border: #E5E0D8;
-    }
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.97);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6%; height: 74px;
+    box-shadow: 0 1px 16px rgba(29,41,58,.1);
+  }
+  .nav-logo img { height: 52px; display: block; object-fit: contain; }
+  .nav-logo-text { font-family: 'Tinos', serif; font-size: 1.4rem; color: #1D293A; }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a { color: #1D293A; text-decoration: none; font-size: .88rem; font-weight: 500; letter-spacing: .02em; transition: color .2s; }
+  .nav-links a:hover { color: #B38549; }
+  .btn { display: inline-block; background: #B38549; color: #fff; font-family: 'Roboto', sans-serif; font-weight: 700; font-size: .88rem; padding: 13px 28px; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; letter-spacing: .04em; text-transform: uppercase; transition: background .2s, transform .15s; }
+  .btn:hover { background: #9a7040; transform: translateY(-1px); }
+  .btn-dark { background: #1D293A; }
+  .btn-dark:hover { background: #141e2b; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+  .hamburger span { width: 24px; height: 2px; background: #1D293A; display: block; }
 
-    html { scroll-behavior: smooth; }
+  /* HERO */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 600px; align-items: stretch;
+  }
+  .hero-text {
+    background: #1D293A;
+    padding: 88px 6% 88px 8%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero-label { color: #B38549; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; }
+  .hero-text h1 { font-family: 'Tinos', serif; color: #fff; font-size: 2.8rem; line-height: 1.18; margin-bottom: 22px; }
+  .hero-text p { color: rgba(255,255,255,.72); font-size: 1rem; line-height: 1.75; margin-bottom: 36px; font-weight: 300; }
+  .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .hero-phone { color: #B38549; font-weight: 700; font-size: .95rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .hero-phone:hover { text-decoration: underline; }
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+  .badge { background: rgba(179,133,73,.15); color: rgba(255,255,255,.85); border: 1px solid rgba(179,133,73,.35); border-radius: 4px; padding: 6px 14px; font-size: .77rem; font-weight: 500; letter-spacing: .5px; display: flex; align-items: center; gap: 6px; }
+  .hero-photo { position: relative; overflow: hidden; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .hero-photo::after { content: ''; position: absolute; inset: 0; background: rgba(29,41,58,.25); }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+  /* PROOF BAR */
+  .proof-bar { background: #B38549; padding: 40px 8%; }
+  .proof-bar-inner { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; }
+  .proof-stat { text-align: center; }
+  .proof-stat strong { display: block; font-family: 'Tinos', serif; font-size: 2.2rem; color: #fff; }
+  .proof-stat span { font-size: .8rem; color: rgba(255,255,255,.8); font-weight: 500; margin-top: 4px; display: block; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13, 43, 78, 0.97);
-      backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      height: 68px;
-      border-bottom: 1px solid rgba(197,150,58,0.25);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-cta {
-      background: var(--gold);
-      color: var(--white);
-      border: none;
-      padding: 10px 22px;
-      border-radius: 4px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 0.875rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  /* SERVICES */
+  .services { padding: 96px 8%; background: #fff; }
+  .section-label { color: #B38549; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; }
+  .section-title { font-family: 'Tinos', serif; font-size: 2.4rem; color: #1D293A; margin-bottom: 16px; line-height: 1.18; }
+  .section-sub { color: #666; font-size: .97rem; line-height: 1.75; max-width: 560px; margin-bottom: 56px; font-weight: 300; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { border: 1px solid #e8e4dd; border-radius: 6px; padding: 36px 28px; transition: border-color .25s, box-shadow .25s; }
+  .service-card:hover { border-color: #B38549; box-shadow: 0 6px 24px rgba(29,41,58,.08); }
+  .service-icon { width: 48px; height: 48px; background: rgba(179,133,73,.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #B38549; }
+  .service-card h3 { font-family: 'Tinos', serif; font-size: 1.15rem; color: #1D293A; margin-bottom: 10px; }
+  .service-card p { font-size: .88rem; color: #666; line-height: 1.7; font-weight: 300; }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy) 0%, #0a1f3a 60%, #0e2a47 100%);
-      display: flex; align-items: center;
-      padding: 100px 5% 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 70% 50%, rgba(197,150,58,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(197,150,58,0.05) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(197,150,58,0.15);
-      border: 1px solid rgba(197,150,58,0.4);
-      color: var(--gold-lt);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 7px 16px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .hero-badge::before {
-      content: '';
-      width: 7px; height: 7px;
-      background: var(--gold-lt);
-      border-radius: 50%;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-      font-weight: 800;
-      line-height: 1.18;
-      margin-bottom: 24px;
-    }
-    h1 em {
-      font-style: normal;
-      color: var(--gold);
-      display: block;
-    }
-    .hero-sub {
-      color: rgba(255,255,255,0.72);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      margin-bottom: 36px;
-      max-width: 480px;
-    }
-    .hero-btns {
-      display: flex; gap: 14px; flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--white);
-      padding: 15px 32px;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(197,150,58,0.35);
-    }
-    .btn-primary:hover {
-      background: var(--gold-lt);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(197,150,58,0.45);
-    }
-    .btn-outline {
-      border: 2px solid rgba(255,255,255,0.35);
-      color: var(--white);
-      padding: 13px 30px;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .btn-outline:hover {
-      border-color: rgba(255,255,255,0.7);
-      background: rgba(255,255,255,0.06);
-    }
+  /* TESTIMONIALS */
+  .testimonials { background: #f8f6f3; padding: 96px 8%; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+  .testi-card { background: #fff; border-radius: 6px; padding: 32px 28px; box-shadow: 0 2px 12px rgba(29,41,58,.06); }
+  .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+  .testi-card blockquote { font-family: 'Tinos', serif; font-size: 1rem; color: #444; line-height: 1.75; font-style: italic; margin-bottom: 24px; }
+  .testi-author { font-weight: 700; color: #1D293A; font-size: .88rem; }
+  .testi-company { color: #B38549; font-size: .82rem; margin-top: 3px; font-weight: 500; }
 
-    /* Hero card */
-    .hero-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 40px;
-      backdrop-filter: blur(10px);
-    }
-    .hero-card-title {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 28px;
-    }
-    .cred-item {
-      display: flex; align-items: flex-start; gap: 14px;
-      margin-bottom: 20px;
-    }
-    .cred-icon {
-      width: 38px; height: 38px; flex-shrink: 0;
-      background: rgba(197,150,58,0.2);
-      border: 1px solid rgba(197,150,58,0.4);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-    }
-    .cred-label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--gold-lt);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 2px;
-    }
-    .cred-value {
-      color: rgba(255,255,255,0.85);
-      font-size: 0.93rem;
-    }
-    .hero-divider {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin: 24px 0;
-    }
-    .stat-row {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-    }
-    .stat-item { text-align: center; }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold);
-      font-size: 1.7rem;
-      font-weight: 700;
-      display: block;
-    }
-    .stat-label {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
+  /* HOW IT WORKS */
+  .how { padding: 96px 8%; background: #fff; }
+  .steps { display: flex; gap: 0; margin-top: 52px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 28px; left: calc(28px + 8.33%); right: calc(28px + 8.33%); height: 1px; background: #e0d9cc; z-index: 0; }
+  .step { flex: 1; text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+  .step-num { width: 56px; height: 56px; background: #1D293A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Tinos', serif; font-size: 1.25rem; color: #fff; margin: 0 auto 20px; }
+  .step h3 { font-family: 'Tinos', serif; font-size: 1.05rem; color: #1D293A; margin-bottom: 8px; }
+  .step p { font-size: .85rem; color: #666; line-height: 1.65; font-weight: 300; }
+  .how-cta { text-align: center; margin-top: 52px; }
 
-    /* ── TRUST BAR ── */
-    .trust-bar {
-      background: var(--light);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 5%;
-    }
-    .trust-bar-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center;
-    }
-    .trust-item {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--navy);
-    }
-    .trust-icon { font-size: 1.1rem; }
-    .trust-sep {
-      width: 1px; height: 24px;
-      background: var(--border);
-    }
+  /* ABOUT */
+  .about { background: #1D293A; padding: 96px 8%; }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .about-text .section-label { color: #B38549; }
+  .about-text .section-title { color: #fff; margin-bottom: 22px; }
+  .about-text p { color: rgba(255,255,255,.72); line-height: 1.8; margin-bottom: 16px; font-size: .97rem; font-weight: 300; }
+  .about-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .about-badge { background: rgba(179,133,73,.2); color: #B38549; border: 1px solid rgba(179,133,73,.4); border-radius: 4px; padding: 7px 16px; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .about-photo { border-radius: 6px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+  .about-photo img { width: 100%; height: 480px; object-fit: cover; object-position: center; display: block; }
 
-    /* ── SECTION COMMONS ── */
-    section { padding: 90px 5%; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.25;
-      margin-bottom: 16px;
-    }
-    .section-lead {
-      font-size: 1.05rem;
-      color: var(--gray);
-      max-width: 600px;
-      line-height: 1.75;
-      margin-bottom: 56px;
-    }
+  /* CREDS */
+  .creds { background: #f8f6f3; padding: 56px 8%; }
+  .creds-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .cred-item { display: flex; align-items: center; gap: 12px; }
+  .cred-item img { height: 52px; object-fit: contain; opacity: .85; filter: grayscale(20%); }
+  .cred-item span { font-size: .82rem; font-weight: 600; color: #1D293A; text-transform: uppercase; letter-spacing: 1px; max-width: 100px; }
 
-    /* ── SERVICES ── */
-    #services { background: var(--white); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .service-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
-    }
-    .service-card:hover {
-      border-color: var(--gold);
-      box-shadow: 0 8px 32px rgba(197,150,58,0.12);
-      transform: translateY(-3px);
-    }
-    .service-icon {
-      width: 52px; height: 52px;
-      background: linear-gradient(135deg, rgba(13,43,78,0.08), rgba(197,150,58,0.12));
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 18px;
-    }
-    .service-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .service-desc {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.7;
-    }
+  /* CTA BAND */
+  .cta-band { background: #B38549; padding: 88px 8%; text-align: center; }
+  .cta-band h2 { font-family: 'Tinos', serif; color: #fff; font-size: 2.4rem; margin-bottom: 16px; line-height: 1.2; }
+  .cta-band p { color: rgba(255,255,255,.82); font-size: 1rem; margin-bottom: 40px; font-weight: 300; }
 
-    /* ── ABOUT ── */
-    #about {
-      background: var(--light);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-photo-wrap {
-      background: linear-gradient(135deg, var(--navy) 0%, #1a4070 100%);
-      border-radius: 16px;
-      padding: 48px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .about-photo-wrap::after {
-      content: '';
-      position: absolute; bottom: -30px; right: -30px;
-      width: 130px; height: 130px;
-      background: rgba(197,150,58,0.15);
-      border-radius: 50%;
-    }
-    .about-initials {
-      width: 110px; height: 110px;
-      background: rgba(197,150,58,0.2);
-      border: 3px solid rgba(197,150,58,0.5);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin: 0 auto 20px;
-    }
-    .about-name {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.4rem;
-      font-weight: 700;
-    }
-    .about-title-tag {
-      color: var(--gold-lt);
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin: 6px 0 20px;
-    }
-    .about-creds-list {
-      list-style: none;
-      text-align: left;
-    }
-    .about-creds-list li {
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .about-creds-list li:last-child { border: none; }
-    .about-creds-list li::before {
-      content: '✓';
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-    .about-text h2 { margin-bottom: 20px; }
-    .about-para {
-      color: var(--gray);
-      font-size: 0.97rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    .about-highlight {
-      background: var(--white);
-      border-left: 4px solid var(--gold);
-      padding: 18px 22px;
-      border-radius: 0 8px 8px 0;
-      margin: 28px 0;
-      font-style: italic;
-      color: var(--navy);
-      font-size: 0.97rem;
-      line-height: 1.7;
-    }
+  /* FOOTER */
+  footer { background: #111a26; padding: 60px 8% 30px; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 30px; }
+  .footer-logo img { height: 44px; display: block; margin-bottom: 18px; filter: brightness(0) invert(1); opacity: .7; }
+  .footer-desc { color: rgba(255,255,255,.4); font-size: .88rem; line-height: 1.75; font-weight: 300; }
+  .footer-col h4 { color: #B38549; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a { color: rgba(255,255,255,.45); text-decoration: none; font-size: .87rem; font-weight: 300; transition: color .2s; }
+  .footer-col ul a:hover { color: #B38549; }
+  .footer-contact { display: flex; flex-direction: column; gap: 11px; }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.45); font-size: .87rem; font-weight: 300; }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: #B38549; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer-bottom p { color: rgba(255,255,255,.25); font-size: .8rem; }
+  .footer-bottom a { color: #B38549; text-decoration: none; font-weight: 700; }
 
-    /* ── WHY US ── */
-    #why {
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-    #why::before {
-      content: '';
-      position: absolute; top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(197,150,58,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    #why h2, #why .section-tag { color: var(--white); }
-    #why h2 { color: var(--white); }
-    #why .section-lead { color: rgba(255,255,255,0.6); }
-    .why-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px;
-    }
-    .why-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 32px 28px;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .why-card:hover {
-      border-color: rgba(197,150,58,0.4);
-      background: rgba(255,255,255,0.08);
-    }
-    .why-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: rgba(197,150,58,0.35);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .why-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .why-desc {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-    }
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
 
-    /* ── TESTIMONIALS ── */
-    #testimonials { background: var(--white); }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;
-    }
-    .testi-card {
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-    }
-    .stars {
-      color: var(--gold);
-      font-size: 1rem;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-    .testi-quote {
-      font-size: 0.95rem;
-      color: var(--dark);
-      line-height: 1.75;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .testi-author {
-      font-weight: 700;
-      color: var(--navy);
-      font-size: 0.9rem;
-    }
-    .testi-role {
-      font-size: 0.82rem;
-      color: var(--gray);
-      margin-top: 3px;
-    }
-
-    /* ── CTA ── */
-    #cta {
-      background: linear-gradient(135deg, var(--gold) 0%, #b8842e 100%);
-      padding: 80px 5%;
-    }
-    .cta-inner {
-      max-width: 800px; margin: 0 auto; text-align: center;
-    }
-    #cta h2 {
-      color: var(--white);
-      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
-      margin-bottom: 18px;
-    }
-    #cta p {
-      color: rgba(255,255,255,0.85);
-      font-size: 1.05rem;
-      margin-bottom: 36px;
-      line-height: 1.75;
-    }
-    .cta-btns {
-      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    }
-    .btn-white {
-      background: var(--white);
-      color: var(--gold);
-      padding: 16px 36px;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-    .btn-outline-white {
-      border: 2px solid rgba(255,255,255,0.6);
-      color: var(--white);
-      padding: 14px 34px;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: white; }
-
-    /* ── CONTACT INFO BAR ── */
-    .contact-bar {
-      background: var(--navy);
-      padding: 40px 5%;
-    }
-    .contact-bar-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
-    }
-    .contact-item {
-      display: flex; align-items: center; gap: 12px;
-      color: rgba(255,255,255,0.75);
-      font-size: 0.9rem;
-    }
-    .contact-item strong { color: var(--white); display: block; font-size: 0.95rem; }
-    .contact-icon {
-      width: 40px; height: 40px;
-      background: rgba(197,150,58,0.2);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #07192e;
-      padding: 28px 5%;
-      text-align: center;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-    .footer-logo span { color: var(--gold); }
-    .footer-copy {
-      color: rgba(255,255,255,0.35);
-      font-size: 0.8rem;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .stat-row { grid-template-columns: repeat(3, 1fr); }
-      .trust-sep { display: none; }
-    }
-    @media (max-width: 600px) {
-      nav { padding: 0 4%; }
-      section { padding: 64px 4%; }
-      .hero { padding: 88px 4% 64px; }
-      .hero-btns { flex-direction: column; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .stat-row { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .stat-num { font-size: 1.3rem; }
-      .trust-bar-inner { gap: 20px; }
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { height: 280px; }
+    .hero-text { padding: 60px 6%; }
+    .hero-text h1 { font-size: 2.1rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { order: -1; }
+    .steps { flex-direction: column; gap: 36px; }
+    .steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: #fff; padding: 20px 6%; gap: 18px; border-bottom: 1px solid #eee; z-index: 99; }
+    .hamburger { display: flex; }
+    .proof-bar-inner { gap: 40px; }
+    .section-title { font-size: 1.9rem; }
+    .cta-band h2 { font-size: 1.9rem; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Podel <span>CPA</span></div>
-    <a href="tel:4076745951" class="nav-cta">Schedule Free Consultation</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="#hero">
+      <img src="https://cp9.cpasitesolutions.com/~podelcpa/images/Podel%20CPA1.png" alt="Podel CPA" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+      <span class="nav-logo-text" style="display:none">Podel CPA</span>
+    </a>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="tel:4076745951" class="btn">Schedule a Consultation</a>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">Licensed CPA &amp; CFO · Ocoee, FL</div>
-        <h1>
-          Stop Overpaying Taxes.
-          <em>Start Building Real Financial Clarity.</em>
-        </h1>
-        <p class="hero-sub">
-          Tatiana Podel, CPA is a trusted advisor for business owners and executives in Florida — offering expert tax strategy, IRS resolution, and part-time CFO services that go far beyond filing a return.
-        </p>
-        <div class="hero-btns">
-          <a href="tel:4076745951" class="btn-primary">Schedule Free Consultation</a>
-          <a href="mailto:hello@podelcpa.com" class="btn-outline">Talk to a CPA →</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-title">Your CPA Credentials at a Glance</div>
-        <div class="cred-item">
-          <div class="cred-icon">🏛️</div>
-          <div>
-            <div class="cred-label">Designation</div>
-            <div class="cred-value">Certified Public Accountant (CPA), Florida Licensed</div>
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-icon">📊</div>
-          <div>
-            <div class="cred-label">CFO Certified</div>
-            <div class="cred-value">The CFO Project — Certified CFO for Small Business</div>
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-icon">🔖</div>
-          <div>
-            <div class="cred-label">Memberships</div>
-            <div class="cred-value">AICPA · FICPA · QuickBooks Online Certified</div>
-          </div>
-        </div>
-        <hr class="hero-divider" />
-        <div class="stat-row">
-          <div class="stat-item">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Virtual</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">IRS</span>
-            <span class="stat-label">Audit Rep.</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">Free</span>
-            <span class="stat-label">Consultation</span>
-          </div>
-        </div>
-      </div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-text fade-up">
+    <p class="hero-label">Ocoee, FL &mdash; Licensed CPA &amp; CFO</p>
+    <h1>Tax Preparation Is Only the Beginning</h1>
+    <p>Podel CPA specializes in proactive tax strategy and business advisory for entrepreneurs, executives, and independent professionals across Florida and beyond.</p>
+    <div class="hero-actions">
+      <a href="tel:4076745951" class="btn">Schedule a Consultation</a>
+      <a href="tel:4076745951" class="hero-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        (407) 674-5951
+      </a>
     </div>
-  </section>
-
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="trust-bar-inner">
-      <div class="trust-item"><span class="trust-icon">✅</span> Florida Licensed CPA</div>
-      <div class="trust-sep"></div>
-      <div class="trust-item"><span class="trust-icon">🏛️</span> AICPA Member</div>
-      <div class="trust-sep"></div>
-      <div class="trust-item"><span class="trust-icon">📋</span> FICPA Member</div>
-      <div class="trust-sep"></div>
-      <div class="trust-item"><span class="trust-icon">💼</span> Certified CFO</div>
-      <div class="trust-sep"></div>
-      <div class="trust-item"><span class="trust-icon">🧾</span> QuickBooks Certified</div>
+    <div class="hero-badges">
+      <span class="badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        CPA Licensed in FL
+      </span>
+      <span class="badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Certified CFO
+      </span>
+      <span class="badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        AICPA &amp; FICPA Member
+      </span>
     </div>
   </div>
+  <div class="hero-photo">
+    <img src="https://cp9.cpasitesolutions.com/~podelcpa/images/shutterstock2281146803.jpg" alt="Podel CPA Office" onerror="this.style.background='#2a3a50'">
+  </div>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-inner">
-      <div class="section-tag">What We Do</div>
-      <h2>Expert Services Designed<br>for Business Owners</h2>
-      <p class="section-lead">From proactive tax strategy to IRS problem resolution — we handle the financial complexity so you can focus on growing your business.</p>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">📑</div>
-          <div class="service-title">Tax Preparation</div>
-          <p class="service-desc">Accurate, thorough individual and business tax returns filed on time — with a strategic eye toward minimizing your liability every year.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <div class="service-title">Tax Planning</div>
-          <p class="service-desc">Proactive strategies throughout the year that reduce what you owe. We look ahead so you're never surprised at tax time again.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⚖️</div>
-          <div class="service-title">IRS Audit Representation</div>
-          <p class="service-desc">Facing an IRS audit or back taxes? We stand by your side and handle communications directly — protecting your rights and resolving issues efficiently.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">💡</div>
-          <div class="service-title">Business Advisory</div>
-          <p class="service-desc">Strategic guidance on cash flow, structure, and financial decisions that keep your business moving forward with clarity and confidence.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">📈</div>
-          <div class="service-title">Part-Time CFO Services</div>
-          <p class="service-desc">Get the financial leadership of a seasoned CFO without the full-time cost — perfect for growing businesses ready to make smarter, data-driven decisions.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🖥️</div>
-          <div class="service-title">QuickBooks Setup &amp; Support</div>
-          <p class="service-desc">Clean books are the foundation of every smart financial decision. We set up, clean up, and maintain your QuickBooks so your numbers are always trustworthy.</p>
-        </div>
+<!-- PROOF BAR -->
+<section class="proof-bar">
+  <div class="proof-bar-inner fade-up">
+    <div class="proof-stat">
+      <strong>CPA + CFO</strong>
+      <span>Dual Certified</span>
+    </div>
+    <div class="proof-stat">
+      <strong>AICPA</strong>
+      <span>Member in Good Standing</span>
+    </div>
+    <div class="proof-stat">
+      <strong>FL Licensed</strong>
+      <span>Serving Clients Nationwide</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="fade-up">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">A Full Range of Tax &amp; Advisory Services</h2>
+    <p class="section-sub">From straightforward tax preparation to complex IRS representation and fractional CFO work, we handle the financial side so you can focus on running your business.</p>
+  </div>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Tax Preparation</h3>
+      <p>Accurate, timely filing for individuals, businesses, estates, and trusts. We catch what software misses.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3>Tax Planning</h3>
+      <p>Year-round strategy that legally minimizes your tax burden. Proactive, not reactive planning for every stage of growth.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>IRS Representation</h3>
+      <p>Facing an audit or IRS notice? We represent you directly, handle all correspondence, and fight for the best outcome.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+      </div>
+      <h3>Business Advisory</h3>
+      <p>Strategic guidance on entity structure, cash flow, financial planning, and key business decisions that affect your bottom line.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Part-Time CFO</h3>
+      <p>Executive-level financial leadership without the full-time cost. Ideal for growing businesses ready for the next level.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Estate &amp; Trust Services</h3>
+      <p>Comprehensive planning and compliance for trusts and estates, handled with care, precision, and full regulatory expertise.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="fade-up" style="text-align:center;">
+    <p class="section-label">Client Reviews</p>
+    <h2 class="section-title">Trusted by Florida Business Owners</h2>
+  </div>
+  <div class="testi-grid fade-up">
+    <div class="testi-card">
+      <div class="stars">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Podel CPA is professional, knowledgeable, and genuinely cares about getting the best outcome for their clients. Filing has never been this stress-free."</blockquote>
+      <p class="testi-author">Business Owner</p>
+      <p class="testi-company">Ocoee, FL</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Tatiana found deductions we had been missing for years. The savings more than covered her fee. I only wish we had found her sooner."</blockquote>
+      <p class="testi-author">Independent Professional</p>
+      <p class="testi-company">Central Florida</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Having a CPA who also thinks like a CFO is a game changer. Podel CPA has been instrumental in our growth strategy and financial clarity."</blockquote>
+      <p class="testi-author">Entrepreneur</p>
+      <p class="testi-company">Florida</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="fade-up" style="text-align:center;">
+    <p class="section-label">Getting Started</p>
+    <h2 class="section-title">Simple to Start, Built for the Long Term</h2>
+    <p class="section-sub" style="margin: 0 auto 52px; text-align:center;">Working with a CPA should feel like a partnership, not a transaction. Here is how we begin.</p>
+  </div>
+  <div class="steps fade-up">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Free Consultation</h3>
+      <p>We learn about your business, your current tax situation, and your goals for the year ahead.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Review &amp; Proposal</h3>
+      <p>We assess your financials and present a clear plan with transparent, straightforward pricing.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Onboarding</h3>
+      <p>We handle the transition from your previous accountant with minimal effort on your part.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Ongoing Support</h3>
+      <p>Year-round access, proactive advice, and a CPA who actually answers your questions.</p>
+    </div>
+  </div>
+  <div class="how-cta">
+    <a href="tel:4076745951" class="btn btn-dark">Schedule Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner fade-up">
+    <div class="about-text">
+      <p class="section-label">About Tatiana Podel</p>
+      <h2 class="section-title">A CPA Who Thinks Like a CFO</h2>
+      <p>Tatiana Podel, CPA and Certified CFO, built Podel CPA around a single principle: your tax advisor should do far more than file your return. She brings executive-level financial thinking to every client relationship.</p>
+      <p>With credentials spanning the AICPA, FICPA, CFO Project certification, and QuickBooks expertise, Tatiana serves business owners, executives, and independent professionals across Florida with services that go well beyond compliance.</p>
+      <p>Whether you need a strategy to minimize your tax liability, a trusted advisor during a growth phase, or a part-time CFO to guide big decisions, Podel CPA delivers the expertise that growing businesses rely on.</p>
+      <div class="about-badges">
+        <span class="about-badge">CPA, FL Licensed</span>
+        <span class="about-badge">Certified CFO</span>
+        <span class="about-badge">AICPA Member</span>
+        <span class="about-badge">FICPA Member</span>
+        <span class="about-badge">QBO Certified</span>
       </div>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="about-grid">
-        <div class="about-visual">
-          <div class="about-photo-wrap">
-            <div class="about-initials">TP</div>
-            <div class="about-name">Tatiana Podel, CPA</div>
-            <div class="about-title-tag">CPA · Certified CFO · Tax Advisor</div>
-            <ul class="about-creds-list">
-              <li>Licensed CPA — State of Florida</li>
-              <li>AICPA Member (American Institute of CPAs)</li>
-              <li>FICPA Member (Florida Institute of CPAs)</li>
-              <li>Certified CFO — The CFO Project</li>
-              <li>QuickBooks Online Certified ProAdvisor</li>
-              <li>IRS Audit Representation Specialist</li>
-            </ul>
-          </div>
-        </div>
-        <div class="about-text">
-          <div class="section-tag">About Tatiana</div>
-          <h2>A CPA Who Goes Further Than Your Tax Return</h2>
-          <p class="about-para">
-            Tatiana Podel is a Florida-licensed CPA and Certified CFO based in Ocoee, FL — serving business owners, executives, and independent professionals across the state and beyond through fully virtual services.
-          </p>
-          <p class="about-para">
-            With deep expertise in tax strategy, IRS problem resolution, and part-time CFO advisory, Tatiana delivers the kind of personalized, proactive guidance that makes a measurable difference in her clients' financial lives.
-          </p>
-          <blockquote class="about-highlight">
-            "As your tax advisor, preparing your tax return is only a small part of what we do. Our focus is on your financial outcomes — year-round."
-          </blockquote>
-          <p class="about-para">
-            Whether you're navigating an IRS audit, trying to understand your cash flow, or ready to make your business finances work harder for you — Tatiana brings the expertise and care your situation deserves.
-          </p>
-          <a href="tel:4076745951" class="btn-primary" style="display:inline-block; margin-top:8px;">Book a Free Consultation</a>
-        </div>
-      </div>
+    <div class="about-photo">
+      <img src="https://cp9.cpasitesolutions.com/~podelcpa/images/shutterstock1617281566.jpg" alt="Podel CPA" onerror="this.style.background='#2a3a50'; this.style.height='480px'">
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY US -->
-  <section id="why">
-    <div class="section-inner">
-      <div class="section-tag" style="color:var(--gold-lt);">Why Podel CPA</div>
-      <h2 style="color:var(--white);">What Sets Us Apart</h2>
-      <p class="section-lead">We're not just a tax firm — we're your financial partner. Here's what that means in practice.</p>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-num">01</div>
-          <div class="why-title">Strategy Over Compliance</div>
-          <p class="why-desc">Filing your return is the baseline. We're here to minimize your tax burden all year long with proactive planning tailored to your situation.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">02</div>
-          <div class="why-title">IRS Problems Solved</div>
-          <p class="why-desc">Audits, back taxes, payment plans — we handle IRS correspondence directly and resolve issues with the expertise and authority of a licensed CPA.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">03</div>
-          <div class="why-title">CFO-Level Insight</div>
-          <p class="why-desc">With our Part-Time CFO service, growing businesses get the financial leadership they need without the overhead of a full-time hire.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-num">04</div>
-          <div class="why-title">100% Virtual &amp; Accessible</div>
-          <p class="why-desc">Work with us from anywhere in Florida — and beyond. Our fully virtual model means you get expert CPA service on your schedule, without leaving home.</p>
-        </div>
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="fade-up">
+    <h2>Stop Leaving Money on the Table at Tax Time</h2>
+    <p>Call today for a free consultation and discover how proactive tax planning can change your financial future.</p>
+    <a href="tel:4076745951" class="btn btn-dark">Call (407) 674-5951 Today</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">
+        <img src="https://cp9.cpasitesolutions.com/~podelcpa/images/Podel%20CPA1.png" alt="Podel CPA" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+        <span style="display:none; font-family:'Tinos',serif; font-size:1.3rem; color:rgba(255,255,255,.7);">Podel CPA</span>
       </div>
+      <p class="footer-desc">Tax and business advisory services for Florida business owners, executives, and independent professionals who expect more from their CPA.</p>
     </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="section-inner">
-      <div class="section-tag">Client Feedback</div>
-      <h2>Trusted by Business Owners<br>Across Florida</h2>
-      <p class="section-lead">Our clients trust us because we deliver real results — not just filed returns, but financial clarity and peace of mind.</p>
-      <div class="testimonials-grid">
-        <div class="testi-card">
-          <div class="stars">★★★★★</div>
-          <p class="testi-quote">"Tatiana completely transformed how I think about my business finances. She proactively flagged tax-saving opportunities I would have missed entirely working with a generic tax preparer."</p>
-          <div class="testi-author">Michael R.</div>
-          <div class="testi-role">Small Business Owner, Orlando FL</div>
-        </div>
-        <div class="testi-card">
-          <div class="stars">★★★★★</div>
-          <p class="testi-quote">"I was facing an IRS audit and had no idea what to do. Podel CPA stepped in, handled everything professionally, and the issue was resolved with no additional liability. I can't thank them enough."</p>
-          <div class="testi-author">Sandra L.</div>
-          <div class="testi-role">Independent Consultant, Central Florida</div>
-        </div>
-        <div class="testi-card">
-          <div class="stars">★★★★★</div>
-          <p class="testi-quote">"The Part-Time CFO service was exactly what my growing company needed. Now I actually understand my numbers and make decisions with confidence. Worth every penny."</p>
-          <div class="testi-author">James T.</div>
-          <div class="testi-role">CEO, Service Business, FL</div>
-        </div>
-      </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Tax Preparation</a></li>
+        <li><a href="#services">Tax Planning</a></li>
+        <li><a href="#services">IRS Representation</a></li>
+        <li><a href="#services">Business Advisory</a></li>
+        <li><a href="#services">Part-Time CFO</a></li>
+        <li><a href="#services">Estate &amp; Trust</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- CTA SECTION -->
-  <section id="cta">
-    <div class="cta-inner">
-      <h2>Ready to Take Control of Your Taxes &amp; Finances?</h2>
-      <p>Schedule your free consultation today. No pressure, no obligation — just a clear conversation about where you stand and how we can help you move forward.</p>
-      <div class="cta-btns">
-        <a href="tel:4076745951" class="btn-white">Schedule Free Consultation</a>
-        <a href="mailto:hello@podelcpa.com" class="btn-outline-white">Email Us Today</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT BAR -->
-  <div class="contact-bar">
-    <div class="contact-bar-inner">
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <div>
-          <strong>(407) 674-5951</strong>
-          Call Us Anytime
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          (407) 674-5951
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <strong>hello@podelcpa.com</strong>
-          Send Us a Message
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <strong>2582 Maguire Rd, Ocoee, FL 34761</strong>
-          Serving FL &amp; Virtual Clients Nationwide
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ocoee, FL &mdash; Serving Florida &amp; Nationwide
         </div>
       </div>
     </div>
   </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Podel CPA. All rights reserved.</p>
+    <p>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Podel <span>CPA</span></div>
-      <div class="footer-copy">© 2024 Podel CPA · Tatiana Podel, CPA · Licensed in Florida · AICPA · FICPA Member</div>
-    </div>
-  </footer>
-
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
