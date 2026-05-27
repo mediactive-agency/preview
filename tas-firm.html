@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAS Firm — Strategic Financial Partner for Growing Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0B1F3A;
+      --navy2:   #122845;
+      --gold:    #C8973A;
+      --gold2:   #E0AC4F;
+      --light:   #F7F4EF;
+      --white:   #FFFFFF;
+      --text:    #1E2D40;
+      --muted:   #6B7A8D;
+      --border:  #D9D2C8;
+      --radius:  6px;
+      --shadow:  0 4px 24px rgba(11,31,58,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(11,31,58,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,151,58,.25);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .5px;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700 !important;
+      padding: .55rem 1.4rem;
+      border-radius: var(--radius);
+      transition: background .2s, transform .15s !important;
+    }
+    .nav-cta:hover { background: var(--gold2) !important; transform: translateY(-1px); }
+
+    /* ============================================================
+       HERO — full-viewport, photo-feel dark gradient
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        /* city-office bokeh feel */
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,151,58,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(18,40,69,.6) 0%, transparent 60%),
+        linear-gradient(135deg, #060E1A 0%, #0B1F3A 40%, #152B4A 65%, #0E2235 100%);
+    }
+
+    /* subtle bokeh dots */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle 2px at 15% 25%, rgba(200,151,58,.45) 0%, transparent 100%),
+        radial-gradient(circle 3px at 82% 18%, rgba(200,151,58,.3) 0%, transparent 100%),
+        radial-gradient(circle 1.5px at 60% 70%, rgba(255,255,255,.2) 0%, transparent 100%),
+        radial-gradient(circle 2px at 35% 85%, rgba(200,151,58,.25) 0%, transparent 100%),
+        radial-gradient(circle 4px at 90% 65%, rgba(200,151,58,.15) 0%, transparent 100%),
+        radial-gradient(circle 2.5px at 5% 60%, rgba(255,255,255,.15) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* light-leak top-right */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -80px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,151,58,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(900px, 90%);
+      margin: 0 auto;
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(200,151,58,.15);
+      border: 1px solid rgba(200,151,58,.4);
+      border-radius: 100px;
+      padding: .4rem 1.1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-badge::before { content: '●'; font-size: .5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      letter-spacing: -.02em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(255,255,255,.72);
+      max-width: 620px;
+      margin: 0 auto 2.4rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: .9rem 2rem;
+      border-radius: var(--radius);
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(200,151,58,.35);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,151,58,.45);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: transparent;
+      color: rgba(255,255,255,.85);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: .9rem 2rem;
+      border-radius: var(--radius);
+      border: 1.5px solid rgba(255,255,255,.3);
+      transition: border-color .2s, color .2s;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-urgency {
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      letter-spacing: .02em;
+    }
+    .hero-urgency strong { color: var(--gold2); }
+
+    /* hero stats row */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .h-stat { text-align: center; }
+    .h-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .h-stat-label {
+      font-size: .78rem;
+      color: rgba(255,255,255,.55);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.35);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: fadeUpDown 2s ease-in-out infinite;
+    }
+    .scroll-hint svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+    @keyframes fadeUpDown { 0%,100% { transform: translateX(-50%) translateY(0); opacity:.35; } 50% { transform: translateX(-50%) translateY(6px); opacity:.7; } }
+
+    /* ============================================================
+       TRUST BAR
+    ============================================================ */
+    .trust-bar {
+      background: var(--navy);
+      padding: 1.8rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      color: rgba(255,255,255,.75);
+      font-size: .82rem;
+      font-weight: 500;
+    }
+    .trust-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(200,151,58,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; }
+
+    /* ============================================================
+       SECTION COMMON
+    ============================================================ */
+    section { padding: 96px 5%; }
+
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .9rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       PAIN / PROBLEM SECTION
+    ============================================================ */
+    .pain { background: var(--light); }
+
+    .pain-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .pain-cards { display: flex; flex-direction: column; gap: 1rem; }
+
+    .pain-card {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .pain-card-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: .1rem; }
+    .pain-card h4 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: .95rem; color: var(--navy); margin-bottom: .25rem; }
+    .pain-card p { font-size: .85rem; color: var(--muted); }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(11,31,58,.1); border-color: var(--gold); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-emoji { font-size: 2rem; margin-bottom: 1rem; }
+    .service-card h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: .7rem; }
+    .service-card p { font-size: .88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+    .service-outcome {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .service-outcome::before { content: '→'; }
+
+    /* ============================================================
+       STATS / PROOF BAND
+    ============================================================ */
+    .stats-band {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-band::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,151,58,.1) 0%, transparent 70%);
+    }
+
+    .stats-band-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .stats-band h2 {
+      color: var(--white);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+    .stats-band p { color: rgba(255,255,255,.65); font-size: 1rem; margin-bottom: 3.5rem; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .stat-label {
+      font-size: .82rem;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about { background: var(--light); }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .about-photo-bg {
+      width: 100%;
+      padding-top: 120%;
+      background: linear-gradient(160deg, #122845 0%, #0B1F3A 40%, #1A3356 70%, #0E2235 100%);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    /* overlay texture */
+    .about-photo-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 30%, rgba(200,151,58,.12) 0%, transparent 70%),
+        radial-gradient(circle 3px at 20% 40%, rgba(200,151,58,.5) 0%, transparent 100%),
+        radial-gradient(circle 2px at 75% 65%, rgba(255,255,255,.25) 0%, transparent 100%);
+      border-radius: 12px;
+    }
+
+    .about-photo-label {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(11,31,58,.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(200,151,58,.3);
+      border-radius: 8px;
+      padding: 1rem 1.3rem;
+    }
+
+    .about-photo-label strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .about-photo-label span { font-size: .78rem; color: var(--gold2); }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(200,151,58,.12);
+      border: 1px solid rgba(200,151,58,.35);
+      color: var(--gold);
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .35rem .9rem;
+      border-radius: 100px;
+      letter-spacing: .04em;
+    }
+
+    .about-text p { color: var(--muted); margin-bottom: 1.2rem; font-size: .97rem; }
+
+    .about-languages {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lang {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .lang-flag { font-size: 1.2rem; }
+
+    /* ============================================================
+       PROCESS
+    ============================================================ */
+    .process-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .process-step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      border: 2px solid rgba(200,151,58,.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step h4 { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+    .process-step p { font-size: .84rem; color: var(--muted); }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials { background: var(--navy); padding: 96px 5%; }
+
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-sub { color: rgba(255,255,255,.55); }
+    .testimonials .section-label { color: var(--gold2); }
+
+    .testimonials-header { margin-bottom: 3.5rem; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testi-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 2rem;
+      position: relative;
+      transition: background .2s, border-color .2s;
+    }
+    .testi-card:hover { background: rgba(255,255,255,.08); border-color: rgba(200,151,58,.3); }
+
+    .testi-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: rgba(200,151,58,.2);
+      line-height: .8;
+      display: block;
+      margin-bottom: .5rem;
+    }
+
+    .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: .1em; }
+
+    .testi-text {
+      font-size: .93rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testi-outcome {
+      background: rgba(200,151,58,.15);
+      border: 1px solid rgba(200,151,58,.3);
+      border-radius: 6px;
+      padding: .6rem .9rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--gold2);
+      margin-bottom: 1.5rem;
+    }
+    .testi-outcome::before { content: '✓ Result: '; }
+
+    .testi-author { display: flex; align-items: center; gap: .9rem; }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: .9rem; color: var(--white); }
+    .testi-role { font-size: .78rem; color: rgba(255,255,255,.45); }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq { background: var(--light); }
+
+    .faq-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .faq-header { text-align: center; margin-bottom: 3rem; }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: .8rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.3rem 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: .97rem;
+      font-weight: 600;
+      color: var(--navy);
+      gap: 1rem;
+      transition: background .15s;
+    }
+    .faq-q:hover { background: rgba(200,151,58,.04); }
+
+    .faq-arrow {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(200,151,58,.15);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .25s, background .2s;
+    }
+    .faq-arrow svg { width: 12px; height: 12px; stroke: var(--gold); fill: none; stroke-width: 2.5; }
+
+    details[open] .faq-arrow { transform: rotate(180deg); background: var(--gold); }
+    details[open] .faq-arrow svg { stroke: var(--navy); }
+
+    .faq-a {
+      padding: 0 1.5rem 1.3rem;
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       FINAL CTA
+    ============================================================ */
+    .final-cta {
+      position: relative;
+      padding: 120px 5%;
+      background: linear-gradient(160deg, #070F1C 0%, #0B1F3A 35%, #152B4A 65%, #0A1B30 100%);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,151,58,.09) 0%, transparent 70%);
+    }
+
+    .final-cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+    .final-cta h2 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+    .final-cta h2 em { font-style: normal; color: var(--gold); }
+
+    .final-cta p { color: rgba(255,255,255,.65); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+    .final-cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .final-urgency {
+      margin-top: 1.5rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.4);
+    }
+    .final-urgency strong { color: rgba(200,151,58,.8); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #050D18;
+      padding: 2.5rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid rgba(200,151,58,.15);
+    }
+
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .8rem; color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy { font-size: .75rem; color: rgba(255,255,255,.25); }
+
+    /* ============================================================
+       FLOATING WHATSAPP
+    ============================================================ */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .pain-inner,
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .about-photo { max-width: 360px; margin: 0 auto; }
+
+      .process-steps::before { display: none; }
+
+      .hero-stats { gap: 1.5rem; }
+
+      .trust-bar { gap: 1.2rem; }
+
+      section { padding: 64px 5%; }
+
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav>
+  <div class="nav-logo">TAS <span>Firm</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Results</a>
+    <a href="#faq">FAQ</a>
+    <a href="#cta" class="nav-cta">Book Strategy Call</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">IRS Certified · Profit First Certified · 20+ Years Experience</div>
+
+    <h1>
+      Stop Running Your Business
+      <em>Without a Financial Strategy</em>
+    </h1>
+
+    <p class="hero-sub">
+      TAS Firm goes beyond bookkeeping — we give growth-focused businesses a strategic financial partner who speaks numbers, catches what others miss, and helps you keep more of what you earn.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6l4-4 4 4"/><path d="M12 2v13"/><path d="M20 16l-8 8-8-8"/></svg>
+        Book Free Diagnostic Call
+      </a>
+      <a href="#services" class="btn-ghost">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        See How We Work
+      </a>
+    </div>
+
+    <p class="hero-urgency">
+      <strong>Limited spots available</strong> — We only take on clients we can genuinely transform.
+    </p>
+
+    <div class="hero-stats">
+      <div class="h-stat">
+        <span class="h-stat-num">20+</span>
+        <span class="h-stat-label">Years of Experience</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-num">3,000+</span>
+        <span class="h-stat-label">Clients Served</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-num">3</span>
+        <span class="h-stat-label">Languages Spoken</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-num">$500K</span>
+        <span class="h-stat-label">Max Revenue Served / mo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST BAR
+============================================================ -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    IRS Certified Acceptance Agent
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    Profit First Certified Professional
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
+    U.S. &amp; International Clients
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    3,000+ Businesses Supported
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    </div>
+    Florida-Based, Nationwide Service
+  </div>
+</div>
+
+<!-- ============================================================
+     PAIN SECTION
+============================================================ -->
+<section class="pain" id="pain">
+  <div class="pain-inner">
+    <div>
+      <span class="section-label">Sound Familiar?</span>
+      <h2 class="section-title">Most Business Owners Are Flying Blind</h2>
+      <p class="section-sub" style="margin-bottom:1.5rem;">
+        Growing revenue without a financial strategy is the fastest way to burn cash. If any of these sound like you, you need more than a bookkeeper.
+      </p>
+      <a href="#cta" class="btn-primary" style="color:var(--navy);">Fix This Now — Book a Call</a>
+    </div>
+
+    <div class="pain-cards">
+      <div class="pain-card">
+        <div class="pain-card-icon">💸</div>
+        <div>
+          <h4>Revenue Is Up, But Cash Is Always Tight</h4>
+          <p>You're making more money but somehow never have enough. Your numbers don't tell the story they should.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">😰</div>
+        <div>
+          <h4>Tax Season Brings Panic, Not Confidence</h4>
+          <p>You scramble every April. You suspect you're overpaying but have no strategy to change it.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">📊</div>
+        <div>
+          <h4>You Rely on Gut Feeling Instead of Data</h4>
+          <p>Decisions about hiring, pricing, and growth are based on instinct — not forecasts or real numbers.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">🏛️</div>
+        <div>
+          <h4>The IRS Makes You Nervous</h4>
+          <p>Any notice from the IRS sends your anxiety through the roof. You need a certified expert in your corner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Financial Services That Actually Move the Needle</h2>
+      </div>
+      <p class="section-sub">From monthly books to full CFO strategy — we scale with your business.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-emoji">📒</div>
+        <h3>Monthly Bookkeeping & Reporting</h3>
+        <p>Accurate, up-to-date financial records delivered monthly. Know exactly where your money is going — and where it's coming from.</p>
+        <div class="service-outcome">Always know your numbers</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-emoji">🧾</div>
+        <h3>Tax Strategy & Compliance</h3>
+        <p>Proactive planning throughout the year — not just at filing time. We find deductions others miss and keep you fully compliant.</p>
+        <div class="service-outcome">Pay only what you legally owe</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-emoji">💰</div>
+        <h3>Profit First Architecture</h3>
+        <p>Using the Profit First methodology, we engineer your cash flow so profit is built in by design — not what's left over at the end.</p>
+        <div class="service-outcome">Profit by design, not by luck</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-emoji">📈</div>
+        <h3>Fractional CFO Services</h3>
+        <p>Get executive-level financial strategy without the executive-level salary. Cash flow forecasts, growth models, and data-driven decisions.</p>
+        <div class="service-outcome">CFO thinking at your budget</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-emoji">🏛️</div>
+        <h3>IRS Defense & Resolution</h3>
+        <p>Facing an audit or IRS notice? As a Certified Acceptance Agent, Shirley stands between you and the IRS — resolving issues efficiently.</p>
+        <div class="service-outcome">Sleep easy knowing you're protected</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-emoji">🌎</div>
+        <h3>International Business Support</h3>
+        <p>Serving U.S. and international clients with U.S. operations. Trilingual support in English, Portuguese, and Spanish.</p>
+        <div class="service-outcome">No language or border barriers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAND
+============================================================ -->
+<div class="stats-band">
+  <div class="stats-band-inner">
+    <h2>Numbers Don't Lie — and Neither Do We</h2>
+    <p>A track record of trust built one client at a time, over two decades of work.</p>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Years in Practice</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3,000+</span>
+        <span class="stat-label">Clients Supported</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Languages Served</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5–7</span>
+        <span class="stat-label">Day Onboarding</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo">
+      <div class="about-photo-bg"></div>
+      <div class="about-photo-label">
+        <strong>Shirley Carvalho</strong>
+        <span>Founder &amp; CEO, TAS Firm</span>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <span class="section-label">Meet Your Partner</span>
+      <h2 class="section-title">Your Strategic Partner, Not Just Your Accountant</h2>
+
+      <p>
+        Shirley Carvalho founded TAS Firm on a simple but powerful belief: business owners deserve a financial partner who is as invested in their success as they are — not just someone who files their taxes once a year.
+      </p>
+      <p>
+        With over 20 years of experience and more than 3,000 clients served, Shirley brings deep expertise, genuine responsiveness, and a multilingual approach that makes complex financial strategy accessible to entrepreneurs from all backgrounds.
+      </p>
+      <p>
+        As both an IRS Certified Acceptance Agent and a Profit First Certified Professional, Shirley combines compliance mastery with growth-focused financial architecture — giving your business both protection and momentum.
+      </p>
+
+      <div class="about-badges">
+        <span class="badge">IRS Certified Acceptance Agent</span>
+        <span class="badge">Profit First Certified</span>
+        <span class="badge">20+ Years Experience</span>
+        <span class="badge">Florida-Based</span>
+      </div>
+
+      <div class="about-languages">
+        <div class="lang"><span class="lang-flag">🇺🇸</span> English</div>
+        <div class="lang"><span class="lang-flag">🇧🇷</span> Português</div>
+        <div class="lang"><span class="lang-flag">🇪🇸</span> Español</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS
+============================================================ -->
+<section id="process">
+  <div class="process-inner">
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">From Chaos to Clarity in 4 Steps</h2>
+    <p class="section-sub" style="margin:0 auto 0;">We make getting started simple — and getting results even simpler.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Free Diagnostic Call</h4>
+        <p>We learn about your business, your goals, and where your finances stand today.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>Custom Strategy Plan</h4>
+        <p>We map out a tailored financial plan — services, timeline, and expected outcomes.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Fast Onboarding</h4>
+        <p>We get you set up and organized within 5–7 business days — no long delays.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Ongoing Partnership</h4>
+        <p>We handle the numbers. You focus on growth. We check in proactively — not just at tax time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section class="testimonials" id="testimonials">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="testimonials-header">
+      <span class="section-label">Client Results</span>
+      <h2 class="section-title">What Happens When Your Finances Have a Real Strategy</h2>
+      <p class="section-sub">Don't take our word for it — here's what clients say after working with TAS Firm.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <span class="testi-quote-mark">"</span>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">TAS Firm goes above and beyond. I trust them with my personal and business affairs — everything is organized and I finally feel in control of my finances.</p>
+        <div class="testi-outcome">Complete financial clarity and organization</div>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Camila Barini</div>
+            <div class="testi-role">Business Owner</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <span class="testi-quote-mark">"</span>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Shirley is very responsive and professional. Having her support has helped me grow as a financially literate business owner — I now understand my numbers and make confident decisions.</p>
+        <div class="testi-outcome">Grew into a financially literate, confident owner</div>
+        <div class="testi-author">
+          <div class="testi-avatar">H</div>
+          <div>
+            <div class="testi-name">Hosana Souza</div>
+            <div class="testi-role">Entrepreneur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <span class="testi-quote-mark">"</span>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I have done my taxes with Shirley for over 10 years. She is incredibly responsive and knowledgeable — I wouldn't trust anyone else with my finances. She's the gold standard.</p>
+        <div class="testi-outcome">10+ year trusted relationship, zero tax surprises</div>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Matthew Albuquerque</div>
+            <div class="testi-role">Long-Term Client, 10+ Years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Answers Before You Ask</h2>
+      <p class="section-sub" style="margin:0 auto;">Everything you need to know before booking your strategy call.</p>
+    </div>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        What's the difference between a bookkeeper and a CPA?
+        <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </summary>
+      <div class="faq-a">A bookkeeper records your transactions. A CPA like Shirley goes far deeper — analyzing your financial health, advising on tax strategy, planning for growth, and representing you before the IRS. TAS Firm does both, which means nothing slips through the cracks.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        What size business do you typically work with?
+        <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </summary>
+      <div class="faq-a">We primarily serve businesses generating between $5,000 and $500,000 per month in revenue. Whether you're a growing startup or an established multi-six-figure operation, we have a service tier designed to match your stage and goals.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        How quickly can you onboard us?
+        <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </summary>
+      <div class="faq-a">Most clients are fully onboarded within 5–7 business days. We have a streamlined process to get your books set up, your accounts connected, and your financial picture clear — fast.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        What's the difference between bookkeeping and CFO services?
+        <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </summary>
+      <div class="faq-a">Bookkeeping keeps your records accurate. CFO services use those records to drive decisions — cash flow forecasting, growth modeling, scenario planning, and financial leadership. Many clients start with bookkeeping and add fractional CFO services as they scale.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Do you serve clients outside of Florida?
+        <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </summary>
+      <div class="faq-a">Yes — we serve clients across the U.S. and internationally for businesses with U.S. operations. We're also trilingual (English, Portuguese, Spanish), which allows us to serve a diverse, global client base with ease.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        What if I'm facing an IRS audit or notice?
+        <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </summary>
+      <div class="faq-a">As an IRS Certified Acceptance Agent, Shirley can represent you directly before the IRS. Don't navigate audits or notices alone — reach out immediately and we'll assess your situation and build a defense strategy.</div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+============================================================ -->
+<section class="final-cta" id="cta">
+  <div class="final-cta-inner">
+    <span class="section-label" style="color:var(--gold2);">Ready to Take Control?</span>
+    <h2>Stop Surviving.<br><em>Start Thriving.</em></h2>
+    <p>
+      Book your free 30-minute diagnostic call with Shirley today. We'll identify exactly where your financial blind spots are — and what a real strategy could change for your business.
+    </p>
+
+    <div class="final-cta-actions">
+      <a href="https://tasfirm.com" target="_blank" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.2rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Free Diagnostic Call
+      </a>
+      <a href="https://wa.me/" target="_blank" class="btn-ghost" style="font-size:1.05rem; padding:1rem 2.2rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message on WhatsApp
+      </a>
+    </div>
+
+    <p class="final-urgency">
+      <strong>No obligation. No pressure.</strong> Just 30 minutes that could change everything.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-logo">TAS <span>Firm</span></div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Results</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://tasfirm.com" target="_blank">Visit Website</a>
+  </div>
+  <div class="footer-copy">© 2026 TAS Firm · Florida, USA · IRS Certified · Profit First Certified</div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/" target="_blank" class="wa-float" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
