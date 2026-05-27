@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAYL Bookkeeping & Accounting | Rhode Island & Nationwide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a3a5c;
+      --ocean:  #1e6fa0;
+      --sky:    #3aa0d4;
+      --aqua:   #5bc8d4;
+      --sand:   #f5f0e8;
+      --white:  #ffffff;
+      --slate:  #4a5568;
+      --charcoal: #2d3748;
+      --gold:   #c9a84c;
+      --light-blue: #e8f4fb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26, 58, 92, 0.97);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5%;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--aqua); }
+    .nav-cta {
+      background: var(--aqua); color: var(--navy);
+      padding: 0.55rem 1.4rem; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 700; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 60%, var(--sky) 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 5% 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+      color: var(--aqua); font-size: 0.8rem; font-weight: 600;
+      padding: 0.4rem 1.2rem; border-radius: 50px; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700; color: var(--white);
+      line-height: 1.15; margin-bottom: 1.25rem; max-width: 750px;
+    }
+    .hero h1 em { color: var(--aqua); font-style: normal; }
+    .hero p {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: rgba(255,255,255,0.85);
+      max-width: 580px; margin: 0 auto 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--aqua); color: var(--navy);
+      padding: 0.9rem 2rem; border-radius: 50px;
+      font-size: 1rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 8px 25px rgba(91,200,212,0.4);
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,0.4); }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 50px;
+      font-size: 1rem; font-weight: 600; text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .hero-trust {
+      margin-top: 3.5rem;
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.8); font-size: 0.9rem;
+    }
+    .trust-item svg { flex-shrink: 0; }
+
+    /* ── LOGOS / TOOLS BAR ── */
+    .tools-bar {
+      background: var(--light-blue);
+      padding: 1.8rem 5%; text-align: center;
+      border-bottom: 1px solid #d0e8f5;
+    }
+    .tools-bar p {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ocean); margin-bottom: 1rem;
+    }
+    .tools-list {
+      display: flex; gap: 2rem; justify-content: center;
+      flex-wrap: wrap; align-items: center;
+    }
+    .tool-badge {
+      display: flex; align-items: center; gap: 0.45rem;
+      font-size: 0.9rem; font-weight: 600; color: var(--navy);
+      background: var(--white); padding: 0.45rem 1rem;
+      border-radius: 8px; border: 1px solid #c8dff0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 5rem 5%; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--ocean); margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--slate);
+      max-width: 560px; line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+    .services-inner { max-width: 1100px; margin: 0 auto; }
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid #d8eaf5;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(30,111,160,0.12); }
+    .card-top {
+      background: linear-gradient(135deg, var(--navy), var(--ocean));
+      padding: 2rem; color: var(--white);
+    }
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem; font-size: 1.5rem;
+    }
+    .card-top h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 600; margin-bottom: 0.4rem;
+    }
+    .card-top p { font-size: 0.9rem; opacity: 0.85; }
+    .card-body { padding: 1.5rem 2rem; background: var(--white); }
+    .card-body ul { list-style: none; }
+    .card-body li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.45rem 0; font-size: 0.92rem; color: var(--slate);
+      border-bottom: 1px solid #f0f4f8;
+    }
+    .card-body li:last-child { border-bottom: none; }
+    .check { color: var(--aqua); font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
+
+    /* ── WHY CHOOSE ── */
+    .why { background: var(--sand); }
+    .why-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .why-features { display: flex; flex-direction: column; gap: 1.5rem; }
+    .why-feature {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: var(--white); border-radius: 12px; padding: 1.4rem;
+      border: 1px solid #e0eefc;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .feature-icon {
+      min-width: 48px; height: 48px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--ocean), var(--sky));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--white);
+    }
+    .why-feature h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .why-feature p { font-size: 0.9rem; color: var(--slate); line-height: 1.6; }
+    .why-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .stat-box {
+      background: var(--white); border-radius: 14px; padding: 1.8rem 1.5rem;
+      text-align: center; border: 1px solid #d8eaf5;
+      box-shadow: 0 4px 16px rgba(30,111,160,0.08);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--navy); line-height: 1;
+    }
+    .stat-num span { color: var(--ocean); }
+    .stat-label { font-size: 0.85rem; color: var(--slate); margin-top: 0.4rem; font-weight: 500; }
+    .stat-box.highlight {
+      background: linear-gradient(135deg, var(--navy), var(--ocean));
+      border-color: transparent;
+    }
+    .stat-box.highlight .stat-num,
+    .stat-box.highlight .stat-label { color: var(--white); }
+    .stat-box.highlight .stat-num span { color: var(--aqua); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--navy); }
+    .test-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .test-inner .section-label { color: var(--aqua); }
+    .test-inner .section-title { color: var(--white); margin-bottom: 3rem; }
+    .test-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.8rem; text-align: left;
+    }
+    .test-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 2rem;
+      backdrop-filter: blur(4px);
+    }
+    .stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+    .test-card p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1.5rem; }
+    .test-author { display: flex; align-items: center; gap: 0.8rem; }
+    .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--aqua), var(--sky));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--navy); font-size: 0.9rem;
+    }
+    .author-info strong { display: block; font-size: 0.9rem; color: var(--white); }
+    .author-info span { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+    /* ── ABOUT ── */
+    .about { background: var(--light-blue); }
+    .about-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .about-photo {
+      position: relative; border-radius: 20px; overflow: hidden;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 100%);
+      aspect-ratio: 4/5; display: flex; align-items: flex-end;
+      padding: 2rem; box-shadow: 0 20px 60px rgba(26,58,92,0.25);
+    }
+    .about-photo::before {
+      content: '👩‍💼';
+      font-size: 10rem;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      opacity: 0.15;
+    }
+    .about-card-inner {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      color: var(--white); width: 100%;
+    }
+    .about-card-inner strong { display: block; font-size: 1.1rem; font-family: 'Playfair Display', serif; }
+    .about-card-inner span { font-size: 0.82rem; opacity: 0.8; }
+    .about-badge {
+      display: inline-block; margin-top: 0.8rem;
+      background: var(--aqua); color: var(--navy);
+      font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+    .about-content .section-sub { margin-bottom: 1.5rem; }
+    .about-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .about-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.95rem; color: var(--charcoal);
+    }
+    .about-list li::before {
+      content: '✦'; color: var(--ocean); font-size: 0.7rem; flex-shrink: 0;
+    }
+
+    /* ── PROCESS ── */
+    .process { background: var(--white); }
+    .process-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .process-inner .section-sub { margin: 0 auto 3.5rem; }
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; position: relative;
+    }
+    .step {
+      padding: 2rem 1.5rem;
+      background: var(--light-blue);
+      border-radius: 16px; border: 1px solid #c8dff0;
+    }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--ocean), var(--sky));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; color: var(--white);
+      margin: 0 auto 1rem;
+    }
+    .step h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .step p { font-size: 0.88rem; color: var(--slate); }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 100%);
+      text-align: center; padding: 6rem 5%;
+    }
+    .final-cta .section-label { color: var(--aqua); }
+    .final-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .final-cta p { color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 2.5rem; font-size: 1.05rem; }
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-group .btn-ghost {
+      background: rgba(255,255,255,0.1); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 50px;
+      font-size: 1rem; font-weight: 600; text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: all 0.25s;
+    }
+    .cta-group .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f2336;
+      padding: 2.5rem 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer .nav-logo { font-size: 1.1rem; }
+    footer p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.55); font-size: 0.85rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--aqua); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 5%; }
+      .why-inner,
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { aspect-ratio: 3/2; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SAYL <span>Bookkeeping</span></div>
+  <a href="https://saylbookkeeping.com/" class="nav-cta">Book Free Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="position:relative;z-index:1;max-width:800px">
+    <div class="hero-badge">Rhode Island &#38; Nationwide</div>
+    <h1>Your Numbers Should <em>Work for You</em></h1>
+    <p>SAYL delivers accurate books, clear reporting, and strategic insight — so you can make confident decisions and grow with purpose.</p>
+    <div class="hero-ctas">
+      <a href="https://saylbookkeeping.com/" class="btn-primary">Book Free Consultation</a>
+      <a href="https://saylbookkeeping.com/" class="btn-secondary">Clean Up My Books</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        10+ Years Experience
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        QuickBooks Certified Expert
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Remote &#38; Local Support
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS BAR -->
+<div class="tools-bar">
+  <p>Trusted Tools &#38; Certifications</p>
+  <div class="tools-list">
+    <div class="tool-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2CA01C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      QuickBooks Online Expert
+    </div>
+    <div class="tool-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Public Accounting Background
+    </div>
+    <div class="tool-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Monthly Reporting &#38; CFO Advisory
+    </div>
+    <div class="tool-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3aa0d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Small Business Specialists
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Financial Services Built for<br>Small Business Owners</h2>
+      <p class="section-sub">From day-to-day bookkeeping to fractional CFO support — SAYL gives you the financial clarity your business deserves.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="card-top">
+          <div class="card-icon">📒</div>
+          <h3>Monthly Bookkeeping</h3>
+          <p>Ongoing, accurate financial management so you're always in the know.</p>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li><span class="check">✓</span> Bank &#38; credit card reconciliation</li>
+            <li><span class="check">✓</span> Monthly financial statements</li>
+            <li><span class="check">✓</span> Transaction categorization</li>
+            <li><span class="check">✓</span> Clear, easy-to-read reports</li>
+            <li><span class="check">✓</span> Year-end tax prep readiness</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="card-top">
+          <div class="card-icon">🔧</div>
+          <h3>Cleanup &#38; Catch-Up</h3>
+          <p>Months or years behind? We'll untangle your books — fast.</p>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li><span class="check">✓</span> Historical transaction review</li>
+            <li><span class="check">✓</span> Error identification &#38; correction</li>
+            <li><span class="check">✓</span> Back-months reconciliation</li>
+            <li><span class="check">✓</span> Fresh-start financial baseline</li>
+            <li><span class="check">✓</span> Organized records for your CPA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="card-top">
+          <div class="card-icon">📊</div>
+          <h3>Fractional CFO</h3>
+          <p>Strategic financial guidance without the full-time CFO price tag.</p>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li><span class="check">✓</span> Cash flow analysis &#38; forecasting</li>
+            <li><span class="check">✓</span> Budget creation &#38; monitoring</li>
+            <li><span class="check">✓</span> Financial decision advisory</li>
+            <li><span class="check">✓</span> Growth strategy support</li>
+            <li><span class="check">✓</span> Profit &#38; loss deep dives</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-label">Why SAYL</div>
+      <h2 class="section-title">More Than a Bookkeeper — A Real Financial Partner</h2>
+      <p class="section-sub" style="margin-bottom:2.5rem">Your books should be an asset, not an afterthought. SAYL brings structure, insight, and care to every client relationship.</p>
+      <div class="why-features">
+        <div class="why-feature">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <h4>Dedicated to Your Business</h4>
+            <p>You get a real person who knows your business — not a faceless portal or rotating team.</p>
+          </div>
+        </div>
+        <div class="why-feature">
+          <div class="feature-icon">🔒</div>
+          <div>
+            <h4>Accurate &#38; Reliable</h4>
+            <p>10+ years of public accounting experience means your numbers are right the first time, every time.</p>
+          </div>
+        </div>
+        <div class="why-feature">
+          <div class="feature-icon">🌊</div>
+          <div>
+            <h4>Remote &#38; Local Flexibility</h4>
+            <p>Rooted in Rhode Island, serving clients across the nation. We work the way you work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-stats">
+      <div class="stat-box">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Years in Public Accounting</div>
+      </div>
+      <div class="stat-box highlight">
+        <div class="stat-num"><span>QBO</span></div>
+        <div class="stat-label">Certified Expert</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3<span>×</span></div>
+        <div class="stat-label">Core Service Offerings</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">States Served Remotely</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-inner">
+    <div class="section-label">Client Love</div>
+    <h2 class="section-title">What Small Business Owners Say</h2>
+    <div class="test-grid">
+
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Samantha transformed our financial chaos into clear, actionable reports. For the first time I actually understand what's happening in my business — and I'm making better decisions because of it."</p>
+        <div class="test-author">
+          <div class="avatar">MR</div>
+          <div class="author-info">
+            <strong>Michelle R.</strong>
+            <span>E-commerce Owner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"We were two years behind on our books. SAYL caught us up in a matter of weeks, found errors we didn't know existed, and set us up with a system that actually works. Lifesaver."</p>
+        <div class="test-author">
+          <div class="avatar">JT</div>
+          <div class="author-info">
+            <strong>James T.</strong>
+            <span>Service Business Owner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Having Samantha as our fractional CFO has been game-changing. Her cash flow forecasts helped us plan an expansion we never thought possible. She truly cares about your success."</p>
+        <div class="test-author">
+          <div class="avatar">AL</div>
+          <div class="author-info">
+            <strong>Amanda L.</strong>
+            <span>Boutique Owner, Rhode Island</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-photo">
+      <div class="about-card-inner">
+        <strong>Samantha</strong>
+        <span>Founder, SAYL Bookkeeping &#38; Accounting</span>
+        <div><span class="about-badge">QuickBooks Certified Expert</span></div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Hi, I'm Samantha</h2>
+      <p class="section-sub">With 10+ years in public accounting, I founded SAYL to give small business owners the financial partnership they deserve — not just someone to enter transactions, but a trusted advisor who truly understands your numbers.</p>
+      <ul class="about-list">
+        <li>10+ years public accounting experience</li>
+        <li>QuickBooks Online Certified Expert</li>
+        <li>Rooted in Westerly, Rhode Island — serving clients nationwide</li>
+        <li>Passionate about empowering small business owners</li>
+        <li>Responsive, personal, and truly invested in your success</li>
+      </ul>
+      <a href="https://saylbookkeeping.com/" class="btn-primary" style="display:inline-block">Work With Samantha</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Get Started in 4 Simple Steps</h2>
+    <p class="section-sub">No complicated onboarding. No jargon. Just a clear path to clean, confident finances.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Free Consultation</h4>
+        <p>Schedule a no-pressure call to talk about your business and goals.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Custom Plan</h4>
+        <p>We design a service plan tailored to exactly what your business needs.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Clean Handoff</h4>
+        <p>We onboard seamlessly — whether you're starting fresh or need a cleanup.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Ongoing Partnership</h4>
+        <p>Monthly check-ins, reports, and advisory support keep you on track.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-label">Get Started Today</div>
+  <h2>Ready to Finally Love Your Books?</h2>
+  <p>Schedule a free consultation and see how SAYL can transform your financial picture — starting this month.</p>
+  <div class="cta-group">
+    <a href="https://saylbookkeeping.com/" class="btn-primary">Book Free Consultation</a>
+    <a href="mailto:samantha@saylbookkeeping.com" class="btn-ghost">Email Samantha Directly</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="nav-logo">SAYL <span>Bookkeeping</span></div>
+  <p>&#169; 2025 SAYL Bookkeeping &#38; Accounting · Westerly, Rhode Island</p>
+  <div class="footer-links">
+    <a href="https://saylbookkeeping.com/">Website</a>
+    <a href="mailto:samantha@saylbookkeeping.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
