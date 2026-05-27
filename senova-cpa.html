@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senova CPA | Empowering Growth Through Insight | Burnaby, BC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1B2D4F;
+      --navy-dark: #111E36;
+      --gold: #C69C3F;
+      --gold-light: #D9B96A;
+      --white: #FFFFFF;
+      --off-white: #F8F7F4;
+      --gray-light: #F0EEE8;
+      --gray-mid: #9A9A9A;
+      --gray-text: #4A4A4A;
+      --green-check: #2E8B57;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5vw;
+      background: rgba(27, 45, 79, 0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      letter-spacing: .03em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy-dark) !important;
+      padding: .5rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background .2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy-dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #22396b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 5vw 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(198,156,63,.15);
+      border: 1px solid rgba(198,156,63,.4);
+      color: var(--gold-light);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .4rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.75);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: .9rem 2.2rem;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(198,156,63,.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(198,156,63,.45);
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.5);
+      color: var(--white);
+      padding: .85rem 2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .78rem;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: .3rem;
+    }
+
+    /* ── SECTION UTILS ── */
+    section { padding: 5.5rem 5vw; }
+
+    .section-tag {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-mid);
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--off-white); }
+
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2.25rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,.07);
+      border-top: 4px solid var(--gold);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0,0,0,.12);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--navy), #2a4a7f);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: .75rem;
+    }
+
+    .service-card p {
+      font-size: .92rem;
+      color: var(--gray-mid);
+      line-height: 1.7;
+    }
+
+    .service-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .service-list li {
+      font-size: .88rem;
+      color: var(--gray-text);
+      padding: .25rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .service-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-check);
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .about { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, #2a4a7f 100%);
+      border-radius: 16px;
+      padding: 3rem;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual::after {
+      content: '"';
+      position: absolute;
+      bottom: -1rem;
+      right: 1.5rem;
+      font-size: 10rem;
+      font-family: 'Playfair Display', serif;
+      color: rgba(198,156,63,.12);
+      line-height: 1;
+    }
+
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: .3rem;
+    }
+
+    .founder-title {
+      color: var(--gold);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-quote {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .credentials-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cred-badge {
+      background: rgba(198,156,63,.2);
+      border: 1px solid rgba(198,156,63,.4);
+      color: var(--gold-light);
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    .about-content .section-sub { margin-bottom: 1.5rem; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .team-member {
+      background: var(--gray-light);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .team-member strong {
+      display: block;
+      color: var(--navy);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .team-member span {
+      color: var(--gray-mid);
+      font-size: .8rem;
+    }
+
+    /* ── WHY US ── */
+    .why-us { background: var(--navy-dark); }
+
+    .why-us .section-title { color: var(--white); }
+    .why-us-header { text-align: center; margin-bottom: 3.5rem; }
+    .why-us-header .section-sub { color: rgba(255,255,255,.6); margin: 0 auto; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: background .25s;
+    }
+
+    .why-card:hover { background: rgba(255,255,255,.1); }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .why-card h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: .6rem;
+    }
+
+    .why-card p {
+      color: rgba(255,255,255,.6);
+      font-size: .88rem;
+      line-height: 1.7;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof { background: var(--off-white); }
+
+    .proof-header { text-align: center; margin-bottom: 3rem; }
+
+    .proof-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+    }
+
+    .proof-badge {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      min-width: 180px;
+      flex: 1;
+    }
+
+    .proof-badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .proof-badge-label {
+      font-size: .8rem;
+      color: var(--gray-mid);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: .4rem;
+    }
+
+    .standards-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .standard-pill {
+      background: var(--navy);
+      color: var(--white);
+      padding: .5rem 1.25rem;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--gold) 0%, #a07c28 100%);
+      text-align: center;
+      padding: 5rem 5vw;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--navy-dark);
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner p {
+      font-size: 1.1rem;
+      color: rgba(17,30,54,.8);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: .95rem 2.4rem;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-dark:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background: transparent;
+      border: 2px solid var(--navy-dark);
+      color: var(--navy-dark);
+      padding: .9rem 2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-light:hover {
+      background: rgba(17,30,54,.08);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 2.5rem 5vw;
+      font-size: .85rem;
+    }
+
+    footer a { color: var(--gold-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    .footer-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: .85rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 1.5rem; }
+      .team-grid { grid-template-columns: 1fr; }
+      section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Senova <span>CPA</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="https://calendly.com/senovacpa" target="_blank" class="nav-cta">Book Free Call</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div style="position:relative;z-index:1;max-width:900px;">
+      <div class="hero-badge">Chartered Professional Accountants &mdash; Burnaby, BC</div>
+      <h1>
+        <em>Empowering Growth</em><br />Through Expert Financial Insight
+      </h1>
+      <p class="hero-sub">
+        Boutique-level care. Big-firm expertise. Senova CPA delivers audit, tax, and advisory services that help Canadian businesses and individuals thrive with confidence.
+      </p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/senovacpa" target="_blank" class="btn-primary">Book Free Consultation</a>
+        <a href="tel:6047718497" class="btn-outline">Call 604-771-8497</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">12+</span>
+          <div class="stat-label">Years of Expertise</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <div class="stat-label">Service Pillars</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num">CPA</span>
+          <div class="stat-label">Designated Team</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num">BC</span>
+          <div class="stat-label">Proudly Based</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Comprehensive CPA Services<br />Tailored to Your Success</h2>
+      <p class="section-sub">From compliance to strategic growth, our team provides end-to-end financial expertise for businesses and individuals across Canada.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Audit &amp; Assurance</h3>
+        <p>Rigorous, reliable financial reviews that build stakeholder confidence and ensure regulatory compliance.</p>
+        <ul class="service-list">
+          <li>Financial statement audits</li>
+          <li>Review engagements</li>
+          <li>IFRS &amp; ASPE reporting</li>
+          <li>US GAAP compliance</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🇨🇦</div>
+        <h3>Canadian Tax Services</h3>
+        <p>Strategic tax planning and compliance solutions designed to minimize your liability and maximize your returns.</p>
+        <ul class="service-list">
+          <li>Corporate &amp; personal tax returns</li>
+          <li>Strategic tax planning</li>
+          <li>CRA compliance &amp; representation</li>
+          <li>Tax-efficient structuring</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>Accounting &amp; Advisory</h3>
+        <p>Ongoing financial management and strategic guidance to support smarter decisions and sustainable growth.</p>
+        <ul class="service-list">
+          <li>Bookkeeping &amp; financial reporting</li>
+          <li>Business advisory consulting</li>
+          <li>Financial planning &amp; forecasting</li>
+          <li>CFO advisory support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:var(--white);">
+    <div class="about">
+      <div class="about-visual">
+        <div class="founder-name">Sayed Hussaini, CPA</div>
+        <div class="founder-title">Founder &amp; President</div>
+        <p class="founder-quote">
+          "We believe every business deserves access to the calibre of financial expertise typically reserved for large corporations. At Senova, we deliver exactly that — with the personal touch that makes all the difference."
+        </p>
+        <div class="credentials-row">
+          <span class="cred-badge">CPA Designated</span>
+          <span class="cred-badge">12+ Years</span>
+          <span class="cred-badge">IFRS Expert</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">Meet the Team</div>
+        <h2 class="section-title">Professionals You<br />Can Count On</h2>
+        <p class="section-sub">
+          Founded by Sayed Hussaini, CPA, Senova brings together a team of designated and experienced accountants committed to delivering the professionalism of a large firm with the personalized care of a boutique practice.
+        </p>
+        <div class="team-grid">
+          <div class="team-member">
+            <strong>Manpreet Thandi, CPA</strong>
+            <span>Accounting Manager &bull; 11+ yrs</span>
+          </div>
+          <div class="team-member">
+            <strong>Simranjit Kaur</strong>
+            <span>Senior Accountant</span>
+          </div>
+          <div class="team-member">
+            <strong>Gul Badan Habibi</strong>
+            <span>Staff Accountant</span>
+          </div>
+          <div class="team-member">
+            <strong>Bhumika Verma</strong>
+            <span>Staff Accountant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us" id="why-us">
+    <div class="why-us-header">
+      <div class="section-tag" style="color:var(--gold);">The Senova Advantage</div>
+      <h2 class="section-title" style="color:var(--white);">Why Businesses Choose Senova CPA</h2>
+      <p class="section-sub">We combine deep technical expertise with genuine care for our clients' outcomes — because your success is our success.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h4>Big-Firm Expertise</h4>
+        <p>Our team has worked at small, mid-sized, and international firms, bringing enterprise-grade knowledge to every engagement.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4>Boutique Attention</h4>
+        <p>You'll always work with senior professionals who know your file — no being passed off to junior staff.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🇨🇦</div>
+        <h4>Canadian Tax Specialists</h4>
+        <p>Deep mastery of Canadian tax law, CRA requirements, and cross-border compliance for individuals and businesses.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h4>Growth-Focused Advisory</h4>
+        <p>Beyond compliance, we proactively identify opportunities to reduce tax burden and position your business for growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF / TRUST SIGNALS -->
+  <section class="proof" id="proof">
+    <div class="proof-header">
+      <div class="section-tag">Trust &amp; Standards</div>
+      <h2 class="section-title">Built on Credentials &amp; Commitment</h2>
+      <p class="section-sub" style="margin:0 auto;">Senova CPA upholds the highest professional standards — so you can trust every number, every filing, every time.</p>
+    </div>
+    <div class="proof-badges">
+      <div class="proof-badge">
+        <div class="proof-badge-num">CPA</div>
+        <div class="proof-badge-label">Chartered Designation</div>
+      </div>
+      <div class="proof-badge">
+        <div class="proof-badge-num">12+</div>
+        <div class="proof-badge-label">Years of Experience</div>
+      </div>
+      <div class="proof-badge">
+        <div class="proof-badge-num">IFRS</div>
+        <div class="proof-badge-label">Standards Expertise</div>
+      </div>
+      <div class="proof-badge">
+        <div class="proof-badge-num">ASPE</div>
+        <div class="proof-badge-label">Private Enterprise</div>
+      </div>
+    </div>
+    <div class="standards-row">
+      <span class="standard-pill">CRA Compliance</span>
+      <span class="standard-pill">US GAAP</span>
+      <span class="standard-pill">IFRS Reporting</span>
+      <span class="standard-pill">ASPE Standards</span>
+      <span class="standard-pill">Strategic Tax Planning</span>
+      <span class="standard-pill">Audit &amp; Assurance</span>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Ready to Take Control of Your Finances?</h2>
+    <p>Book a free, no-obligation consultation with our CPA team. We'll assess your situation and show you exactly how Senova can help.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/senovacpa" target="_blank" class="btn-dark">Schedule a Free Call</a>
+      <a href="mailto:info@senovacpa.ca" class="btn-light">Email Us Today</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-info">
+      <span>📍 2025 Willingdon Ave, Unit 900, Burnaby, BC V5C 0J3</span>
+      <span>📞 <a href="tel:6047718497">604-771-8497</a></span>
+      <span>✉️ <a href="mailto:info@senovacpa.ca">info@senovacpa.ca</a></span>
+    </div>
+    <p>&copy; 2025 Senova CPA. All rights reserved. | <a href="https://www.senovacpa.ca" target="_blank">www.senovacpa.ca</a></p>
+  </footer>
+
+</body>
+</html>
