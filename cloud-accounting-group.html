@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Accounting Group | Stuart, FL CPA Firm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0a1628;
+      --blue-800: #0d2040;
+      --blue-700: #0f3460;
+      --blue-600: #1a4d8f;
+      --blue-500: #1e6ec8;
+      --blue-400: #3b8de0;
+      --blue-300: #6baef0;
+      --blue-100: #dceeff;
+      --blue-50:  #f0f7ff;
+      --accent:   #00c6a7;
+      --accent-d: #009e85;
+      --white: #ffffff;
+      --gray-50:  #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-400: #94a3b8;
+      --gray-600: #475569;
+      --gray-800: #1e293b;
+      --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 6%;
+      background: rgba(10,22,40,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--blue-500), var(--accent));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; color: #fff;
+    }
+    .nav-logo-text {
+      font-size: 1rem; font-weight: 700; color: #fff;
+      line-height: 1.2;
+    }
+    .nav-logo-text span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff; border: none; padding: 0.55rem 1.4rem;
+      border-radius: 6px; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: var(--accent-d); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(140deg, var(--blue-900) 0%, var(--blue-800) 50%, #0b2345 100%);
+      display: flex; align-items: center;
+      padding: 120px 6% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(30,110,200,0.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,198,167,0.1) 0%, transparent 60%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;
+      position: relative; z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(0,198,167,0.15); border: 1px solid rgba(0,198,167,0.35);
+      color: var(--accent); padding: 0.4rem 0.9rem; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 1.4rem;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.15; margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.7);
+      max-width: 480px; margin-bottom: 2rem; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #fff;
+      padding: 0.85rem 1.8rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 700;
+      text-decoration: none; transition: all .2s;
+      box-shadow: 0 4px 20px rgba(0,198,167,0.35);
+    }
+    .btn-primary:hover { background: var(--accent-d); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,198,167,0.45); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
+      padding: 0.85rem 1.8rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 600;
+      text-decoration: none; transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.06); }
+
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 2rem;
+      backdrop-filter: blur(8px);
+    }
+    .hero-card-header {
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    .hero-card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue-500), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .hero-card-title { font-size: 1rem; font-weight: 700; color: #fff; }
+    .hero-card-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.6rem; }
+    .stat-pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.9rem 1rem; text-align: center;
+    }
+    .stat-pill strong { display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-pill span { font-size: 0.72rem; color: rgba(255,255,255,0.55); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+    .hero-logos { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .logo-chip {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8); font-size: 0.75rem; font-weight: 600;
+      padding: 0.3rem 0.7rem; border-radius: 5px;
+    }
+    .hero-logos-label { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-right: 0.2rem; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--blue-50);
+      border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);
+      padding: 1.4rem 6%;
+    }
+    .trust-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.5rem; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 0.55rem; color: var(--gray-600); font-size: 0.85rem; font-weight: 600; }
+    .trust-icon { font-size: 1.1rem; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 6%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue-500);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; color: var(--blue-900);
+      line-height: 1.2; letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1.05rem; color: var(--gray-600); max-width: 580px; line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services-bg { background: var(--gray-50); }
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header .section-desc { margin: 0 auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 2rem;
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(30,110,200,0.04), rgba(0,198,167,0.04));
+      opacity: 0; transition: opacity .25s;
+    }
+    .service-card:hover { border-color: var(--blue-300); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,110,200,0.1); }
+    .service-card:hover::after { opacity: 1; }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-100), #dff7f3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--blue-900); margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; }
+    .niche-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+    .niche-tag {
+      font-size: 0.72rem; font-weight: 600;
+      background: var(--blue-50); color: var(--blue-600);
+      border: 1px solid var(--blue-100); border-radius: 4px; padding: 0.2rem 0.55rem;
+    }
+
+    /* ── WHY CHOOSE US ── */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .why-visual {
+      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+      border-radius: 20px; padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .why-visual::before {
+      content: ''; position: absolute;
+      top: -40px; right: -40px; width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0,198,167,0.2), transparent 70%);
+    }
+    .why-quote {
+      font-size: 1.15rem; font-style: italic;
+      color: rgba(255,255,255,0.9); line-height: 1.7; margin-bottom: 1.5rem;
+      position: relative; z-index: 1;
+    }
+    .why-quote::before { content: '\201C'; font-size: 3rem; color: var(--accent); line-height: 0; vertical-align: -1rem; margin-right: 0.3rem; }
+    .why-cite { color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 600; position: relative; z-index: 1; }
+    .why-stars { color: #fbbf24; margin-bottom: 0.4rem; font-size: 1rem; position: relative; z-index: 1; }
+    .why-points { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+    .why-point { display: flex; gap: 1rem; }
+    .why-check {
+      flex-shrink: 0; width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--blue-500), var(--accent));
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.8rem; margin-top: 0.1rem;
+    }
+    .why-point-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--blue-900); margin-bottom: 0.25rem; }
+    .why-point-text p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; }
+
+    /* ── NICHES ── */
+    .niches-bg { background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-800) 100%); }
+    .niches-bg .section-title { color: #fff; }
+    .niches-bg .section-desc { color: rgba(255,255,255,0.65); }
+    .niches-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .niche-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 2rem;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+      transition: all .25s;
+    }
+    .niche-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+    .niche-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .niche-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .niche-card p { font-size: 0.87rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-bg { background: var(--gray-50); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 1.8rem;
+      position: relative; transition: all .25s;
+    }
+    .testimonial-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); transform: translateY(-3px); }
+    .t-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .t-quote {
+      font-size: 0.92rem; color: var(--gray-600);
+      line-height: 1.7; margin-bottom: 1.2rem; font-style: italic;
+    }
+    .t-author { display: flex; align-items: center; gap: 0.7rem; }
+    .t-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-500), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.85rem;
+    }
+    .t-name { font-size: 0.85rem; font-weight: 700; color: var(--blue-900); }
+    .t-role { font-size: 0.75rem; color: var(--gray-400); }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img-wrap {
+      background: linear-gradient(135deg, var(--blue-50), #e8f5f2);
+      border-radius: 20px; padding: 3rem 2rem;
+      text-align: center; border: 1px solid var(--gray-200);
+    }
+    .about-logo-big {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--blue-700), var(--accent));
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 900; color: #fff;
+      margin: 0 auto 1.5rem;
+    }
+    .about-img-title { font-size: 1.3rem; font-weight: 800; color: var(--blue-900); margin-bottom: 0.3rem; }
+    .about-img-sub { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 1.5rem; }
+    .about-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .about-detail {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 0.9rem;
+    }
+    .about-detail strong { display: block; font-size: 1.3rem; font-weight: 800; color: var(--blue-500); line-height: 1; }
+    .about-detail span { font-size: 0.75rem; color: var(--gray-600); }
+    .about-text p { font-size: 1rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue-900) 0%, #0b2a52 60%, #073a30 100%);
+      text-align: center; padding: 100px 6%;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,198,167,0.12), transparent 70%);
+    }
+    .cta-section .section-eyebrow { color: var(--accent); }
+    .cta-section .section-title { color: #fff; max-width: 640px; margin: 0 auto 1rem; }
+    .cta-section .section-desc { color: rgba(255,255,255,0.65); margin: 0 auto 2.5rem; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .cta-phone {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.75); font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-900);
+      padding: 3rem 6%;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo { color: #fff; font-weight: 700; font-size: 1rem; }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { color: rgba(255,255,255,0.35); font-size: 0.8rem; width: 100%; text-align: center; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem; margin-top: 0.5rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid, .why-grid, .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid, .niches-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      nav .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .services-grid, .niches-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      section { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">C</div>
+    <div class="nav-logo-text">Cloud Accounting<br><span>Group</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#niches">Industries</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="tel:5612039464" class="nav-cta">Call (561) 203-9464</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Stuart, FL &bull; Serving Martin County Businesses
+      </div>
+      <h1>We Find the Money Your Old CPA <em>Left on the Table</em></h1>
+      <p class="hero-sub">
+        Cloud Accounting Group is a modern CPA firm helping small and mid-sized businesses
+        in Florida move to the cloud, slash their tax burden, and gain real financial clarity.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:5612039464" class="btn-primary">
+          &#128222; Book Free Consultation
+        </a>
+        <a href="#services" class="btn-ghost">
+          See Our Services &#8594;
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-icon">&#9729;&#65039;</div>
+          <div>
+            <div class="hero-card-title">Cloud-First Accounting</div>
+            <div class="hero-card-sub">Real-time numbers. Zero surprises.</div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-pill"><strong>100%</strong><span>Cloud-Based</span></div>
+          <div class="stat-pill"><strong>3</strong><span>Niche Markets</span></div>
+          <div class="stat-pill"><strong>CPA</strong><span>Licensed Firm</span></div>
+          <div class="stat-pill"><strong>FL</strong><span>Stuart-Based</span></div>
+        </div>
+        <div style="margin-bottom: 0.7rem;">
+          <span class="hero-logos-label">Certified in:</span>
+        </div>
+        <div class="hero-logos">
+          <span class="logo-chip">Xero Certified</span>
+          <span class="logo-chip">QuickBooks Online</span>
+          <span class="logo-chip">Cloud CFO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-icon">&#10003;</span> Licensed CPA Firm</div>
+    <div class="trust-item"><span class="trust-icon">&#10003;</span> Xero Certified Partner</div>
+    <div class="trust-item"><span class="trust-icon">&#10003;</span> QuickBooks Online Expert</div>
+    <div class="trust-item"><span class="trust-icon">&#10003;</span> Stuart, FL &amp; Martin County</div>
+    <div class="trust-item"><span class="trust-icon">&#9733;</span> 5-Star Rated Firm</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="services-header">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Full-Service Accounting &mdash;<br>Built for the Modern Business Owner</h2>
+      <p class="section-desc">From day-to-day bookkeeping to complex tax strategy, we handle the numbers so you can focus on growing your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">&#128218;</div>
+        <h3>Bookkeeping Services</h3>
+        <p>Accurate, real-time books every month. No more scrambling at year-end or guessing your cash position.</p>
+        <div class="niche-tags">
+          <span class="niche-tag">Monthly Close</span>
+          <span class="niche-tag">Bank Reconciliation</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128202;</div>
+        <h3>Accounting &amp; Financial Statements</h3>
+        <p>GAAP-compliant financials that tell the true story of your business and support smarter decisions.</p>
+        <div class="niche-tags">
+          <span class="niche-tag">P&amp;L Reports</span>
+          <span class="niche-tag">Balance Sheet</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128196;</div>
+        <h3>Tax Preparation &amp; Planning</h3>
+        <p>Proactive strategies to legally minimize your tax bill &mdash; not just filing forms after the fact.</p>
+        <div class="niche-tags">
+          <span class="niche-tag">Business Returns</span>
+          <span class="niche-tag">Entity Planning</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128176;</div>
+        <h3>CFO Advisory Services</h3>
+        <p>Fractional CFO guidance: cash flow forecasting, growth planning, and strategic financial advice.</p>
+        <div class="niche-tags">
+          <span class="niche-tag">Cash Flow</span>
+          <span class="niche-tag">KPI Dashboards</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9729;</div>
+        <h3>Cloud Migration &amp; Setup</h3>
+        <p>Seamlessly move your accounting to Xero or QuickBooks Online. We handle the setup, training, and transition.</p>
+        <div class="niche-tags">
+          <span class="niche-tag">Xero</span>
+          <span class="niche-tag">QBO</span>
+          <span class="niche-tag">Migration</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128203;</div>
+        <h3>Compliance &amp; Regulatory</h3>
+        <p>Stay on the right side of tax authorities. We handle filings, deadlines, and keep you audit-ready.</p>
+        <div class="niche-tags">
+          <span class="niche-tag">IRS Compliance</span>
+          <span class="niche-tag">Payroll Tax</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-eyebrow">Why Cloud Accounting Group</div>
+        <h2 class="section-title">Your Accountant Should Feel Like a Partner, Not a Vendor</h2>
+        <p class="section-desc" style="margin-bottom: 2rem;">We don&rsquo;t disappear after tax season. Our clients get year-round guidance, real answers, and a team that genuinely cares about their financial success.</p>
+        <ul class="why-points">
+          <li class="why-point">
+            <div class="why-check">&#10003;</div>
+            <div class="why-point-text">
+              <h4>Proactive, Not Reactive</h4>
+              <p>We flag issues before they become problems and surface opportunities your previous CPA likely missed.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-check">&#10003;</div>
+            <div class="why-point-text">
+              <h4>Modern Cloud Technology</h4>
+              <p>Real-time access to your books anywhere. No more emailing spreadsheets or waiting weeks for reports.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-check">&#10003;</div>
+            <div class="why-point-text">
+              <h4>Niche Industry Expertise</h4>
+              <p>We specialize in law firms, real estate investors, and restaurants &mdash; we speak your industry&rsquo;s language.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-check">&#10003;</div>
+            <div class="why-point-text">
+              <h4>Always Accessible</h4>
+              <p>Reach us when you need us. Clients consistently say their stress disappears after one call with our team.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="why-visual">
+          <div class="why-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="why-quote">They should call themselves Cloud CFO Group! My anxious energy was always completely gone after a phone call with them. True financial mentors who will bend over backwards to keep things moving smoothly.</p>
+          <div class="why-cite">&mdash; Business Owner, Stuart FL</div>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="why-stars" style="margin-bottom: 0.3rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="why-quote" style="font-size: 0.95rem;">&ldquo;They have been doing this for so long that nothing seems to phase them. I feel like I have a true financial partner.&rdquo;</p>
+            <div class="why-cite">&mdash; Restaurant Owner, Martin County</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NICHES -->
+<section id="niches" class="niches-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color: var(--accent);">Industry Specializations</div>
+    <h2 class="section-title">We Speak Your Industry&rsquo;s Language</h2>
+    <p class="section-desc">Cookie-cutter accounting doesn&rsquo;t work for specialized businesses. We&rsquo;ve built deep expertise in three niche markets where the financial stakes &mdash; and opportunities &mdash; are highest.</p>
+    <div class="niches-grid">
+      <div class="niche-card">
+        <span class="niche-emoji">&#9878;&#65039;</span>
+        <h3>Law Firms</h3>
+        <p>IOLTA trust account management, partner draws, attorney billing analysis, and compliance with bar association financial rules. We keep your practice clean and compliant.</p>
+      </div>
+      <div class="niche-card">
+        <span class="niche-emoji">&#127968;</span>
+        <h3>Real Estate Investors</h3>
+        <p>Cost segregation, depreciation strategies, 1031 exchange guidance, entity structuring, and rental portfolio accounting to maximize your after-tax returns.</p>
+      </div>
+      <div class="niche-card">
+        <span class="niche-emoji">&#127869;&#65039;</span>
+        <h3>Restaurants</h3>
+        <p>Food cost analysis, tip reporting, sales tax compliance, payroll for tipped employees, and cash flow management for one of the most complex industries to operate in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Client Reviews</div>
+    <h2 class="section-title">What Our Clients Are Saying</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="t-quote">"My anxious energy was always completely gone after a phone call with them. They handle everything with such calm and expertise."</p>
+        <div class="t-author">
+          <div class="t-avatar">J</div>
+          <div>
+            <div class="t-name">Jennifer M.</div>
+            <div class="t-role">Business Owner, Stuart FL</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="t-quote">"They have been doing this for so long that nothing seems to phase them. True professionals who know exactly what they&rsquo;re doing."</p>
+        <div class="t-author">
+          <div class="t-avatar">R</div>
+          <div>
+            <div class="t-name">Robert K.</div>
+            <div class="t-role">Real Estate Investor, Palm City</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="t-quote">"True financial mentors who will bend over backwards to keep things moving smoothly. They should call themselves Cloud CFO Group!"</p>
+        <div class="t-author">
+          <div class="t-avatar">T</div>
+          <div>
+            <div class="t-name">Tony T.</div>
+            <div class="t-role">Restaurant Owner, Martin County</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="about-img-wrap">
+          <div class="about-logo-big">C</div>
+          <div class="about-img-title">Cloud Accounting Group</div>
+          <div class="about-img-sub">Stuart, FL &bull; Licensed CPA Firm</div>
+          <div class="about-detail-grid">
+            <div class="about-detail"><strong>CPA</strong><span>Licensed Firm</span></div>
+            <div class="about-detail"><strong>FL</strong><span>Licensed in Florida</span></div>
+            <div class="about-detail"><strong>Xero</strong><span>Certified Partner</span></div>
+            <div class="about-detail"><strong>QBO</strong><span>QuickBooks Expert</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-eyebrow">About Us</div>
+        <h2 class="section-title">A Local CPA Firm with a Cloud-First Philosophy</h2>
+        <p>Cloud Accounting Group is a Stuart, Florida-based CPA firm serving small and mid-sized businesses across Martin County and beyond. We believe every business deserves a financial partner who uses modern technology without losing the personal touch.</p>
+        <p>Our team combines decades of accounting expertise with cutting-edge cloud platforms like Xero and QuickBooks Online &mdash; giving you real-time visibility into your finances and a proactive advisor in your corner.</p>
+        <p>Whether you&rsquo;re a law firm tracking trust accounts, a real estate investor building your portfolio, or a restaurant owner managing razor-thin margins, we bring specialized knowledge that generic accounting firms simply can&rsquo;t match.</p>
+        <div style="margin-top: 1.8rem;">
+          <a href="tel:5612039464" class="btn-primary" style="display: inline-flex;">&#128222; (561) 203-9464</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div style="position: relative; z-index: 2;">
+    <div class="section-eyebrow">Get Started Today</div>
+    <h2 class="section-title">Ready to Move to the Cloud &mdash; and Stop Leaving Money on the Table?</h2>
+    <p class="section-desc">Book a free consultation and discover how much your current accounting setup is costing you in missed deductions, inefficiencies, and stress.</p>
+    <div class="cta-actions">
+      <a href="tel:5612039464" class="btn-primary" style="font-size: 1.05rem; padding: 1rem 2rem;">
+        &#128222; Book Free Consultation
+      </a>
+      <a href="mailto:info@thecloudcpa.net" class="btn-ghost">
+        &#9993; info@thecloudcpa.net
+      </a>
+    </div>
+    <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 1.5rem;">
+      770 SE Indian Street &bull; Stuart, FL 34997 &bull; Serving Martin County &amp; Palm City
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Cloud Accounting <span>Group</span></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#niches">Industries</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="tel:5612039464">(561) 203-9464</a>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2025 Cloud Accounting Group &bull; Stuart, FL &bull; Licensed CPA Firm &bull; info@thecloudcpa.net</p>
+</footer>
+
+</body>
+</html>
