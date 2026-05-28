@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tax Time Services Inc. | Tax and Business Compliance Simplified</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Open Sans', sans-serif; color: #222222; background: #ffffff; }
+
+  :root {
+    --tan: #cdbeac;
+    --tan-dark: #b5a48e;
+    --slate: #282e35;
+    --white: #ffffff;
+    --gray: #F5F6F8;
+    --text: #222222;
+    --mid: #777777;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 1px 8px rgba(40,46,53,0.07);
+  }
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--tan-dark); }
+  .nav-cta {
+    background: var(--tan);
+    color: var(--slate);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--tan-dark); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--slate);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--white);
+    position: fixed;
+    top: 72px;
+    left: 0; right: 0;
+    padding: 24px 32px 32px;
+    z-index: 999;
+    border-bottom: 1px solid #e6e6e6;
+    box-shadow: 0 8px 24px rgba(40,46,53,0.10);
+    gap: 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .mobile-menu .nav-cta { text-align: center; }
+
+  /* HERO */
+  .hero {
+    background: var(--white);
+    padding: 90px 48px;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 72px;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-family: 'Unna', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--mid);
+    margin-bottom: 36px;
+    max-width: 500px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--tan);
+    color: var(--slate);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--tan-dark); }
+  .hero-sub-link {
+    font-size: 14px;
+    color: var(--mid);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .hero-sub-link:hover { color: var(--tan-dark); }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .badge {
+    background: var(--gray);
+    border: 1.5px solid var(--tan);
+    color: var(--slate);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 6px;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(40,46,53,0.12);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--gray);
+    padding: 52px 48px;
+  }
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Unna', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--tan-dark);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: var(--slate);
+    font-weight: 600;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--white);
+    padding: 90px 48px;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--tan-dark);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Unna', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .services-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .service-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 36px 32px;
+    box-shadow: 0 2px 12px rgba(40,46,53,0.06);
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 6px 24px rgba(40,46,53,0.10); }
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--tan);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--slate);
+  }
+  .service-content h3 {
+    font-family: 'Unna', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .service-content p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--gray);
+    padding: 90px 48px;
+  }
+  .steps {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 1px;
+    background: var(--tan);
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--tan);
+    color: var(--slate);
+    font-family: 'Unna', serif;
+    font-weight: 700;
+    font-size: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .step h3 {
+    font-family: 'Unna', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .how-cta { text-align: center; }
+
+  /* ABOUT */
+  .about {
+    background: var(--white);
+    padding: 90px 48px;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-text .section-label { text-align: left; }
+  .about-text .section-title { text-align: left; font-size: 38px; }
+  .about-text p {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(40,46,53,0.12);
+  }
+
+  /* TEAM */
+  .team {
+    background: var(--gray);
+    padding: 90px 48px;
+  }
+  .team-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(40,46,53,0.07);
+    text-align: center;
+  }
+  .team-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .team-card-body {
+    padding: 24px 20px 28px;
+  }
+  .team-card h3 {
+    font-family: 'Unna', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .team-card p {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--tan-dark);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--slate);
+    padding: 90px 48px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: 'Unna', serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+  }
+  .cta-band p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 40px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+  .btn-tan {
+    display: inline-block;
+    background: var(--tan);
+    color: var(--slate);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-tan:hover { background: var(--tan-dark); }
+
+  /* FOOTER */
+  footer {
+    background: #1e2125;
+    padding: 56px 48px 32px;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-top {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1) opacity(0.8);
+  }
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  footer h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--tan); }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 14px;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-contact-item svg { flex-shrink: 0; color: var(--tan); margin-top: 2px; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  .mediactive { color: var(--tan); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 72px 24px; }
+    .hero-inner { grid-template-columns: 1fr 380px; gap: 48px; }
+    .services { padding: 72px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .how { padding: 72px 24px; }
+    .about { padding: 72px 24px; }
+    .about-inner { grid-template-columns: 1fr 360px; gap: 48px; }
+    .team { padding: 72px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 64px 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; }
+    .hero-photo img { height: 360px; }
+    .hero-text h1 { font-size: 40px; }
+    .hero-actions { align-items: stretch; }
+    .btn-primary { text-align: center; }
+    .stats-bar { padding: 40px 20px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+    .services { padding: 64px 20px; }
+    .how { padding: 64px 20px; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    .about { padding: 64px 20px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { order: -1; }
+    .about-photo img { height: 360px; }
+    .team { padding: 64px 20px; }
+    .team-grid { grid-template-columns: 1fr; max-width: 380px; }
+    .cta-band { padding: 64px 20px; }
+    .cta-band h2 { font-size: 34px; }
+    footer { padding: 48px 20px 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .section-title { font-size: 34px; }
+  }
+  @media (max-width: 480px) {
+    .hero-text h1 { font-size: 34px; }
+    .steps { grid-template-columns: 1fr; }
+    .stat-number { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="https://taxtimeservices.com/images/logoS1.png"
+         onerror="this.style.display='none';this.nextSibling.style.display='block'"
+         alt="Tax Time Services Logo"/>
+    <span style="display:none;font-family:'Unna',serif;font-size:20px;font-weight:700;color:#282e35;">Tax Time Services</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#team">Our Team</a></li>
+  </ul>
+  <a class="nav-cta" href="https://app.financial-cents.com/client-portal/" target="_blank">Schedule a Meeting</a>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.parentNode.classList.remove('open')">Services</a>
+  <a href="#how" onclick="this.parentNode.classList.remove('open')">Process</a>
+  <a href="#about" onclick="this.parentNode.classList.remove('open')">About</a>
+  <a href="#team" onclick="this.parentNode.classList.remove('open')">Our Team</a>
+  <a class="nav-cta" href="https://app.financial-cents.com/client-portal/" target="_blank">Schedule a Meeting</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-up">
+      <h1>Tax and Business Compliance Simplified</h1>
+      <p>We keep it simple so you can get back to doing what you do best. Big firm expertise delivered with boutique responsiveness — for individuals and businesses alike.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://app.financial-cents.com/client-portal/" target="_blank">Schedule a Meeting</a>
+        <a class="hero-sub-link" href="#services">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Explore Our Services
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">20+ Years Experience</span>
+        <span class="badge">Ernst &amp; Young Alumni</span>
+        <span class="badge">QuickBooks Advisors</span>
+        <span class="badge">San Diego, CA</span>
+      </div>
+    </div>
+    <div class="hero-photo fade-up">
+      <img src="https://taxtimeservices.com/images/janeMeetUsP2.png"
+           alt="Jane Watkins, Business Owner and CEO of Tax Time Services"
+           onerror="this.style.background='#e8e4df'"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner fade-up">
+    <div>
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Years of Accounting Experience</div>
+    </div>
+    <div>
+      <div class="stat-number">3</div>
+      <div class="stat-label">Core Service Areas</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Virtual Service Delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">A Full Suite of Tax and Compliance Services</h2>
+    <p class="section-sub">We have a variety of services to simplify your tax preparation and business compliance, with the innovative resources to help you from anywhere virtually.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Tax Preparation</h3>
+        <p>We specialize in all types of taxes: individuals, small businesses, corporations and everything else. We decipher the ever-changing, complicated tax world to maximize your benefits and help you stay compliant.</p>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Bookkeeping</h3>
+        <p>Our team are skilled QuickBooks Online advisors. We offer different service level offerings and can customize our services to meet your needs whether you need support daily, monthly, or quarterly.</p>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Payroll</h3>
+        <p>We provide all levels of payroll support to help you manage your business payroll so that you can focus your energy where it is needed. Streamlined and simplified through our integrated QuickBooks platform.</p>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>End to End Reporting</h3>
+        <p>Comprehensive reporting that ties together your tax, bookkeeping, and payroll data into clear financial insights so you always know where your business stands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-up">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">Simple, Streamlined, and Straightforward</h2>
+    <p class="section-sub">We believe working with a tax and compliance partner should be easy. Here is how we make it happen.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h3>Schedule a Meeting</h3>
+      <p>Book a call so we can learn about your needs and explain exactly how we can help your business.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h3>Tailored Proposal</h3>
+      <p>We put together a service plan and pricing designed around your specific tax, bookkeeping, and payroll requirements.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h3>Seamless Onboarding</h3>
+      <p>You gain access to our secure client platform to share documents, ask questions, and communicate with us easily.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <h3>Ongoing Compliance</h3>
+      <p>We handle your ongoing tax and compliance needs so you stay organized, protected, and free to focus on what you do best.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a class="btn-primary" href="https://app.financial-cents.com/client-portal/" target="_blank">Book Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Boutique Business, Big Firm Expertise</h2>
+      <p>At Tax Time Services, our mission is to provide excellent client service by enlisting a simplified approach to tax and business compliance using innovative technology and resources.</p>
+      <p>We are here to help individuals relax and businesses thrive through our simple, streamlined and straightforward tax, bookkeeping and payroll services. We are a boutique business filled with big firm expertise and our team members are both accessible and responsive to help you.</p>
+      <p>Based in San Diego, we serve clients virtually across the US, bringing the rigor of large public accounting firms with the personal attention that only a boutique practice can offer.</p>
+      <div class="about-badges">
+        <span class="badge">Master of Taxation</span>
+        <span class="badge">Certified CPA</span>
+        <span class="badge">Ernst &amp; Young Alumni</span>
+        <span class="badge">QuickBooks Advisor</span>
+      </div>
+    </div>
+    <div class="about-photo fade-up">
+      <img src="https://taxtimeservices.com/images/janeMeetUsP2.png"
+           alt="Jane Watkins, Business Owner and CEO"
+           onerror="this.style.background='#e8e4df'"/>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="section-header fade-up">
+    <div class="section-label">Leadership</div>
+    <h2 class="section-title">Meet the Team</h2>
+    <p class="section-sub">Experienced professionals who are accessible, responsive, and dedicated to your success.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card fade-up">
+      <img src="https://taxtimeservices.com/images/janeMeetUsP2.png"
+           alt="Jane Watkins"
+           onerror="this.style.background='#e8e4df'"/>
+      <div class="team-card-body">
+        <h3>Jane Watkins</h3>
+        <p>Business Owner / CEO</p>
+      </div>
+    </div>
+    <div class="team-card fade-up">
+      <img src="https://taxtimeservices.com/images/keriPhoto3.png"
+           alt="Keri L. Anderson"
+           onerror="this.style.background='#e8e4df'"/>
+      <div class="team-card-body">
+        <h3>Keri L. Anderson</h3>
+        <p>Accounting &amp; Tax Manager</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="fade-up">Ready to Simplify Your Tax and Compliance?</h2>
+  <p class="fade-up">Schedule a meeting with our team today. We will handle the complexity so you can focus on what you do best.</p>
+  <a class="btn-tan fade-up" href="https://app.financial-cents.com/client-portal/" target="_blank">Schedule a Meeting Today</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://taxtimeservices.com/images/logoS1.png"
+           alt="Tax Time Services"
+           onerror="this.style.display='none';this.nextSibling.style.display='block'"/>
+      <span style="display:none;font-family:'Unna',serif;font-size:18px;color:rgba(255,255,255,0.8);">Tax Time Services</span>
+      <p>Tax and business compliance simplified. Boutique expertise, big firm experience, delivered virtually.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#how">Our Process</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Client Access</h4>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <span>Financial Cents Client Portal</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>San Diego, California</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Serving Clients Virtually Nationwide</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Tax Time Services Inc. All rights reserved. | Website by <span class="mediactive">Mediactive</span></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
