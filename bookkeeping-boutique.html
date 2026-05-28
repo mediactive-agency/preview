@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tammy's Bookkeeping Boutique | Oshawa, Ontario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', Arial, sans-serif; color: #152643; background: #FAFAF6; }
+
+  /* COLORS */
+  :root {
+    --navy: #152643;
+    --gold: #DDB76D;
+    --cream: #FAFAF6;
+    --white: #FFFFFF;
+    --gray: #F5F6F8;
+    --gold-dark: #c9a455;
+    --text-mid: #4A5568;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 12px rgba(21,38,67,0.07);
+  }
+  .nav-logo img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-dark); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 11px 26px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--gold-dark); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--white);
+    position: fixed;
+    top: 72px;
+    left: 0; right: 0;
+    padding: 24px 32px 32px;
+    z-index: 999;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 8px 24px rgba(21,38,67,0.10);
+    gap: 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .mobile-menu .nav-cta { text-align: center; }
+
+  /* HERO */
+  .hero {
+    background: var(--cream);
+    padding: 90px 40px 90px;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 58px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 34px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-dark); }
+  .hero-contact-link {
+    font-size: 15px;
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-contact-link:hover { color: var(--gold-dark); }
+  .hero-contact-link svg { color: var(--gold); }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .badge {
+    background: var(--white);
+    border: 1.5px solid var(--gold);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-radius: 100px;
+  }
+  .hero-photo {
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(21,38,67,0.15);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--gray);
+    padding: 52px 40px;
+  }
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold-dark);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--white);
+    padding: 90px 40px;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .services-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .service-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 36px 30px;
+    box-shadow: 0 2px 16px rgba(21,38,67,0.07);
+    transition: box-shadow 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 6px 28px rgba(21,38,67,0.12); }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gold);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--navy);
+  }
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--gray);
+    padding: 90px 40px;
+  }
+  .testimonials-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 36px 40px;
+    box-shadow: 0 2px 16px rgba(21,38,67,0.07);
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+  .testi-quote {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .testi-author {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--white);
+    padding: 90px 40px;
+  }
+  .steps {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 2px;
+    background: var(--gold);
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 12px rgba(221,183,109,0.4);
+  }
+  .step h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+  .how-cta {
+    text-align: center;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--cream);
+    padding: 90px 40px;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-text .section-label { text-align: left; }
+  .about-text .section-title { text-align: left; font-size: 40px; }
+  .about-text p {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(21,38,67,0.15);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--navy);
+    padding: 90px 40px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-band p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 40px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 17px;
+    padding: 16px 42px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-gold:hover { background: var(--gold-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 56px 40px 32px;
+    color: rgba(255,255,255,0.75);
+  }
+  .footer-top {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1);
+  }
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  footer h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-contact-item svg { flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  .mediactive { color: var(--gold); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr 380px; gap: 48px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    .about-inner { grid-template-columns: 1fr 360px; gap: 48px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 64px 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; }
+    .hero-photo img { height: 360px; }
+    .hero-text h1 { font-size: 44px; }
+    .hero-buttons { align-items: stretch; }
+    .btn-primary { text-align: center; }
+    .stats-bar { padding: 40px 20px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+    .services { padding: 64px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials { padding: 64px 20px; }
+    .how { padding: 64px 20px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .about { padding: 64px 20px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { order: -1; }
+    .about-photo img { height: 360px; }
+    .cta-band { padding: 64px 20px; }
+    .cta-band h2 { font-size: 36px; }
+    footer { padding: 48px 20px 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .section-title { font-size: 36px; }
+  }
+  @media (max-width: 480px) {
+    .hero-text h1 { font-size: 36px; }
+    .steps { grid-template-columns: 1fr; }
+    .stat-number { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="https://static.wixstatic.com/media/055498_f7d542ae71a445cf93b88d14fe263c99~mv2.png"
+         onerror="this.style.display='none';this.nextSibling.style.display='block'"
+         alt="Tammy's Bookkeeping Boutique Logo"/>
+    <span style="display:none;font-family:'Dancing Script',cursive;font-size:22px;font-weight:700;color:#152643;">Tammy's Bookkeeping Boutique</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:tammy@bookkeepingboutique.ca">Book a Free Call</a>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.parentNode.classList.remove('open')">Services</a>
+  <a href="#how" onclick="this.parentNode.classList.remove('open')">How It Works</a>
+  <a href="#about" onclick="this.parentNode.classList.remove('open')">About</a>
+  <a href="#testimonials" onclick="this.parentNode.classList.remove('open')">Reviews</a>
+  <a class="nav-cta" href="mailto:tammy@bookkeepingboutique.ca">Book a Free Call</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-up">
+      <h1>Boutique Bookkeeping for Small Business Owners</h1>
+      <p>Clear, organized finances you can count on. Tammy's Bookkeeping Boutique brings personalized QuickBooks Online bookkeeping and Canadian personal tax services to small businesses in Oshawa and across Ontario.</p>
+      <div class="hero-buttons">
+        <a class="btn-primary" href="mailto:tammy@bookkeepingboutique.ca">Get Your Free Consultation</a>
+        <a class="hero-contact-link" href="tel:9052603086">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          (905) 260-3086
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">7+ Years Experience</span>
+        <span class="badge">QuickBooks Pro Advisor</span>
+        <span class="badge">Oshawa, Ontario</span>
+      </div>
+    </div>
+    <div class="hero-photo fade-up">
+      <img src="https://static.wixstatic.com/media/055498_6e3946fc7142463494deed24ac5a7498~mv2.png"
+           alt="Tammy, Owner of Tammy's Bookkeeping Boutique"
+           onerror="this.style.background='#e8e4df';this.alt='Tammy'"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner fade-up">
+    <div>
+      <div class="stat-number">7+</div>
+      <div class="stat-label">Years of Bookkeeping Experience</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Small Business Focused</div>
+    </div>
+    <div>
+      <div class="stat-number">QBO</div>
+      <div class="stat-label">Certified QuickBooks Online</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <div class="section-label">What I Offer</div>
+    <h2 class="section-title">Services Designed Around You</h2>
+    <p class="section-sub">Tailored bookkeeping and tax solutions that keep your finances clear, organized, and stress free — so you can focus on running your business.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8,21 12,17 16,21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>QBO Monthly Bookkeeping</h3>
+      <p>Ongoing QuickBooks Online bookkeeping keeping your accounts reconciled, categorized, and ready for tax time every single month.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3>Year-End Organization</h3>
+      <p>Get your books sorted and ready before year-end. I organize transactions, reconcile accounts, and prepare a clean file for your accountant.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Personal Income Tax Prep</h3>
+      <p>Canadian personal tax returns prepared with care and accuracy. Fast turnaround, clear communication, and results you can count on.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Catch-Up Bookkeeping</h3>
+      <p>Months or years behind on your books? I will get you caught up quickly and organized so you can move forward with confidence.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3>QuickBooks Setup</h3>
+      <p>New to QuickBooks Online? I set up your account from scratch with the right chart of accounts and structure for your specific business.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Small Business Consulting</h3>
+      <p>Straightforward guidance on bookkeeping best practices, expense tracking, and keeping your financial records clean throughout the year.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <div class="section-label">Client Reviews</div>
+    <h2 class="section-title">What Clients Are Saying</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-quote">"I came across Tammy via a Facebook ad, and I'm so glad I did! She had clear and fast communication, which I appreciated. The entire process was clear, and she provided a fantastic list to follow to ensure I provided all the necessary documentation. The result of our tax returns were better than I expected, and the cost for her services was more than fair. I definitely would recommend Tammy's services, and will work with her again in the future!"</p>
+      <div class="testi-author">Ashley A. &mdash; Oshawa, ON</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-up">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">Simple from Start to Finish</h2>
+    <p class="section-sub">Getting your books in order has never been easier. Here is how we work together.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h3>Free Discovery Call</h3>
+      <p>We chat about your business, your current situation, and what you need most from your bookkeeping.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h3>Tailored Proposal</h3>
+      <p>I put together a custom plan and clear pricing that fits your business size and service needs.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h3>Onboarding and Setup</h3>
+      <p>We get your QuickBooks Online file set up or cleaned up so everything is organized from day one.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <h3>Ongoing Support</h3>
+      <p>Your books are handled monthly. You get regular updates and clear financial reports you can actually understand.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a class="btn-primary" href="mailto:tammy@bookkeepingboutique.ca">Start with a Free Call</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <div class="section-label">Meet Tammy</div>
+      <h2 class="section-title">Bookkeeping Built on Trust and Care</h2>
+      <p>Hi, I'm Tammy, the owner of Tammy's Bookkeeping Boutique. I'm based in Oshawa, Ontario, where I live with my husband and our two teenage children.</p>
+      <p>With over 7 years of experience in the bookkeeping and tax industry, I've had the opportunity to work alongside CPAs and gain hands-on knowledge that has shaped both my expertise and my confidence. That experience inspired me to create a boutique-style bookkeeping service built on trust, care, and attention to detail.</p>
+      <p>My goal is simple: to help small business owners and individuals feel confident, organized, and at ease when it comes to their finances. I specialize in QuickBooks Online bookkeeping and Canadian personal income taxes, offering clear, supportive, and tailored solutions that fit your unique needs.</p>
+      <p>I believe bookkeeping should feel approachable, transparent, and supportive. My role is to take the stress off your plate so you can focus on what you do best.</p>
+      <div class="about-badges">
+        <span class="badge">7+ Years Experience</span>
+        <span class="badge">QuickBooks Online Expert</span>
+        <span class="badge">Canadian Tax Specialist</span>
+      </div>
+    </div>
+    <div class="about-photo fade-up">
+      <img src="https://static.wixstatic.com/media/055498_6e3946fc7142463494deed24ac5a7498~mv2.png"
+           alt="Tammy, Owner of Tammy's Bookkeeping Boutique"
+           onerror="this.style.background='#e8e4df'"/>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="fade-up">Ready to Feel Confident About Your Finances?</h2>
+  <p class="fade-up">Book a free discovery call and let's talk about how I can help you get organized, stay on top of your books, and make tax time stress free.</p>
+  <a class="btn-gold fade-up" href="mailto:tammy@bookkeepingboutique.ca">Book Your Free Call Today</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://static.wixstatic.com/media/055498_f7d542ae71a445cf93b88d14fe263c99~mv2.png"
+           alt="Tammy's Bookkeeping Boutique"
+           onerror="this.style.display='none';this.nextSibling.style.display='block'"/>
+      <span style="display:none;font-family:'Dancing Script',cursive;font-size:20px;color:#DDB76D;">Tammy's Bookkeeping Boutique</span>
+      <p>Boutique bookkeeping and Canadian tax services for small business owners in Oshawa and across Ontario. Clear, organized, and personal.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#about">About Tammy</a></li>
+        <li><a href="#testimonials">Client Reviews</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>(905) 260-3086</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>tammy@bookkeepingboutique.ca</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Oshawa, Ontario, Canada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Tammy's Bookkeeping Boutique. All rights reserved. | Website by <span class="mediactive">Mediactive</span></span>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
