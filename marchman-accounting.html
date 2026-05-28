@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marchman Accounting | Get Your Finances Handled the Right Way</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1A144F; background: #ffffff; }
+
+  :root {
+    --navy: #1A144F;
+    --blue: #2CA8DE;
+    --blue-dark: #1e8fc2;
+    --white: #ffffff;
+    --gray: #F5F6F8;
+    --text: #1A144F;
+    --mid: #5a5a7a;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid #e8e8f0;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 1px 10px rgba(26,20,79,0.08);
+  }
+  .nav-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 11px 26px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--blue-dark); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+  }
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--white);
+    position: fixed;
+    top: 72px;
+    left: 0; right: 0;
+    padding: 24px 32px 32px;
+    z-index: 999;
+    border-bottom: 1px solid #e8e8f0;
+    box-shadow: 0 8px 24px rgba(26,20,79,0.10);
+    gap: 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .mobile-menu .nav-cta { text-align: center; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 90px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://lirp.cdn-website.com/c0a3ffca/dms3rep/multi/opt/AdobeStock_306968849-696w.jpg') center/cover no-repeat;
+    opacity: 0.15;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 36px;
+    max-width: 500px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue-dark); }
+  .hero-contact {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .hero-contact:hover { color: var(--white); }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .badge {
+    background: rgba(44,168,222,0.18);
+    border: 1px solid rgba(44,168,222,0.5);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 50px;
+  }
+  .hero-photo {
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--blue);
+    padding: 52px 48px;
+  }
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--white);
+    padding: 90px 48px;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .services-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .service-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 36px 28px;
+    box-shadow: 0 2px 12px rgba(26,20,79,0.06);
+    border-top: 3px solid var(--blue);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 28px rgba(26,20,79,0.12); transform: translateY(-2px); }
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+  .service-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .service-card p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .service-list li {
+    font-size: 14px;
+    color: var(--mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .service-list li::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--gray);
+    padding: 90px 48px;
+  }
+  .testi-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 16px rgba(26,20,79,0.07);
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+  .testi-quote {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .testi-author {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--white);
+    padding: 90px 48px;
+  }
+  .steps {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 2px;
+    background: linear-gradient(to right, var(--blue), var(--navy));
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 16px rgba(26,20,79,0.3);
+  }
+  .step h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .how-cta { text-align: center; }
+
+  /* ABOUT */
+  .about {
+    background: var(--navy);
+    padding: 90px 48px;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-text .section-label { text-align: left; color: var(--blue); }
+  .about-text .section-title { text-align: left; font-size: 38px; color: var(--white); }
+  .about-text p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .about-badge {
+    background: rgba(44,168,222,0.15);
+    border: 1px solid rgba(44,168,222,0.4);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 50px;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--blue);
+    padding: 90px 48px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-size: 46px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 16px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+  }
+  .cta-band p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 40px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+  .btn-white {
+    display: inline-block;
+    background: var(--white);
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-white:hover { background: var(--navy); color: var(--white); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    border-top: 3px solid var(--blue);
+    padding: 56px 48px 32px;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-top {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1) opacity(0.9);
+  }
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  footer h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--blue); }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-contact-item svg { flex-shrink: 0; color: var(--blue); margin-top: 2px; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  .mediactive { color: var(--blue); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr 360px; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; max-width: 680px; }
+    .about-inner { grid-template-columns: 1fr 340px; gap: 48px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 64px 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    .hero-text h1 { font-size: 38px; }
+    .hero-actions { align-items: stretch; }
+    .btn-primary { text-align: center; }
+    .stats-bar { padding: 40px 20px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+    .services { padding: 64px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials { padding: 64px 20px; }
+    .how { padding: 64px 20px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps::before { display: none; }
+    .about { padding: 64px 20px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { display: none; }
+    .cta-band { padding: 64px 20px; }
+    .cta-band h2 { font-size: 32px; }
+    footer { padding: 48px 20px 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .section-title { font-size: 32px; }
+  }
+  @media (max-width: 480px) {
+    .hero-text h1 { font-size: 32px; }
+    .steps { grid-template-columns: 1fr; }
+    .stat-number { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="https://lirp.cdn-website.com/c0a3ffca/dms3rep/multi/opt/marchman+accounting-1920w.png"
+         onerror="this.style.display='none';this.nextSibling.style.display='block'"
+         alt="Marchman Accounting Logo"/>
+    <span style="display:none;font-size:20px;font-weight:800;color:#1A144F;">Marchman Accounting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:7197253983">Call Us</a>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.parentNode.classList.remove('open')">Services</a>
+  <a href="#how" onclick="this.parentNode.classList.remove('open')">Process</a>
+  <a href="#testimonials" onclick="this.parentNode.classList.remove('open')">Testimonials</a>
+  <a href="#about" onclick="this.parentNode.classList.remove('open')">About</a>
+  <a class="nav-cta" href="tel:7197253983">Call Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-up">
+      <h1>Get Your Finances Handled the Right Way</h1>
+      <p>Tax preparation, bookkeeping, and financial advisory services for individuals and businesses. Accurate, reliable, and built around your goals.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="tel:7197253983">Call Now: 719-725-3983</a>
+        <a class="hero-contact" href="mailto:louismarchman@outlook.com">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          louismarchman@outlook.com
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">All Industries Welcome</span>
+        <span class="badge">Individuals and Businesses</span>
+        <span class="badge">Colorado</span>
+      </div>
+    </div>
+    <div class="hero-photo fade-up">
+      <img src="https://lirp.cdn-website.com/c0a3ffca/dms3rep/multi/opt/AdobeStock_306968849-696w.jpg"
+           alt="Marchman Accounting professional financial review"
+           onerror="this.style.background='#2a2050'"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner fade-up">
+    <div>
+      <div class="stat-number">3</div>
+      <div class="stat-label">Core Service Areas</div>
+    </div>
+    <div>
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Types of Tax Returns Filed</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Client-Focused Approach</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Comprehensive Financial Services</h2>
+    <p class="section-sub">From tax preparation to ongoing bookkeeping and advisory, we provide everything you need to stay financially organized and compliant.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Income Tax Preparation</h3>
+      <p>Professional tax preparation for individuals, families, and businesses of all structures. Our goal is accuracy, compliance, and maximum efficiency for every return.</p>
+      <ul class="service-list">
+        <li>1040 Individual Returns</li>
+        <li>1120 Corporate Returns</li>
+        <li>1120-S S-Corporation Returns</li>
+        <li>1065 Partnership Returns</li>
+        <li>990 Nonprofit Organizations</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Business Bookkeeping</h3>
+      <p>Comprehensive bookkeeping to help you stay organized, maintain control of your finances, and have clean records year-round.</p>
+      <ul class="service-list">
+        <li>General Ledger Accounting</li>
+        <li>Financial Statement Preparation</li>
+        <li>Bank Reconciliations</li>
+        <li>Profit and Loss Statements</li>
+        <li>Balance Sheet Reconciliation</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Financial Accounting and Advisory</h3>
+      <p>Guidance and support to help you understand your numbers, improve financial performance, and make informed decisions for your business and future.</p>
+      <ul class="service-list">
+        <li>Financial Planning Guidance</li>
+        <li>Performance Analysis</li>
+        <li>Business Decision Support</li>
+        <li>Industry-Specific Expertise</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <div class="section-label">Client Reviews</div>
+    <h2 class="section-title">What Clients Are Saying</h2>
+    <p class="section-sub">Real results from real clients who trusted Marchman Accounting with their finances.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-quote">"Top quality professionalism and very thorough. My previous tax accountant lacked the breadth of knowledge Marchman has in getting deductions, and making the most of your hard earned income while finding numerous deductions to reduce tax load, or increase tax refund. Well worth the money."</p>
+      <div class="testi-author">Marion C.</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-quote">"This guy is the best! I was freaking out about my taxes and account issues, in general, and Louis (Owner) made everything go so easily and I felt like I was taken care of. He was willing to work with me for a payment plan and get everything done! I think I will end up with the biggest tax return I've ever had, and it's all by the book!"</p>
+      <div class="testi-author">Jenny B.</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-quote">"Absolute best tax service in my 57 years. Mr. Marchman knows tax accounting in a way I have never seen with previous accountants. He has a gift. He knows about several deductions my previous accountants had no knowledge of. He got me my first refunds since 2013. He is very professional, dedicated, fast and a perfectionist. Amazing tax accountant, you can't do better."</p>
+      <div class="testi-author">George H.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-up">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Simple Steps to Financial Clarity</h2>
+    <p class="section-sub">Getting your finances in order is straightforward with Marchman Accounting. Here is how we work together.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h3>Initial Consultation</h3>
+      <p>Call or email us to discuss your financial needs. We take time to understand your situation and explain exactly how we can help.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h3>Customized Plan</h3>
+      <p>We put together a tailored service plan that fits your specific tax, bookkeeping, or advisory requirements.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h3>Expert Execution</h3>
+      <p>We handle your filings, books, or reports with precision and care, keeping you updated throughout the process.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <h3>Ongoing Support</h3>
+      <p>We are here year-round, not just at tax time. You get a partner who is accessible and responsive whenever you need guidance.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a class="btn-primary" href="tel:7197253983">Get Started Today</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <div class="section-label">About Marchman Accounting</div>
+      <h2 class="section-title">Why Choose Us</h2>
+      <p>With experience working across a wide range of industries, we bring the flexibility and knowledge needed to handle diverse financial situations with confidence.</p>
+      <p>Our team is committed to delivering accurate and reliable service, ensuring your tax filings and financial records are managed with precision and care. We provide comprehensive financial support, covering everything from tax preparation to bookkeeping and advisory services, so you have a complete solution in one place.</p>
+      <p>Most importantly, we take a client-focused approach, offering personalized guidance and clear communication to help you achieve your financial goals. No matter your situation, we work with you to get the best possible outcome.</p>
+      <div class="about-badges">
+        <span class="about-badge">All Industries</span>
+        <span class="about-badge">Precise and Reliable</span>
+        <span class="about-badge">Complete Financial Support</span>
+        <span class="about-badge">Client Centered</span>
+      </div>
+    </div>
+    <div class="about-photo fade-up">
+      <img src="https://lirp.cdn-website.com/c0a3ffca/dms3rep/multi/opt/AdobeStock_306968849-696w.jpg"
+           alt="Marchman Accounting professional financial services"
+           onerror="this.style.background='#2a2050'"/>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="fade-up">Get Your Finances Handled the Right Way</h2>
+  <p class="fade-up">Whether you need tax preparation, bookkeeping, or financial advisory support, Marchman Accounting is ready to help. Call today.</p>
+  <a class="btn-white fade-up" href="tel:7197253983">Call 719-725-3983</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://lirp.cdn-website.com/c0a3ffca/dms3rep/multi/opt/marchman+accounting-1920w.png"
+           alt="Marchman Accounting"
+           onerror="this.style.display='none';this.nextSibling.style.display='block'"/>
+      <span style="display:none;font-size:18px;font-weight:800;color:rgba(255,255,255,0.85);">Marchman Accounting</span>
+      <p>Tax preparation, bookkeeping, and financial advisory services for individuals and businesses. Accurate, reliable, and client-focused.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>719-725-3983</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>louismarchman@outlook.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Colorado, United States</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Marchman Accounting. All rights reserved. | Website by <span class="mediactive">Mediactive</span></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
