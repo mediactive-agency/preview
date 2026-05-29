@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tax Plan Strategists | Advanced Tax Strategy for High-Income Earners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; color: #0B1020; background: #ffffff; }
+
+  :root {
+    --navy: #0B1020;
+    --blue: #2563EB;
+    --blue-dark: #1d4fd8;
+    --blue-light: #C7D2FE;
+    --white: #ffffff;
+    --gray: #F5F6F8;
+    --mid: #667085;
+    --text: #0B1020;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+    box-shadow: 0 1px 10px rgba(11,16,32,0.07);
+  }
+  .nav-logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 26px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--blue); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+  }
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--white);
+    position: fixed;
+    top: 76px;
+    left: 0; right: 0;
+    padding: 24px 32px 32px;
+    z-index: 999;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(11,16,32,0.10);
+    gap: 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .mobile-menu .nav-cta { text-align: center; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 72px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37,99,235,0.15);
+    border: 1px solid rgba(37,99,235,0.3);
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+  }
+  .hero-text h1 {
+    font-size: 54px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 22px;
+    letter-spacing: -0.5px;
+  }
+  .hero-text h1 span { color: var(--blue-light); }
+  .hero-text p {
+    font-size: 18px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 38px;
+    max-width: 520px;
+    font-weight: 400;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 34px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .btn-primary:hover { background: var(--blue-dark); }
+  .hero-phone {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .hero-phone:hover { color: var(--white); }
+  .hero-phone svg { color: var(--blue-light); }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .badge {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.2px;
+  }
+  .hero-photo {
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 12px;
+    box-shadow: 0 24px 72px rgba(0,0,0,0.5);
+  }
+  .hero-photo-tag {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(37,99,235,0.4);
+    line-height: 1.4;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--gray);
+    padding: 56px 48px;
+  }
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: var(--navy);
+    font-weight: 600;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--white);
+    padding: 96px 48px;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 60px;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.12;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--mid);
+    line-height: 1.72;
+    font-weight: 400;
+  }
+  .services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .service-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 36px 30px;
+    box-shadow: 0 2px 12px rgba(11,16,32,0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+    border-top: 3px solid var(--blue-light);
+  }
+  .service-card:hover { box-shadow: 0 8px 32px rgba(11,16,32,0.10); transform: translateY(-3px); border-top-color: var(--blue); }
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--blue-light);
+  }
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+  .service-card p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--gray);
+    padding: 96px 48px;
+  }
+  .testi-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 36px 30px;
+    box-shadow: 0 2px 16px rgba(11,16,32,0.07);
+  }
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+  .testi-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .testi-quote {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.78;
+    font-style: italic;
+    margin-bottom: 22px;
+    font-weight: 400;
+  }
+  .testi-author {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+  .testi-date {
+    font-size: 13px;
+    color: var(--mid);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--white);
+    padding: 96px 48px;
+  }
+  .steps {
+    max-width: 1100px;
+    margin: 0 auto 52px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 2px;
+    background: linear-gradient(to right, var(--blue), var(--blue-light));
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    box-shadow: 0 6px 20px rgba(37,99,235,0.35);
+  }
+  .step h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.1px;
+  }
+  .step p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .how-cta { text-align: center; }
+
+  /* ABOUT */
+  .about {
+    background: var(--navy);
+    padding: 96px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .about-text .section-label { text-align: left; color: var(--blue-light); }
+  .about-text .section-title { text-align: left; font-size: 38px; color: var(--white); }
+  .about-text p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .about-badge {
+    background: rgba(199,210,254,0.12);
+    border: 1px solid rgba(199,210,254,0.3);
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 7px 14px;
+    border-radius: 6px;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 12px;
+    box-shadow: 0 24px 72px rgba(0,0,0,0.4);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--blue);
+    padding: 96px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 {
+    font-size: 46px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 18px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-band p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 44px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.72;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+  .btn-white {
+    display: inline-block;
+    background: var(--white);
+    color: var(--blue);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 17px 44px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.2px;
+  }
+  .btn-white:hover { background: var(--navy); color: var(--white); }
+
+  /* FOOTER */
+  footer {
+    background: #060810;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 60px 48px 32px;
+    color: rgba(255,255,255,0.55);
+  }
+  .footer-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 52px;
+  }
+  .footer-brand img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1) opacity(0.85);
+  }
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  footer h4 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--blue-light); }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+  .footer-contact-item svg { flex-shrink: 0; color: var(--blue-light); margin-top: 2px; }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 28px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  .mediactive { color: var(--blue-light); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .hero-inner { grid-template-columns: 1fr 380px; gap: 52px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testi-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-inner { grid-template-columns: 1fr 360px; gap: 52px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 72px 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; }
+    .hero-photo img { height: 340px; }
+    .hero-text h1 { font-size: 36px; }
+    .hero-actions { align-items: stretch; }
+    .btn-primary { text-align: center; }
+    .stats-bar { padding: 44px 20px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+    .services { padding: 72px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials { padding: 72px 20px; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .how { padding: 72px 20px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps::before { display: none; }
+    .about { padding: 72px 20px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { order: -1; }
+    .about-photo img { height: 340px; }
+    .cta-band { padding: 72px 20px; }
+    .cta-band h2 { font-size: 32px; }
+    footer { padding: 52px 20px 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .section-title { font-size: 32px; }
+  }
+  @media (max-width: 480px) {
+    .hero-text h1 { font-size: 30px; }
+    .steps { grid-template-columns: 1fr; }
+    .stat-number { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="https://img1.wsimg.com/isteam/ip/6b717559-4bb5-415f-86d7-12da02650395/Tax%20Plan%20Strategists%20Affinity%20Blue%20Logo%20with%20R.png/:/rs=h:85,cg:true,m/qt=q:95"
+         onerror="this.style.display='none';this.nextSibling.style.display='block'"
+         alt="Tax Plan Strategists Logo"/>
+    <span style="display:none;font-size:19px;font-weight:800;color:#0B1020;letter-spacing:-0.5px;">Tax Plan Strategists</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:8322969110">Schedule Consultation</a>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.parentNode.classList.remove('open')">Services</a>
+  <a href="#testimonials" onclick="this.parentNode.classList.remove('open')">Reviews</a>
+  <a href="#how" onclick="this.parentNode.classList.remove('open')">Process</a>
+  <a href="#about" onclick="this.parentNode.classList.remove('open')">About</a>
+  <a class="nav-cta" href="tel:8322969110">Schedule Consultation</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-up">
+      <div class="hero-eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Houston, TX &mdash; Nationwide
+      </div>
+      <h1>Tax Plan Experts for <span>High-Income Earners</span> and Business Owners</h1>
+      <p>Legally reduce taxes, optimize income, and build wealth with proactive tax planning from the premier tax strategist in Houston and nationwide, for high earners.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="tel:8322969110">Start Your Tax Strategy Assessment</a>
+        <a class="hero-phone" href="tel:8322969110">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          +1 (832) 296-9110
+        </a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">FCCA Certified</span>
+        <span class="badge">Certified Maverick Tax Strategist</span>
+        <span class="badge">20+ Years Experience</span>
+        <span class="badge">Rated 5.0 Stars</span>
+      </div>
+    </div>
+    <div class="hero-photo fade-up">
+      <img src="https://img.youtube.com/vi/u4am3SmsAHs/maxresdefault.jpg"
+           alt="Jerry Pani, Tax Plan Strategists"
+           onerror="this.onerror=null;this.src='https://img.youtube.com/vi/u4am3SmsAHs/hqdefault.jpg'"/>
+      <div class="hero-photo-tag">
+        Jerry Pani, FCCA<br/>
+        <span style="font-weight:500;opacity:0.85;font-size:12px;">Certified Maverick Tax Strategist</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner fade-up">
+    <div>
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Years of Advanced Tax Expertise</div>
+    </div>
+    <div>
+      <div class="stat-number">5.0</div>
+      <div class="stat-label">Star Rating from Clients Nationwide</div>
+    </div>
+    <div>
+      <div class="stat-number">$10M+</div>
+      <div class="stat-label">Client Income Range Served</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <div class="section-label">Strategic Tax Services</div>
+    <h2 class="section-title">More Than Tax Filing. A Complete Tax Strategy.</h2>
+    <p class="section-sub">Designed for high-income earners ($300K to $10M+) and business owners with complex income or $50K+ tax liabilities. We go far beyond reactive CPA services.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Advanced Tax Planning</h3>
+      <p>Proactive, year-round tax planning frameworks that address the root drivers of your tax liability, not just year-end deductions.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3>Income Structuring</h3>
+      <p>Strategic structuring of your income streams to minimize tax exposure and maximize the wealth you keep from every dollar earned.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+      </div>
+      <h3>Entity Optimization</h3>
+      <p>Design and restructure your business entity for maximum tax efficiency, asset protection, and long-term financial advantage.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Tax Reduction Strategies</h3>
+      <p>IRS-compliant, legally defensible strategies that dramatically reduce your tax burden through structure, timing, and positioning.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Strategic Entity Structuring</h3>
+      <p>From S-Corps to LLCs and holding companies, we design the right entity structure to protect your assets and reduce tax drag.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Tax Strategy Assessment</h3>
+      <p>A comprehensive review of your current tax position to identify missed opportunities and build your personalized tax reduction roadmap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <div class="section-label">Client Reviews</div>
+    <h2 class="section-title">Trusted by High-Income Earners Nationwide</h2>
+    <p class="section-sub">Rated 5.0 stars by clients across medicine, business, and entrepreneurship.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-label">Will Recommend</div>
+      <p class="testi-quote">"Jerry was introduced to me by a trusted friend and colleague 5 years ago. There are several things I admire about him; he is gentle, very approachable, non-confrontational yet straight to the point."</p>
+      <div class="testi-author">Dr. O. Daramola</div>
+      <div class="testi-date">October 2019</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-label">Diligent</div>
+      <p class="testi-quote">"One thing that always strikes me about Jerry is his diligence and commitment to excellence. I have known him for decades; both professionally and personally. I highly recommend his services."</p>
+      <div class="testi-author">Dr. Franck T.</div>
+      <div class="testi-date">January 2019</div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-label">Honest</div>
+      <p class="testi-quote">"If you need someone who is straightforward, honest, diligent and delightful; one name tops my list — Jerry. He always gives his best!"</p>
+      <div class="testi-author">Dr. Lydie N.</div>
+      <div class="testi-date">March 2019</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-up">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">From Assessment to Lasting Tax Reduction</h2>
+    <p class="section-sub">A structured, advisory-led approach that moves you from reactive tax filing to proactive wealth preservation.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h3>Tax Strategy Assessment</h3>
+      <p>We analyze your complete financial picture to identify how much you are overpaying and where the largest opportunities exist.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h3>Custom Strategy Design</h3>
+      <p>We build a personalized, IRS-compliant tax strategy using advanced planning frameworks tailored to your income structure and goals.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h3>Implementation and Structuring</h3>
+      <p>We execute the plan — entity design, income restructuring, timing strategies — so your new tax position is fully established.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">4</div>
+      <h3>Ongoing Advisory Support</h3>
+      <p>We monitor your tax position year-round, updating your strategy as income, laws, and circumstances evolve.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-up">
+    <a class="btn-primary" href="tel:8322969110">Start Your Tax Strategy Assessment</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <div class="section-label">Meet Jerry Pani</div>
+      <h2 class="section-title">A Private, Advisory-Led Tax Strategy Firm</h2>
+      <p>Jerry Pani is a Tax Strategist, Tax Consultant, and Fellow Chartered Certified Accountant (FCCA) with over 20 years of experience advising high-income earners, business owners, and complex taxpayers on legally reducing tax exposure, protecting assets, and preserving long-term wealth.</p>
+      <p>He is a Certified Maverick Tax Strategist, trained in advanced, IRS-compliant tax planning frameworks that focus on structure, timing, and defensible tax reduction strategies beyond traditional year-end filing.</p>
+      <p>His work focuses on strategic tax planning rather than transactional compliance — specializing in tax structuring, entity design, income optimization, and planning frameworks that address the underlying drivers of tax liability, often overlooked by traditional CPA and year-end filing services.</p>
+      <div class="about-badges">
+        <span class="about-badge">FCCA Certified</span>
+        <span class="about-badge">Certified Maverick Tax Strategist</span>
+        <span class="about-badge">20+ Years Experience</span>
+        <span class="about-badge">Houston, TX</span>
+      </div>
+    </div>
+    <div class="about-photo fade-up">
+      <img src="https://img.youtube.com/vi/u4am3SmsAHs/maxresdefault.jpg"
+           alt="Jerry Pani, FCCA, Tax Plan Strategists"
+           onerror="this.onerror=null;this.src='https://img.youtube.com/vi/u4am3SmsAHs/hqdefault.jpg'"/>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="fade-up">Ready to Stop Overpaying on Taxes?</h2>
+  <p class="fade-up">Schedule your tax strategy consultation with Jerry Pani today. Designed for high-income earners and business owners who are serious about keeping more of what they earn.</p>
+  <a class="btn-white fade-up" href="tel:8322969110">Schedule Your Strategy Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://img1.wsimg.com/isteam/ip/6b717559-4bb5-415f-86d7-12da02650395/Tax%20Plan%20Strategists%20Affinity%20Blue%20Logo%20with%20R.png/:/rs=h:85,cg:true,m/qt=q:95"
+           alt="Tax Plan Strategists"
+           onerror="this.style.display='none';this.nextSibling.style.display='block'"/>
+      <span style="display:none;font-size:16px;font-weight:800;color:rgba(255,255,255,0.8);">Tax Plan Strategists</span>
+      <p>Advanced tax planning, income structuring, and tax reduction strategies for high-income individuals and business owners nationwide.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Strategic Tax Services</a></li>
+        <li><a href="#testimonials">Client Reviews</a></li>
+        <li><a href="#how">Our Process</a></li>
+        <li><a href="#about">About Jerry Pani</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>+1 (832) 296-9110</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Houston, TX Headquarters</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Serving Clients Across the U.S.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Tax Plan Strategists LLC. All rights reserved. | Website by <span class="mediactive">Mediactive</span></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.10 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
