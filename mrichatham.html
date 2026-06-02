@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chatham Group | Chemicals, Plastics and Advanced Materials Recruiting</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1C1C1C;
+  --accent: #7AB346;
+  --accent2: #84BD44;
+  --light: #F5F8F2;
+  --white: #FFFFFF;
+  --text: #1C1C1C;
+  --muted: #5A5A5A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 16px rgba(28,28,28,0.10);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo img { height: 44px; object-fit: contain; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent); color: var(--white); padding: 10px 24px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: #629134; color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { display: block; width: 26px; height: 3px; background: var(--primary); border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 24px 32px; z-index: 99; box-shadow: 0 8px 24px rgba(28,28,28,0.12); flex-direction: column; gap: 20px; }
+.mobile-menu a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 16px; }
+.mobile-menu.open { display: flex; }
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #2E2E2E 100%);
+  padding: 110px 40px 100px; text-align: center; color: var(--white);
+}
+.hero h1 { font-family: 'Raleway', sans-serif; font-size: clamp(34px, 5vw, 58px); font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
+.hero h1 span { color: var(--accent); }
+.hero p { font-size: clamp(16px, 2vw, 20px); max-width: 660px; margin: 0 auto 36px; opacity: 0.88; line-height: 1.68; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-green { background: var(--accent); color: var(--white); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: background 0.2s; }
+.btn-green:hover { background: #629134; }
+.btn-outline { border: 2px solid rgba(255,255,255,0.65); color: var(--white); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.10); }
+
+.stats { background: var(--accent); padding: 48px 40px; display: flex; justify-content: center; flex-wrap: wrap; }
+.stat-item { text-align: center; color: var(--white); padding: 16px 52px; border-right: 1px solid rgba(255,255,255,0.3); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Raleway', sans-serif; font-size: 38px; font-weight: 900; line-height: 1; }
+.stat-label { font-size: 13px; opacity: 0.88; margin-top: 6px; font-weight: 500; }
+
+section { padding: 96px 40px; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-tag { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section-title { font-family: 'Raleway', sans-serif; font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 16px; }
+.section-sub { font-size: 17px; color: var(--muted); max-width: 640px; line-height: 1.78; margin-bottom: 52px; }
+
+.services-bg { background: var(--light); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.card { background: var(--white); border-radius: 8px; box-shadow: 0 2px 16px rgba(28,28,28,0.08); padding: 32px 26px; }
+.card-icon-bar { width: 44px; height: 4px; background: var(--accent); border-radius: 2px; margin-bottom: 20px; }
+.card h3 { font-family: 'Raleway', sans-serif; font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+.card p { font-size: 14px; color: var(--muted); line-height: 1.68; }
+
+.testimonials-bg { background: var(--white); }
+.testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 860px; margin: 0 auto; }
+.tcard { background: var(--light); border-radius: 8px; box-shadow: 0 2px 14px rgba(28,28,28,0.07); padding: 36px 30px; }
+.stars { color: var(--accent); font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+.tcard-quote { font-size: 15px; line-height: 1.75; color: var(--text); font-style: italic; margin-bottom: 22px; }
+.tcard-author { font-weight: 700; color: var(--primary); font-size: 14px; }
+.tcard-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.hiw-bg { background: var(--light); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { background: var(--white); border-radius: 8px; box-shadow: 0 2px 14px rgba(28,28,28,0.07); padding: 32px 20px; text-align: center; }
+.step-num { width: 50px; height: 50px; border-radius: 50%; background: var(--accent); color: var(--white); font-family: 'Raleway', sans-serif; font-size: 22px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.step h3 { font-family: 'Raleway', sans-serif; font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.about-bg { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-text p { font-size: 16px; color: var(--muted); line-height: 1.82; margin-bottom: 16px; }
+.specialties { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.spec-tag { background: var(--light); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid rgba(122,179,70,0.3); }
+.about-visual { background: linear-gradient(135deg, var(--primary) 0%, #2E2E2E 100%); border-radius: 8px; padding: 48px 36px; color: var(--white); }
+.about-visual h3 { font-family: 'Raleway', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 16px; color: var(--white); }
+.about-visual p { font-size: 15px; opacity: 0.85; line-height: 1.75; margin-bottom: 24px; }
+.about-stats-row { display: flex; gap: 0; }
+.about-stat { flex: 1; border-right: 1px solid rgba(255,255,255,0.2); padding: 0 16px; text-align: center; }
+.about-stat:last-child { border-right: none; }
+.about-stat strong { display: block; font-size: 26px; font-family: 'Raleway', sans-serif; font-weight: 900; color: var(--accent); }
+.about-stat span { font-size: 11px; opacity: 0.75; }
+
+.cta-band { background: var(--primary); padding: 96px 40px; text-align: center; position: relative; overflow: hidden; }
+.cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(122,179,70,0.12) 0%, transparent 65%); pointer-events: none; }
+.cta-band h2 { font-family: 'Raleway', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; color: var(--white); margin-bottom: 16px; position: relative; }
+.cta-band p { font-size: 18px; color: rgba(255,255,255,0.82); margin-bottom: 40px; position: relative; }
+.btn-cta { background: var(--accent); color: var(--white); padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-block; transition: background 0.2s; position: relative; }
+.btn-cta:hover { background: #629134; }
+
+footer { background: #111; color: rgba(255,255,255,0.70); padding: 56px 40px 32px; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-logo img { height: 40px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+.footer-brand p { font-size: 14px; line-height: 1.7; }
+.mri-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(122,179,70,0.15); border: 1px solid rgba(122,179,70,0.35); border-radius: 6px; padding: 8px 14px; margin-top: 16px; font-size: 13px; color: var(--accent); font-weight: 600; }
+.footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a, .footer-col p { color: rgba(255,255,255,0.68); font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 13px; }
+.footer-bottom a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { color: var(--white); }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .testi-grid { grid-template-columns: 1fr; }
+  .testi-grid { max-width: 580px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 72px 24px; }
+  .hero { padding: 80px 24px; }
+  .stats { padding: 36px 20px; }
+  .stat-item { padding: 12px 22px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .about-stats-row { flex-direction: column; gap: 16px; }
+  .about-stat { border-right: none; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .about-stat:last-child { border-bottom: none; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://mrichatham.com/wp-content/uploads/2021/04/The-Chatham-Group.svg" alt="The Chatham Group">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:9199572270" class="nav-cta">(919) 957-2270</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="tel:9199572270">(919) 957-2270</a>
+</div>
+
+<section class="hero">
+  <h1 class="fade-up">Your Trusted Partner in <span>Chemicals, Plastics</span> and Advanced Materials Recruiting</h1>
+  <p class="fade-up">With over 250 years of combined industry experience, The Chatham Group brings a personal focus to talent acquisition in the most specialized industrial sectors.</p>
+  <div class="hero-btns fade-up">
+    <a href="#contact" class="btn-green">Start Building Your Team</a>
+    <a href="#services" class="btn-outline">Our Specializations</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-item fade-up"><div class="stat-num">250+</div><div class="stat-label">Years Combined Experience</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">6</div><div class="stat-label">Specialization Areas</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">MRI</div><div class="stat-label">Network Affiliate</div></div>
+</div>
+
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Our Specializations</div>
+    <h2 class="section-title fade-up">Recruiting for the Most Specialized Industrial Sectors</h2>
+    <p class="section-sub fade-up">The Chatham Group recruits exclusively within chemicals, plastics, specialty gases, advanced materials, and personal care products. Industry-specific expertise is not an advantage here. It is a requirement.</p>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-icon-bar"></div>
+        <h3>Chemicals Recruiting</h3>
+        <p>Technical, commercial, and leadership placements for specialty chemical producers, distributors, and formulators from R&amp;D through executive levels.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon-bar"></div>
+        <h3>Plastics Recruiting</h3>
+        <p>Compounders, processors, tooling engineers, sales professionals, and plant leadership for the full plastics manufacturing value chain.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon-bar"></div>
+        <h3>Specialty Gases Recruiting</h3>
+        <p>Technical specialists, operations, distribution, and sales professionals for industrial, specialty, and electronic gas organizations worldwide.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon-bar"></div>
+        <h3>Advanced Materials</h3>
+        <p>Scientists, engineers, and commercial leaders for composites, performance materials, coatings, adhesives, and next-generation materials companies.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon-bar"></div>
+        <h3>Personal Care Products</h3>
+        <p>Formulation chemists, regulatory affairs, marketing, and sales talent for personal care ingredient suppliers and finished goods manufacturers.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon-bar"></div>
+        <h3>C-Suite Executive Search</h3>
+        <p>President, CEO, VP, and General Manager searches conducted with confidentiality and precision across the chemicals and advanced materials space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials-bg">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-tag fade-up">Industry Feedback</div>
+    <h2 class="section-title fade-up" style="max-width:100%;margin-bottom:48px;">Trusted by Chemicals and Materials Industry Leaders</h2>
+    <div class="testi-grid fade-up">
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"The Chatham Group understood our specialty chemicals business better than any recruiter we had ever used. They did not just find someone with the right degree. They found someone who understood our markets, our customers, and the nuance of our technical selling environment."</p>
+        <p class="tcard-author">VP of Sales</p>
+        <p class="tcard-role">Specialty Chemical Manufacturer, Southeast US</p>
+      </div>
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"We had tried three general recruiting firms before turning to The Chatham Group for a difficult plant manager search. They filled the role in 11 weeks with a candidate who had direct plastics compounding experience. The difference was night and day."</p>
+        <p class="tcard-author">Director of Operations</p>
+        <p class="tcard-role">Plastics Processing Company, Midwest</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="hiw-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">Our Process</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;margin-bottom:12px;">A Personal, Focused Search Process</h2>
+    <p class="section-sub fade-up" style="text-align:center;max-width:580px;margin:0 auto 52px;">We bring a personal focus to each search. Every client and candidate receives the direct attention that only a specialized firm can provide.</p>
+    <div class="steps-grid">
+      <div class="step fade-up"><div class="step-num">1</div><h3>Industry Intake</h3><p>A detailed discussion about the role, the chemistry of your team, and what technical and commercial attributes are genuinely essential.</p></div>
+      <div class="step fade-up"><div class="step-num">2</div><h3>Industry Network Search</h3><p>We activate decades of sector-specific relationships and our MRI Network resources to identify candidates who meet your precise criteria.</p></div>
+      <div class="step fade-up"><div class="step-num">3</div><h3>Technical Vetting</h3><p>Candidates are evaluated by recruiters who understand your industry terminology, processes, and performance expectations.</p></div>
+      <div class="step fade-up"><div class="step-num">4</div><h3>Placement and Follow-Through</h3><p>We manage the offer process and maintain contact through onboarding to ensure a successful, lasting placement on both sides.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag fade-up">About The Chatham Group</div>
+        <h2 class="section-title fade-up">250+ Years of Combined Industry Experience. One Focused Team.</h2>
+        <p class="fade-up">The Chatham Group is a dynamic talent acquisition firm with over 250 years of combined experience in the Chemicals, Plastics, Specialty Gases, Advanced Materials, and Personal Care Products based industries. Our recruiters bring a much needed personal focus to the hiring process.</p>
+        <p class="fade-up">As a proud affiliate of the MRI Network, we combine the reach of one of the world's largest executive recruiting networks with the deep specialization of a boutique industry-focused firm.</p>
+        <div class="specialties fade-up">
+          <span class="spec-tag">Chemicals</span>
+          <span class="spec-tag">Plastics</span>
+          <span class="spec-tag">Specialty Gases</span>
+          <span class="spec-tag">Advanced Materials</span>
+          <span class="spec-tag">Personal Care</span>
+          <span class="spec-tag">Executive Search</span>
+          <span class="spec-tag">MRI Network</span>
+          <span class="spec-tag">Mebane, NC</span>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <h3>Depth That Generalists Cannot Match</h3>
+        <p>When you search for a Technical Service Manager for a specialty gas application, you need a recruiter who understands the role without a glossary. That is The Chatham Group.</p>
+        <div class="about-stats-row">
+          <div class="about-stat"><strong>250+</strong><span>Yrs Experience</span></div>
+          <div class="about-stat"><strong>5</strong><span>Sectors</span></div>
+          <div class="about-stat"><strong>MRI</strong><span>Network</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="fade-up">Start Building Your Team</h2>
+    <p class="fade-up">Whether you need a senior chemist, a plant general manager, or a VP of Sales with deep specialty chemicals experience, The Chatham Group delivers.</p>
+    <a href="https://mrichatham.com" target="_blank" class="btn-cta fade-up">Connect With The Chatham Group</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="https://mrichatham.com/wp-content/uploads/2021/04/The-Chatham-Group.svg" alt="The Chatham Group">
+        </div>
+        <p>Recruiting specialists for Chemicals, Plastics, Specialty Gases, Advanced Materials, and Personal Care Products. Mebane, NC. Part of the MRI Network.</p>
+        <div class="mri-badge">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          MRI Network Affiliate
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Specializations</h4>
+        <p>Chemicals Recruiting</p>
+        <p>Plastics Recruiting</p>
+        <p>Specialty Gases</p>
+        <p>Advanced Materials</p>
+        <p>Personal Care Products</p>
+        <p>C-Suite Search</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:9199572270">(919) 957-2270</a>
+        <a href="https://mrichatham.com" target="_blank">mrichatham.com</a>
+        <p>4120 White Level Road</p>
+        <p>Mebane, NC 27302-9052</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Chatham Group. All rights reserved.</p>
+      <p>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
