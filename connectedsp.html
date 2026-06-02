@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connected Systems Partners | Engineering and IT Staffing Since 2011</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #004000;
+    --accent: #008000;
+    --light: #F0F4F0;
+    --white: #FFFFFF;
+    --text: #1a2e1a;
+    --muted: #4a5e4a;
+    --border: rgba(0,64,0,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--white); }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 76px;
+    box-shadow: 0 1px 0 var(--border);
+  }
+  .nav-logo { height: 44px; width: auto; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta { background: var(--primary); color: var(--white); padding: 10px 24px; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: var(--white); padding: 24px 5%; flex-direction: column; gap: 0; z-index: 99; box-shadow: 0 8px 24px rgba(0,64,0,0.1); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--border); }
+
+  .hero {
+    background: var(--primary);
+    padding: 110px 5% 120px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 500px; height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(0,128,0,0.15) 100%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+  .hero-badge { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Merriweather', serif; font-size: clamp(32px, 3.8vw, 50px); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 24px; }
+  .hero p { color: rgba(255,255,255,0.72); font-size: 17px; line-height: 1.75; margin-bottom: 40px; max-width: 500px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-green { background: var(--accent); color: var(--white); padding: 13px 32px; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-green:hover { background: #00a300; }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.88); padding: 13px 32px; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.7); }
+  .hero-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 36px; }
+  .hero-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+  .hero-card-items { display: flex; flex-direction: column; gap: 14px; }
+  .hero-card-item { display: flex; gap: 12px; align-items: center; }
+  .hci-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .hero-card-item span { color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 500; }
+
+  .stats-bar { background: var(--accent); padding: 40px 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .stat-item { text-align: center; }
+  .stat-number { font-family: 'Merriweather', serif; font-size: 40px; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  section { padding: 100px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .section-title { font-family: 'Merriweather', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: var(--primary); line-height: 1.25; margin-bottom: 20px; }
+  .section-sub { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 580px; }
+
+  .services { background: var(--white); }
+  .services-header { margin-bottom: 56px; }
+  .services-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 2px solid var(--border); }
+  .tab-btn { background: none; border: none; padding: 12px 28px; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; font-family: 'Inter', sans-serif; }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--light); border-radius: 8px; padding: 36px 30px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 8px rgba(0,64,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,64,0,0.1); }
+  .service-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .service-card h3 { font-family: 'Merriweather', serif; font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  .testimonials { background: var(--light); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
+  .stars { display: flex; gap: 4px; margin-bottom: 16px; }
+  .testimonial-card { background: var(--white); border-radius: 8px; padding: 40px; box-shadow: 0 2px 12px rgba(0,64,0,0.07); border: 1px solid var(--border); }
+  .testimonial-card p { font-family: 'Merriweather', serif; font-size: 17px; font-style: italic; color: var(--text); line-height: 1.75; margin-bottom: 24px; }
+  .author-row { display: flex; align-items: center; gap: 14px; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--white); }
+  .author-info h4 { font-size: 15px; font-weight: 700; color: var(--primary); }
+  .author-info span { font-size: 13px; color: var(--muted); }
+
+  .how-it-works { background: var(--white); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 56px; position: relative; }
+  .steps::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 1px; background: rgba(0,128,0,0.2); z-index: 0; }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: var(--white); font-family: 'Merriweather', serif; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .step h4 { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-vis { background: var(--primary); border-radius: 12px; padding: 52px 44px; }
+  .about-quote { font-family: 'Merriweather', serif; font-size: 22px; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.55; margin-bottom: 28px; }
+  .about-divider { height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 24px; }
+  .about-meta { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+  .about-highlight { background: rgba(0,64,0,0.05); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 8px; }
+  .about-highlight p { font-size: 15px; font-weight: 600; color: var(--primary); margin: 0; line-height: 1.5; }
+
+  .cta-band { background: var(--primary); padding: 100px 5%; text-align: center; }
+  .cta-band h2 { font-family: 'Merriweather', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; color: var(--white); margin-bottom: 20px; line-height: 1.3; }
+  .cta-band p { font-size: 17px; color: rgba(255,255,255,0.68); max-width: 520px; margin: 0 auto 40px; line-height: 1.75; }
+  .btn-cta { background: var(--accent); color: var(--white); padding: 15px 44px; border-radius: 4px; font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-cta:hover { background: #00a300; }
+
+  footer { background: #001800; padding: 56px 5% 32px; color: rgba(255,255,255,0.45); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-logo { height: 36px; width: auto; margin-bottom: 16px; filter: brightness(0) invert(1) opacity(0.7); }
+  .footer-brand p { font-size: 14px; line-height: 1.65; max-width: 300px; }
+  .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.38); text-decoration: none; font-size: 14px; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: rgba(0,255,0,0.7); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: rgba(0,200,0,0.8); text-decoration: none; }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-card { display: none; }
+    .services-grid, .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .services-grid, .testimonials-grid, .stats-inner, .steps { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#"><img src="http://www.connectedsp.com/wp-content/uploads/2019/06/logo-1.png" alt="Connected Systems Partners" class="nav-logo"></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">Process</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Find Engineering Talent</a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#how">Process</a>
+  <a href="tel:9784555550">(978) 455-5550</a>
+  <a href="mailto:info@connectedsp.com">info@connectedsp.com</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-badge">Chelmsford, MA | Founded 2011</span>
+      <h1>Connecting Top Talent with Top Companies</h1>
+      <p>Since 2011, Connected Systems Partners has matched engineering and IT professionals with the companies that need them most, bringing technical depth to every search.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-green">Find Engineering Talent</a>
+        <a href="#services" class="btn-ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Our Specializations</div>
+      <div class="hero-card-items">
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Embedded Development</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Systems Engineering</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Infrastructure and Cloud</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Data Management</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Enterprise Resource Planning</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-number">2011</div>
+      <div class="stat-label">Founded</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">Eng + IT</div>
+      <div class="stat-label">Specialists</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">MA</div>
+      <div class="stat-label">Chelmsford, Massachusetts</div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header fade-up">
+      <span class="section-eyebrow">Capabilities</span>
+      <h2 class="section-title">Deep Technical Expertise Across Two Domains</h2>
+      <p class="section-sub">Whether you need engineering talent or IT professionals, our technical background means we understand the actual work, not just the job description.</p>
+      <div class="services-tabs">
+        <button class="tab-btn active" onclick="switchTab('engineering', this)">Engineering</button>
+        <button class="tab-btn" onclick="switchTab('it', this)">Information Technology</button>
+      </div>
+    </div>
+    <div id="tab-engineering" class="tab-panel active">
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3>Embedded Development</h3>
+          <p>Firmware engineers and embedded software developers with experience in real-time systems, microcontrollers, and low-level programming for industrial and product applications.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3>Quality Assurance</h3>
+          <p>QA engineers and test specialists who bring disciplined processes to hardware and software validation, ensuring your products ship with confidence.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <h3>Systems Engineering</h3>
+          <p>Systems engineers with cross-functional expertise in complex technical programs, from requirements definition through integration, test, and delivery.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+          <h3>Electrical Engineering</h3>
+          <p>Electrical engineers for analog, digital, power, and PCB design roles, spanning defense, medical device, industrial automation, and consumer electronics.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3>Mechanical Engineering</h3>
+          <p>Mechanical engineers and designers with SolidWorks, CATIA, and ANSYS expertise for product development, manufacturing support, and structural analysis roles.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+          <h3>Manufacturing Engineering</h3>
+          <p>Process and manufacturing engineers who improve efficiency, reduce defects, and bring lean and six sigma expertise to production environments.</p>
+        </div>
+      </div>
+    </div>
+    <div id="tab-it" class="tab-panel">
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3>Full Lifecycle Development</h3>
+          <p>Software developers across the full stack, from front-end development to back-end architecture, for enterprise application projects at every stage.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+          <h3>Infrastructure and Cloud</h3>
+          <p>Network engineers, cloud architects, and infrastructure professionals for AWS, Azure, and GCP migrations, modernization, and operations support.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <h3>Data Management</h3>
+          <p>Data engineers, analysts, and architects who design and manage data pipelines, warehouses, and analytics platforms for business intelligence initiatives.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+          <h3>Enterprise Resource Planning</h3>
+          <p>ERP consultants and developers for SAP, Oracle, and Microsoft Dynamics implementations across finance, manufacturing, and supply chain functions.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Insurance Business Process</h3>
+          <p>Specialized IT consultants for insurance carriers and MGAs, supporting policy administration, claims, and underwriting system implementations.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+          <h3>IT Program Management</h3>
+          <p>Project and program managers with technical depth, able to bridge the gap between IT teams and business stakeholders on complex technology initiatives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-eyebrow">Client Experiences</span>
+      <h2 class="section-title">Technical recruiters who understand the work</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Connected Systems Partners has been our go-to for embedded engineering talent for over three years. What sets them apart is that their recruiters actually understand the technical requirements, which saves us significant time in screening."</p>
+        <div class="author-row">
+          <div class="avatar">B</div>
+          <div class="author-info">
+            <h4>Brian H.</h4>
+            <span>VP Engineering, Defense Electronics Firm, Massachusetts</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#008000"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"We brought CSP in for an ERP program management role that had been open for two months. They placed someone within three weeks who has since become one of our most effective project leads. The technical vetting made all the difference."</p>
+        <div class="author-row">
+          <div class="avatar">L</div>
+          <div class="author-info">
+            <h4>Laura C.</h4>
+            <span>Director of IT, Insurance Services Company, New England</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center;">
+      <span class="section-eyebrow">Our Process</span>
+      <h2 class="section-title" style="margin: 0 auto;">How Connected Systems Partners Works</h2>
+      <p class="section-sub" style="margin: 16px auto 0; text-align: center;">A rigorous process built around technical understanding, not just resume matching.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Technical Briefing</h4>
+        <p>We invest time understanding your exact requirements, including the technologies, tools, and team environment involved.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Targeted Search</h4>
+        <p>We search our network of engineering and IT professionals using technical criteria that matter, not just keyword matching.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>Technical Screening</h4>
+        <p>Every candidate is screened for technical depth, communication skills, and suitability for your specific project context.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>Placement and Support</h4>
+        <p>We manage the full placement process and stay available for any post-start support needed to ensure success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-vis">
+        <div class="about-quote">"We bring deep technical knowledge to every search, understanding not just job descriptions, but the actual work being done."</div>
+        <div class="about-divider"></div>
+        <div class="about-meta">Connected Systems Partners, since 2011</div>
+      </div>
+      <div class="about-content">
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-title">Engineering and IT Specialists Since 2011</h2>
+        <p>Connected Systems Partners has been connecting top engineering and IT talent with leading companies since 2011. Based in Chelmsford, Massachusetts, we bring genuine technical knowledge to every search we conduct.</p>
+        <p>We understand the difference between someone who can pass a resume screen and someone who can actually do the work. That distinction is what our clients value most.</p>
+        <div class="about-highlight">
+          <p>Two contact points for two types of needs: info@connectedsp.com for clients, openings@connectedsp.com for candidates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div>
+    <span style="display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;">Get Started</span>
+    <h2>Ready to Find Your Next Engineering or IT Hire?</h2>
+    <p>Connect with our team to discuss your requirements and let us do the technical work of finding the right fit.</p>
+    <a href="mailto:info@connectedsp.com" class="btn-cta">Find Engineering Talent</a>
+    <div style="margin-top: 32px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; font-size: 14px; color: rgba(255,255,255,0.45);">
+      <a href="tel:9784555550" style="color: inherit; text-decoration: none;">(978) 455-5550</a>
+      <a href="mailto:info@connectedsp.com" style="color: inherit; text-decoration: none;">info@connectedsp.com</a>
+      <span>285 Billerica Road, Chelmsford, MA 01824</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="http://www.connectedsp.com/wp-content/uploads/2019/06/logo-1.png" alt="Connected Systems Partners" class="footer-brand-logo">
+        <p>Engineering and IT staffing specialists serving New England and beyond since 2011. Based in Chelmsford, Massachusetts.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Specializations</h4>
+        <a href="#">Embedded Development</a>
+        <a href="#">Systems Engineering</a>
+        <a href="#">Infrastructure and Cloud</a>
+        <a href="#">Data Management</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:9784555550">(978) 455-5550</a>
+        <a href="mailto:info@connectedsp.com">info@connectedsp.com</a>
+        <a href="mailto:openings@connectedsp.com">openings@connectedsp.com</a>
+        <a href="https://connectedsp.com">connectedsp.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Connected Systems Partners, Inc. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
