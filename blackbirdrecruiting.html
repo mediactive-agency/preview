@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackbird Recruiting | We Don't Recruit. We Pair.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #FFFAEF;
+    --accent: #FFCF0E;
+    --accent-hover: #E44F39;
+    --text: #171304;
+    --muted: #444444;
+    --white: #FFFFFF;
+    --border: rgba(23,19,4,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--primary); }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--primary);
+    padding: 0 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--accent); color: var(--text); padding: 10px 24px; border-radius: 6px; font-size: 14px; font-weight: 700; font-family: 'Outfit', sans-serif; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-hover); color: var(--white); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--primary); padding: 24px 6%; flex-direction: column; gap: 0; z-index: 99; border-bottom: 1px solid var(--border); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 16px; font-weight: 500; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--text); }
+
+  .hero {
+    background: var(--primary);
+    padding: 120px 6% 140px;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; }
+  .hero-eyebrow { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 72px; font-weight: 600; letter-spacing: -0.04em;
+    color: var(--text); line-height: 1.05;
+    margin-bottom: 36px; max-width: 900px;
+  }
+  .hero h1 mark { background: var(--accent); color: var(--text); padding: 0 6px; border-radius: 4px; }
+  .hero-sub { font-size: 20px; color: var(--muted); line-height: 1.7; margin-bottom: 48px; max-width: 580px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-accent { background: var(--accent); color: var(--text); padding: 15px 36px; border-radius: 6px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s; display: inline-block; }
+  .btn-accent:hover { background: var(--accent-hover); color: var(--white); }
+  .btn-outline { border: 2px solid var(--border); color: var(--muted); padding: 15px 36px; border-radius: 6px; font-size: 16px; font-weight: 600; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--text); color: var(--text); }
+
+  .stats-bar { background: var(--text); padding: 56px 6%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
+  .stat-item { }
+  .stat-number { font-family: 'Outfit', sans-serif; font-size: 56px; font-weight: 700; letter-spacing: -0.04em; color: var(--accent); line-height: 1; margin-bottom: 10px; }
+  .stat-label { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.5); }
+
+  section { padding: 100px 6%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow { display: inline-block; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .section-title { font-family: 'Outfit', sans-serif; font-size: 64px; font-weight: 600; letter-spacing: -0.04em; color: var(--text); line-height: 1.05; margin-bottom: 24px; }
+  .section-sub { font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+  .services { background: var(--white); }
+  .services-header { margin-bottom: 72px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--primary); border-radius: 8px; padding: 44px 36px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(23,19,4,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(23,19,4,0.08); }
+  .service-card-accent { position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); border-radius: 8px 0 0 8px; }
+  .service-card h3 { font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin-bottom: 12px; line-height: 1; }
+  .service-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+  .service-industries { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .service-ind { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: rgba(23,19,4,0.05); padding: 4px 10px; border-radius: 4px; }
+
+  .testimonials { background: var(--primary); }
+  .testimonials-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 72px; }
+  .stars { display: flex; gap: 4px; margin-bottom: 20px; }
+  .testimonial-card { background: var(--white); border-radius: 8px; padding: 48px; border: 1px solid var(--border); box-shadow: 0 1px 8px rgba(23,19,4,0.04); }
+  .testimonial-card p { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.5; margin-bottom: 28px; }
+  .author-row { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+  .author-info h4 { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); }
+  .author-info span { font-size: 13px; color: var(--muted); }
+
+  .how-it-works { background: var(--white); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 72px; }
+  .step { }
+  .step-label { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .step h4 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 12px; line-height: 1.2; }
+  .step p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+
+  .about { background: var(--primary); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .about-left h2 { margin-bottom: 32px; }
+  .about-left p { font-size: 17px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+  .about-left ul { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+  .about-left li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--muted); }
+  .about-left li::before { content: ''; display: block; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
+  .about-right { background: var(--text); border-radius: 16px; padding: 64px; }
+  .about-right-title { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 600; letter-spacing: -0.03em; color: var(--accent); line-height: 1.2; margin-bottom: 24px; }
+  .about-right-body { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+  .about-values { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .about-value { display: flex; gap: 14px; align-items: center; }
+  .value-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .value-text { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: -0.01em; }
+
+  .cta-band { background: var(--accent); padding: 100px 6%; text-align: center; }
+  .cta-band h2 { font-family: 'Outfit', sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin-bottom: 20px; line-height: 1.05; }
+  .cta-band p { font-size: 19px; color: rgba(23,19,4,0.65); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+  .btn-cta-dark { background: var(--text); color: var(--white); padding: 16px 48px; border-radius: 6px; font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 700; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-cta-dark:hover { background: #2a2208; }
+
+  footer { background: var(--text); padding: 64px 6% 36px; color: rgba(255,255,255,0.4); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+  .footer-logo { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); letter-spacing: -0.01em; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 300px; }
+  .footer-col h4 { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.35); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1100px) {
+    .hero h1 { font-size: 56px; }
+    .section-title { font-size: 48px; }
+  }
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 44px; }
+    .section-title { font-size: 40px; }
+    .services-grid, .steps { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .stat-number { font-size: 44px; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 4%; }
+    section { padding: 80px 4%; }
+    .hero { padding: 90px 4% 100px; }
+    .hero h1 { font-size: 36px; }
+    .section-title { font-size: 34px; }
+    .service-card h3 { font-size: 32px; }
+    .services-grid, .testimonials-row, .stats-inner, .steps { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .about-right { padding: 44px 32px; }
+    .cta-band { padding: 80px 4%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">BLACKBIRD RECRUITING</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">Process</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Work With Blackbird</a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#how">Process</a>
+  <a href="#contact">Work With Blackbird</a>
+  <a href="tel:8453165600">(845) 316-5600</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">We Won't Disappoint</span>
+    <h1>We don't recruit. We <mark>pair.</mark></h1>
+    <p class="hero-sub">Blackbird Recruiting places C-suite executives, senior managers, and entry-level talent across medicine, law, finance, and beyond, with passion, precision, and transparency.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-accent">Work With Blackbird</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-number">C-Suite</div>
+      <div class="stat-label">to Entry Level Placements</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">11+</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Core Values: Passion, Aggressiveness, Transparency</div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header fade-up">
+      <span class="section-eyebrow">What We Do</span>
+      <h2 class="section-title">Every level.<br>Every industry.</h2>
+      <p class="section-sub">From CEO searches to entry-level hires, Blackbird brings the same energy and commitment to every engagement.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-card-accent"></div>
+        <h3>C-Suite</h3>
+        <p>Executive placements across CEO, CFO, COO, CIO, and CMO roles. We find leaders who set the standard, not just meet it.</p>
+        <div class="service-industries">
+          <span class="service-ind">CEO</span><span class="service-ind">CFO</span><span class="service-ind">COO</span><span class="service-ind">CIO</span><span class="service-ind">CMO</span>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-accent"></div>
+        <h3>Senior</h3>
+        <p>Senior management placements for organizations that need seasoned operators who have already proven themselves under pressure.</p>
+        <div class="service-industries">
+          <span class="service-ind">VP Level</span><span class="service-ind">Director</span><span class="service-ind">Senior Manager</span>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-accent"></div>
+        <h3>Mid-Mgmt</h3>
+        <p>Mid-management placements that stabilize teams, drive execution, and build the culture layer between leadership and the front line.</p>
+        <div class="service-industries">
+          <span class="service-ind">Manager</span><span class="service-ind">Team Lead</span><span class="service-ind">Supervisor</span>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-accent"></div>
+        <h3>Sales</h3>
+        <p>Sales recruitment across B2B, B2C, and technical selling environments. We find closers who also build relationships that last.</p>
+        <div class="service-industries">
+          <span class="service-ind">Account Exec</span><span class="service-ind">Sales Manager</span><span class="service-ind">SDR</span>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-accent"></div>
+        <h3>General</h3>
+        <p>General management placements for roles that require versatile leadership across multiple functions and business units.</p>
+        <div class="service-industries">
+          <span class="service-ind">Operations</span><span class="service-ind">Business Unit</span><span class="service-ind">Cross-functional</span>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-accent"></div>
+        <h3>Entry Level</h3>
+        <p>Entry-level placements for high-potential candidates starting their careers. We match ambition with the right first opportunity.</p>
+        <div class="service-industries">
+          <span class="service-ind">Associates</span><span class="service-ind">Analysts</span><span class="service-ind">Coordinators</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-eyebrow">What People Say</span>
+      <h2 class="section-title">They said it better than we could.</h2>
+    </div>
+    <div class="testimonials-row">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"They quickly understood our needs and provided top-notch candidates."</p>
+        <div class="author-row">
+          <div class="avatar">J</div>
+          <div class="author-info">
+            <h4>Joel Deutsch</h4>
+            <span>Client</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Sammy has a long term goal of making the best move for everyone."</p>
+        <div class="author-row">
+          <div class="avatar">L</div>
+          <div class="author-info">
+            <h4>Levi Vim</h4>
+            <span>Client</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Found me amazing job that is perfect fit for me."</p>
+        <div class="author-row">
+          <div class="avatar">Y</div>
+          <div class="author-info">
+            <h4>Yael Shragaei</h4>
+            <span>Placed Candidate</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCF0E"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"They are always there to reach out and give input if needed."</p>
+        <div class="author-row">
+          <div class="avatar">S</div>
+          <div class="author-info">
+            <h4>Shana Rubin</h4>
+            <span>Placed Candidate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-eyebrow">Process</span>
+      <h2 class="section-title">How the pairing works.</h2>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-label">Step 01</div>
+        <h4>Deep Discovery</h4>
+        <p>We invest time in understanding your business, your culture, and what success actually looks like for this specific role.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-label">Step 02</div>
+        <h4>Targeted Search</h4>
+        <p>We go beyond job boards and tap our network to find candidates who are the right fit, not just the available ones.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-label">Step 03</div>
+        <h4>Careful Vetting</h4>
+        <p>Every candidate is screened for skills, culture fit, values alignment, and genuine career motivation before you ever see them.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-label">Step 04</div>
+        <h4>The Pairing</h4>
+        <p>We present only candidates we believe in. Then we support both sides through offer, negotiation, and the start of a long relationship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left fade-up">
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-title">Blackbird, after all.</h2>
+        <p>Led by CEO Tuli Kraus and a team of experienced recruiters, Blackbird Recruiting has built a reputation for honest, aggressive, and transparent placement across New Jersey and New York.</p>
+        <p>Our team includes Estee Weissman, Sammy Bernstein, Mordechai Roth, Frimet Fogel, Chayke Soifer, Yehuda Rosenstock (VP Operations), Rivky Steinfeld, Sholom Friedmann, and Ellie Fein, each bringing a commitment to doing right by every client and candidate.</p>
+        <ul>
+          <li>Passion in every search</li>
+          <li>Aggressiveness in sourcing and speed</li>
+          <li>Transparency at every step</li>
+        </ul>
+      </div>
+      <div class="about-right fade-up">
+        <div class="about-right-title">11 industries. One standard of excellence.</div>
+        <div class="about-right-body">Medicine, Mental Health, Social Work, Law, Finance, Insurance, Marketing, Real Estate, Construction, IT, and Manufacturing.</div>
+        <div class="about-values">
+          <div class="about-value"><div class="value-dot"></div><div class="value-text">Passion</div></div>
+          <div class="about-value"><div class="value-dot"></div><div class="value-text">Aggressiveness</div></div>
+          <div class="about-value"><div class="value-dot"></div><div class="value-text">Transparency</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div>
+    <h2>Work With Blackbird.</h2>
+    <p>We will not disappoint. That is not a promise. It is just who we are.</p>
+    <a href="mailto:info@blackbirdrecruiting.com" class="btn-cta-dark">Work With Blackbird</a>
+    <div style="margin-top: 32px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; font-size: 15px; color: rgba(23,19,4,0.55);">
+      <a href="tel:8453165600" style="color: inherit; text-decoration: none;">(845) 316-5600</a>
+      <a href="mailto:info@blackbirdrecruiting.com" style="color: inherit; text-decoration: none;">info@blackbirdrecruiting.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">BLACKBIRD RECRUITING</div>
+        <p>We pair the right people with the right opportunities, with passion, aggressiveness, and full transparency. Hackensack, NJ and Monsey, NY.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">C-Suite and Executive</a>
+        <a href="#">Senior Management</a>
+        <a href="#">Sales Recruitment</a>
+        <a href="#">Entry Level</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:8453165600">(845) 316-5600</a>
+        <a href="mailto:info@blackbirdrecruiting.com">info@blackbirdrecruiting.com</a>
+        <a href="https://blackbirdrecruiting.com">blackbirdrecruiting.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Blackbird Recruiting. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
