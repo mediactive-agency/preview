@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cruzader Advanced Recruiting Solutions | Your Complete Recruiting Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0047AB;
+  --accent: #0B1F3B;
+  --light: #EEF2FF;
+  --white: #FFFFFF;
+  --text: #111827;
+  --muted: #4B5563;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 16px rgba(0,71,171,0.10);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--primary); letter-spacing: 1px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--accent); font-weight: 600; font-size: 15px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--primary); }
+.nav-cta {
+  background: var(--primary); color: var(--white);
+  padding: 10px 24px; border-radius: 6px; font-weight: 700; font-size: 15px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent); color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { display: block; width: 26px; height: 3px; background: var(--primary); border-radius: 2px; }
+.mobile-menu {
+  display: none; position: fixed; top: 72px; left: 0; right: 0;
+  background: var(--white); padding: 24px 32px; z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,71,171,0.12);
+  flex-direction: column; gap: 20px;
+}
+.mobile-menu a { text-decoration: none; color: var(--accent); font-weight: 600; font-size: 16px; }
+.mobile-menu.open { display: flex; }
+
+.hero {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  padding: 110px 40px 100px; text-align: center; color: var(--white);
+}
+.hero h1 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: clamp(34px, 5vw, 58px); font-weight: 800; line-height: 1.15; margin-bottom: 20px;
+}
+.hero p { font-size: clamp(16px, 2vw, 20px); max-width: 660px; margin: 0 auto 36px; opacity: 0.92; line-height: 1.65; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { background: var(--white); color: var(--primary); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: #dde6ff; }
+.btn-outline { border: 2px solid rgba(255,255,255,0.7); color: var(--white); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.10); }
+
+.stats {
+  background: var(--accent); padding: 48px 40px;
+  display: flex; justify-content: center; flex-wrap: wrap;
+}
+.stat-item { text-align: center; color: var(--white); padding: 16px 52px; border-right: 1px solid rgba(255,255,255,0.2); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Nunito Sans', sans-serif; font-size: 38px; font-weight: 800; line-height: 1; }
+.stat-label { font-size: 14px; opacity: 0.82; margin-top: 6px; font-weight: 500; }
+
+.section-inner { max-width: 1160px; margin: 0 auto; }
+section { padding: 96px 40px; }
+.section-tag { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; }
+.section-title { font-family: 'Nunito Sans', sans-serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--accent); line-height: 1.2; margin-bottom: 16px; }
+.section-sub { font-size: 17px; color: var(--muted); max-width: 620px; line-height: 1.7; margin-bottom: 52px; }
+
+.services-bg { background: var(--light); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card { background: var(--white); border-radius: 8px; box-shadow: 0 2px 16px rgba(0,71,171,0.08); padding: 32px 26px; }
+.card-icon { width: 48px; height: 48px; border-radius: 8px; background: var(--light); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.card h3 { font-family: 'Nunito Sans', sans-serif; font-size: 17px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+.card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+.testimonials-bg { background: var(--white); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.tcard { background: var(--light); border-radius: 8px; box-shadow: 0 2px 14px rgba(0,71,171,0.07); padding: 36px 28px; }
+.stars { color: #F5A623; font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+.tcard-quote { font-size: 15px; line-height: 1.75; color: var(--text); font-style: italic; margin-bottom: 20px; }
+.tcard-author { font-weight: 700; color: var(--primary); font-size: 14px; }
+.tcard-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.hiw-bg { background: var(--light); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { background: var(--white); border-radius: 8px; box-shadow: 0 2px 14px rgba(0,71,171,0.07); padding: 32px 22px; text-align: center; }
+.step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: var(--white); font-family: 'Nunito Sans', sans-serif; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.step h3 { font-family: 'Nunito Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+.step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.about-bg { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.certs { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.cert-item { display: flex; align-items: center; gap: 14px; }
+.cert-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary); flex-shrink: 0; }
+.cert-item span { font-size: 14px; color: var(--text); font-weight: 500; }
+.about-visual { background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%); border-radius: 8px; padding: 48px 36px; color: var(--white); }
+.about-visual h3 { font-family: 'Nunito Sans', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 16px; }
+.about-visual p { font-size: 15px; opacity: 0.88; line-height: 1.7; margin-bottom: 16px; }
+.industries-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.ind-tag { background: rgba(255,255,255,0.15); color: var(--white); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+.cta-band { background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%); padding: 96px 40px; text-align: center; }
+.cta-band h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; color: var(--white); margin-bottom: 16px; }
+.cta-band p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+.btn-cta { background: var(--white); color: var(--primary); padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-cta:hover { background: #dde6ff; }
+
+footer { background: var(--accent); color: rgba(255,255,255,0.75); padding: 56px 40px 32px; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-brand-name { font-family: 'Nunito Sans', sans-serif; font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; }
+.footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a, .footer-col p { color: rgba(255,255,255,0.72); font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 13px; }
+.footer-bottom a { color: #7BAADF; text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { color: var(--white); }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .cards-grid, .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 72px 24px; }
+  .hero { padding: 80px 24px; }
+  .stats { padding: 36px 24px; }
+  .stat-item { padding: 14px 24px; }
+  .cards-grid, .testi-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">CRUZADER<span> ARS</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Partner With Us</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#industries">Industries</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section class="hero">
+  <h1 class="fade-up">Specialized Staffing Solutions</h1>
+  <p class="fade-up">Your Complete Recruiting Partner across 15 industries and 10 service lines. Cruzader Advanced Recruiting Solutions delivers top-tier talent that hits the ground running.</p>
+  <div class="hero-btns fade-up">
+    <a href="#contact" class="btn-primary">Partner With Cruzader</a>
+    <a href="#services" class="btn-outline">Explore Services</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-item fade-up"><div class="stat-num">15</div><div class="stat-label">Industries Served</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">10</div><div class="stat-label">Service Lines</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">NYC</div><div class="stat-label">Chamber Member 2026</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">3</div><div class="stat-label">Professional Certifications</div></div>
+</div>
+
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up">What We Offer</div>
+    <h2 class="section-title fade-up">10 Service Lines. One Dedicated Partner.</h2>
+    <p class="section-sub fade-up">From talent sourcing to organizational development, we provide end-to-end recruiting and consulting solutions built around your specific needs.</p>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#0047AB" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <h3>Talent Sourcing</h3>
+        <p>Proactive identification of high-caliber candidates through our deep networks, targeted outreach, and data-driven sourcing strategies.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#0047AB" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3>Employer Branding</h3>
+        <p>We help you craft and communicate a compelling employer brand that attracts top candidates before you even post a role.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#0047AB" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>HR Consulting</h3>
+        <p>Strategic HR advisory services to optimize your people operations, talent pipeline, and organizational efficiency.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#0047AB" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>IT Staffing</h3>
+        <p>Specialized technology placement across software engineering, data science, cybersecurity, cloud infrastructure, and beyond.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#0047AB" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Financial Staffing</h3>
+        <p>Accounting, finance, and banking talent placements for CFO roles down to analyst positions across traditional and fintech environments.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#0047AB" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h3>Blinded Recruiting</h3>
+        <p>Our proprietary blinded recruiting approach removes unconscious bias to ensure the most qualified candidates reach the final round every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">Client Feedback</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;margin-bottom:48px;">What Our Partners Say</h2>
+    <div class="testi-grid">
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"Cruzader Advanced Recruiting Solutions has been a game-changer for our business. They consistently provide high-quality candidates who hit the ground running."</p>
+        <p class="tcard-author">Leslie Alexander</p>
+        <p class="tcard-role">Head of Human Resources</p>
+      </div>
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"We've partnered with several recruiting firms over the years, but none have matched the expertise and personalized service of Cruzader Advanced Recruiting Solutions."</p>
+        <p class="tcard-author">Emerson Bergeron</p>
+        <p class="tcard-role">Administrative Manager</p>
+      </div>
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"Cruzader Advanced Recruiting Solutions exceeded our expectations. They took the time to understand our unique needs and quickly delivered top-tier candidates."</p>
+        <p class="tcard-author">Simon Mayer</p>
+        <p class="tcard-role">CEO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="hiw-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">Our Process</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;margin-bottom:12px;">How We Deliver Results</h2>
+    <p class="section-sub fade-up" style="text-align:center;max-width:580px;margin:0 auto 52px;">A proven, repeatable framework that consistently delivers high-quality talent for organizations of every size and sector.</p>
+    <div class="steps-grid">
+      <div class="step fade-up"><div class="step-num">1</div><h3>Needs Assessment</h3><p>We conduct an in-depth session to understand your role requirements, team dynamics, and long-term organizational goals.</p></div>
+      <div class="step fade-up"><div class="step-num">2</div><h3>Market Mapping</h3><p>Our team maps the available talent landscape across active and passive candidates within your target industry segment.</p></div>
+      <div class="step fade-up"><div class="step-num">3</div><h3>Vetting and Assessment</h3><p>Every candidate undergoes rigorous screening including behavioral interviews, skills validation, and cultural alignment checks.</p></div>
+      <div class="step fade-up"><div class="step-num">4</div><h3>Strategic Introduction</h3><p>We present a curated shortlist with full context and manage the full interview and offer process through to successful placement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-bg" id="industries">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag fade-up">About Cruzader</div>
+        <h2 class="section-title fade-up">More Than a Recruiting Firm. A Strategic Partner.</h2>
+        <p class="fade-up">Cruzader Advanced Recruiting Solutions is a DesignRush Verified Agency and member of the NYC 212 Chamber of Commerce and the US Hispanic Chamber of Commerce. We bring a global perspective to talent with a deep commitment to equity, diversity, and precision.</p>
+        <p class="fade-up">Our 10 service lines span sourcing, branding, consulting, IT staffing, financial talent, retail, and more. Wherever you need talent, we have the expertise and network to deliver.</p>
+        <div class="certs fade-up">
+          <div class="cert-item"><div class="cert-dot"></div><span>DesignRush Verified Agency</span></div>
+          <div class="cert-item"><div class="cert-dot"></div><span>NYC 212 Chamber of Commerce Member 2026</span></div>
+          <div class="cert-item"><div class="cert-dot"></div><span>US Hispanic Chamber of Commerce Member</span></div>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <h3>15 Industries Served</h3>
+        <p>Cruzader places talent across the most competitive and specialized sectors in the modern economy.</p>
+        <div class="industries-list">
+          <span class="ind-tag">IT</span>
+          <span class="ind-tag">Finance</span>
+          <span class="ind-tag">Marketing</span>
+          <span class="ind-tag">Manufacturing</span>
+          <span class="ind-tag">Healthcare</span>
+          <span class="ind-tag">Legal</span>
+          <span class="ind-tag">Banking</span>
+          <span class="ind-tag">Biotech</span>
+          <span class="ind-tag">Life Sciences</span>
+          <span class="ind-tag">Pharma</span>
+          <span class="ind-tag">Fintech</span>
+          <span class="ind-tag">Energy</span>
+          <span class="ind-tag">Media</span>
+          <span class="ind-tag">Venture Capital</span>
+          <span class="ind-tag">Private Equity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="fade-up">Partner With Cruzader</h2>
+    <p class="fade-up">Ready for a recruiting partner that truly understands your business? Let's connect and build something exceptional together.</p>
+    <a href="https://cruzaderrecruiting.com" target="_blank" class="btn-cta fade-up">Start the Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">CRUZADER ARS</div>
+        <p>Cruzader Advanced Recruiting Solutions. Specialized staffing across 15 industries and 10 service lines. DesignRush Verified. NYC Chamber Member 2026.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <p>Talent Sourcing</p>
+        <p>Employer Branding</p>
+        <p>HR Consulting</p>
+        <p>IT Staffing</p>
+        <p>Financial Staffing</p>
+        <p>Blinded Recruiting</p>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://cruzaderrecruiting.com" target="_blank">cruzaderrecruiting.com</a>
+        <p>NYC Chamber Member 2026</p>
+        <p>US Hispanic Chamber</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cruzader Advanced Recruiting Solutions. All rights reserved.</p>
+      <p>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
