@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Search Placement | Our Experience. Your Success.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: #fff; }
+  :root {
+    --primary: #0F2647;
+    --accent: #1A6BAC;
+    --light: #F5F7FA;
+    --white: #fff;
+    --muted: #6B7280;
+    --silver: #C4C9D4;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 999;
+    background: var(--primary);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo img { height: 44px; width: auto; display: block; filter: brightness(10); }
+  .nav-logo span { color: #fff; font-weight: 600; font-size: 1rem; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.5px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.3px; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: var(--accent); color: #fff; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: background 0.2s; }
+  .nav-cta:hover { background: #145A92; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: #fff; display: block; }
+
+  .hero {
+    background: var(--primary);
+    min-height: 88vh;
+    display: flex; align-items: center;
+    padding: 100px 5%;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&auto=format&fit=crop') center/cover no-repeat;
+    opacity: 0.07;
+  }
+  .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+  .hero-text { color: #fff; }
+  .hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--silver); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow span { display: block; width: 40px; height: 1px; background: var(--accent); }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 4.5vw, 4.2rem); font-weight: 600; line-height: 1.15; margin-bottom: 24px; }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 36px; max-width: 480px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 52px; }
+  .btn-accent { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s; display: inline-block; }
+  .btn-accent:hover { background: #145A92; }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: #fff; color: #fff; }
+  .hero-credentials { display: flex; gap: 28px; flex-wrap: wrap; }
+  .credential { display: flex; align-items: center; gap: 10px; }
+  .cred-icon { width: 36px; height: 36px; background: rgba(26,107,172,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+  .cred-text { font-size: 0.8rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+  .hero-right { }
+  .industries-panel { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 36px 32px; }
+  .ip-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; margin-bottom: 24px; font-weight: 600; }
+  .ip-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .ip-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); font-size: 0.9rem; font-weight: 400; }
+  .ip-item:last-child { border-bottom: none; }
+  .ip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  .stats-bar { background: var(--light); padding: 64px 5%; }
+  .stats-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; gap: 40px; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 600; color: var(--primary); }
+  .stat-label { font-size: 0.875rem; color: var(--muted); margin-top: 4px; font-weight: 500; }
+
+  .services { padding: 100px 5%; background: var(--white); }
+  .section-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+  .section-label { color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 3rem); color: var(--primary); font-weight: 600; margin-bottom: 16px; line-height: 1.2; }
+  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1280px; margin: 0 auto; border: 1px solid #E5E7EB; }
+  .service-card { padding: 40px 32px; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; transition: background 0.2s; }
+  .service-card:nth-child(3n) { border-right: none; }
+  .service-card:hover { background: var(--light); }
+  .service-icon { color: var(--accent); margin-bottom: 20px; }
+  .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--primary); margin-bottom: 12px; font-weight: 600; }
+  .service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+  .approach { padding: 100px 5%; background: var(--light); }
+  .approach-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1280px; margin: 0 auto; }
+  .approach-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); color: var(--primary); margin-bottom: 24px; font-weight: 600; line-height: 1.2; }
+  .approach-text p { color: var(--muted); line-height: 1.8; font-size: 1rem; margin-bottom: 20px; }
+  .approach-text .btn-accent { margin-top: 12px; }
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-row { display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid #E5E7EB; }
+  .step-row:last-child { border-bottom: none; }
+  .step-n { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--accent); font-weight: 600; min-width: 44px; line-height: 1; }
+  .step-content h4 { font-weight: 700; color: var(--primary); margin-bottom: 6px; font-size: 0.95rem; }
+  .step-content p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+  .about { padding: 100px 5%; background: var(--primary); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1280px; margin: 0 auto; }
+  .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); color: #fff; margin-bottom: 20px; font-weight: 600; }
+  .about-text p { color: rgba(255,255,255,0.65); line-height: 1.8; font-size: 1rem; margin-bottom: 16px; }
+  .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .about-tag { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); padding: 6px 16px; border-radius: 100px; font-size: 0.78rem; }
+  .about-right { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 40px 36px; }
+  .ar-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #fff; font-weight: 600; margin-bottom: 4px; }
+  .ar-title { color: var(--accent); font-size: 0.875rem; font-weight: 500; margin-bottom: 20px; letter-spacing: 0.5px; }
+  .ar-body { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.7; }
+  .ar-contact { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .ar-contact a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center; gap: 10px; transition: color 0.2s; }
+  .ar-contact a svg { color: var(--accent); flex-shrink: 0; }
+  .ar-contact a:hover { color: #fff; }
+
+  .cta-band { background: var(--accent); padding: 100px 5%; text-align: center; }
+  .cta-band h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: #fff; font-weight: 600; margin-bottom: 16px; }
+  .cta-band p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .btn-white { background: #fff; color: var(--accent); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: opacity 0.2s; display: inline-block; }
+  .btn-white:hover { opacity: 0.9; }
+
+  footer { background: #060F1C; padding: 60px 5% 32px; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; max-width: 1280px; margin: 0 auto 40px; }
+  .footer-logo img { height: 40px; margin-bottom: 16px; display: block; filter: brightness(10); }
+  .footer-logo span { color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; display: block; margin-bottom: 16px; }
+  .footer-desc { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.3px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; max-width: 1280px; margin: 0 auto; }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  .mediactive { color: var(--accent); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .approach-inner { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--primary); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; font-size: 1.4rem; text-decoration: none; font-weight: 600; }
+    .mobile-menu .m-cta { background: var(--accent); padding: 14px 36px; border-radius: 4px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { text-align: center; }
+    .hero-credentials { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#approach">Our Approach</a>
+  <a href="#about">About Beth</a>
+  <a href="tel:7023731182" class="m-cta">Call Now</a>
+</div>
+<nav>
+  <div class="nav-logo">
+    <a href="#"><img src="https://img1.wsimg.com/isteam/ip/42253f6f-c2f1-406d-ab37-ef3613458269/Executive%20Search%20Placement%20High-resolution%20png.png" alt="Executive Search Placement" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">Executive Search Placement</span></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#approach">Our Approach</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7023731182" class="nav-cta">702.373.1182</a>
+  <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow"><span></span> Las Vegas, Nevada &mdash; National Reach</div>
+      <h1>Our Experience.<br><em>Your Success.</em></h1>
+      <p class="hero-sub">Executive Search Placement is a trusted recruiting partner for accounting, finance, executive, and C-suite leadership roles — delivering consultative, responsive, and transparent search services nationwide.</p>
+      <div class="hero-ctas">
+        <a href="tel:7023731182" class="btn-accent">Call 702.373.1182</a>
+        <a href="mailto:beth@executivesearchplacement.com" class="btn-outline">Email Beth</a>
+      </div>
+      <div class="hero-credentials">
+        <div class="credential">
+          <div class="cred-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="cred-text">C-Suite &amp; Executive Search</div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="cred-text">Accounting &amp; Finance Specialist</div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="cred-text">Local &amp; National Searches</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="industries-panel">
+        <div class="ip-title">Industries We Serve</div>
+        <ul class="ip-list">
+          <li class="ip-item"><span class="ip-dot"></span> Manufacturing</li>
+          <li class="ip-item"><span class="ip-dot"></span> Hospitality &amp; Gaming</li>
+          <li class="ip-item"><span class="ip-dot"></span> Healthcare</li>
+          <li class="ip-item"><span class="ip-dot"></span> Biotechnology &amp; Life Sciences</li>
+          <li class="ip-item"><span class="ip-dot"></span> Construction &amp; Real Estate</li>
+          <li class="ip-item"><span class="ip-dot"></span> Executive Leadership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-num">C-Suite</div>
+      <div class="stat-label">Leadership Placement Expertise</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-num">National</div>
+      <div class="stat-label">Search Capability</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Consultative Approach</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Professional Recruitment for Leaders Who Move Organizations Forward</h2>
+    <p class="section-sub">We specialize in the placements that matter most — executive, finance, and C-suite roles where the right person changes everything.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h3>Executive Search</h3>
+      <p>We identify and place transformative executives — Presidents, VPs, and Directors — who lead organizations through growth, change, and opportunity.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Accounting &amp; Finance</h3>
+      <p>CFOs, Controllers, Accounting Managers, and Financial Analysts placed with precision across industries that demand financial leadership.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>C-Suite Leadership</h3>
+      <p>CEO, COO, and CHRO placements that redefine organizations. We find the leaders whose vision and execution match your company's critical moment.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h3>Local &amp; National Searches</h3>
+      <p>Whether you need a Las Vegas CFO or a national VP of Finance search, we run thorough, discreet searches wherever your talent needs are.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <h3>Candidate Vetting</h3>
+      <p>Every candidate we present has been thoroughly screened — technically, culturally, and professionally — so you only meet people worth your time.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h3>Referral Program</h3>
+      <p>Know a great company or candidate who needs a trusted recruiting partner? Our referral program rewards the relationships that drive results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="approach-inner">
+    <div class="approach-text fade-up">
+      <span class="section-label">Our Philosophy</span>
+      <h2>Consultative. Responsive. Transparent.</h2>
+      <p>Executive Search Placement operates on three commitments that guide every engagement. We are not a volume shop — we are a trusted advisor who works closely with clients to understand exactly what they need before we begin searching.</p>
+      <p>Our process is designed to be transparent at every step. You will always know where your search stands, who we have talked to, and what the market is telling us — because informed clients make better hiring decisions.</p>
+      <a href="tel:7023731182" class="btn-accent">Start a Search</a>
+    </div>
+    <div class="steps-list fade-up">
+      <div class="step-row">
+        <div class="step-n">01</div>
+        <div class="step-content">
+          <h4>In-Depth Consultation</h4>
+          <p>We spend real time understanding your organization's culture, challenges, and what success looks like for this specific role.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-n">02</div>
+        <div class="step-content">
+          <h4>Targeted Market Search</h4>
+          <p>We conduct discreet, targeted outreach — reaching both active and passive candidates who match your specific profile.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-n">03</div>
+        <div class="step-content">
+          <h4>Thorough Screening</h4>
+          <p>Every candidate is interviewed and assessed for technical competence, leadership style, and cultural alignment before we present them.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-n">04</div>
+        <div class="step-content">
+          <h4>Placement and Follow-Through</h4>
+          <p>We manage the offer process and remain available post-placement to ensure the match succeeds for both parties.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-up">
+      <span class="section-label" style="color:rgba(255,255,255,0.5)">Meet the Founder</span>
+      <h2>Beth Foster</h2>
+      <p>Based in Las Vegas, Beth Foster founded Executive Search Placement to bring a genuinely consultative, relationship-first approach to executive recruiting. With a focus on accounting, finance, and C-suite leadership, Beth has built a reputation for thorough searches, transparent communication, and placements that stick.</p>
+      <p>Beth works across industries including manufacturing, hospitality, gaming, healthcare, biotechnology, construction, and real estate development — conducting both local Las Vegas searches and national engagements for clients who need the best, wherever they are.</p>
+      <div class="about-tags">
+        <span class="about-tag">Las Vegas, NV</span>
+        <span class="about-tag">Executive Search</span>
+        <span class="about-tag">Finance and Accounting</span>
+        <span class="about-tag">National Reach</span>
+      </div>
+    </div>
+    <div class="about-right fade-up">
+      <div class="ar-name">Beth Foster</div>
+      <div class="ar-title">Founder &amp; Principal Recruiter</div>
+      <div class="ar-body">Beth brings a consultative, relationship-driven approach to every search — combining deep industry knowledge with a commitment to transparency and results that go beyond the placement itself.</div>
+      <div class="ar-contact">
+        <a href="tel:7023731182">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          702.373.1182
+        </a>
+        <a href="mailto:beth@executivesearchplacement.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          beth@executivesearchplacement.com
+        </a>
+        <a href="#">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Las Vegas, Nevada
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="fade-up">
+    <h2>Ready to Find Your Next Leader?</h2>
+    <p>Our experience, your success. Let us start a conversation about your most important hire.</p>
+    <a href="tel:7023731182" class="btn-white">Call 702.373.1182</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="https://img1.wsimg.com/isteam/ip/42253f6f-c2f1-406d-ab37-ef3613458269/Executive%20Search%20Placement%20High-resolution%20png.png" alt="Executive Search Placement" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">Executive Search Placement</span>
+      </div>
+      <p class="footer-desc">Our Experience, Your Success. Professional recruitment services for accounting, finance, executive, and C-suite leadership. Las Vegas and nationwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Executive Search</a></li>
+        <li><a href="#services">Accounting and Finance</a></li>
+        <li><a href="#services">C-Suite Leadership</a></li>
+        <li><a href="#services">National Searches</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <a href="tel:7023731182" style="color:rgba(255,255,255,0.4);text-decoration:none;">702.373.1182</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <a href="mailto:beth@executivesearchplacement.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">beth@executivesearchplacement.com</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Las Vegas, Nevada</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Executive Search Placement. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
