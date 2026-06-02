@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearHire — Fill Critical Roles With Confidence</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0C4A6E;
+  --accent: #0EA5E9;
+  --accent2: #06B6D4;
+  --success: #10B981;
+  --dark: #071E2E;
+  --light: #F0F9FF;
+  --white: #FFFFFF;
+  --text: #0F172A;
+  --muted: #64748B;
+  --border: #E0EFF8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:36px;object-fit:contain}
+.nav-logo-text{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.1rem;color:var(--primary)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:background 0.2s!important}
+.nav-cta:hover{background:#0284C7!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--primary);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:var(--text);padding:8px 0;border-bottom:1px solid var(--border)}
+.mobile-menu .nav-cta{background:var(--accent);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero-wrapper{background:var(--dark);padding:160px 40px 0;position:relative;overflow:hidden}
+.hero-bg-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(14,165,233,0.12),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(6,182,212,0.08),transparent 50%)}
+.hero{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;position:relative}
+.hero-content{padding-bottom:80px}
+.hero-label{display:inline-flex;align-items:center;gap:8px;background:rgba(14,165,233,0.15);color:var(--accent2);border:1px solid rgba(14,165,233,0.2);padding:7px 16px;border-radius:20px;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:3.4rem;font-weight:800;color:var(--white);margin-bottom:24px;letter-spacing:-0.02em}
+.hero h1 .hl{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.68);margin-bottom:36px;line-height:1.75;max-width:480px}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--accent);color:var(--white);padding:16px 36px;border-radius:6px;font-weight:700;font-size:1rem;transition:background 0.2s;display:inline-block}
+.btn-primary:hover{background:#0284C7}
+.btn-ghost{color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.2);padding:15px 28px;border-radius:6px;font-weight:600;font-size:0.9rem;display:inline-block;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.6)}
+.hero-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proof-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;text-align:center}
+.proof-num{font-family:'Manrope',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);display:block}
+.proof-label{font-size:0.75rem;color:rgba(255,255,255,0.6);margin-top:4px;line-height:1.4}
+.hero-visual{padding-bottom:0;align-self:flex-end}
+.case-cards{display:flex;flex-direction:column;gap:14px;margin-bottom:0}
+.case-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px}
+.case-icon{width:40px;height:40px;background:rgba(14,165,233,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.case-title{font-weight:700;font-size:0.88rem;color:var(--white)}
+.case-detail{font-size:0.78rem;color:rgba(255,255,255,0.55);margin-top:2px}
+.case-badge{margin-left:auto;background:rgba(16,185,129,0.15);color:#34D399;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;flex-shrink:0;border:1px solid rgba(16,185,129,0.2)}
+
+/* STATS */
+.stats-bar{background:var(--accent);padding:56px 40px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.stat-item{text-align:center;border-right:1px solid rgba(255,255,255,0.25)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Manrope',sans-serif;font-size:2.6rem;font-weight:800;color:var(--white);display:block}
+.stat-label{font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:500}
+
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.4rem;font-weight:800;color:var(--text);margin-bottom:20px;letter-spacing:-0.01em}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s}
+.service-card:hover{box-shadow:0 8px 40px rgba(14,165,233,0.1);transform:translateY(-3px);border-color:rgba(14,165,233,0.3)}
+.service-icon-wrap{width:52px;height:52px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:20px}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.service-card p{font-size:0.88rem;color:var(--muted);line-height:1.65}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:60px}
+.testimonial-card{background:var(--white);border-radius:8px;padding:32px;box-shadow:0 2px 16px rgba(12,74,110,0.07);border:1px solid var(--border);position:relative;overflow:hidden}
+.testimonial-card::after{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.testimonial-card p{font-size:0.95rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-initials{width:40px;height:40px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:0.82rem}
+.author-name{font-weight:600;font-size:0.88rem;color:var(--text)}
+.author-role{font-size:0.78rem;color:var(--muted)}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),rgba(14,165,233,0.15));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1.1rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 16px rgba(14,165,233,0.4)}
+.step h4{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step p{font-size:0.83rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text h2{font-size:2.2rem;font-weight:800;color:var(--text);margin-bottom:20px}
+.about-text p{font-size:0.97rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.guarantee-box{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:24px;border-left:4px solid var(--success)}
+.guarantee-box h4{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.guarantee-box p{font-size:0.88rem;color:var(--muted)}
+.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.metric-item{background:var(--light);border-radius:10px;padding:18px;border:1px solid var(--border)}
+.metric-num{font-family:'Manrope',sans-serif;font-size:1.6rem;font-weight:800;color:var(--primary);display:block}
+.metric-label{font-size:0.8rem;color:var(--muted);font-weight:500}
+.about-visual{background:var(--dark);border-radius:20px;padding:40px;box-shadow:0 24px 80px rgba(12,74,110,0.15)}
+.about-visual-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:700;color:rgba(255,255,255,0.6);margin-bottom:24px;text-transform:uppercase;letter-spacing:0.08em}
+.case-study{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:20px;margin-bottom:16px}
+.case-study:last-child{margin-bottom:0}
+.cs-org{font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:4px}
+.cs-result{font-size:0.82rem;color:rgba(255,255,255,0.6);margin-bottom:8px}
+.cs-metric{font-family:'Manrope',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent)}
+
+/* CTA BAND */
+.cta-band{background:var(--primary);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(14,165,233,0.15),transparent 60%)}
+.cta-band h2{font-size:2.6rem;font-weight:800;color:var(--white);margin-bottom:16px;position:relative}
+.cta-band p{font-size:1.05rem;color:rgba(255,255,255,0.72);margin-bottom:44px;max-width:520px;margin-left:auto;margin-right:auto;position:relative}
+.btn-cta{background:var(--accent);color:var(--white);padding:18px 48px;border-radius:6px;font-weight:700;font-size:1.05rem;display:inline-block;transition:background 0.2s;position:relative}
+.btn-cta:hover{background:#0284C7}
+
+/* FOOTER */
+footer{background:#040E18;padding:60px 40px 32px;color:rgba(255,255,255,0.65)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo-text{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);display:block;margin-bottom:12px}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.88rem}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--accent);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-wrapper{padding:120px 24px 0}
+  .hero-content{padding-bottom:60px}
+  .hero h1{font-size:2.3rem}
+  .hero-proof{grid-template-columns:1fr 1fr 1fr}
+  section{padding:80px 24px}
+  .stats-bar{padding:56px 24px}
+  .services-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .how-steps::before{display:none}
+  .section-title{font-size:1.9rem}
+  .about-metrics{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:390px){
+  .hero h1{font-size:2rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-ghost{width:100%;text-align:center}
+  .hero-proof{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="/clear_hire_logo.png" alt="ClearHire" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">ClearHire</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">How It Works</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Schedule a Demo</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">How It Works</a>
+  <a href="#results" onclick="this.closest('.mobile-menu').classList.remove('open')">Results</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Schedule a Demo</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero-wrapper">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Healthcare Physician Recruitment
+        </div>
+        <h1>Fill Critical Roles<br>With <span class="hl">Confidence</span></h1>
+        <p class="hero-sub">ClearHire removes the friction from physician recruitment — delivering vetted, board-verified candidates 60% faster, with a 180-day guarantee that protects your investment.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Schedule a Demo</a>
+          <a href="#results" class="btn-ghost">See the Results</a>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-item">
+            <span class="proof-num">500+</span>
+            <span class="proof-label">Provider Placements</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-num">60%</span>
+            <span class="proof-label">Faster Time to Fill</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-num">$15M+</span>
+            <span class="proof-label">Saved by Clients</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="case-cards">
+          <div class="case-card">
+            <div class="case-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div>
+              <div class="case-title">AdventHealth</div>
+              <div class="case-detail">150+ provider placements</div>
+            </div>
+            <div class="case-badge">Completed</div>
+          </div>
+          <div class="case-card">
+            <div class="case-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div>
+              <div class="case-title">Diana Health</div>
+              <div class="case-detail">14 providers hired in 2025</div>
+            </div>
+            <div class="case-badge">Completed</div>
+          </div>
+          <div class="case-card">
+            <div class="case-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="case-title">USAP</div>
+              <div class="case-detail">6 anesthesia providers in 120 days</div>
+            </div>
+            <div class="case-badge">Completed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <span class="stat-num">500+</span>
+      <span class="stat-label">Physician Placements</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">60%</span>
+      <span class="stat-label">Faster Time to Fill</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">$15M+</span>
+      <span class="stat-label">Saved by Clients</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">180</span>
+      <span class="stat-label">Day Placement Guarantee</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES / HOW IT WORKS -->
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Our Approach</div>
+      <h2 class="section-title">Recruitment Without the Friction</h2>
+      <p class="section-sub">We've removed every bottleneck from the physician recruitment process — so you get qualified, verified candidates faster, with full transparency at every step.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Practice Analysis &amp; Profiling</h3>
+        <p>We start with a deep analysis of your practice environment, culture, compensation, and what the ideal provider looks like — so every search is precisely targeted.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Vetted Candidate Sourcing</h3>
+        <p>Our specialist recruiters source through a curated network of physicians and providers — not generic job boards. Every candidate is pre-screened before introduction.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Complete Candidate Packages</h3>
+        <p>Every presentation includes CV, licensure verification, board certification status, and a full candidate summary — giving you everything needed for a fast, confident decision.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>60% Faster Placements</h3>
+        <p>Our streamlined process cuts recruitment timelines dramatically — reducing vacancy periods, eliminating premium locum costs, and getting providers in seats faster.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Enterprise-Scale Recruiting</h3>
+        <p>From single provider searches to enterprise networks placing 100+ physicians annually, our platform and team scale seamlessly to match your growth.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>180-Day Guarantee</h3>
+        <p>We stand behind every placement with an industry-leading 180-day guarantee. If a provider doesn't work out, we make it right — no exceptions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="results" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Client Testimonials</div>
+      <h2 class="section-title">What Healthcare Leaders Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"The entire team has been fabulous in assisting us in hiring new providers for our practice."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">PB</div>
+          <div>
+            <div class="author-name">Pam Bowman</div>
+            <div class="author-role">West Volusia Family and Sports Medicine</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Jim and his team are top notch! They are very experienced in navigating a pathway."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">KG</div>
+          <div>
+            <div class="author-name">Kenneth Giddens</div>
+            <div class="author-role">Neurosurgical Physician Liaison</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Jim really understands the nature of the business of medicine."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">TR</div>
+          <div>
+            <div class="author-name">Tony Reed, MD</div>
+            <div class="author-role">Diana Health</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Jim was awesome, from first contact introducing the job, to flying me down."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">MC</div>
+          <div>
+            <div class="author-name">Martin Corsten, MD</div>
+            <div class="author-role">AdventHealth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">From Search to Signed in Record Time</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Practice Profile</h4>
+        <p>We analyze your practice, compensation, culture, and ideal provider profile to build a precise recruitment brief.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Specialist Sourcing</h4>
+        <p>Our physician recruitment team activates a curated network — no generic boards, only targeted outreach to qualified providers.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>Verified Presentation</h4>
+        <p>Every candidate arrives with CV, licensure, board certs, and a full summary — ready for your evaluation without delays.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>Hire With Confidence</h4>
+        <p>Place your provider with the assurance of our 180-day guarantee — because a great hire should stay great.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="#contact" class="btn-primary">Schedule a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About ClearHire</div>
+        <h2>Built for the Complexity of Healthcare Recruitment</h2>
+        <p>ClearHire was built by healthcare recruitment experts who understood that physician placement deserved a better approach — one built on actionable information, faster evaluation cycles, and a technology-enabled process that eliminates the bottlenecks that slow traditional agencies down.</p>
+        <p>Led by Jim and a team of specialized healthcare recruiters, ClearHire has placed 500+ providers for organizations ranging from independent practices to enterprise healthcare networks — saving clients over $15 million in time-to-fill and premium labor costs combined.</p>
+        <div class="guarantee-box">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            180-Day Placement Guarantee
+          </h4>
+          <p>Every placement is backed by an industry-leading 180-day guarantee. If a provider doesn't work out within the guarantee period, we re-recruit at no additional cost.</p>
+        </div>
+        <div class="about-metrics">
+          <div class="metric-item">
+            <span class="metric-num">500+</span>
+            <span class="metric-label">Providers Placed</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-num">$15M+</span>
+            <span class="metric-label">Client Savings</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <div class="about-visual-title">Recent Client Outcomes</div>
+        <div class="case-study">
+          <div class="cs-org">AdventHealth</div>
+          <div class="cs-result">Enterprise physician network — ongoing partnership</div>
+          <div class="cs-metric">150+ Placements</div>
+        </div>
+        <div class="case-study">
+          <div class="cs-org">Diana Health</div>
+          <div class="cs-result">Multi-specialty provider hiring — 2025</div>
+          <div class="cs-metric">14 Providers in 2025</div>
+        </div>
+        <div class="case-study">
+          <div class="cs-org">USAP</div>
+          <div class="cs-result">Anesthesia staffing — urgent fill</div>
+          <div class="cs-metric">6 Providers in 120 Days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <h2>Ready to Fill Critical Roles Faster?</h2>
+    <p>Join healthcare organizations that have placed 500+ providers and saved $15M+ through ClearHire's streamlined recruitment approach.</p>
+    <a href="https://app.clearhire.com" class="btn-cta">Schedule a Demo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">ClearHire</span>
+        <p>Healthcare physician recruitment built for speed, clarity, and confidence. 500+ placements. $15M+ saved. 180-day guarantee.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <a href="#services">Practice Analysis</a>
+        <a href="#services">Physician Sourcing</a>
+        <a href="#services">Enterprise Recruiting</a>
+        <a href="#services">Placement Guarantee</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <a href="https://app.clearhire.com" style="color:rgba(255,255,255,0.6)">Schedule a Demo</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>180-Day Guarantee on Every Placement</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span>500+ Provider Placements</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClearHire. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
