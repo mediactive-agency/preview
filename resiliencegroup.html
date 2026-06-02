@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resilience Group — Transforming the Talent Landscape</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1B4D6E;
+  --accent: #2D9CDB;
+  --accent2: #27AE60;
+  --dark: #0E2D42;
+  --light: #F5F8FB;
+  --white: #FFFFFF;
+  --text: #1A2733;
+  --muted: #64748B;
+  --border: #DDE6EE;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'DM Sans',sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--primary)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--primary);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:var(--text);padding:8px 0;border-bottom:1px solid var(--border)}
+.mobile-menu .nav-cta{background:var(--primary);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero{padding:160px 40px 100px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(45,156,219,0.1);color:var(--accent);border:1px solid rgba(45,156,219,0.25);padding:8px 16px;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:3rem;font-weight:800;color:var(--dark);margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:var(--muted);margin-bottom:36px;line-height:1.75}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:44px}
+.btn-primary{background:var(--primary);color:var(--white);padding:16px 32px;border-radius:6px;font-weight:700;font-size:0.95rem;transition:background 0.2s;display:inline-block}
+.btn-primary:hover{background:var(--dark)}
+.btn-link{color:var(--primary);font-weight:600;font-size:0.9rem;display:flex;align-items:center;gap:8px}
+.hero-values{display:flex;gap:24px;flex-wrap:wrap}
+.val-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;color:var(--primary)}
+.val-dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
+.hero-visual-card{background:var(--white);border-radius:20px;box-shadow:0 24px 80px rgba(27,77,110,0.12);border:1px solid var(--border);overflow:hidden}
+.card-header{background:var(--primary);padding:28px;color:var(--white)}
+.card-header h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.card-header p{font-size:0.85rem;opacity:0.7}
+.card-body{padding:20px}
+.card-row{display:flex;align-items:center;gap:14px;padding:14px;border-bottom:1px solid var(--border);border-radius:8px;margin-bottom:8px;background:var(--light)}
+.card-row:last-child{border-bottom:none;margin-bottom:0}
+.card-icon{width:40px;height:40px;background:rgba(45,156,219,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.card-row-title{font-weight:700;font-size:0.88rem;color:var(--dark)}
+.card-row-sub{font-size:0.78rem;color:var(--muted)}
+
+/* STATS */
+.stats-bar{background:var(--primary);padding:56px 40px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.stat-item{text-align:center;border-right:1px solid rgba(255,255,255,0.15)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'DM Sans',sans-serif;font-size:2.8rem;font-weight:800;color:var(--white);display:block}
+.stat-label{font-size:0.88rem;color:rgba(255,255,255,0.72);font-weight:500}
+
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.4rem;font-weight:800;color:var(--text);margin-bottom:20px;letter-spacing:-0.01em}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px;transition:box-shadow 0.2s,transform 0.2s}
+.service-card:hover{box-shadow:0 8px 36px rgba(27,77,110,0.1);transform:translateY(-3px)}
+.service-icon-wrap{width:52px;height:52px;background:rgba(45,156,219,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:20px}
+.service-card h3{font-size:1.08rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.service-card p{font-size:0.88rem;color:var(--muted);line-height:1.65}
+
+/* TESTIMONIAL */
+.testimonial-featured{background:var(--light);border-radius:16px;padding:48px;border:1px solid var(--border);max-width:780px;margin:60px auto 0;position:relative}
+.testimonial-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:16px 16px 0 0}
+.testimonial-featured .stars{display:flex;gap:3px;margin-bottom:24px}
+.testimonial-featured blockquote{font-size:1.2rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:28px}
+.testimonial-featured .author{display:flex;align-items:center;gap:16px}
+.testimonial-featured .author-initials{width:48px;height:48px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700}
+.testimonial-featured .author-name{font-weight:700;font-size:0.95rem;color:var(--dark)}
+.testimonial-featured .author-role{font-size:0.82rem;color:var(--muted)}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),rgba(45,156,219,0.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1.1rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 12px rgba(45,156,219,0.35)}
+.step h4{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.step p{font-size:0.83rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin-bottom:20px}
+.about-text p{font-size:0.97rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.about-principles{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.principle{display:flex;align-items:flex-start;gap:14px}
+.principle-icon{width:36px;height:36px;background:rgba(45,156,219,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.principle h4{font-size:0.92rem;font-weight:700;color:var(--dark);margin-bottom:3px}
+.principle p{font-size:0.85rem;color:var(--muted)}
+.about-img-wrap{border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(27,77,110,0.15)}
+.about-img-wrap img{width:100%;height:480px;object-fit:cover;object-position:center top;display:block}
+
+/* CTA BAND */
+.cta-band{background:var(--dark);padding:100px 40px;text-align:center}
+.cta-band h2{font-size:2.6rem;font-weight:800;color:var(--white);margin-bottom:16px;letter-spacing:-0.01em}
+.cta-band p{font-size:1.05rem;color:rgba(255,255,255,0.72);margin-bottom:44px;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-cta{background:var(--accent);color:var(--white);padding:18px 44px;border-radius:6px;font-weight:700;font-size:1.05rem;display:inline-block;transition:background 0.2s}
+.btn-cta:hover{background:#1A7DB5}
+
+/* FOOTER */
+footer{background:#07131E;padding:60px 40px 32px;color:rgba(255,255,255,0.65)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo-text{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);display:block;margin-bottom:12px}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.88rem}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--accent);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;gap:48px}
+  .hero-visual-card{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:120px 24px 80px}
+  .hero h1{font-size:2.2rem}
+  section{padding:80px 24px}
+  .stats-bar{padding:56px 24px}
+  .stats-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .how-steps::before{display:none}
+  .section-title{font-size:1.9rem}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .testimonial-featured{padding:32px 24px}
+}
+@media(max-width:390px){
+  .hero h1{font-size:1.9rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary{width:100%;text-align:center}
+  .how-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://resiliencegroup.net/wp-content/uploads/2025/09/resilience-group-logo-cropped-768x512.webp" alt="Resilience Group" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">Resilience Group</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#process" onclick="this.closest('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding-top:0;padding-bottom:0">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Strongsville, OH &mdash; Serving Nationwide
+      </div>
+      <h1>Transforming the <span>Talent Landscape</span></h1>
+      <p class="hero-sub">Resilience Group connects companies with their most important asset: their people. Through executive search, HR consulting, and outplacement services, we build the teams and careers that drive organizations forward.</p>
+      <div class="hero-actions">
+        <a href="tel:3306533133" class="btn-primary">Call (330) 653-3133</a>
+        <a href="mailto:info@resiliencegroup.net" class="btn-link">
+          info@resiliencegroup.net
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="hero-values">
+        <div class="val-item"><div class="val-dot"></div>Integrity</div>
+        <div class="val-item"><div class="val-dot"></div>Impact</div>
+        <div class="val-item"><div class="val-dot"></div>Partnership</div>
+      </div>
+    </div>
+    <div class="hero-visual-card">
+      <div class="card-header">
+        <h3>People-Centered Solutions</h3>
+        <p>Custom-tailored to your culture and goals</p>
+      </div>
+      <div class="card-body">
+        <div class="card-row">
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+          </div>
+          <div>
+            <div class="card-row-title">Executive Search</div>
+            <div class="card-row-sub">Leadership placed with precision</div>
+          </div>
+        </div>
+        <div class="card-row">
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <div class="card-row-title">HR Consulting</div>
+            <div class="card-row-sub">Strategic people operations support</div>
+          </div>
+        </div>
+        <div class="card-row">
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <div class="card-row-title">Outplacement Services</div>
+            <div class="card-row-sub">Career transition with dignity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Core Service Lines</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">People-Centered Approach</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">USA</span>
+      <span class="stat-label">Nationwide Talent Search</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Connecting Companies With Their Best People</h2>
+      <p class="section-sub">Our three-pillar approach addresses every stage of the talent lifecycle — from finding and placing exceptional leaders to supporting professionals through career transitions.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        </div>
+        <h3>Executive Search</h3>
+        <p>We identify and place exceptional leaders who fit your culture and drive measurable results. Every search is custom-tailored — never a one-size-fits-all approach.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>HR Consulting</h3>
+        <p>Strategic people operations support for organizations navigating growth, change, or workforce challenges. Practical guidance grounded in real-world HR experience.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Outplacement Services</h3>
+        <p>We support professionals through career transitions with coaching, resume strategy, and negotiation guidance — because every ending should lead to a better beginning.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Cultural Fit Assessment</h3>
+        <p>We spend time understanding your organization's culture, values, and team dynamics before ever recommending a candidate — because fit matters as much as credentials.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Candidate Coaching</h3>
+        <p>From positioning to offer negotiation, we prepare candidates to present their best selves and make strategic career moves that align with long-term goals.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Workforce Strategy</h3>
+        <p>Long-term talent planning aligned with your business strategy — helping you build sustainable, high-performing teams for the next phase of growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonials" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Client Feedback</div>
+      <h2 class="section-title">Seamless, Rewarding, and Real</h2>
+    </div>
+    <div class="testimonial-featured fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Working alongside Natalie Lemons has been a seamless and rewarding process on multiple fronts."</blockquote>
+      <div class="author">
+        <div class="author-initials">PW</div>
+        <div>
+          <div class="author-name">Pam West</div>
+          <div class="author-role">VP of Human Resources, Enerco Group, Inc.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Our Approach</div>
+      <h2 class="section-title">People-Centered, Results-Driven</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Discovery</h4>
+        <p>We invest time learning your culture, team dynamics, and what success looks like in this role before sourcing a single candidate.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Custom Search</h4>
+        <p>We build a tailored search strategy and leverage our nationwide network to identify candidates who match both skill and culture.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>Vetted Presentation</h4>
+        <p>Every candidate is coached, evaluated, and contextualized before they're presented — giving you clarity at every step.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>Offer &amp; Transition</h4>
+        <p>We support both sides through negotiation, onboarding, and early success — because placement is just the beginning.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="tel:3306533133" class="btn-primary">Let's Connect</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About Us</div>
+        <h2>Built on Integrity. Driven by Impact.</h2>
+        <p>Resilience Group is a Strongsville, Ohio-based talent firm dedicated to connecting companies with the people who will shape their future. Led by Natalie Lemons, our team brings a people-first philosophy to every search — investing in relationships before results.</p>
+        <p>We don't believe in filling positions. We believe in making the right match: the candidate who fits not just on paper, but in culture, character, and long-term potential.</p>
+        <p>Whether you need to find a senior leader, navigate a workforce challenge, or support a professional through a career transition — we are here to make it a success.</p>
+        <div class="about-principles">
+          <div class="principle">
+            <div class="principle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>Integrity First</h4>
+              <p>Every search is conducted with transparency, honesty, and respect for both clients and candidates.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <h4>Measurable Impact</h4>
+              <p>We hold ourselves accountable to outcomes, not activity — because what matters is your team's performance.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h4>True Partnership</h4>
+              <p>We're invested in your success long-term — not just for the duration of a search.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-img-wrap fade-up">
+        <img src="https://resiliencegroup.net/wp-content/uploads/2025/09/resilience-group-logo-cropped-768x512.webp" alt="Resilience Group" style="object-fit:contain;background:var(--light);padding:60px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <h2>Ready to Build Your Best Team?</h2>
+    <p>Whether you're hiring, consulting, or in career transition — Resilience Group is ready to partner with you at every step.</p>
+    <a href="tel:3306533133" class="btn-cta">Call (330) 653-3133</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">Resilience Group</span>
+        <p>Connecting companies with their most important asset: their people. Executive search, HR consulting, and outplacement from Strongsville, Ohio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Executive Search</a>
+        <a href="#services">HR Consulting</a>
+        <a href="#services">Outplacement</a>
+        <a href="#services">Candidate Coaching</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>(330) 653-3133</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>info@resiliencegroup.net</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>13500 Pearl Rd, STE #139-176, Strongsville, OH 44136</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Resilience Group. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
