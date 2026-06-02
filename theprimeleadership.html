@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prime Leadership | Reimagine Your Career Path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #162D3D;
+    --accent: #E33292;
+    --light: #FFF5F9;
+    --white: #FFFFFF;
+    --text: #1a1a2e;
+    --muted: #556677;
+    --border: rgba(227,50,146,0.12);
+    --border-neutral: rgba(22,45,61,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--white); }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 76px;
+    box-shadow: 0 1px 0 var(--border-neutral);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: 0.04em; line-height: 1.2; display: flex; flex-direction: column; }
+  .nav-logo-sub { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta { background: var(--accent); color: var(--white); padding: 10px 24px; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: #c0207a; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: var(--white); padding: 24px 5%; flex-direction: column; gap: 0; z-index: 99; box-shadow: 0 8px 24px rgba(22,45,61,0.08); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--border-neutral); }
+
+  .hero {
+    background: var(--primary);
+    padding: 110px 5% 120px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 600px; height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(227,50,146,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+  .hero-label { display: inline-block; background: rgba(227,50,146,0.15); border: 1px solid rgba(227,50,146,0.3); color: #f494c4; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 24px; }
+  .hero h1 em { font-style: italic; color: #f494c4; }
+  .hero p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.75; margin-bottom: 40px; max-width: 500px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-pink { background: var(--accent); color: var(--white); padding: 13px 32px; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-pink:hover { background: #c0207a; }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); padding: 13px 32px; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
+  .hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 40px; }
+  .hero-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 8px; line-height: 1.3; }
+  .hero-card-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+  .hero-card-items { display: flex; flex-direction: column; gap: 12px; }
+  .hero-card-item { display: flex; gap: 10px; align-items: center; }
+  .hci-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .hero-card-item span { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 500; }
+
+  .stats-bar { background: var(--accent); padding: 40px 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .stat-item { text-align: center; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  section { padding: 100px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 3.5vw, 44px); font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 20px; }
+  .section-sub { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 580px; }
+
+  .services { background: var(--white); }
+  .services-header { margin-bottom: 56px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--light); border-radius: 8px; padding: 40px 32px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 8px rgba(227,50,146,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(227,50,146,0.1); }
+  .service-icon { width: 50px; height: 50px; background: rgba(227,50,146,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 12px; line-height: 1.25; }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .service-tag { display: inline-block; margin-top: 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: rgba(227,50,146,0.08); padding: 3px 10px; border-radius: 20px; }
+
+  .testimonials { background: var(--light); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
+  .stars { display: flex; gap: 4px; margin-bottom: 16px; }
+  .testimonial-card { background: var(--white); border-radius: 8px; padding: 44px; box-shadow: 0 2px 16px rgba(22,45,61,0.06); border: 1px solid var(--border); }
+  .testimonial-card p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--text); line-height: 1.7; margin-bottom: 28px; font-weight: 600; }
+  .author-row { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(227,50,146,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--accent); }
+  .author-info h4 { font-size: 15px; font-weight: 700; color: var(--primary); }
+  .author-info span { font-size: 13px; color: var(--muted); }
+
+  .how-it-works { background: var(--white); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 56px; }
+  .step { }
+  .step-badge { display: inline-block; background: rgba(227,50,146,0.1); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+  .step h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 10px; line-height: 1.25; }
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  .about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-vis { background: var(--primary); border-radius: 12px; padding: 56px 48px; position: relative; overflow: hidden; }
+  .about-vis::after { content: ''; position: absolute; bottom: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(227,50,146,0.15) 0%, transparent 70%); }
+  .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.5; margin-bottom: 28px; }
+  .about-divider { height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 24px; }
+  .about-meta { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+  .about-highlight { background: rgba(227,50,146,0.06); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 8px; }
+  .about-highlight p { font-size: 15px; font-weight: 600; color: var(--primary); margin: 0; line-height: 1.5; }
+
+  .cta-band { background: var(--primary); padding: 100px 5%; text-align: center; position: relative; overflow: hidden; }
+  .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(227,50,146,0.08) 0%, transparent 65%); pointer-events: none; }
+  .cta-band h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 50px); font-weight: 700; color: var(--white); margin-bottom: 20px; line-height: 1.2; position: relative; }
+  .cta-band h2 em { font-style: italic; color: #f494c4; }
+  .cta-band p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 540px; margin: 0 auto 40px; line-height: 1.75; position: relative; }
+  .btn-cta { background: var(--accent); color: var(--white); padding: 15px 48px; border-radius: 4px; font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s; display: inline-block; position: relative; }
+  .btn-cta:hover { background: #c0207a; }
+
+  footer { background: #0d1d27; padding: 56px 5% 32px; color: rgba(255,255,255,0.45); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 6px; letter-spacing: 0.04em; }
+  .footer-logo-sub { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-weight: 600; }
+  .footer-brand p { font-size: 14px; line-height: 1.65; max-width: 300px; }
+  .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.38); text-decoration: none; font-size: 14px; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: #f494c4; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-card { display: none; }
+    .services-grid, .steps { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .services-grid, .testimonials-grid, .stats-inner, .steps { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    THE PRIME LEADERSHIP
+    <span class="nav-logo-sub">Career Coaching</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">Process</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a Session</a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#how">Process</a>
+  <a href="#contact">Book a Session</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-label">Career Coaching for the Next Generation</span>
+      <h1>Reimagine Your <em>Career Path</em></h1>
+      <p>I help early-career professionals, college graduates, and aspiring medical sales reps learn how to actually position themselves so they can get noticed, get interviews, and move forward with confidence.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-pink">Book Your Coaching Session</a>
+        <a href="#services" class="btn-ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Who This Is For</div>
+      <div class="hero-card-sub">Early-career professionals ready to stand out</div>
+      <div class="hero-card-items">
+        <div class="hero-card-item"><div class="hci-dot"></div><span>College graduates entering the workforce</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Aspiring medical sales representatives</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Professionals pivoting to a new field</span></div>
+        <div class="hero-card-item"><div class="hci-dot"></div><span>Anyone stuck in a frustrating job search</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Coaching Packages</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">Med</div>
+      <div class="stat-label">Medical Sales Specialty</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number">1:1</div>
+      <div class="stat-label">Personal Coaching Sessions</div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header fade-up">
+      <span class="section-eyebrow">How I Help</span>
+      <h2 class="section-title">Career Services Designed for Where You Are Now</h2>
+      <p class="section-sub">Each service is designed to solve a specific problem that is keeping you from the career you already know you deserve.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E33292" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Career Coaching</h3>
+        <p>Personalized 1:1 sessions to clarify your direction, build your strategy, and give you the confidence to pursue the opportunities that actually fit you.</p>
+        <span class="service-tag">1:1 Sessions</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E33292" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h3>Resume Strategy</h3>
+        <p>ATS-optimized resumes that actually make it past the screening software and in front of human eyes, with clear positioning that tells your professional story.</p>
+        <span class="service-tag">ATS Optimized</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E33292" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <h3>LinkedIn Optimization</h3>
+        <p>A complete LinkedIn profile overhaul that positions you as someone recruiters want to find, with a compelling headline, summary, and keyword strategy.</p>
+        <span class="service-tag">Profile Overhaul</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E33292" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Interview Preparation</h3>
+        <p>Mock interviews with real-time feedback, plus the frameworks you need to answer behavioral and situational questions with clarity and confidence.</p>
+        <span class="service-tag">Mock Interviews</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E33292" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Medical Sales Positioning</h3>
+        <p>Specialized coaching for professionals targeting medical device and pharmaceutical sales, including how to position yourself without direct sales experience.</p>
+        <span class="service-tag">Med Sales Specialty</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E33292" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3>Job Search Strategy</h3>
+        <p>A personalized job search plan that goes beyond applying online, including networking, outreach, and how to get in front of hiring managers directly.</p>
+        <span class="service-tag">Full Strategy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-eyebrow">Heard From Clients</span>
+      <h2 class="section-title">Real results from real people</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"I had been applying for six months with zero callbacks. After two sessions, my LinkedIn was completely transformed and I had three recruiter messages within a week. I got the offer a month later."</p>
+        <div class="author-row">
+          <div class="avatar">A</div>
+          <div class="author-info">
+            <h4>Ashley R.</h4>
+            <span>Recent Graduate, Now in Medical Device Sales</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E33292"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"The mock interview practice was genuinely different from anything I had done before. She pushed me to articulate things I had never thought to say, and when I got into my actual interview, I felt completely prepared."</p>
+        <div class="author-row">
+          <div class="avatar">M</div>
+          <div class="author-info">
+            <h4>Marcus T.</h4>
+            <span>Early-Career Professional, Landed Sales Role at Fortune 500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-eyebrow">The Process</span>
+      <h2 class="section-title">How We Work Together</h2>
+      <p class="section-sub">A structured but personal process designed to get you results, not just feel good about your resume.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-badge">Step 01</div>
+        <h4>Discovery Call</h4>
+        <p>We start with a free call to understand where you are, where you want to go, and which coaching path makes the most sense for your goals.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-badge">Step 02</div>
+        <h4>Strategy Session</h4>
+        <p>We build your personalized career strategy, from target companies to positioning narrative, with everything you need to stand out from the start.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-badge">Step 03</div>
+        <h4>Materials and Skills</h4>
+        <p>We refine your resume, LinkedIn, and interview skills so every touchpoint reinforces the same confident, compelling story about your value.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-badge">Step 04</div>
+        <h4>Launch and Support</h4>
+        <p>You launch your search with a clear action plan and ongoing accountability support until you land the role and start your next chapter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-vis">
+        <div class="about-quote">"I teach early-career professionals how to actually position themselves in a highly competitive job market."</div>
+        <div class="about-divider"></div>
+        <div class="about-meta">The Prime Leadership</div>
+      </div>
+      <div class="about-content">
+        <span class="section-eyebrow">Why This Exists</span>
+        <h2 class="section-title">You Already Have What It Takes</h2>
+        <p>The Prime Leadership exists for the early-career professionals who are doing everything right but still not hearing back. The truth is, most job seekers have never been taught how to position themselves for a competitive market.</p>
+        <p>I help college graduates, career changers, and aspiring medical sales professionals cut through the noise by presenting themselves in a way that hiring managers and recruiters actually notice and respond to.</p>
+        <div class="about-highlight">
+          <p>The goal is not just to get you a job. It is to get you the right role, where you can grow, contribute, and build something lasting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div style="position:relative; z-index:1;">
+    <span style="display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(244,148,196,0.7); margin-bottom:16px;">Take the First Step</span>
+    <h2>Ready to Reimagine Your <em>Career Path?</em></h2>
+    <p>Book your coaching session today and start building the career you have been working toward.</p>
+    <a href="https://theprimeleadership.com" class="btn-cta">Book Your Coaching Session</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">The Prime Leadership</div>
+        <div class="footer-logo-sub">Career Coaching</div>
+        <p>Career coaching for early-career professionals, college graduates, and aspiring medical sales representatives who are ready to get ahead.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Career Coaching</a>
+        <a href="#">Resume Strategy</a>
+        <a href="#">LinkedIn Optimization</a>
+        <a href="#">Interview Preparation</a>
+        <a href="#">Medical Sales</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://theprimeleadership.com">theprimeleadership.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 The Prime Leadership. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
