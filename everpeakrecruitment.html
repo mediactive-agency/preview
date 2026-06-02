@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EverPeak Recruitment | Where Potential Meets Opportunity</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #153A62;
+  --accent: #61AFB8;
+  --light: #F0F7F8;
+  --white: #FFFFFF;
+  --text: #0F2C4A;
+  --muted: #4A6580;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 16px rgba(21,58,98,0.10);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo img { height: 46px; object-fit: contain; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--primary); color: var(--white); padding: 10px 24px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--accent); color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { display: block; width: 26px; height: 3px; background: var(--primary); border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 24px 32px; z-index: 99; box-shadow: 0 8px 24px rgba(21,58,98,0.12); flex-direction: column; gap: 20px; }
+.mobile-menu a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 16px; }
+.mobile-menu.open { display: flex; }
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #0F2C4A 100%);
+  padding: 110px 40px 100px; text-align: center; color: var(--white);
+  position: relative; overflow: hidden;
+}
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(97,175,184,0.20) 0%, transparent 60%); pointer-events: none; }
+.hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(34px, 5vw, 58px); font-weight: 900; line-height: 1.15; margin-bottom: 20px; position: relative; }
+.hero h1 span { color: var(--accent); }
+.hero p { font-size: clamp(16px, 2vw, 20px); max-width: 660px; margin: 0 auto 36px; opacity: 0.90; line-height: 1.68; position: relative; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-primary { background: var(--accent); color: var(--white); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: #4c97a0; }
+.btn-outline { border: 2px solid rgba(255,255,255,0.65); color: var(--white); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.10); }
+
+.stats { background: var(--accent); padding: 48px 40px; display: flex; justify-content: center; flex-wrap: wrap; }
+.stat-item { text-align: center; color: var(--white); padding: 16px 52px; border-right: 1px solid rgba(255,255,255,0.3); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Nunito', sans-serif; font-size: 38px; font-weight: 900; line-height: 1; }
+.stat-label { font-size: 13px; opacity: 0.88; margin-top: 6px; font-weight: 500; }
+
+section { padding: 96px 40px; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-tag { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section-title { font-family: 'Nunito', sans-serif; font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 16px; }
+.section-sub { font-size: 17px; color: var(--muted); max-width: 640px; line-height: 1.78; margin-bottom: 52px; }
+
+.services-bg { background: var(--light); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.card { background: var(--white); border-radius: 8px; box-shadow: 0 2px 16px rgba(21,58,98,0.08); padding: 30px 24px; }
+.card-accent-mark { width: 36px; height: 4px; background: var(--accent); border-radius: 2px; margin-bottom: 18px; }
+.card h3 { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+.testimonials-bg { background: var(--white); }
+.testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.tcard { background: var(--light); border-radius: 8px; box-shadow: 0 2px 14px rgba(21,58,98,0.07); padding: 32px 26px; }
+.stars { color: var(--accent); font-size: 18px; margin-bottom: 12px; letter-spacing: 2px; }
+.tcard-quote { font-size: 15px; line-height: 1.75; color: var(--text); font-style: italic; margin-bottom: 18px; }
+.tcard-author { font-weight: 700; color: var(--primary); font-size: 14px; }
+
+.hiw-bg { background: var(--light); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { background: var(--white); border-radius: 8px; box-shadow: 0 2px 14px rgba(21,58,98,0.07); padding: 30px 20px; text-align: center; }
+.step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: var(--white); font-family: 'Nunito', sans-serif; font-size: 20px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.step h3 { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.about-bg { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-text p { font-size: 16px; color: var(--muted); line-height: 1.82; margin-bottom: 16px; }
+.team-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+.team-card { background: var(--light); border-radius: 8px; padding: 20px 24px; display: flex; align-items: center; gap: 16px; }
+.team-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--white); font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.team-info h4 { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 2px; }
+.team-info p { font-size: 13px; color: var(--muted); }
+.about-visual { background: linear-gradient(135deg, var(--primary) 0%, #0F2C4A 100%); border-radius: 8px; padding: 48px 36px; color: var(--white); }
+.about-visual h3 { font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 16px; color: var(--white); }
+.about-visual p { font-size: 15px; opacity: 0.85; line-height: 1.75; margin-bottom: 24px; }
+.industries-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.ind-tag { background: rgba(97,175,184,0.2); color: rgba(255,255,255,0.9); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(97,175,184,0.3); }
+
+.cta-band { background: linear-gradient(135deg, var(--primary) 0%, #0F2C4A 100%); padding: 96px 40px; text-align: center; }
+.cta-band h2 { font-family: 'Nunito', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; color: var(--white); margin-bottom: 16px; }
+.cta-band p { font-size: 18px; color: rgba(255,255,255,0.82); margin-bottom: 40px; }
+.btn-cta { background: var(--accent); color: var(--white); padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-cta:hover { background: #4c97a0; }
+
+footer { background: #0A1E33; color: rgba(255,255,255,0.70); padding: 56px 40px 32px; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-logo img { height: 40px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+.footer-brand p { font-size: 14px; line-height: 1.7; }
+.footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a, .footer-col p { color: rgba(255,255,255,0.68); font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 13px; }
+.footer-bottom a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { color: var(--white); }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .testi-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 72px 24px; }
+  .hero { padding: 80px 24px; }
+  .stats { padding: 36px 20px; }
+  .stat-item { padding: 12px 22px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://everpeakrecruitment.com/wp-content/uploads/2025/02/header-logo.png" alt="EverPeak Recruitment">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Our Team</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:3152953831" class="nav-cta">315-295-3831</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">Our Team</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="tel:3152953831">315-295-3831</a>
+</div>
+
+<section class="hero">
+  <h1 class="fade-up">Where <span>Potential</span> Meets Opportunity</h1>
+  <p class="fade-up">EverPeak Recruitment connects exceptional candidates with the right opportunities across 12 industries. Two dedicated recruiters who genuinely care about the people they place.</p>
+  <div class="hero-btns fade-up">
+    <a href="#contact" class="btn-primary">Partner With EverPeak</a>
+    <a href="#services" class="btn-outline">Our Industries</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-item fade-up"><div class="stat-num">12</div><div class="stat-label">Industries Served</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">2</div><div class="stat-label">Dedicated Recruiters</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">East</div><div class="stat-label">Syracuse, NY</div></div>
+</div>
+
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Industries We Serve</div>
+    <h2 class="section-title fade-up">12 Industries. One Committed Team.</h2>
+    <p class="section-sub fade-up">From accounting to aerospace, EverPeak Recruitment places professionals at all levels across the most in-demand sectors in today's job market.</p>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-accent-mark"></div>
+        <h3>Accounting and Finance</h3>
+        <p>Controllers, CFOs, staff accountants, financial analysts, and bookkeeping professionals for businesses at every stage of growth.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-accent-mark"></div>
+        <h3>C-Level Executive</h3>
+        <p>CEO, COO, and senior leadership searches conducted with discretion, deep market knowledge, and a results-driven approach.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-accent-mark"></div>
+        <h3>Engineering and Manufacturing</h3>
+        <p>Mechanical, electrical, industrial, and manufacturing engineers plus operations management for precision manufacturing environments.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-accent-mark"></div>
+        <h3>IT and Technology</h3>
+        <p>Software developers, network engineers, IT managers, and cybersecurity professionals for organizations of every size and vertical.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-accent-mark"></div>
+        <h3>Healthcare</h3>
+        <p>Clinical, administrative, and leadership placements for hospitals, outpatient facilities, and healthcare organizations across the Northeast.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-accent-mark"></div>
+        <h3>Aerospace, Defense, Non-Profit, Legal and More</h3>
+        <p>Also placing talent in HR, Sales and Marketing, Aerospace and Defense, Non-Profit organizations, Legal and Executive Support, and Supply Chain and Logistics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">Candidate and Client Voices</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;margin-bottom:48px;">Real Results. Real Relationships.</h2>
+    <div class="testi-grid">
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"Lisa Coogan is the best recruiter I had the pleasure of working with. She truly cares about her candidates."</p>
+        <p class="tcard-author">Ellyse D.</p>
+      </div>
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"She brought me to a job that meant everything to me at a time when I was starting to lose hope."</p>
+        <p class="tcard-author">Paul C.</p>
+      </div>
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"Working with Sara Rich was fantastic. She was approachable, honest, and incredibly supportive."</p>
+        <p class="tcard-author">Michelle B.</p>
+      </div>
+      <div class="tcard fade-up">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"Lisa is extremely knowledgeable, kind, and hardworking...a top level professional."</p>
+        <p class="tcard-author">Doug W.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="hiw-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">How We Work</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;margin-bottom:12px;">A Recruiting Process Built on People</h2>
+    <p class="section-sub fade-up" style="text-align:center;max-width:580px;margin:0 auto 52px;">At EverPeak, recruiting is personal. We take the time to truly understand what employers need and what candidates are hoping to find.</p>
+    <div class="steps-grid">
+      <div class="step fade-up"><div class="step-num">1</div><h3>Deep Listening</h3><p>We invest real time with both clients and candidates to understand goals, culture, and what a genuinely great match looks like.</p></div>
+      <div class="step fade-up"><div class="step-num">2</div><h3>Targeted Search</h3><p>Using our networks across 12 industries, we identify candidates who fit both the role requirements and the organizational culture.</p></div>
+      <div class="step fade-up"><div class="step-num">3</div><h3>Honest Preparation</h3><p>We prepare candidates thoroughly and advise clients honestly. No surprises. No wasted interviews. Just well-matched introductions.</p></div>
+      <div class="step fade-up"><div class="step-num">4</div><h3>Ongoing Support</h3><p>We stay in contact through offer, start date, and beyond. The placement is a milestone, not a finish line, in our commitment to your success.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag fade-up">Our Team</div>
+        <h2 class="section-title fade-up">Two Recruiters Who Take It Personally</h2>
+        <p class="fade-up">EverPeak Recruitment is built on the belief that the right job changes lives. Based in East Syracuse, NY, our two-person team of dedicated recruiters brings genuine care, industry knowledge, and personal accountability to every search.</p>
+        <p class="fade-up">We are not a large firm where your search gets handed off. You work directly with Lisa or Sara from first call through placement and beyond.</p>
+        <div class="team-cards fade-up">
+          <div class="team-card">
+            <div class="team-avatar">LC</div>
+            <div class="team-info">
+              <h4>Lisa Coogan</h4>
+              <p>Recruiter</p>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">SR</div>
+            <div class="team-info">
+              <h4>Sara Rich</h4>
+              <p>Recruiter</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <h3>12 Industries. Endless Possibilities.</h3>
+        <p>EverPeak places professionals across a broad range of sectors from highly technical to relationship-driven roles.</p>
+        <div class="industries-list">
+          <span class="ind-tag">Accounting</span>
+          <span class="ind-tag">Finance</span>
+          <span class="ind-tag">C-Level</span>
+          <span class="ind-tag">HR</span>
+          <span class="ind-tag">Sales</span>
+          <span class="ind-tag">Engineering</span>
+          <span class="ind-tag">Manufacturing</span>
+          <span class="ind-tag">IT</span>
+          <span class="ind-tag">Aerospace</span>
+          <span class="ind-tag">Healthcare</span>
+          <span class="ind-tag">Non-Profit</span>
+          <span class="ind-tag">Legal</span>
+          <span class="ind-tag">Supply Chain</span>
+          <span class="ind-tag">Logistics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="fade-up">Partner With EverPeak</h2>
+    <p class="fade-up">Whether you are hiring or searching for your next opportunity, EverPeak Recruitment brings the dedication and personal attention that makes a real difference.</p>
+    <a href="https://everpeakrecruitment.com" target="_blank" class="btn-cta fade-up">Start the Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="https://everpeakrecruitment.com/wp-content/uploads/2025/02/header-logo.png" alt="EverPeak Recruitment">
+        </div>
+        <p>EverPeak Recruitment. Dedicated recruiting across 12 industries with genuine care for every candidate and client. East Syracuse, NY.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <p>Accounting and Finance</p>
+        <p>Engineering</p>
+        <p>IT and Technology</p>
+        <p>Healthcare</p>
+        <p>Aerospace and Defense</p>
+        <p>Supply Chain</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:3152953831">315-295-3831</a>
+        <a href="https://everpeakrecruitment.com" target="_blank">everpeakrecruitment.com</a>
+        <p>5824 Widewaters Parkway</p>
+        <p>East Syracuse, NY 13057</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 EverPeak Recruitment. All rights reserved.</p>
+      <p>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
