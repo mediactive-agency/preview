@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supreme Staffing — Where Great People & Great Companies Find Each Other</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1C2022;--accent:#00A510;--accent2:#35C92A;--light:#F5F6F8;--white:#FFFFFF;--text:#1C2022;--muted:#5C6670;--border:#E2E8F0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--primary);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-text{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.75);transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:background 0.2s!important}
+.nav-cta:hover{background:#008A0E!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--primary);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:rgba(255,255,255,0.85);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.mobile-menu .nav-cta{background:var(--accent);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+/* HERO */
+.hero{background:var(--primary);padding:160px 40px 100px;position:relative;overflow:hidden}
+.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 70% 50%,rgba(0,165,16,0.08),transparent 60%)}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,165,16,0.15);color:var(--accent2);border:1px solid rgba(0,165,16,0.25);padding:7px 16px;border-radius:4px;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:3.2rem;font-weight:800;color:var(--white);margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.7);margin-bottom:36px;line-height:1.75}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--accent);color:var(--white);padding:16px 32px;border-radius:6px;font-weight:700;font-size:0.95rem;transition:background 0.2s;display:inline-block}
+.btn-primary:hover{background:#008A0E}
+.btn-outline{color:var(--white);border:1px solid rgba(255,255,255,0.3);padding:15px 28px;border-radius:6px;font-weight:600;display:inline-block;transition:border-color 0.2s}
+.btn-outline:hover{border-color:rgba(255,255,255,0.7)}
+.hero-benefits{display:flex;flex-direction:column;gap:12px}
+.benefit-row{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.8);font-size:0.9rem}
+.benefit-row svg{color:var(--accent);flex-shrink:0}
+.hero-visual{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px}
+.hero-vis-title{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.loc-item{background:rgba(255,255,255,0.06);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(255,255,255,0.75)}
+.loc-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0}
+/* STATS */
+.stats-bar{background:var(--accent);padding:56px 40px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.stat-item{text-align:center;border-right:1px solid rgba(255,255,255,0.25)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Poppins',sans-serif;font-size:2.6rem;font-weight:800;color:var(--white);display:block}
+.stat-label{font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:500}
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.4rem;font-weight:800;color:var(--text);margin-bottom:20px;letter-spacing:-0.01em}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s}
+.service-card:hover{box-shadow:0 8px 36px rgba(0,165,16,0.1);transform:translateY(-3px);border-color:rgba(0,165,16,0.25)}
+.service-icon{width:52px;height:52px;background:rgba(0,165,16,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:20px}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.service-card p{font-size:0.88rem;color:var(--muted);line-height:1.65}
+/* BENEFITS */
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.benefit-card{background:var(--primary);border-radius:8px;padding:32px;color:var(--white)}
+.benefit-num{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);display:block;margin-bottom:8px}
+.benefit-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.benefit-card p{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6}
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:60px}
+.testimonial-card{background:var(--white);border-radius:8px;padding:32px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.testimonial-card p{font-size:0.95rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-initials{width:40px;height:40px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:0.82rem}
+.author-name{font-weight:600;font-size:0.88rem;color:var(--text)}
+.author-role{font-size:0.78rem;color:var(--muted)}
+/* HOW */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),rgba(0,165,16,0.15));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1.1rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 16px rgba(0,165,16,0.4)}
+.step h4{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step p{font-size:0.82rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+/* CTA BAND */
+.cta-band{background:var(--primary);padding:100px 40px;text-align:center}
+.cta-band h2{font-size:2.6rem;font-weight:800;color:var(--white);margin-bottom:16px}
+.cta-band p{font-size:1.05rem;color:rgba(255,255,255,0.7);margin-bottom:44px;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-cta{background:var(--accent);color:var(--white);padding:18px 48px;border-radius:6px;font-weight:700;font-size:1.05rem;display:inline-block;transition:background 0.2s}
+.btn-cta:hover{background:#008A0E}
+footer{background:#0D1012;padding:60px 40px 32px;color:rgba(255,255,255,0.65)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo img{height:36px;margin-bottom:14px;opacity:0.85}
+.footer-logo-text{font-family:'Poppins',sans-serif;font-weight:700;color:var(--white);font-size:1rem;display:block;margin-bottom:12px}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;gap:10px;margin-bottom:10px;font-size:0.88rem;align-items:flex-start}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--accent);font-weight:600}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}.services-grid{grid-template-columns:repeat(2,1fr)}.stats-inner{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){nav{padding:0 24px}.nav-links{display:none}.hamburger{display:flex}.hero{padding:120px 24px 80px}.hero h1{font-size:2.3rem}section{padding:80px 24px}.stats-bar{padding:56px 24px}.services-grid{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr}.how-steps{grid-template-columns:1fr 1fr;gap:32px}.how-steps::before{display:none}.section-title{font-size:1.9rem}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}}
+@media(max-width:390px){.hero h1{font-size:1.9rem}.hero-actions{flex-direction:column}.btn-primary,.btn-outline{width:100%;text-align:center}.how-steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://supremestaffing.agency/wp-content/uploads/2019/05/Supreme-Staffing-Horizontal-Version-X-Small-reversed.png" alt="Supreme Staffing" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">Supreme Staffing</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a>
+    <a href="tel:18005551234" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#process" onclick="this.closest('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Apply Now</a>
+</div>
+<section id="home" style="padding:0">
+  <div class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>12 Locations Nationwide &mdash; Investing in People</div>
+        <h1>Where <span>Great People</span> &amp; Great Companies Find Each Other</h1>
+        <p class="hero-sub">Supreme Staffing connects skilled workers with top employers across distribution, production, customer service, and executive roles. Fast hiring. Real benefits. Nationwide reach.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Find a Job Today</a>
+          <a href="#services" class="btn-outline">Hire Talent</a>
+        </div>
+        <div class="hero-benefits">
+          <div class="benefit-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Healthcare coverage under $2/day</div>
+          <div class="benefit-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>6 paid holidays after 1,080 hours</div>
+          <div class="benefit-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Same-week placements available</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-vis-title">Locations Across the U.S.</div>
+        <div class="location-grid">
+          <div class="loc-item"><div class="loc-dot"></div>Augusta, GA</div>
+          <div class="loc-item"><div class="loc-dot"></div>Dallas, TX</div>
+          <div class="loc-item"><div class="loc-dot"></div>Las Vegas, NV</div>
+          <div class="loc-item"><div class="loc-dot"></div>Memphis, TN</div>
+          <div class="loc-item"><div class="loc-dot"></div>Edison, NJ</div>
+          <div class="loc-item"><div class="loc-dot"></div>Louisville, KY</div>
+          <div class="loc-item"><div class="loc-dot"></div>Jackson, GA</div>
+          <div class="loc-item"><div class="loc-dot"></div>Henderson, NC</div>
+          <div class="loc-item"><div class="loc-dot"></div>Danville, VA</div>
+          <div class="loc-item"><div class="loc-dot"></div>Easton, PA</div>
+          <div class="loc-item"><div class="loc-dot"></div>Loudon, TN</div>
+          <div class="loc-item"><div class="loc-dot"></div>+ More</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up"><span class="stat-num">12</span><span class="stat-label">U.S. Office Locations</span></div>
+    <div class="stat-item fade-up"><span class="stat-num">$2</span><span class="stat-label">Healthcare/Day for Workers</span></div>
+    <div class="stat-item fade-up"><span class="stat-num">6</span><span class="stat-label">Paid Holidays After 1,080 Hrs</span></div>
+    <div class="stat-item fade-up"><span class="stat-num">4+</span><span class="stat-label">Industry Specializations</span></div>
+  </div>
+</div>
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Staffing Solutions Across Every Level</h2>
+      <p class="section-sub">From warehouse floor to executive suite, Supreme Staffing delivers qualified workers who show up ready to perform — and benefits that set you apart as an employer.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <h3>Temporary Staffing</h3>
+        <p>Fast placements for immediate workforce needs — production, distribution, and administrative roles filled quickly with qualified, vetted candidates.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Temp-to-Hire</h3>
+        <p>Try before you hire. Our temp-to-hire model lets you evaluate candidates on the job before making a permanent commitment — reducing hiring risk.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg></div>
+        <h3>Executive Recruiting</h3>
+        <p>Senior leadership and management search for organizations that need proven performers — placed with the rigor and discretion executive roles demand.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3>Distribution &amp; Warehouse</h3>
+        <p>Forklift operators, pickers and packers, and general labor — skilled warehouse workers ready to contribute on day one, at any of our 12 locations.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Production &amp; Manufacturing</h3>
+        <p>Assembly workers, quality control, welders, and food production specialists — sourced and placed fast for factories and production environments.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3>Administrative &amp; Customer Service</h3>
+        <p>Call center, data entry, HR support, IT help desk, and office professionals — the support staff that keeps your operations running smoothly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="benefits-section" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Worker Benefits</div>
+      <h2 class="section-title">We Invest in the People We Place</h2>
+      <p class="section-sub" style="margin:0 auto">Most staffing agencies place workers and move on. Supreme Staffing stays invested — with real benefits designed to attract and retain top talent.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-up">
+        <span class="benefit-num">$2</span>
+        <h3>Affordable Healthcare</h3>
+        <p>Medical coverage available for under $2 per day — giving workers access to real health benefits that most temporary positions never offer.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <span class="benefit-num">6</span>
+        <h3>Paid Holidays</h3>
+        <p>After 1,080 hours worked, employees earn 6 paid holidays — a meaningful benefit that recognizes commitment and tenure.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <span class="benefit-num">12</span>
+        <h3>Locations Nationwide</h3>
+        <p>With 12 offices across the U.S., we match workers to opportunities close to home — from Georgia to Nevada and everywhere in between.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testimonials" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Worker Stories</div>
+      <h2 class="section-title">What Our People Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p>"Supreme Staffing is very helpful with putting people in a good job. Would recommend people to Supreme Staffing."</p>
+        <div class="testimonial-author"><div class="author-initials">CT</div><div><div class="author-name">Connie Thompson</div><div class="author-role">Placed Worker</div></div></div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p>"Supreme Staffing has helped me define teamwork and partnership working together. I'm grateful for the opportunity."</p>
+        <div class="testimonial-author"><div class="author-initials">TT</div><div><div class="author-name">Tshean Thompson</div><div class="author-role">Placed Worker</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="process" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Placed Fast. Supported Well.</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up"><div class="step-num">1</div><h4>Apply</h4><p>Submit your information online or visit your nearest Supreme Staffing office.</p></div>
+      <div class="step fade-up"><div class="step-num">2</div><h4>Interview</h4><p>Meet with one of our recruiters to discuss your skills, goals, and availability.</p></div>
+      <div class="step fade-up"><div class="step-num">3</div><h4>Match</h4><p>We match you with open positions at companies in your area that fit your profile.</p></div>
+      <div class="step fade-up"><div class="step-num">4</div><h4>Start Working</h4><p>Begin your new role — with benefits, support, and the chance to go permanent.</p></div>
+    </div>
+    <div class="how-cta fade-up"><a href="#contact" class="btn-primary">Get Started Today</a></div>
+  </div>
+</section>
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <h2>Ready to Find Your Next Great Opportunity?</h2>
+    <p>Whether you need a job or need to fill one, Supreme Staffing has the network and the experience to make it happen — fast.</p>
+    <a href="https://supremestaffing.agency" class="btn-cta">Visit Supreme Staffing</a>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="footer-logo" src="https://supremestaffing.agency/wp-content/uploads/2019/05/Supreme-Staffing-Horizontal-Version-X-Small-reversed.png" alt="Supreme Staffing" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+        <span class="footer-logo-text" style="display:none">Supreme Staffing</span>
+        <p style="margin-top:10px">Investing in people since day one. Staffing solutions for workers and employers across 12 U.S. locations.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Temporary Staffing</a>
+        <a href="#services">Temp-to-Hire</a>
+        <a href="#services">Executive Recruiting</a>
+        <a href="#services">Distribution</a>
+        <a href="#services">Production</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>12 locations across the U.S.</span></div>
+        <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>supremestaffing.agency</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Supreme Staffing Agency. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+<script>
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
