@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synova Talent Solutions | Synergistic Innovation in Executive Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #111827; background: #fff; }
+  :root {
+    --primary: #1A1A2E;
+    --accent: #E8620A;
+    --accent-dark: #C4500A;
+    --light: #F8F8FC;
+    --white: #fff;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 999;
+    background: var(--primary);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo img { height: 44px; width: auto; display: block; }
+  .nav-logo span { color: #fff; font-weight: 700; font-size: 1.1rem; font-family: 'Outfit', sans-serif; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: #fff; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-dark); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: #fff; display: block; }
+
+  .hero {
+    background: var(--primary);
+    min-height: 88vh;
+    display: flex; align-items: center;
+    padding: 100px 5%;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,98,10,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+  .hero-text { color: #fff; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .badge-text { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 800; line-height: 1.12; margin-bottom: 20px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.78; margin-bottom: 36px; max-width: 480px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .btn-accent { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); padding: 13px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .hero-expertise { display: flex; gap: 12px; flex-wrap: wrap; }
+  .exp-tag { background: rgba(232,98,10,0.12); border: 1px solid rgba(232,98,10,0.25); color: rgba(255,255,255,0.8); padding: 6px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; }
+
+  .hero-right { }
+  .experience-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px 32px; }
+  .ec-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
+  .ec-num { font-family: 'Outfit', sans-serif; font-size: 5rem; font-weight: 800; color: #fff; line-height: 1; }
+  .ec-num em { color: var(--accent); font-style: normal; }
+  .ec-desc { color: rgba(255,255,255,0.6); font-size: 1rem; margin-top: 8px; margin-bottom: 28px; line-height: 1.6; }
+  .ec-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+  .ec-services { display: flex; flex-direction: column; gap: 12px; }
+  .ec-service { display: flex; align-items: center; gap: 12px; }
+  .ec-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .ec-name { color: rgba(255,255,255,0.7); font-size: 0.875rem; }
+
+  .stats-bar { background: var(--light); padding: 60px 5%; }
+  .stats-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; gap: 32px; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Outfit', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--primary); }
+  .stat-num em { color: var(--accent); font-style: normal; }
+  .stat-label { font-size: 0.875rem; color: var(--muted); margin-top: 4px; }
+
+  .services { padding: 100px 5%; background: var(--white); }
+  .section-header { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+  .section-label { color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .section-title { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 2.8vw, 2.6rem); color: var(--primary); font-weight: 800; margin-bottom: 16px; }
+  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1280px; margin: 0 auto; }
+  .service-card { border-radius: 12px; padding: 32px 26px; border: 1px solid var(--border); transition: border-color 0.2s, transform 0.2s; }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .service-num { font-family: 'Outfit', sans-serif; font-size: 2.4rem; font-weight: 800; color: rgba(232,98,10,0.15); margin-bottom: 16px; line-height: 1; }
+  .service-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+  .service-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+  .differentiators { padding: 100px 5%; background: var(--light); }
+  .diff-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1280px; margin: 0 auto; }
+  .diff-text h2 { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 2.5vw, 2.4rem); color: var(--primary); font-weight: 800; margin-bottom: 20px; }
+  .diff-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .diff-text .btn-accent { margin-top: 12px; }
+  .diff-list { display: flex; flex-direction: column; gap: 0; }
+  .diff-item { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+  .diff-item:last-child { border-bottom: none; }
+  .diff-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(232,98,10,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+  .diff-content h4 { font-weight: 700; color: var(--primary); font-size: 0.95rem; margin-bottom: 6px; }
+  .diff-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  .how { padding: 100px 5%; background: var(--white); }
+  .steps-horiz { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto 48px; }
+  .step { text-align: center; }
+  .step-n { width: 56px; height: 56px; border-radius: 14px; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800; }
+  .step h4 { font-weight: 700; color: var(--primary); font-size: 0.95rem; margin-bottom: 8px; font-family: 'Outfit', sans-serif; }
+  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .how-cta { text-align: center; }
+
+  .cta-band { background: var(--accent); padding: 100px 5%; text-align: center; }
+  .cta-band h2 { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 800; margin-bottom: 16px; }
+  .cta-band p { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .btn-white { background: #fff; color: var(--accent); padding: 16px 40px; border-radius: 6px; text-decoration: none; font-weight: 800; font-size: 1rem; transition: opacity 0.2s; display: inline-block; }
+  .btn-white:hover { opacity: 0.92; }
+
+  footer { background: var(--primary); padding: 60px 5% 32px; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; max-width: 1280px; margin: 0 auto 40px; }
+  .footer-logo img { height: 40px; margin-bottom: 16px; display: block; }
+  .footer-logo span { color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; display: block; margin-bottom: 16px; }
+  .footer-desc { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; max-width: 1280px; margin: 0 auto; }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  .mediactive { color: var(--accent); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .diff-inner { grid-template-columns: 1fr; }
+    .steps-horiz { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--primary); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; font-size: 1.4rem; text-decoration: none; font-weight: 700; }
+    .mobile-menu .m-cta { background: var(--accent); padding: 14px 36px; border-radius: 6px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps-horiz { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">Our Approach</a>
+  <a href="#how">Process</a>
+  <a href="tel:2167899850" class="m-cta">Call Us</a>
+</div>
+<nav>
+  <div class="nav-logo">
+    <a href="#"><img src="https://synovasearch.com/wp-content/uploads/2025/06/navbar-logo.png" alt="Synova Talent Solutions" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">Synova Search</span></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Our Approach</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:2167899850" class="nav-cta">216.789.9850</a>
+  <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><div class="badge-dot"></div><div class="badge-text">Cleveland, Ohio &bull; Global Reach</div></div>
+      <h1>Synergistic Innovation<br>in <em>Executive Search</em></h1>
+      <p class="hero-sub">Synova Talent Solutions brings a revolutionary approach to executive search — prioritizing your objectives, honoring the candidate experience, and drawing on four decades of proven industry expertise.</p>
+      <div class="hero-ctas">
+        <a href="tel:2167899850" class="btn-accent">Call 216.789.9850</a>
+        <a href="mailto:contact@synovasearch.com" class="btn-outline">Email Our Team</a>
+      </div>
+      <div class="hero-expertise">
+        <span class="exp-tag">Executive Search</span>
+        <span class="exp-tag">Interim Leadership</span>
+        <span class="exp-tag">Outplacement</span>
+        <span class="exp-tag">HR Consulting</span>
+        <span class="exp-tag">40+ Years Experience</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="experience-card">
+        <div class="ec-label">Combined Experience</div>
+        <div class="ec-num"><em>40</em>+</div>
+        <div class="ec-desc">Years of executive search and recruitment expertise, delivered through a modern, synergistic approach.</div>
+        <hr class="ec-divider">
+        <div class="ec-services">
+          <div class="ec-service"><div class="ec-dot"></div><div class="ec-name">Executive and Professional Search</div></div>
+          <div class="ec-service"><div class="ec-dot"></div><div class="ec-name">Interim and Fractional Solutions</div></div>
+          <div class="ec-service"><div class="ec-dot"></div><div class="ec-name">Onboarding Technology</div></div>
+          <div class="ec-service"><div class="ec-dot"></div><div class="ec-name">Outplacement Support</div></div>
+          <div class="ec-service"><div class="ec-dot"></div><div class="ec-name">Leadership Consulting</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up"><div class="stat-num"><em>40+</em></div><div class="stat-label">Years of Combined Experience</div></div>
+    <div class="stat-item fade-up"><div class="stat-num"><em>10+</em></div><div class="stat-label">Specialized Service Lines</div></div>
+    <div class="stat-item fade-up"><div class="stat-num"><em>100%</em></div><div class="stat-label">Client-Objective Focused</div></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <span class="section-label">Our Services</span>
+    <h2 class="section-title">A Full Suite of Talent Solutions</h2>
+    <p class="section-sub">From retained executive search to outplacement support and leadership consulting, Synova delivers at every stage of the talent lifecycle.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <h3>Executive Search</h3>
+      <p>Retained and contingency search for senior leaders — C-suite, VP, and Director-level placements across industries and functions.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">02</div>
+      <h3>Professional Search</h3>
+      <p>Mid-level and functional experts placed with precision — managers, analysts, and specialists who drive day-to-day performance.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">03</div>
+      <h3>Interim and Fractional</h3>
+      <p>Experienced leaders available immediately for transitions, rapid growth, or coverage gaps — without the delay of a full search.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">04</div>
+      <h3>Onboarding Technology</h3>
+      <p>Proprietary tools and technology that accelerate new leader integration, reduce time-to-productivity, and improve retention rates.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">05</div>
+      <h3>Outplacement Support</h3>
+      <p>Career transition services that support displaced employees with dignity — resume coaching, interview prep, and job search strategy.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">06</div>
+      <h3>Leadership Consulting</h3>
+      <p>Strategic consulting for succession planning, organizational design, compensation benchmarking, and leadership development.</p>
+    </div>
+  </div>
+</section>
+
+<section class="differentiators" id="about">
+  <div class="diff-inner">
+    <div class="diff-text fade-up">
+      <span class="section-label">Our Approach</span>
+      <h2>A Revolutionary Approach to Executive Search</h2>
+      <p>Synova was built because the traditional search model was broken. Too many firms prioritize speed over fit, volume over relationships, and fees over outcomes. We built a different model — one where your objectives come first and the candidate experience is never an afterthought.</p>
+      <p>Based in Cleveland and operating globally, our team combines four decades of search expertise with modern technology, innovative processes, and a genuine commitment to outcomes that last beyond the placement.</p>
+      <a href="tel:2167899850" class="btn-accent">Talk to Our Team</a>
+    </div>
+    <div class="diff-list fade-up">
+      <div class="diff-item">
+        <div class="diff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="diff-content"><h4>Client-Objective First</h4><p>Every search begins with a deep understanding of your specific goals, culture, and what success looks like for this hire.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="diff-content"><h4>Candidate Experience Priority</h4><p>We treat every candidate with respect and transparency — because how you treat candidates reflects your brand and affects outcomes.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+        <div class="diff-content"><h4>Technology-Enhanced Process</h4><p>From sourcing to onboarding, we use proprietary tools that accelerate search timelines and improve long-term placement success.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+        <div class="diff-content"><h4>Global Network, Local Expertise</h4><p>Cleveland-based with national and global reach — we find talent wherever it is and bring it to where it is needed most.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-header fade-up">
+    <span class="section-label">Our Process</span>
+    <h2 class="section-title">Search with Synergy</h2>
+    <p class="section-sub">Our process is designed to move fast without cutting corners — delivering placements that hold up long after the search closes.</p>
+  </div>
+  <div class="steps-horiz">
+    <div class="step fade-up"><div class="step-n">1</div><h4>Strategic Alignment</h4><p>We align on your objectives, culture, and the exact profile of the candidate who will drive results in this role.</p></div>
+    <div class="step fade-up"><div class="step-n">2</div><h4>Targeted Search</h4><p>We activate our 40-year network and modern sourcing tools to identify candidates others cannot reach.</p></div>
+    <div class="step fade-up"><div class="step-n">3</div><h4>Vetted Shortlist</h4><p>You receive a curated shortlist of candidates who have been fully assessed for fit, capability, and motivation.</p></div>
+    <div class="step fade-up"><div class="step-n">4</div><h4>Onboarding and Success</h4><p>Our proprietary onboarding technology accelerates integration so your new leader delivers impact faster.</p></div>
+  </div>
+  <div class="how-cta"><a href="tel:2167899850" class="btn-accent">Start Your Search</a></div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="fade-up">
+    <h2>Ready for a Different Kind of Search?</h2>
+    <p>40 years of expertise. A revolutionary approach. Results that go beyond the placement. Let us show you what synergistic innovation looks like in practice.</p>
+    <a href="mailto:contact@synovasearch.com" class="btn-white">Contact Our Team</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="https://synovasearch.com/wp-content/uploads/2025/06/navbar-logo.png" alt="Synova" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">Synova Talent Solutions</span>
+      </div>
+      <p class="footer-desc">Synergistic Innovation in Executive Search. A revolutionary approach combining 40+ years of expertise with modern technology and a commitment to outcomes. Cleveland, Ohio.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Executive Search</a></li>
+        <li><a href="#services">Interim and Fractional</a></li>
+        <li><a href="#services">Onboarding Technology</a></li>
+        <li><a href="#services">Outplacement Support</a></li>
+        <li><a href="#services">Leadership Consulting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <a href="tel:2167899850" style="color:rgba(255,255,255,0.4);text-decoration:none;">216.789.9850</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <a href="mailto:contact@synovasearch.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">contact@synovasearch.com</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Cleveland, Ohio</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Synova Talent Solutions. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
