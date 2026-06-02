@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire With Jarvis — Global Multi-Brand Recruitment Leaders</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0A1628;
+  --accent: #0070F3;
+  --accent2: #00C2FF;
+  --light: #F0F4FF;
+  --white: #FFFFFF;
+  --text: #0A1628;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --card-bg: #F8FAFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.15}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,22,40,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:36px;object-fit:contain}
+.nav-logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:background 0.2s!important}
+.nav-cta:hover{background:#005BD3!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:#0A1628;border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:rgba(255,255,255,0.8);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.mobile-menu .nav-cta{background:var(--accent);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero-wrapper{background:var(--primary);padding:160px 40px 0;position:relative;overflow:hidden;min-height:680px}
+.hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(0,112,243,0.18) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;position:relative}
+.hero-content{padding-bottom:80px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,112,243,0.15);color:var(--accent2);border:1px solid rgba(0,194,255,0.2);padding:6px 16px;border-radius:20px;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:3.4rem;font-weight:800;color:var(--white);margin-bottom:24px;letter-spacing:-0.02em}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);margin-bottom:40px;line-height:1.7;max-width:500px}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:52px}
+.btn-primary{background:var(--accent);color:var(--white);padding:16px 36px;border-radius:6px;font-weight:700;font-size:1rem;transition:background 0.2s;display:inline-block}
+.btn-primary:hover{background:#005BD3}
+.btn-ghost{color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.2);padding:15px 32px;border-radius:6px;font-weight:600;font-size:0.95rem;display:inline-block;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5)}
+.hero-offices{display:flex;gap:8px;flex-wrap:wrap}
+.office-pill{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:5px 12px;border-radius:20px;font-size:0.75rem;color:rgba(255,255,255,0.6);font-weight:500}
+.hero-brands{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px;backdrop-filter:blur(8px);margin-bottom:0;align-self:flex-end;margin-bottom:40px}
+.brands-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.brand-row{display:flex;flex-direction:column;gap:14px}
+.brand-item{display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,0.04);border-radius:10px;border:1px solid rgba(255,255,255,0.06)}
+.brand-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.brand-name{font-weight:700;font-size:0.88rem;color:var(--white)}
+.brand-niche{font-size:0.75rem;color:rgba(255,255,255,0.5)}
+
+/* CLIENTS */
+.clients-bar{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:28px 40px;background:var(--primary)}
+.clients-inner{max-width:1280px;margin:0 auto}
+.clients-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:16px}
+.clients-logos{display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap}
+.client-name{font-weight:700;font-size:0.9rem;color:rgba(255,255,255,0.3);letter-spacing:0.04em}
+
+/* STATS */
+.stats-bar{background:var(--accent);padding:56px 40px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.stat-item{text-align:center;border-right:1px solid rgba(255,255,255,0.2)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.6rem;font-weight:800;color:var(--white);display:block}
+.stat-label{font-size:0.85rem;color:rgba(255,255,255,0.8);font-weight:500}
+
+/* SECTIONS */
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.5rem;font-weight:800;color:var(--text);margin-bottom:20px;letter-spacing:-0.01em}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:32px;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s}
+.service-card:hover{box-shadow:0 8px 40px rgba(0,112,243,0.1);transform:translateY(-3px);border-color:rgba(0,112,243,0.2)}
+.service-icon-wrap{width:52px;height:52px;background:rgba(0,112,243,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:20px}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.service-card p{font-size:0.88rem;color:var(--muted);line-height:1.65}
+.service-tag{display:inline-block;background:rgba(0,112,243,0.08);color:var(--accent);padding:4px 10px;border-radius:4px;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;margin-top:14px}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.testimonial-card{background:var(--white);border-radius:8px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid var(--border)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.testimonial-card p{font-size:0.93rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-initials{width:40px;height:40px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:0.82rem}
+.author-name{font-weight:600;font-size:0.88rem;color:var(--text)}
+.author-role{font-size:0.78rem;color:var(--muted)}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px}
+.value-card{text-align:center;padding:36px 24px;background:var(--card-bg);border-radius:8px;border:1px solid var(--border);transition:transform 0.2s}
+.value-card:hover{transform:translateY(-4px)}
+.value-icon{width:60px;height:60px;background:rgba(0,112,243,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 20px}
+.value-card h4{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.value-card p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),rgba(0,112,243,0.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1.1rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 16px rgba(0,112,243,0.4)}
+.step h4{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step p{font-size:0.83rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+
+/* CTA BAND */
+.cta-band{background:var(--primary);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(0,112,243,0.2),transparent 70%);pointer-events:none}
+.cta-band h2{font-size:2.8rem;font-weight:800;color:var(--white);margin-bottom:16px;position:relative}
+.cta-band p{font-size:1.1rem;color:rgba(255,255,255,0.7);margin-bottom:44px;max-width:540px;margin-left:auto;margin-right:auto;position:relative}
+.btn-cta{background:var(--accent);color:var(--white);padding:18px 48px;border-radius:6px;font-weight:700;font-size:1.05rem;display:inline-block;transition:background 0.2s;position:relative}
+.btn-cta:hover{background:#005BD3}
+
+/* FOOTER */
+footer{background:#060D18;padding:60px 40px 32px;color:rgba(255,255,255,0.6)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo img{height:32px;margin-bottom:16px;opacity:0.85}
+.footer-logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);display:block;margin-bottom:12px}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.55);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.88rem}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--accent);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-brands{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-wrapper{padding:120px 24px 0}
+  .hero-content{padding-bottom:60px}
+  .hero h1{font-size:2.4rem}
+  section{padding:80px 24px}
+  .stats-bar{padding:56px 24px}
+  .services-grid{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr 1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .how-steps::before{display:none}
+  .section-title{font-size:1.9rem}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .clients-logos{gap:20px}
+}
+@media(max-width:390px){
+  .hero h1{font-size:2rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-ghost{width:100%;text-align:center}
+  .how-steps{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://hirewithjarvis.com/wp-content/uploads/2021/06/Jarvis_White.png" alt="Hire With Jarvis" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">Hire With Jarvis</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Specializations</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="nav-cta">Work With Us</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Specializations</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#process" onclick="this.closest('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Work With Us</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero-wrapper">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          Global Multi-Brand Recruitment Leaders
+        </div>
+        <h1>Changing the Way<br>the World <span class="grad">Recruits</span></h1>
+        <p class="hero-sub">Jarvis Recruitment Group operates multiple specialized brands across eCommerce, SaaS, Cybersecurity, ERP, AI, and more — placing the right people, in the right seats, at the right time. Globally.</p>
+        <div class="hero-actions">
+          <a href="mailto:hello@hirewithjarvis.com" class="btn-primary">Start a Search</a>
+          <a href="mailto:hello@hirewithjarvis.com" class="btn-ghost">hello@hirewithjarvis.com</a>
+        </div>
+        <div class="hero-offices">
+          <div class="office-pill">Fort Lauderdale</div>
+          <div class="office-pill">New York</div>
+          <div class="office-pill">London</div>
+          <div class="office-pill">Delhi</div>
+          <div class="office-pill">Hong Kong</div>
+          <div class="office-pill">Sydney</div>
+          <div class="office-pill">+7 more</div>
+        </div>
+      </div>
+      <div class="hero-brands">
+        <div class="brands-label">Our Specialist Brands</div>
+        <div class="brand-row">
+          <div class="brand-item">
+            <div class="brand-dot" style="background:#0070F3"></div>
+            <div>
+              <div class="brand-name">Jarvis Cole</div>
+              <div class="brand-niche">eCommerce &amp; Direct to Consumer</div>
+            </div>
+          </div>
+          <div class="brand-item">
+            <div class="brand-dot" style="background:#00C2FF"></div>
+            <div>
+              <div class="brand-name">Jarvis Elliott</div>
+              <div class="brand-niche">SaaS &amp; Enterprise Technology</div>
+            </div>
+          </div>
+          <div class="brand-item">
+            <div class="brand-dot" style="background:#7C3AED"></div>
+            <div>
+              <div class="brand-name">Cybersecurity</div>
+              <div class="brand-niche">InfoSec &amp; Security Engineering</div>
+            </div>
+          </div>
+          <div class="brand-item">
+            <div class="brand-dot" style="background:#059669"></div>
+            <div>
+              <div class="brand-name">AI &amp; Machine Learning</div>
+              <div class="brand-niche">Data Science &amp; ML Engineering</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients-bar">
+  <div class="clients-inner">
+    <div class="clients-label">Trusted by leading organizations</div>
+    <div class="clients-logos">
+      <span class="client-name">TaylorMade</span>
+      <span class="client-name">Shopify</span>
+      <span class="client-name">Salesforce</span>
+      <span class="client-name">Tesla</span>
+      <span class="client-name">Apple</span>
+      <span class="client-name">Coca-Cola</span>
+      <span class="client-name">Pandora</span>
+      <span class="client-name">Patagonia</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <span class="stat-num">13+</span>
+      <span class="stat-label">Global Office Locations</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">6+</span>
+      <span class="stat-label">Specialist Recruitment Brands</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">8+</span>
+      <span class="stat-label">Industry Verticals</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">Global</span>
+      <span class="stat-label">Candidate &amp; Client Reach</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Specializations</div>
+      <h2 class="section-title">Deep Expertise. Dedicated Brands.</h2>
+      <p class="section-sub">We don't try to recruit everything. Each Jarvis brand operates with dedicated specialists who live and breathe their vertical — giving clients and candidates the depth that generalist firms can't match.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        </div>
+        <h3>eCommerce &amp; DTC</h3>
+        <p>Jarvis Cole specializes in eCommerce, direct-to-consumer, and wholesale recruitment — from merchants to VP of Merchandising.</p>
+        <span class="service-tag">Jarvis Cole</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>SaaS &amp; Enterprise Tech</h3>
+        <p>Jarvis Elliott recruits across the full SaaS spectrum — pre-sales, implementation, customer success, and executive leadership for software companies.</p>
+        <span class="service-tag">Jarvis Elliott</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Cybersecurity</h3>
+        <p>From SOC analysts to CISO level, we recruit across InfoSec, threat intelligence, compliance, and security engineering for organizations that can't afford gaps.</p>
+        <span class="service-tag">Cybersecurity</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>ERP Systems</h3>
+        <p>Infor, Epicor, Sage, and Microsoft Dynamics 365 — deep functional and technical placement across the full ERP ecosystem.</p>
+        <span class="service-tag">ERP</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Data scientists, ML engineers, and AI product leaders placed with companies building the next generation of intelligent systems.</p>
+        <span class="service-tag">AI / ML</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        </div>
+        <h3>Semiconductor &amp; Advanced Manufacturing</h3>
+        <p>Engineering and operations talent for the semiconductor sector and precision advanced manufacturing — where specialized knowledge matters most.</p>
+        <span class="service-tag">Semiconductor</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-title">What Our Partners Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Jarvis were willing to be creative. They not only had prepared tailored creative staffing solutions, but were very open to hearing from me any other options I wanted to explore."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">CL</div>
+          <div>
+            <div class="author-name">Client Partner</div>
+            <div class="author-role">Enterprise Technology Company</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Jarvis took a more personal approach and worked as a partner, rather than a money hungry head hunter."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">ES</div>
+          <div>
+            <div class="author-name">Eddie Spradley</div>
+            <div class="author-role">Magento Practice Leader</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Jarvis Cole provides a work environment that allows me to be my true authentic self and get support in all aspects of personal development."</p>
+        <div class="testimonial-author">
+          <div class="author-initials">PM</div>
+          <div>
+            <div class="author-name">Prince Menckeberger</div>
+            <div class="author-role">Talent Partner &amp; Head of Diversity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="about" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Our Values</div>
+      <h2 class="section-title">What Drives Every Placement</h2>
+      <p class="section-sub" style="margin:0 auto">Led by CEO Kevin Jarvis, who is passionate about helping organizations achieve greatness by placing the right people in the right seats at the right time.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h4>Respect</h4>
+        <p>Embracing diversity and delivering a world-class experience to every client, candidate, and colleague.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h4>Positivity</h4>
+        <p>Celebrating wins, eliminating negativity, and maintaining energy and drive through every challenge.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Commitment</h4>
+        <p>Living organizational values and doing the right thing — even when no one is watching.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>Success</h4>
+        <p>Building long-term relationships where both clients and candidates achieve outcomes that exceed expectations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Our Process</div>
+      <h2 class="section-title">How Jarvis Delivers</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Partner Intake</h4>
+        <p>We learn your business, culture, and what the ideal hire looks like — then assign a specialist from the right brand.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Global Search</h4>
+        <p>We activate our worldwide network and specialist pipelines across 13+ office locations to surface top talent.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>Curated Shortlist</h4>
+        <p>You receive a focused presentation of qualified candidates — not a resume dump. Every name is there for a reason.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>Offer &amp; Beyond</h4>
+        <p>We manage the offer process and maintain a partnership relationship long after placement is complete.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="mailto:hello@hirewithjarvis.com" class="btn-primary">Start a Search</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <div class="cta-band-glow"></div>
+    <h2>The Right People. The Right Seats.</h2>
+    <p>Ready to experience recruitment done differently? Connect with our team and let's find the talent that drives your next chapter.</p>
+    <a href="mailto:hello@hirewithjarvis.com" class="btn-cta">Contact Jarvis Today</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="footer-logo" src="https://hirewithjarvis.com/wp-content/uploads/2021/06/Jarvis_White.png" alt="Hire With Jarvis" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+        <span class="footer-logo-text" style="display:none">Hire With Jarvis</span>
+        <p style="margin-top:12px">Global multi-brand recruitment leaders. Changing the way the world recruits — one placement at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Specializations</h4>
+        <a href="#services">eCommerce (Jarvis Cole)</a>
+        <a href="#services">SaaS (Jarvis Elliott)</a>
+        <a href="#services">Cybersecurity</a>
+        <a href="#services">AI &amp; Machine Learning</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>hello@hirewithjarvis.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Fort Lauderdale, USA (Global HQ)</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span>13+ offices across 5 continents</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Jarvis Recruitment Group. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
