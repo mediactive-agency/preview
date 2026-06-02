@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motus Recruiting &amp; Staffing | Find the People Who Move Companies Forward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #111827; background: #fff; }
+  :root {
+    --primary: #0D4F4A;
+    --accent: #1A9E8F;
+    --accent-light: #2BBFAE;
+    --light: #F0FAF9;
+    --white: #fff;
+    --muted: #6B7280;
+    --border: #D1FAF5;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 999;
+    background: var(--white);
+    border-bottom: 1px solid #E5E7EB;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  .nav-logo img { height: 44px; width: auto; display: block; }
+  .nav-logo span { color: var(--primary); font-weight: 700; font-size: 1.1rem; font-family: 'Fraunces', serif; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: #374151; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--primary); color: #fff; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--primary); display: block; }
+
+  .hero {
+    padding: 100px 5%;
+    background: var(--primary);
+    min-height: 88vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(26,158,143,0.15);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+  .hero-text { color: #fff; }
+  .hero-rating { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+  .hero-rating .stars-row { display: flex; gap: 2px; }
+  .hero-rating span { font-size: 0.8rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 700; line-height: 1.15; margin-bottom: 20px; }
+  .hero h1 em { color: var(--accent-light); font-style: italic; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-accent { background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-accent:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); padding: 13px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+  .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .hs-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 18px; }
+  .hs-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--accent-light); display: block; }
+  .hs-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+  .hero-team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .team-card { border-radius: 12px; overflow: hidden; position: relative; }
+  .team-card img { width: 100%; height: 200px; object-fit: cover; object-position: center top; display: block; }
+  .team-card-name { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,79,74,0.9), transparent); padding: 20px 14px 12px; color: #fff; font-size: 0.8rem; font-weight: 600; }
+
+  .stats-bar { background: var(--light); padding: 64px 5%; }
+  .stats-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-around; gap: 32px; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 700; color: var(--primary); }
+  .stat-num em { color: var(--accent); font-style: normal; }
+  .stat-label { font-size: 0.875rem; color: var(--muted); margin-top: 6px; }
+
+  .services { padding: 100px 5%; background: var(--white); }
+  .section-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+  .section-label { color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 2.8vw, 2.6rem); color: var(--primary); font-weight: 700; margin-bottom: 16px; }
+  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .service-card { border-radius: 12px; padding: 36px 28px; border: 1px solid #E5E7EB; transition: border-color 0.2s, box-shadow 0.2s; }
+  .service-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(26,158,143,0.1); }
+  .service-icon { width: 48px; height: 48px; background: var(--light); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent); }
+  .service-card h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
+  .service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+  .testimonials { padding: 100px 5%; background: var(--light); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .testi-card { background: var(--white); border-radius: 12px; padding: 36px 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.05); }
+  .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+  .testi-card blockquote { font-size: 0.925rem; color: #374151; line-height: 1.75; font-style: italic; margin-bottom: 24px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .testi-name { font-weight: 700; font-size: 0.875rem; color: var(--primary); }
+
+  .about { padding: 100px 5%; background: var(--white); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1280px; margin: 0 auto; }
+  .about-text h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 2.5vw, 2.6rem); color: var(--primary); margin-bottom: 20px; font-weight: 700; }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+  .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .about-tag { background: var(--light); color: var(--primary); padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); }
+  .about-founder { }
+  .founder-img { width: 100%; border-radius: 16px; object-fit: cover; object-position: center top; max-height: 480px; display: block; box-shadow: 0 20px 60px rgba(13,79,74,0.15); }
+  .founder-caption { margin-top: 16px; text-align: center; }
+  .founder-name { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--primary); font-weight: 600; }
+  .founder-title { font-size: 0.8rem; color: var(--muted); }
+
+  .how { padding: 100px 5%; background: var(--light); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto 48px; }
+  .step { text-align: center; }
+  .step-circle { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; }
+  .step h4 { font-weight: 700; color: var(--primary); font-size: 1rem; margin-bottom: 8px; }
+  .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .how-cta { text-align: center; }
+
+  .cta-band { background: var(--primary); padding: 100px 5%; text-align: center; }
+  .cta-band h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
+  .cta-band p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+  footer { background: #071F1D; padding: 60px 5% 32px; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; max-width: 1280px; margin: 0 auto 40px; }
+  .footer-logo img { height: 40px; margin-bottom: 16px; display: block; filter: brightness(10); }
+  .footer-logo span { color: #fff; font-family: 'Fraunces', serif; font-size: 1.2rem; display: block; margin-bottom: 16px; }
+  .footer-desc { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+  .footer-contact-item svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; max-width: 1280px; margin: 0 auto; }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  .mediactive { color: var(--accent); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-team { display: none; }
+    .hero-stats { grid-template-columns: repeat(4, 1fr); }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .about-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--primary); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; font-size: 1.4rem; text-decoration: none; font-weight: 700; }
+    .mobile-menu .m-cta { background: var(--accent); padding: 14px 36px; border-radius: 6px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#testimonials">Results</a>
+  <a href="#about">About</a>
+  <a href="tel:5034961310" class="m-cta">Call Now</a>
+</div>
+<nav>
+  <div class="nav-logo">
+    <a href="#"><img src="https://motusrecruiting.com/wp-content/uploads/2017/04/Motus_Logo.png" alt="Motus Recruiting" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">Motus Recruiting</span></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">Process</a></li>
+  </ul>
+  <a href="tel:5034961310" class="nav-cta">503.496.1310</a>
+  <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-rating">
+        <div class="stars-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span>4.6-Star Rated on ClearlyRated</span>
+      </div>
+      <h1>Find the People Who <em>Move Companies</em> Forward</h1>
+      <p class="hero-sub">Motus Recruiting helps companies find people whose hearts, minds, and skills shape culture and move businesses forward — and helps people find the place to do their best work.</p>
+      <div class="hero-ctas">
+        <a href="tel:5034961310" class="btn-accent">Call 503.496.1310</a>
+        <a href="#services" class="btn-outline">See Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs-item">
+          <span class="hs-num">20+</span>
+          <div class="hs-label">Years in Business</div>
+        </div>
+        <div class="hs-item">
+          <span class="hs-num">268+</span>
+          <div class="hs-label">Clients Served</div>
+        </div>
+        <div class="hs-item">
+          <span class="hs-num">200+</span>
+          <div class="hs-label">People Placed Annually</div>
+        </div>
+        <div class="hs-item">
+          <span class="hs-num">4.6★</span>
+          <div class="hs-label">ClearlyRated Score</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-team">
+      <div class="team-card">
+        <img src="https://motusrecruiting.com/wp-content/uploads/2019/09/Orlando-square.png" alt="Orlando Williams" onerror="this.parentElement.style.display='none'">
+        <div class="team-card-name">Orlando Williams, Founder</div>
+      </div>
+      <div class="team-card">
+        <img src="https://motusrecruiting.com/wp-content/uploads/2023/02/Lyssa-Kohnke-square.png" alt="Lyssa Kohnke" onerror="this.parentElement.style.display='none'">
+        <div class="team-card-name">Lyssa Kohnke</div>
+      </div>
+      <div class="team-card">
+        <img src="https://motusrecruiting.com/wp-content/uploads/2022/10/Keela-square-2437x2437.jpg" alt="Keela Tillery" onerror="this.parentElement.style.display='none'">
+        <div class="team-card-name">Keela Tillery</div>
+      </div>
+      <div class="team-card">
+        <img src="https://motusrecruiting.com/wp-content/uploads/2023/05/Dre-square-1-scaled-2558x2558.jpg" alt="Dreshawn Vance" onerror="this.parentElement.style.display='none'">
+        <div class="team-card-name">Dreshawn Vance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up"><div class="stat-num"><em>20+</em></div><div class="stat-label">Years in Business</div></div>
+    <div class="stat-item fade-up"><div class="stat-num"><em>268+</em></div><div class="stat-label">Clients Served</div></div>
+    <div class="stat-item fade-up"><div class="stat-num"><em>200+</em></div><div class="stat-label">People Placed Annually</div></div>
+    <div class="stat-item fade-up"><div class="stat-num"><em>4.6★</em></div><div class="stat-label">ClearlyRated Score</div></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Full-Spectrum Recruiting and Staffing</h2>
+    <p class="section-sub">From entry-level to executive, Motus connects companies with talent that performs, stays, and contributes to lasting cultures.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h3>Executive Search</h3>
+      <p>Senior and C-level leaders who move organizations forward. We find leaders with the vision, experience, and cultural alignment your company needs.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Accounting and Finance</h3>
+      <p>CFOs, Controllers, Financial Analysts, and Accounting Managers placed with companies that need precision and integrity in every financial decision.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Professional Services</h3>
+      <p>Legal, marketing, operations, and HR professionals placed across industries in the Pacific Northwest and beyond.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+      <h3>IT and Technology</h3>
+      <p>Developers, engineers, data analysts, and technology leaders placed with companies building products and infrastructure that matter.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Interim Leadership</h3>
+      <p>Experienced interim leaders who step in during transitions, rapid growth, or organizational change to keep your business moving.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <h3>Contract to Hire</h3>
+      <p>Reduce hiring risk with flexible contract arrangements that give both parties time to confirm a great fit before committing to permanent employment.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-up">
+    <span class="section-label">Client Feedback</span>
+    <h2 class="section-title">What Clients Are Saying</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Motus clearly prioritizes inclusive strategies, ensuring recruitment practices that not only benefit candidates but also create a meaningful and equitable experience for everyone involved."</blockquote>
+      <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tria V.</div></div></div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"The team was highly responsive, had an extensive network, and quickly came up to speed on our needs. We could not have made the right hire without them."</blockquote>
+      <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Dawn C.</div></div></div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"We are not always perfectly dialed in ourselves, and the Motus team has been able to rearrange priorities in a nimble way. They are a true partner, not just a vendor."</blockquote>
+      <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Travis B.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-founder">
+      <img class="founder-img" src="https://motusrecruiting.com/wp-content/uploads/2019/09/Orlando-square.png" alt="Orlando Williams" onerror="this.style.display='none'">
+      <div class="founder-caption">
+        <div class="founder-name">Orlando Williams</div>
+        <div class="founder-title">Founder, Motus Recruiting &amp; Staffing</div>
+      </div>
+    </div>
+    <div class="about-text fade-up">
+      <span class="section-label">Our Story</span>
+      <h2>20 Years of Connecting People to Their Best Work</h2>
+      <p>Orlando Williams founded Motus in 2006 after recruiting for Nike. He previously worked with University of Oregon athletics and the Harlem Globetrotters — experiences that shaped his belief that people are an organization's most valuable asset, and that finding the right fit changes everything.</p>
+      <p>Based in Tigard, Oregon, Motus has grown into a team of dedicated recruiters serving clients across the Pacific Northwest and nationwide. We prioritize inclusive hiring practices, genuine relationships, and results that hold up over time.</p>
+      <p>With a 4.6-star rating on ClearlyRated and 268+ clients served, our track record speaks for itself — but we are most proud of the careers and cultures we have helped build along the way.</p>
+      <div class="about-tags">
+        <span class="about-tag">Founded 2006</span>
+        <span class="about-tag">Tigard, Oregon</span>
+        <span class="about-tag">4.6-Star Rated</span>
+        <span class="about-tag">268+ Clients</span>
+        <span class="about-tag">Inclusive Hiring</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-header fade-up">
+    <span class="section-label">How We Work</span>
+    <h2 class="section-title">A Process Built Around People</h2>
+    <p class="section-sub">Every search starts with listening and ends with a placement built to last.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up"><div class="step-circle">1</div><h4>Listening First</h4><p>We invest real time understanding your organization, your team, and what the right person truly looks like for this role.</p></div>
+    <div class="step fade-up"><div class="step-circle">2</div><h4>Network Activation</h4><p>We tap our 20+ years of relationships to surface candidates — both active and passive — who fit your specific needs.</p></div>
+    <div class="step fade-up"><div class="step-circle">3</div><h4>Thorough Vetting</h4><p>Every candidate is assessed for skills, culture fit, and long-term alignment before we introduce them to you.</p></div>
+    <div class="step fade-up"><div class="step-circle">4</div><h4>Lasting Placement</h4><p>We stay involved post-hire to ensure the match works — because our reputation is built on placements that hold up over time.</p></div>
+  </div>
+  <div class="how-cta"><a href="tel:5034961310" class="btn-accent">Talk to Our Team</a></div>
+</section>
+
+<section class="cta-band">
+  <div class="fade-up">
+    <h2>Ready to Build a Team That Moves?</h2>
+    <p>20 years of experience. 268+ clients served. 200+ people placed every year. Let Motus find the people who will shape your culture and move your company forward.</p>
+    <a href="tel:5034961310" class="btn-accent">Call 503.496.1310</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="https://motusrecruiting.com/wp-content/uploads/2017/04/Motus_Logo.png" alt="Motus" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">Motus Recruiting</span>
+      </div>
+      <p class="footer-desc">Find the people who move companies forward. Executive search, staffing, and recruiting for companies who understand that people are everything. Tigard, Oregon.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Executive Search</a></li>
+        <li><a href="#services">Accounting and Finance</a></li>
+        <li><a href="#services">Professional Services</a></li>
+        <li><a href="#services">IT and Technology</a></li>
+        <li><a href="#services">Interim Leadership</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <a href="tel:5034961310" style="color:rgba(255,255,255,0.4);text-decoration:none;">503.496.1310</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>6650 SW Redwood Lane, Suite 355, Tigard, OR 97224</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Motus Recruiting &amp; Staffing, Inc. All rights reserved. | Website by <span class="mediactive">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
