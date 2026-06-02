@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bryant Staffing Solutions | Recruiting Done Right!</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #08376B;
+  --accent: #0F4F87;
+  --light: #F0F4FA;
+  --white: #FFFFFF;
+  --text: #1A2232;
+  --muted: #5A6A82;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 16px rgba(8,55,107,0.10);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo img { height: 48px; object-fit: contain; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  background: var(--primary); color: var(--white);
+  padding: 10px 24px; border-radius: 6px; font-weight: 700; font-size: 15px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent); color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { display: block; width: 26px; height: 3px; background: var(--primary); border-radius: 2px; }
+.mobile-menu {
+  display: none; position: fixed; top: 72px; left: 0; right: 0;
+  background: var(--white); padding: 24px 32px; z-index: 99;
+  box-shadow: 0 8px 24px rgba(8,55,107,0.12);
+  flex-direction: column; gap: 20px;
+}
+.mobile-menu a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 16px; }
+.mobile-menu.open { display: flex; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  padding: 110px 40px 100px;
+  text-align: center; color: var(--white);
+}
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800; line-height: 1.15; margin-bottom: 20px;
+}
+.hero p {
+  font-size: clamp(16px, 2vw, 21px);
+  max-width: 640px; margin: 0 auto 36px;
+  opacity: 0.92; line-height: 1.6;
+}
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--white); color: var(--primary);
+  padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px;
+  text-decoration: none; transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover { background: #e8eef8; color: var(--primary); }
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.7); color: var(--white);
+  padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px;
+  text-decoration: none; transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
+
+/* STATS */
+.stats {
+  background: var(--primary);
+  padding: 48px 40px;
+  display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+}
+.stat-item {
+  text-align: center; color: var(--white);
+  padding: 16px 52px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 38px; font-weight: 800; line-height: 1;
+}
+.stat-label { font-size: 14px; opacity: 0.82; margin-top: 6px; font-weight: 500; }
+
+/* SECTIONS */
+section { padding: 96px 40px; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-tag {
+  font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 16px;
+}
+.section-sub { font-size: 17px; color: var(--muted); max-width: 620px; line-height: 1.7; margin-bottom: 52px; }
+
+/* SERVICES */
+.services-bg { background: var(--light); }
+.cards-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+.card {
+  background: var(--white); border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(8,55,107,0.09);
+  padding: 36px 28px; transition: box-shadow 0.2s;
+}
+.services-bg .card { background: var(--white); }
+.card-icon {
+  width: 52px; height: 52px; border-radius: 8px;
+  background: var(--light); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; font-size: 24px;
+}
+.card h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+.card p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+
+/* TESTIMONIALS */
+.testimonials-bg { background: var(--white); }
+.testimonial-card {
+  background: var(--light); border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(8,55,107,0.08);
+  padding: 40px 36px; max-width: 720px; margin: 0 auto;
+}
+.stars { color: #F5A623; font-size: 20px; margin-bottom: 16px; letter-spacing: 2px; }
+.testimonial-quote {
+  font-size: 18px; line-height: 1.75; color: var(--text);
+  font-style: italic; margin-bottom: 24px;
+}
+.testimonial-author { font-weight: 700; color: var(--primary); font-size: 15px; }
+
+/* HOW IT WORKS */
+.hiw-bg { background: var(--light); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.step {
+  background: var(--white); border-radius: 8px;
+  box-shadow: 0 2px 14px rgba(8,55,107,0.08);
+  padding: 36px 24px; text-align: center;
+}
+.step-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--primary); color: var(--white);
+  font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.step h3 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+.step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ABOUT */
+.about-bg { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.about-text .section-title { margin-bottom: 20px; }
+.about-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.about-highlights { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+.highlight-item { display: flex; align-items: center; gap: 14px; }
+.highlight-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.highlight-item span { font-size: 15px; color: var(--text); font-weight: 500; }
+.about-visual {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 8px; padding: 52px 40px; color: var(--white); text-align: center;
+}
+.about-visual h3 { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+.about-visual p { font-size: 15px; opacity: 0.88; line-height: 1.7; }
+.about-stats { display: flex; gap: 0; margin-top: 36px; }
+.about-stat { flex: 1; border-right: 1px solid rgba(255,255,255,0.25); padding: 0 16px; }
+.about-stat:last-child { border-right: none; }
+.about-stat strong { display: block; font-size: 28px; font-family: 'Montserrat', sans-serif; font-weight: 800; }
+.about-stat span { font-size: 12px; opacity: 0.8; }
+
+/* CTA BAND */
+.cta-band {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  padding: 96px 40px; text-align: center;
+}
+.cta-band h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(28px, 3.5vw, 44px); font-weight: 800;
+  color: var(--white); margin-bottom: 16px;
+}
+.cta-band p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+.btn-cta {
+  background: var(--white); color: var(--primary);
+  padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 17px;
+  text-decoration: none; display: inline-block; transition: background 0.2s;
+}
+.btn-cta:hover { background: #e8eef8; }
+
+/* FOOTER */
+footer {
+  background: var(--primary); color: rgba(255,255,255,0.75);
+  padding: 56px 40px 32px;
+}
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-brand img { height: 44px; margin-bottom: 16px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; }
+.footer-col h4 { color: var(--white); font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a, .footer-col p { color: rgba(255,255,255,0.72); font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 13px; }
+.footer-bottom a { color: #7BAADF; text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { color: var(--white); }
+
+/* FADE UP */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 72px 24px; }
+  .hero { padding: 80px 24px; }
+  .stats { padding: 36px 24px; }
+  .stat-item { padding: 16px 28px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .about-stats { flex-direction: column; gap: 16px; }
+  .about-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 16px; }
+  .about-stat:last-child { border-bottom: none; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://static.wixstatic.com/media/1f988e_591d64949ae1447ba84d18fdea3710e2~mv2.png" alt="Bryant Staffing Solutions">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:9197065985" class="nav-cta">919.706.5985</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#industries">Industries</a>
+  <a href="#about">About</a>
+  <a href="tel:9197065985">919.706.5985</a>
+</div>
+
+<section class="hero">
+  <h1 class="fade-up">Recruiting Done Right!</h1>
+  <p class="fade-up">Bryant Staffing Solutions connects top-tier talent with organizations nationwide. From direct placement to executive recruiting, we deliver candidates who surpass expectations.</p>
+  <div class="hero-btns fade-up">
+    <a href="#contact" class="btn-primary">Let's Build Your Team</a>
+    <a href="#services" class="btn-outline">Our Services</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-item fade-up">
+    <div class="stat-num">Nationwide</div>
+    <div class="stat-label">+ Canada Coverage</div>
+  </div>
+  <div class="stat-item fade-up">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Industry Specializations</div>
+  </div>
+  <div class="stat-item fade-up">
+    <div class="stat-num">5+</div>
+    <div class="stat-label">Service Lines</div>
+  </div>
+  <div class="stat-item fade-up">
+    <div class="stat-num">NC</div>
+    <div class="stat-label">Headquartered</div>
+  </div>
+</div>
+
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up">What We Do</div>
+    <h2 class="section-title fade-up">Staffing Solutions That Deliver</h2>
+    <p class="section-sub fade-up">From contract placements to executive search, Bryant Staffing Solutions offers comprehensive recruiting services tailored to your organization's unique needs.</p>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="26" height="26" fill="none" stroke="#08376B" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Direct Placement</h3>
+        <p>Permanent, full-time placements matched precisely to your culture and technical requirements. We own the search from sourcing to offer acceptance.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="26" height="26" fill="none" stroke="#08376B" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Contract Staffing</h3>
+        <p>Flexible contract and contract-to-hire talent deployed quickly to address project-based needs, seasonal demand, or workforce gaps.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="26" height="26" fill="none" stroke="#08376B" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Healthcare Staffing</h3>
+        <p>Specialized recruiting for clinical and administrative healthcare roles including specialty nurses, directors, and hospital leadership across the country.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="26" height="26" fill="none" stroke="#08376B" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Talent Acquisition</h3>
+        <p>Strategic talent acquisition consulting to build scalable hiring processes, reduce time-to-fill, and improve quality of hire across your organization.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="26" height="26" fill="none" stroke="#08376B" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Executive Recruiting</h3>
+        <p>C-suite and senior leadership search built on confidentiality, deep industry networks, and a rigorous vetting process that delivers leaders who perform.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="26" height="26" fill="none" stroke="#08376B" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Nationwide Reach</h3>
+        <p>Based in North Carolina with active recruiting coverage across all 50 states and Canada. Distance is never a barrier to finding the right candidate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials-bg">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-tag fade-up">Client Success</div>
+    <h2 class="section-title fade-up" style="margin-bottom:48px;">What Our Clients Say</h2>
+    <div class="testimonial-card fade-up">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testimonial-quote">"Bryant Staffing Solutions has been instrumental in addressing our staffing needs by providing us with a steady stream of highly qualified candidates who not only meet but often surpass our expectations."</p>
+      <p class="testimonial-author">Team at Hackensack Meridian Health</p>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="hiw-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">Our Process</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;">How We Work</h2>
+    <p class="section-sub fade-up" style="text-align:center;max-width:620px;margin:0 auto 52px;">A straightforward, transparent process that keeps you informed from first conversation to first day on the job.</p>
+    <div class="steps-grid">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3>Discovery Call</h3>
+        <p>We learn your organization's needs, culture, and what a great hire truly looks like for your team and role.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h3>Active Sourcing</h3>
+        <p>Our recruiters tap nationwide networks, databases, and direct outreach to surface the best available and passive candidates.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h3>Curated Shortlist</h3>
+        <p>You receive a hand-selected shortlist of thoroughly vetted candidates with detailed profiles and recruiter assessments.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h3>Placement and Support</h3>
+        <p>We manage the offer process and provide follow-up support through the first 90 days to ensure a successful start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag fade-up">About Bryant Staffing Solutions</div>
+        <h2 class="section-title fade-up">Recruiting Built on Trust, Results, and Relationships</h2>
+        <p class="fade-up">Bryant Staffing Solutions is a North Carolina-based recruiting firm operating nationwide and into Canada. We specialize in Healthcare, IT, Manufacturing, and cross-industry placements for organizations of every size.</p>
+        <p class="fade-up">Our recruiters bring deep market knowledge and a relationship-first philosophy to every search. We do not believe in presenting volume. We believe in presenting the right person at the right time.</p>
+        <div class="about-highlights fade-up">
+          <div class="highlight-item"><div class="highlight-dot"></div><span>Healthcare: Specialty Nursing, Directors, Hospital Leadership</span></div>
+          <div class="highlight-item"><div class="highlight-dot"></div><span>IT: Cybersecurity, Data Science, Architecture, Software Engineering</span></div>
+          <div class="highlight-item"><div class="highlight-dot"></div><span>Manufacturing: Plant Management, Operations, Engineering</span></div>
+          <div class="highlight-item"><div class="highlight-dot"></div><span>Aerospace, Government, Construction, Finance, Admin, and HR</span></div>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <h3>Dedicated to Your Success</h3>
+        <p>We go beyond resumes. Every candidate is assessed for culture alignment, technical capability, and long-term potential before a single introduction is made.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>4</strong><span>Industries</span></div>
+          <div class="about-stat"><strong>50+</strong><span>States Reached</span></div>
+          <div class="about-stat"><strong>NC</strong><span>HQ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="fade-up">Let's Build Your Team</h2>
+    <p class="fade-up">Whether you need one critical hire or a nationwide staffing strategy, Bryant Staffing Solutions is ready to deliver.</p>
+    <a href="https://www.team-bss.com" target="_blank" class="btn-cta fade-up">Start the Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://static.wixstatic.com/media/1f988e_591d64949ae1447ba84d18fdea3710e2~mv2.png" alt="Bryant Staffing Solutions">
+        <p>North Carolina-based recruiting firm delivering qualified talent across Healthcare, IT, Manufacturing, and beyond. Nationwide coverage including Canada.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <p>Direct Placement</p>
+        <p>Contract Staffing</p>
+        <p>Healthcare Staffing</p>
+        <p>Talent Acquisition</p>
+        <p>Executive Recruiting</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:9197065985">919.706.5985</a>
+        <a href="https://www.team-bss.com" target="_blank">www.team-bss.com</a>
+        <p>North Carolina HQ</p>
+        <p>Nationwide</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bryant Staffing Solutions. All rights reserved.</p>
+      <p>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
