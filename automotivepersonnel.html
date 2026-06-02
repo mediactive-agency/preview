@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automotive Personnel — Expert Recruiting. Proven Results.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #C41230;
+  --dark: #1A0509;
+  --accent: #E63946;
+  --light: #F5F6F8;
+  --white: #FFFFFF;
+  --text: #111827;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Barlow',sans-serif;line-height:1.15}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-text{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.1rem;color:var(--primary)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:600;color:var(--muted);letter-spacing:0.03em;transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:700;transition:background 0.2s!important}
+.nav-cta:hover{background:#9C0E25!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--primary);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:var(--text);padding:8px 0;border-bottom:1px solid var(--border)}
+.mobile-menu .nav-cta{background:var(--primary);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero-wrapper{background:var(--dark);padding:160px 40px 0;position:relative;overflow:hidden}
+.hero-wrapper::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end}
+.hero-content{padding-bottom:80px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(196,18,48,0.2);color:#FF6B7A;border:1px solid rgba(196,18,48,0.3);padding:6px 16px;border-radius:4px;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:3.8rem;font-weight:900;color:var(--white);margin-bottom:24px;letter-spacing:-0.02em}
+.hero h1 span{color:var(--primary)}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.7);margin-bottom:40px;line-height:1.7}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--primary);color:var(--white);padding:16px 36px;border-radius:6px;font-weight:700;font-size:1rem;transition:background 0.2s;display:inline-block;font-family:'Barlow',sans-serif;letter-spacing:0.02em}
+.btn-primary:hover{background:#9C0E25}
+.btn-outline{color:var(--white);border:2px solid rgba(255,255,255,0.3);padding:14px 32px;border-radius:6px;font-weight:700;font-size:0.95rem;display:inline-block;font-family:'Barlow',sans-serif;transition:border-color 0.2s,background 0.2s}
+.btn-outline:hover{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.05)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1);border-radius:12px;overflow:hidden}
+.hero-stat{background:rgba(255,255,255,0.05);padding:20px;text-align:center}
+.hero-stat-num{font-family:'Barlow',sans-serif;font-size:1.8rem;font-weight:900;color:var(--primary);display:block}
+.hero-stat-label{font-size:0.78rem;color:rgba(255,255,255,0.6);font-weight:500;margin-top:2px}
+.hero-img{position:relative;align-self:flex-end}
+.hero-img img{width:100%;max-height:480px;object-fit:cover;object-position:center top;border-radius:16px 16px 0 0;display:block}
+.hero-img-overlay{position:absolute;top:24px;right:24px;background:rgba(196,18,48,0.95);color:var(--white);padding:16px 20px;border-radius:10px;backdrop-filter:blur(8px)}
+.hero-img-overlay .num{font-family:'Barlow',sans-serif;font-size:2rem;font-weight:900;display:block}
+.hero-img-overlay .label{font-size:0.75rem;color:rgba(255,255,255,0.85);font-weight:600;letter-spacing:0.05em}
+
+/* STATS BAR */
+.stats-bar{background:var(--primary);padding:56px 40px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.stat-item{text-align:center;border-right:1px solid rgba(255,255,255,0.2)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Barlow',sans-serif;font-size:2.8rem;font-weight:900;color:var(--white);display:block}
+.stat-label{font-size:0.85rem;color:rgba(255,255,255,0.8);font-weight:500}
+
+/* SECTIONS */
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.section-title{font-size:2.6rem;font-weight:800;color:var(--text);margin-bottom:20px}
+.section-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.75}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px;transition:box-shadow 0.2s,transform 0.2s;border-top:4px solid var(--border)}
+.service-card:hover{box-shadow:0 8px 32px rgba(196,18,48,0.1);transform:translateY(-3px);border-top-color:var(--primary)}
+.service-icon-wrap{width:52px;height:52px;background:rgba(196,18,48,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:20px}
+.service-card h3{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.service-card p{font-size:0.9rem;color:var(--muted);line-height:1.65}
+
+/* DIFFERENTIATORS */
+.diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:60px}
+.diff-card{display:flex;gap:20px;align-items:flex-start;background:var(--white);padding:28px;border-radius:8px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.diff-icon{width:48px;height:48px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--white);flex-shrink:0}
+.diff-card h4{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.diff-card p{font-size:0.88rem;color:var(--muted);line-height:1.6}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary),rgba(196,18,48,0.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Barlow',sans-serif;font-weight:900;font-size:1.2rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 12px rgba(196,18,48,0.4)}
+.step h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text h2{font-size:2.4rem;font-weight:800;color:var(--text);margin-bottom:20px}
+.about-text p{font-size:0.97rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.about-warranties{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.warranty-item{background:var(--light);border-radius:8px;padding:20px;border-left:4px solid var(--primary)}
+.warranty-item .num{font-family:'Barlow',sans-serif;font-size:1.8rem;font-weight:900;color:var(--primary);display:block}
+.warranty-item .label{font-size:0.82rem;color:var(--muted);font-weight:500}
+.about-img-wrap{border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(196,18,48,0.15)}
+.about-img-wrap img{width:100%;height:480px;object-fit:cover;object-position:center;display:block}
+
+/* CTA BAND */
+.cta-band{background:var(--dark);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 50% 50%,rgba(196,18,48,0.15),transparent 60%)}
+.cta-band h2{font-size:2.8rem;font-weight:900;color:var(--white);margin-bottom:16px;position:relative}
+.cta-band p{font-size:1.1rem;color:rgba(255,255,255,0.7);margin-bottom:44px;max-width:540px;margin-left:auto;margin-right:auto;position:relative}
+.btn-cta{background:var(--primary);color:var(--white);padding:18px 48px;border-radius:6px;font-weight:800;font-size:1.1rem;display:inline-block;font-family:'Barlow',sans-serif;transition:background 0.2s;letter-spacing:0.03em;position:relative}
+.btn-cta:hover{background:#9C0E25}
+
+/* FOOTER */
+footer{background:#0D0205;padding:60px 40px 32px;color:rgba(255,255,255,0.65)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo-text{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.2rem;color:var(--white);margin-bottom:14px;display:block}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.88rem}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--primary)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--primary);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr;gap:48px}
+  .hero-img{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .diff-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-wrapper{padding:120px 24px 0}
+  .hero-content{padding-bottom:60px}
+  .hero h1{font-size:2.6rem}
+  section{padding:80px 24px}
+  .stats-bar{padding:56px 24px}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .how-steps::before{display:none}
+  .section-title{font-size:1.9rem}
+  .about-warranties{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:390px){
+  .hero h1{font-size:2.1rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-outline{width:100%;text-align:center}
+  .how-steps{grid-template-columns:1fr}
+  .about-warranties{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://lirp.cdn-website.com/a573c67c/dms3rep/multi/opt/auto_logo-338w-1920w.webp" alt="Automotive Personnel" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">Automotive Personnel</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#process" onclick="this.closest('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero-wrapper">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Since 1989 &mdash; Tampa, Florida
+        </div>
+        <h1>Expert Recruiting.<br><span>Proven Results.</span></h1>
+        <p class="hero-sub">We find the people who drive the automotive industry. From dealership operations to executive leadership, Automotive Personnel delivers 30+ years of precision placement with a 12-month warranty.</p>
+        <div class="hero-actions">
+          <a href="tel:2162268190" class="btn-primary">Call (216) 226-8190</a>
+          <a href="mailto:elom@automotivepersonnel.com" class="btn-outline">Send an Email</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">98%</span>
+            <span class="hero-stat-label">Accuracy Rate</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">96%</span>
+            <span class="hero-stat-label">Retention Rate</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">12 mo.</span>
+            <span class="hero-stat-label">Placement Warranty</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://lirp.cdn-website.com/a573c67c/dms3rep/multi/opt/auto_logo-338w-1920w.webp" alt="Automotive Personnel" style="border-radius:16px 16px 0 0;background:rgba(255,255,255,0.05);padding:60px;object-fit:contain;height:400px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <span class="stat-num">30+</span>
+      <span class="stat-label">Years in Automotive Recruiting</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">98%</span>
+      <span class="stat-label">Placement Accuracy Rate</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">96%</span>
+      <span class="stat-label">Long-Term Retention Rate</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">12 mo.</span>
+      <span class="stat-label">Warranty on All Placements</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Specializations</div>
+      <h2 class="section-title">The Full Automotive Spectrum</h2>
+      <p class="section-sub">From captive lenders to dealership floors, we recruit across every segment of the automotive industry with specialized expertise that generalist firms simply cannot match.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Automotive Finance</h3>
+        <p>Subprime and captive lender recruiting — from entry-level analysts to senior credit and portfolio management executives.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Dealership Operations</h3>
+        <p>All levels of dealership staffing — GMs, F&amp;I Managers, Sales Managers, Service Directors, and high-performing floor staff.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3>Automotive Aftermarket</h3>
+        <p>Parts, accessories, service, and aftermarket technology companies — finding the talent to keep growth moving forward.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        </div>
+        <h3>Executive Placement</h3>
+        <p>C-suite and VP-level search for automotive groups, finance companies, and OEM-affiliated businesses nationwide.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Four-Level Assessment</h3>
+        <p>Our proprietary candidate evaluation methodology ensures you only meet candidates who are qualified, committed, and culturally aligned.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>National Reach</h3>
+        <p>From Tampa to every major automotive market in the country — our network spans coast to coast with deep industry relationships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY AUTOMOTIVE PERSONNEL -->
+<section id="why" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center;margin-bottom:0">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">What Sets Us Apart</h2>
+      <p class="section-sub" style="margin:0 auto 0">In an industry where a bad hire costs more than just salary, our standards exist to protect your investment.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card fade-up">
+        <div class="diff-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h4>30+ Years of Automotive Focus</h4>
+          <p>Founded by Donald Jasensky in 1989, we have never worked outside the automotive industry. That depth of specialization is our entire advantage.</p>
+        </div>
+      </div>
+      <div class="diff-card fade-up">
+        <div class="diff-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h4>12-Month Placement Warranty</h4>
+          <p>We stand behind every placement with a full 12-month warranty. If the hire doesn't work out, we make it right — no questions asked.</p>
+        </div>
+      </div>
+      <div class="diff-card fade-up">
+        <div class="diff-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 6 13 17 8 12 2 18"/><polyline points="16 6 22 6 22 12"/></svg>
+        </div>
+        <div>
+          <h4>98% Accuracy Rate</h4>
+          <p>Our four-level candidate assessment methodology consistently produces placements that exceed client expectations and stand the test of time.</p>
+        </div>
+      </div>
+      <div class="diff-card fade-up">
+        <div class="diff-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+          <h4>96% Retention Rate</h4>
+          <p>Our placements stay because we spend the time to find candidates who are not just qualified, but genuinely committed to long-term success.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Our Process</div>
+      <h2 class="section-title">How We Deliver Results</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Client Discovery</h4>
+        <p>We learn your organization, open roles, compensation structure, and what winning looks like in this seat.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Candidate Sourcing</h4>
+        <p>We tap our 30+ year automotive network to identify top performers who match your exact profile.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>Four-Level Assessment</h4>
+        <p>Every candidate passes our proprietary evaluation before reaching your desk — skills, culture, commitment, and character.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>Placement + Warranty</h4>
+        <p>We facilitate the offer and back every placement with our industry-leading 12-month warranty.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="tel:2162268190" class="btn-primary">Start Your Search</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">Our Story</div>
+        <h2>Over 30 Years Driving the Automotive Industry Forward</h2>
+        <p>Automotive Personnel, LLC was founded by Donald Jasensky in 1989 with one clear mission: to bring world-class recruiting expertise specifically to the automotive sector. For over three decades, we have been the go-to recruiting partner for dealership groups, finance companies, and aftermarket businesses nationwide.</p>
+        <p>Based in Tampa, Florida, we operate Mon-Fri 9am-5pm and Saturday mornings — because the automotive industry doesn't follow a standard 9-to-5 schedule, and neither do we.</p>
+        <p>Our reputation is built on three numbers: 98% accuracy, 96% retention, and a 12-month warranty that protects every client investment we make.</p>
+        <div class="about-warranties">
+          <div class="warranty-item">
+            <span class="num">30+</span>
+            <span class="label">Years of Expertise</span>
+          </div>
+          <div class="warranty-item">
+            <span class="num">1989</span>
+            <span class="label">Founded by Donald Jasensky</span>
+          </div>
+          <div class="warranty-item">
+            <span class="num">98%</span>
+            <span class="label">Placement Accuracy</span>
+          </div>
+          <div class="warranty-item">
+            <span class="num">12 mo.</span>
+            <span class="label">Warranty on All Placements</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-img-wrap fade-up">
+        <img src="https://lirp.cdn-website.com/a573c67c/dms3rep/multi/opt/auto_logo-338w-1920w.webp" alt="Automotive Personnel" style="background:#111;padding:80px;object-fit:contain">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <h2>Find Your Next Automotive Leader</h2>
+    <p>30+ years. 98% accuracy. A 12-month warranty. Let's put our track record to work for your organization.</p>
+    <a href="tel:2162268190" class="btn-cta">Call (216) 226-8190</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">Automotive Personnel, LLC</span>
+        <p>Expert automotive recruiting since 1989. Serving dealerships, finance companies, and aftermarket businesses nationwide from our Tampa, Florida headquarters.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Automotive Finance</a>
+        <a href="#services">Dealership Operations</a>
+        <a href="#services">Aftermarket Recruiting</a>
+        <a href="#services">Executive Placement</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>(216) 226-8190</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>1-888-973-4473 (Toll-Free)</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>elom@automotivepersonnel.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Tampa, Florida</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Automotive Personnel, LLC. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
