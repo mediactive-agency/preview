@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR International | South Florida's Premier Executive Recruiting Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #003366;
+  --accent: #006699;
+  --light: #F0F4F8;
+  --white: #FFFFFF;
+  --text: #1A2530;
+  --muted: #4E637A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 16px rgba(0,51,102,0.10);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo { font-family: 'Crimson Pro', serif; font-size: 26px; font-weight: 700; color: var(--primary); letter-spacing: 0.5px; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--primary); color: var(--white); padding: 10px 24px; border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--accent); color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { display: block; width: 26px; height: 3px; background: var(--primary); border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 24px 32px; z-index: 99; box-shadow: 0 8px 24px rgba(0,51,102,0.12); flex-direction: column; gap: 20px; }
+.mobile-menu a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 16px; }
+.mobile-menu.open { display: flex; }
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #00264D 100%);
+  padding: 110px 40px 100px; text-align: center; color: var(--white);
+}
+.hero-badge { display: inline-block; border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 18px; border-radius: 20px; margin-bottom: 28px; }
+.hero h1 { font-family: 'Crimson Pro', serif; font-size: clamp(34px, 4.5vw, 58px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+.hero p { font-size: clamp(16px, 2vw, 20px); max-width: 680px; margin: 0 auto 36px; opacity: 0.88; line-height: 1.7; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { background: var(--white); color: var(--primary); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: #dce9f5; }
+.btn-outline { border: 2px solid rgba(255,255,255,0.6); color: var(--white); padding: 14px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.10); }
+
+.stats { background: var(--accent); padding: 48px 40px; display: flex; justify-content: center; flex-wrap: wrap; }
+.stat-item { text-align: center; color: var(--white); padding: 16px 48px; border-right: 1px solid rgba(255,255,255,0.25); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Crimson Pro', serif; font-size: 38px; font-weight: 700; line-height: 1; }
+.stat-label { font-size: 13px; opacity: 0.84; margin-top: 6px; font-weight: 500; }
+
+section { padding: 96px 40px; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-tag { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section-title { font-family: 'Crimson Pro', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 16px; }
+.section-sub { font-size: 17px; color: var(--muted); max-width: 640px; line-height: 1.78; margin-bottom: 52px; }
+
+.services-bg { background: var(--light); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.card { background: var(--white); border-radius: 8px; box-shadow: 0 2px 16px rgba(0,51,102,0.09); padding: 32px 26px; }
+.card-top-border { height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 24px; width: 40px; }
+.card h3 { font-family: 'Crimson Pro', serif; font-size: 19px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+.card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.testimonials-bg { background: var(--white); }
+.testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 860px; margin: 0 auto; }
+.tcard { background: var(--light); border-radius: 8px; box-shadow: 0 2px 14px rgba(0,51,102,0.07); padding: 36px 30px; }
+.stars { color: #C9992A; font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+.tcard-quote { font-family: 'Crimson Pro', serif; font-size: 16px; line-height: 1.78; color: var(--text); font-style: italic; margin-bottom: 22px; }
+.tcard-author { font-weight: 700; color: var(--primary); font-size: 14px; }
+.tcard-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.hiw-bg { background: var(--light); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { background: var(--white); border-radius: 8px; box-shadow: 0 2px 14px rgba(0,51,102,0.07); padding: 32px 22px; text-align: center; }
+.step-num { width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: var(--white); font-family: 'Crimson Pro', serif; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.step h3 { font-family: 'Crimson Pro', serif; font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.about-bg { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.about-text p { font-size: 16px; color: var(--muted); line-height: 1.82; margin-bottom: 16px; }
+.timeline { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+.timeline-item { display: flex; gap: 20px; padding-bottom: 24px; position: relative; }
+.timeline-item::before { content: ''; position: absolute; left: 19px; top: 32px; bottom: 0; width: 2px; background: var(--light); }
+.timeline-item:last-child::before { display: none; }
+.tl-year { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-align: center; line-height: 1.1; }
+.tl-content h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.tl-content p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.about-visual { background: linear-gradient(135deg, var(--primary) 0%, #00264D 100%); border-radius: 8px; padding: 48px 36px; color: var(--white); }
+.about-visual h3 { font-family: 'Crimson Pro', serif; font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+.about-visual p { font-size: 15px; opacity: 0.85; line-height: 1.75; margin-bottom: 20px; }
+.about-badges { display: flex; flex-direction: column; gap: 12px; }
+.badge-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.1); border-radius: 6px; font-size: 13px; font-weight: 600; }
+
+.cta-band { background: linear-gradient(135deg, var(--primary) 0%, #00264D 100%); padding: 96px 40px; text-align: center; }
+.cta-band h2 { font-family: 'Crimson Pro', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 700; color: var(--white); margin-bottom: 16px; }
+.cta-band p { font-size: 18px; color: rgba(255,255,255,0.82); margin-bottom: 40px; }
+.btn-cta { background: var(--white); color: var(--primary); padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-cta:hover { background: #dce9f5; }
+
+footer { background: var(--primary); color: rgba(255,255,255,0.72); padding: 56px 40px 32px; }
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-brand-name { font-family: 'Crimson Pro', serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; }
+.footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a, .footer-col p { color: rgba(255,255,255,0.70); font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.14); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 13px; }
+.footer-bottom a { color: #7BAADF; text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { color: var(--white); }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .testi-grid { grid-template-columns: 1fr; }
+  .testi-grid { max-width: 580px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 72px 24px; }
+  .hero { padding: 80px 24px; }
+  .stats { padding: 36px 20px; }
+  .stat-item { padding: 12px 20px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AR<span> International</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7869556946" class="nav-cta">786-955-6946</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#testimonials">Clients</a>
+  <a href="tel:7869556946">786-955-6946</a>
+</div>
+
+<section class="hero">
+  <div class="hero-badge fade-up">Established 1982 in South Florida</div>
+  <h1 class="fade-up">South Florida's Oldest and Most Established Recruiting Firm</h1>
+  <p class="fade-up">Over 44 years of executive recruiting and consulting excellence. One of the largest privately held recruiting firms in the Southeast, serving clients across the nation.</p>
+  <div class="hero-btns fade-up">
+    <a href="#contact" class="btn-primary">Start Your Executive Search</a>
+    <a href="#services" class="btn-outline">Our Services</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-item fade-up"><div class="stat-num">44+</div><div class="stat-label">Years in Business (1982)</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">50+</div><div class="stat-label">Employees</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">100+</div><div class="stat-label">Years Combined Experience</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">4x</div><div class="stat-label">South Florida's Largest Executive Recruiting Firms</div></div>
+</div>
+
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up">Our Practice Areas</div>
+    <h2 class="section-title fade-up">Comprehensive Recruiting and Consulting Services</h2>
+    <p class="section-sub fade-up">AR International delivers executive talent and consulting solutions across industries, with specialized divisions for legal, national, and C-suite recruitment.</p>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-top-border"></div>
+        <h3>Executive Recruiting</h3>
+        <p>Senior leadership and executive placement across industries conducted with full confidentiality, market rigor, and our unmatched 44-year professional network.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-top-border"></div>
+        <h3>Consulting Services</h3>
+        <p>Strategic HR and organizational consulting that helps companies optimize their talent strategy, workforce planning, and hiring infrastructure for scale.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-top-border"></div>
+        <h3>Legal Talent</h3>
+        <p>American Legal Recruiters, our dedicated legal division, places attorneys, paralegals, and legal operations professionals for law firms and corporate legal teams.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-top-border"></div>
+        <h3>National Recruitment Services</h3>
+        <p>Nationwide search capability built from decades of expanding our reach beyond South Florida. We recruit anywhere in the country with local market intelligence.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-top-border"></div>
+        <h3>C-Suite Search</h3>
+        <p>Board-level and C-suite search engagements for CEO, CFO, COO, CHRO, and CTO roles conducted with the discretion and thoroughness these searches demand.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-top-border"></div>
+        <h3>Professional Staffing</h3>
+        <p>Mid-level and professional placements for finance, operations, HR, marketing, and administrative roles across South Florida and nationally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials-bg">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-tag fade-up">Client Trust</div>
+    <h2 class="section-title fade-up" style="max-width:100%;margin-bottom:48px;">Trusted by South Florida's Leaders for Decades</h2>
+    <div class="testi-grid fade-up">
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"We have worked with AR International for three consecutive searches. Their professionalism, confidentiality, and ability to surface candidates who simply are not accessible on the open market continue to impress our board."</p>
+        <p class="tcard-author">Chairman</p>
+        <p class="tcard-role">Private Equity-Backed Financial Services Firm, Miami</p>
+      </div>
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tcard-quote">"AR International's 40-plus year presence in South Florida means they know everyone worth knowing. They placed our General Counsel in under eight weeks, with a shortlist that would have taken us months to build internally."</p>
+        <p class="tcard-author">CEO</p>
+        <p class="tcard-role">Regional Healthcare System, South Florida</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="hiw-bg">
+  <div class="section-inner">
+    <div class="section-tag fade-up" style="text-align:center;">Our Approach</div>
+    <h2 class="section-title fade-up" style="text-align:center;max-width:100%;margin-bottom:12px;">The AR International Search Process</h2>
+    <p class="section-sub fade-up" style="text-align:center;max-width:580px;margin:0 auto 52px;">A disciplined process refined over 44 years of executive search in South Florida and across the nation.</p>
+    <div class="steps-grid">
+      <div class="step fade-up"><div class="step-num">1</div><h3>Confidential Brief</h3><p>A private consultation to understand your search parameters, organizational priorities, and success metrics.</p></div>
+      <div class="step fade-up"><div class="step-num">2</div><h3>Market Research</h3><p>We leverage 44 years of professional relationships and market data to map available and approachable talent.</p></div>
+      <div class="step fade-up"><div class="step-num">3</div><h3>Candidate Vetting</h3><p>Rigorous interviews, reference checks, and assessment conducted by seasoned recruiters with deep domain expertise.</p></div>
+      <div class="step fade-up"><div class="step-num">4</div><h3>Guided Placement</h3><p>We manage the offer, negotiation, and transition process and provide post-placement support through the first year.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag fade-up">Our Story</div>
+        <h2 class="section-title fade-up">44 Years of Building Leaders Across South Florida</h2>
+        <p class="fade-up">AR International, Inc. is one of the largest privately held recruiting and consulting firms in the Southeast. Founded in 1982 as American Recruiters, we have grown into a full-service firm with over 50 employees and 100 years of combined professional experience.</p>
+        <div class="timeline fade-up">
+          <div class="timeline-item">
+            <div class="tl-year">1982</div>
+            <div class="tl-content"><h4>Founded as American Recruiters</h4><p>Established in South Florida as a boutique executive search firm.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-year">1987</div>
+            <div class="tl-content"><h4>National Expansion</h4><p>Extended recruiting capabilities across the United States.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-year">1990s</div>
+            <div class="tl-content"><h4>Full Service Firm</h4><p>Became a comprehensive recruiting and HR consulting organization.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-year">1999</div>
+            <div class="tl-content"><h4>Renamed AR International</h4><p>Reflecting our national and global recruiting reach.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-year">2000</div>
+            <div class="tl-content"><h4>American Legal Recruiters</h4><p>Launched dedicated legal talent division and was listed by South Florida Business Journal four consecutive years.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <h3>South Florida's Most Trusted Search Partner</h3>
+        <p>Named one of South Florida's largest Executive Recruiting Firms four consecutive years by the South Florida Business Journal. Our reputation is built on decades of results.</p>
+        <div class="about-badges">
+          <div class="badge-item">
+            <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Miami Lakes, FL Headquarters
+          </div>
+          <div class="badge-item">
+            <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            South Florida Business Journal Listed (4 Years)
+          </div>
+          <div class="badge-item">
+            <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            American Legal Recruiters Division
+          </div>
+          <div class="badge-item">
+            <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Nationwide Search Capabilities
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="fade-up">Start Your Executive Search</h2>
+    <p class="fade-up">With 44 years of South Florida recruiting excellence behind every search, AR International is the partner your organization can trust for critical leadership hires.</p>
+    <a href="https://ar-intl.com" target="_blank" class="btn-cta fade-up">Connect With Our Team</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">AR International, Inc.</div>
+        <p>South Florida's oldest and most established executive recruiting and consulting firm. Founded 1982. Serving clients nationally from Miami Lakes, FL.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <p>Executive Recruiting</p>
+        <p>C-Suite Search</p>
+        <p>Legal Talent</p>
+        <p>Consulting</p>
+        <p>National Recruitment</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:7869556946">786-955-6946</a>
+        <a href="tel:8774171271">877-417-1271 (Toll Free)</a>
+        <a href="https://ar-intl.com" target="_blank">ar-intl.com</a>
+        <p>8004 Miami Lakes Drive Box 668</p>
+        <p>Miami Lakes, FL 33016</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AR International, Inc. All rights reserved.</p>
+      <p>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
