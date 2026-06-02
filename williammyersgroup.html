@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>William Myers Group — Connecting Professionals to Careers Since 1833</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1C3256;
+  --accent: #B8963E;
+  --dark: #0F1C30;
+  --light: #F5F6F8;
+  --cream: #FAF8F4;
+  --white: #FFFFFF;
+  --text: #1A1A2E;
+  --muted: #6B7280;
+  --border: #E2E8F0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Crimson Pro',serif;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:76px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-text{font-family:'Crimson Pro',serif;font-weight:600;font-size:1.25rem;color:var(--primary)}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--muted);letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--primary);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:var(--text);padding:8px 0;border-bottom:1px solid var(--border)}
+.mobile-menu .nav-cta{background:var(--primary);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero{background:var(--dark);padding:160px 40px 100px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),rgba(184,150,62,0.3))}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,150,62,0.4);color:var(--accent);padding:7px 18px;border-radius:4px;font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px}
+.hero-content h1{font-size:3.6rem;font-weight:600;color:var(--white);margin-bottom:24px;letter-spacing:-0.01em}
+.hero-content h1 em{color:var(--accent);font-style:italic}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.7);margin-bottom:40px;line-height:1.75}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:52px}
+.btn-primary{background:var(--accent);color:var(--dark);padding:16px 36px;border-radius:6px;font-weight:700;font-size:0.95rem;transition:opacity 0.2s;display:inline-block;font-family:'Inter',sans-serif}
+.btn-primary:hover{opacity:0.88}
+.btn-outline{color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.3);padding:15px 32px;border-radius:6px;font-weight:500;font-size:0.9rem;display:inline-block;transition:border-color 0.2s}
+.btn-outline:hover{border-color:rgba(255,255,255,0.7)}
+.legacy-bar{display:flex;gap:40px;align-items:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1)}
+.legacy-item{text-align:center}
+.legacy-num{font-family:'Crimson Pro',serif;font-size:2.2rem;font-weight:700;color:var(--accent);display:block}
+.legacy-label{font-size:0.78rem;color:rgba(255,255,255,0.6);font-weight:500}
+.hero-visual-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:40px;backdrop-filter:blur(8px)}
+.heritage-year{font-family:'Crimson Pro',serif;font-size:6rem;font-weight:700;color:var(--accent);display:block;line-height:1;margin-bottom:8px;opacity:0.9}
+.heritage-label{font-size:1rem;color:rgba(255,255,255,0.7);margin-bottom:32px;font-style:italic}
+.heritage-bullets{display:flex;flex-direction:column;gap:16px}
+.hbullet{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,0.8);font-size:0.9rem}
+.hbullet-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+/* STATS */
+.stats-bar{background:var(--accent);padding:56px 40px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.stat-item{text-align:center;border-right:1px solid rgba(28,50,86,0.2)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Crimson Pro',serif;font-size:3rem;font-weight:700;color:var(--dark);display:block}
+.stat-label{font-size:0.88rem;color:rgba(28,50,86,0.7);font-weight:600}
+
+/* SECTIONS */
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.8rem;font-weight:600;color:var(--text);margin-bottom:20px}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:36px;transition:box-shadow 0.2s,transform 0.2s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.service-card:hover{box-shadow:0 8px 40px rgba(28,50,86,0.1);transform:translateY(-3px)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon-wrap{width:52px;height:52px;background:rgba(28,50,86,0.06);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:20px}
+.service-card h3{font-size:1.3rem;font-weight:600;color:var(--primary);margin-bottom:10px}
+.service-card p{font-size:0.9rem;color:var(--muted);line-height:1.65}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.testimonial-card{background:var(--cream);border-radius:8px;padding:36px;border:1px solid var(--border)}
+.stars{display:flex;gap:3px;margin-bottom:20px}
+.testimonial-card blockquote{font-family:'Crimson Pro',serif;font-size:1.15rem;color:var(--text);line-height:1.65;font-style:italic;margin-bottom:24px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-initials{width:40px;height:40px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:0.82rem}
+.author-name{font-weight:600;font-size:0.88rem;color:var(--primary)}
+.author-role{font-size:0.78rem;color:var(--muted)}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:var(--border);z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Crimson Pro',serif;font-weight:700;font-size:1.3rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 12px rgba(28,50,86,0.25)}
+.step h4{font-family:'Crimson Pro',serif;font-size:1.15rem;font-weight:600;color:var(--primary);margin-bottom:8px}
+.step p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+
+/* ABOUT */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text h2{font-size:2.6rem;margin-bottom:24px}
+.about-text p{font-size:0.97rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.about-gold-bar{width:60px;height:3px;background:var(--accent);margin:24px 0}
+.about-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.about-badge{background:var(--light);border:1px solid var(--border);padding:8px 16px;border-radius:4px;font-size:0.8rem;font-weight:600;color:var(--primary)}
+.about-img-wrap{background:var(--dark);border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(28,50,86,0.2);padding:60px;display:flex;align-items:center;justify-content:center}
+.about-img-wrap img{width:100%;object-fit:contain;height:280px}
+
+/* CTA BAND */
+.cta-band{background:var(--primary);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),rgba(184,150,62,0.3))}
+.cta-band h2{font-size:2.8rem;font-weight:600;color:var(--white);margin-bottom:16px}
+.cta-band p{font-size:1.05rem;color:rgba(255,255,255,0.72);margin-bottom:44px;max-width:540px;margin-left:auto;margin-right:auto}
+.btn-cta{background:var(--accent);color:var(--dark);padding:18px 48px;border-radius:6px;font-weight:700;font-size:1rem;display:inline-block;font-family:'Inter',sans-serif;transition:opacity 0.2s}
+.btn-cta:hover{opacity:0.88}
+
+/* FOOTER */
+footer{background:#080F1A;padding:60px 40px 32px;color:rgba(255,255,255,0.65)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo-text{font-family:'Crimson Pro',serif;font-weight:600;font-size:1.3rem;color:var(--white);display:block;margin-bottom:12px}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.88rem}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--accent);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual-card{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-split{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:120px 24px 80px}
+  .hero-content h1{font-size:2.6rem}
+  section{padding:80px 24px}
+  .stats-bar{padding:56px 24px}
+  .stats-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .how-steps::before{display:none}
+  .section-title{font-size:2rem}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .legacy-bar{gap:20px}
+}
+@media(max-width:390px){
+  .hero-content h1{font-size:2.1rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-outline{width:100%;text-align:center}
+  .how-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://www.williammyersgroup.com/wp-content/uploads/2018/11/WEBSITE-LOGO-300x49.png" alt="William Myers Group" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">William Myers Group</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#process" onclick="this.closest('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Get Started</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">A Family Business &mdash; Since 1833</div>
+        <h1>We Connect Professionals to <em>Careers</em> They're Proud Of</h1>
+        <p class="hero-sub">William Myers Group has been bringing the right people together for generations. With 190+ years of legacy and a modern approach to talent acquisition, we connect qualified professionals with employers who need them — faster, smarter, and with lasting results.</p>
+        <div class="hero-actions">
+          <a href="tel:8009200024" class="btn-primary">Call 800.920.0024</a>
+          <a href="mailto:info@williammyersgroup.com" class="btn-outline">Send a Message</a>
+        </div>
+        <div class="legacy-bar">
+          <div class="legacy-item">
+            <span class="legacy-num">190+</span>
+            <span class="legacy-label">Years of Legacy</span>
+          </div>
+          <div class="legacy-item">
+            <span class="legacy-num">1833</span>
+            <span class="legacy-label">Family Founded</span>
+          </div>
+          <div class="legacy-item">
+            <span class="legacy-num">USA</span>
+            <span class="legacy-label">Nationwide Service</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual-card">
+        <span class="heritage-year">1833</span>
+        <div class="heritage-label">A family business built on trust and results</div>
+        <div class="heritage-bullets">
+          <div class="hbullet">
+            <div class="hbullet-dot"></div>
+            190+ years of connecting people to great careers
+          </div>
+          <div class="hbullet">
+            <div class="hbullet-dot"></div>
+            Employers: reduce hiring time and cost significantly
+          </div>
+          <div class="hbullet">
+            <div class="hbullet-dot"></div>
+            Candidates: access to exclusive, high-paying roles
+          </div>
+          <div class="hbullet">
+            <div class="hbullet-dot"></div>
+            Personalized support from discovery to offer
+          </div>
+          <div class="hbullet">
+            <div class="hbullet-dot"></div>
+            Columbia, MO &mdash; serving professionals nationwide
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <span class="stat-num">190+</span>
+      <span class="stat-label">Years in Business</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">1833</span>
+      <span class="stat-label">Family Business Founded</span>
+    </div>
+    <div class="stat-item fade-up">
+      <span class="stat-num">Both</span>
+      <span class="stat-label">Employers &amp; Candidates Served</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Recruitment Built on Relationships</h2>
+      <p class="section-sub">Whether you are hiring or looking for your next role, we deliver the kind of personalized service that only comes from a team that has been doing this for generations.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Employer Talent Solutions</h3>
+        <p>We identify, qualify, and deliver professionals who match your open positions — saving you time, reducing cost-to-hire, and eliminating guesswork.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        </div>
+        <h3>Professional Job Matching</h3>
+        <p>Candidates gain exclusive access to high-paying opportunities that fit their skills, goals, and lifestyle — with personal support at every step of the search.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Talent Network Access</h3>
+        <p>Our curated professional network spans industries and geographies — giving both employers and candidates access to connections they wouldn't find anywhere else.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Rapid Time to Fill</h3>
+        <p>We streamline the hiring process so your positions don't stay open. Faster hiring means less productivity loss and lower cost-per-hire for your organization.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Long-Term Career Development</h3>
+        <p>We are not just filling roles. We help professionals "be the best" through ongoing support, career guidance, and access to opportunities that match long-term ambitions.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Nationwide Placement</h3>
+        <p>Headquartered in Columbia, Missouri, we connect professionals and employers across every major market in the United States with local knowledge and national scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">Legacy &amp; Trust</div>
+      <h2 class="section-title">190 Years Built on Results</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"William Myers Group found us candidates we never would have found on our own. Their process saved us weeks and the quality was immediately apparent."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-initials">MR</div>
+          <div>
+            <div class="author-name">Hiring Manager</div>
+            <div class="author-role">Regional Employer, Midwest</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"I landed a role that was a perfect fit — better pay, better culture, closer to what I actually wanted in my career. The team genuinely cared about my success."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-initials">JL</div>
+          <div>
+            <div class="author-name">Placed Candidate</div>
+            <div class="author-role">Professional, Columbia MO</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"A family business with family values. The commitment and integrity they bring to every search is something you don't see from the big staffing firms."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-initials">TW</div>
+          <div>
+            <div class="author-name">VP of Human Resources</div>
+            <div class="author-role">Long-Term Client Partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">Our Process</div>
+      <h2 class="section-title">Simple, Personal, Effective</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Connect With Us</h4>
+        <p>Employers share their open roles. Candidates share their goals. We listen carefully before we act.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Profile &amp; Match</h4>
+        <p>We identify the precise characteristics of the ideal fit and search our curated talent network accordingly.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>Introduction &amp; Interview</h4>
+        <p>We make warm, contextualized introductions — not blind referrals. Both parties arrive informed and ready.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>Placement &amp; Support</h4>
+        <p>We see every search through to a successful placement and remain available long after the offer is signed.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="tel:8009200024" class="btn-primary" style="background:var(--primary);color:var(--white)">Start Your Search</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="about-split">
+      <div class="about-text fade-up">
+        <div class="section-label">Our Heritage</div>
+        <h2 class="section-title">190 Years, One Mission</h2>
+        <div class="about-gold-bar"></div>
+        <p>William Myers Group LLC is one of the most enduring family businesses in American recruiting. Founded in 1833, we have guided professionals toward fulfilling careers and helped organizations build the teams that drive their missions forward — for nearly two centuries.</p>
+        <p>Based in Columbia, Missouri, we bring a personal touch to every search. Our philosophy is simple: develop people to "be the best" through genuine commitment, direct support, and access to opportunities that match both their skills and their aspirations.</p>
+        <p>We serve both employers and job seekers — because a great placement requires both sides to win.</p>
+        <div class="about-badges">
+          <span class="about-badge">Family Business Since 1833</span>
+          <span class="about-badge">Columbia, MO</span>
+          <span class="about-badge">Nationwide Reach</span>
+        </div>
+      </div>
+      <div class="about-img-wrap fade-up">
+        <img src="https://www.williammyersgroup.com/wp-content/uploads/2018/11/WEBSITE-LOGO-300x49.png" alt="William Myers Group">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <h2>190 Years of Getting It Right</h2>
+    <p>Whether you need to fill a critical role or find a better career, the William Myers Group is ready to help. Call us or send a message today.</p>
+    <a href="tel:8009200024" class="btn-cta">Call 800.920.0024</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">William Myers Group LLC</span>
+        <p>A family business connecting professionals to careers since 1833. Serving employers and candidates nationwide from Columbia, Missouri.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Employer Solutions</a>
+        <a href="#services">Job Matching</a>
+        <a href="#services">Talent Network</a>
+        <a href="#services">Career Development</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>800.920.0024</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>info@williammyersgroup.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>503 E. Nifong Blvd, Suite H #174, Columbia MO 65201</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 William Myers Group LLC. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
