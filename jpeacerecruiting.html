@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J. Peace Recruiting — Machining Industry Recruitment Done Right</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1A1A1A;
+  --accent: #E85D04;
+  --accent2: #FB923C;
+  --dark: #0D0D0D;
+  --light: #F5F5F5;
+  --white: #FFFFFF;
+  --text: #111111;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --card-dark: #1E1E1E;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.15}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,26,26,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:40px;object-fit:contain}
+.nav-logo-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:10px 24px;border-radius:6px;font-weight:600;transition:background 0.2s!important}
+.nav-cta:hover{background:#C44A00!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:#1A1A1A;border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 40px;z-index:999;flex-direction:column;gap:16px}
+.mobile-menu a{font-size:1rem;color:rgba(255,255,255,0.8);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.mobile-menu .nav-cta{background:var(--accent);color:var(--white);text-align:center;padding:14px;border-radius:6px;border:none}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero-wrapper{background:var(--dark);padding:160px 40px 0;position:relative;overflow:hidden}
+.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px);pointer-events:none}
+.hero-accent-line{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),rgba(232,93,4,0.3))}
+.hero{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;position:relative}
+.hero-content{padding-bottom:80px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(232,93,4,0.12);color:var(--accent2);border:1px solid rgba(232,93,4,0.2);padding:7px 16px;border-radius:4px;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:3.4rem;font-weight:700;color:var(--white);margin-bottom:24px;letter-spacing:-0.02em}
+.hero h1 .hl{color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:36px;line-height:1.75;max-width:480px}
+.hero-offer{background:rgba(232,93,4,0.1);border:1px solid rgba(232,93,4,0.2);border-radius:10px;padding:20px 24px;margin-bottom:36px;display:flex;align-items:center;gap:14px}
+.hero-offer-icon{color:var(--accent);flex-shrink:0}
+.hero-offer-text{font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.5}
+.hero-offer-text strong{color:var(--white);display:block;font-size:0.95rem;margin-bottom:2px}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--accent);color:var(--white);padding:16px 36px;border-radius:6px;font-weight:700;font-size:1rem;transition:background 0.2s;display:inline-block}
+.btn-primary:hover{background:#C44A00}
+.btn-ghost{color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.18);padding:15px 28px;border-radius:6px;font-weight:600;font-size:0.9rem;display:inline-block;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5)}
+.hero-proof-row{display:flex;gap:32px}
+.hero-proof-item{text-align:center}
+.hero-proof-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);display:block}
+.hero-proof-label{font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:500}
+.hero-visual{padding-bottom:40px}
+.cost-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;margin-bottom:16px}
+.cost-card-title{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px}
+.cost-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cost-row:last-child{border-bottom:none}
+.cost-label{font-size:0.85rem;color:rgba(255,255,255,0.65)}
+.cost-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.9rem}
+.cost-high{color:#F87171}
+.cost-low{color:#34D399}
+.savings-badge{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.savings-badge-label{font-size:0.82rem;color:rgba(255,255,255,0.6)}
+.savings-badge-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#34D399}
+
+/* PRICING */
+.pricing-section{background:var(--primary)}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:60px}
+.pricing-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:32px;position:relative;transition:border-color 0.2s,transform 0.2s}
+.pricing-card:hover{border-color:rgba(232,93,4,0.4);transform:translateY(-4px)}
+.pricing-card.featured{background:rgba(232,93,4,0.08);border-color:var(--accent);transform:translateY(-8px)}
+.pricing-card.featured:hover{transform:translateY(-12px)}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--white);padding:4px 16px;border-radius:20px;font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:0.04em}
+.pricing-tier{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px}
+.pricing-price{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.pricing-price span{font-size:1rem;font-weight:500;color:rgba(255,255,255,0.5)}
+.pricing-per{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:20px}
+.pricing-capacity{font-size:0.88rem;color:rgba(255,255,255,0.65);margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.pricing-features{display:flex;flex-direction:column;gap:10px}
+.pricing-feature{display:flex;align-items:center;gap:10px;font-size:0.83rem;color:rgba(255,255,255,0.7)}
+.pricing-feature svg{color:var(--accent);flex-shrink:0}
+.pricing-cta{margin-top:24px}
+.btn-pricing{display:block;text-align:center;background:rgba(255,255,255,0.07);color:var(--white);padding:12px;border-radius:6px;font-weight:600;font-size:0.88rem;transition:background 0.2s}
+.btn-pricing:hover{background:rgba(255,255,255,0.12)}
+.pricing-card.featured .btn-pricing{background:var(--accent)}
+.pricing-card.featured .btn-pricing:hover{background:#C44A00}
+.pricing-note{text-align:center;margin-top:40px;font-size:0.88rem;color:rgba(255,255,255,0.5)}
+.pricing-note strong{color:rgba(255,255,255,0.75)}
+
+/* SECTIONS */
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.4rem;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.02em}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:32px;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s}
+.service-card:hover{box-shadow:0 8px 40px rgba(232,93,4,0.08);transform:translateY(-3px);border-color:rgba(232,93,4,0.25)}
+.service-icon-wrap{width:52px;height:52px;background:rgba(232,93,4,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:20px}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.service-card p{font-size:0.88rem;color:var(--muted);line-height:1.65}
+
+/* VS TABLE */
+.vs-table{margin-top:60px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.vs-header{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--light)}
+.vs-header-cell{padding:16px 20px;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)}
+.vs-header-cell.highlight{background:var(--accent);color:var(--white)}
+.vs-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-top:1px solid var(--border)}
+.vs-row:nth-child(even){background:var(--light)}
+.vs-cell{padding:14px 20px;font-size:0.88rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.vs-cell.feature-name{font-weight:600;color:var(--text)}
+.vs-cell.highlight{background:rgba(232,93,4,0.04)}
+.check{color:#10B981}
+.cross{color:#EF4444}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),rgba(232,93,4,0.15));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-num{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:1.1rem;margin:0 auto 20px;border:3px solid var(--white);box-shadow:0 4px 16px rgba(232,93,4,0.45)}
+.step h4{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step p{font-size:0.83rem;color:var(--muted);line-height:1.6}
+.how-cta{text-align:center;margin-top:48px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text h2{font-size:2.2rem;font-weight:700;color:var(--text);margin-bottom:20px}
+.about-text p{font-size:0.97rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.about-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.about-badge{background:var(--light);border:1px solid var(--border);padding:8px 16px;border-radius:4px;font-size:0.8rem;font-weight:600;color:var(--text)}
+.about-visual{background:var(--dark);border-radius:16px;padding:40px;box-shadow:0 24px 80px rgba(0,0,0,0.2)}
+.about-vis-title{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:24px}
+.calc-row{margin-bottom:20px}
+.calc-label{font-size:0.82rem;color:rgba(255,255,255,0.55);margin-bottom:6px}
+.calc-value{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white)}
+.calc-value.red{color:#F87171}
+.calc-value.green{color:#34D399}
+.calc-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:20px 0}
+.calc-savings{background:rgba(16,185,129,0.1);border-radius:8px;padding:16px;text-align:center}
+.calc-savings-label{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-bottom:4px}
+.calc-savings-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:#34D399}
+
+/* CTA BAND */
+.cta-band{background:var(--accent);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.15),transparent)}
+.cta-band h2{font-size:2.6rem;font-weight:700;color:var(--white);margin-bottom:16px;position:relative}
+.cta-band p{font-size:1.1rem;color:rgba(255,255,255,0.82);margin-bottom:44px;max-width:520px;margin-left:auto;margin-right:auto;position:relative}
+.btn-cta{background:var(--white);color:var(--accent);padding:18px 48px;border-radius:6px;font-weight:700;font-size:1.05rem;display:inline-block;transition:opacity 0.2s;position:relative}
+.btn-cta:hover{opacity:0.92}
+
+/* FOOTER */
+footer{background:var(--dark);padding:60px 40px 32px;color:rgba(255,255,255,0.65)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);display:block;margin-bottom:12px}
+.footer-brand p{font-size:0.88rem;line-height:1.6}
+.footer-col h4{font-size:0.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.88rem;margin-bottom:10px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:0.88rem}
+.footer-contact-item svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.8rem}
+.footer-bottom a{color:var(--accent);font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-card.featured{transform:none}
+  .pricing-card.featured:hover{transform:translateY(-4px)}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-wrapper{padding:120px 24px 0}
+  .hero-content{padding-bottom:60px}
+  .hero h1{font-size:2.4rem}
+  section{padding:80px 24px}
+  .pricing-section{padding:80px 24px}
+  .services-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .how-steps::before{display:none}
+  .section-title{font-size:1.9rem}
+  .vs-table{overflow-x:auto}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .hero-proof-row{gap:20px}
+}
+@media(max-width:390px){
+  .hero h1{font-size:2rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-ghost{width:100%;text-align:center}
+  .how-steps{grid-template-columns:1fr}
+  .hero-proof-row{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/747c83_49fa00aa0c2b401483e6e5e66a8ff297~mv2.png" alt="J. Peace Recruiting" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none">J. Peace Recruiting</span>
+  </a>
+  <div class="nav-links">
+    <a href="#pricing">Pricing</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#pricing" onclick="this.closest('.mobile-menu').classList.remove('open')">Pricing</a>
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#contact" class="nav-cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Get Started</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero-wrapper">
+    <div class="hero-pattern"></div>
+    <div class="hero-accent-line"></div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Machining Industry Fractional RPO
+        </div>
+        <h1>Machining Industry<br>Recruitment <span class="hl">Done Right</span></h1>
+        <p class="hero-sub">Flat monthly rate. Unlimited hires. Scalable support built specifically for CNC machining, fabrication, welding, and precision manufacturing — by people who know the shop floor.</p>
+        <div class="hero-offer">
+          <div class="hero-offer-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="hero-offer-text">
+            <strong>One hire often covers your entire month</strong>
+            A single CNC Machinist placement via traditional recruiting costs $12,000 to $14,000. Our Growth plan is $4,500/month — unlimited hires.
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="mailto:Justin@jpeacerecruiting.com" class="btn-primary">Start Your Search</a>
+          <a href="#pricing" class="btn-ghost">View Pricing</a>
+        </div>
+        <div class="hero-proof-row">
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">4</span>
+            <span class="hero-proof-label">Pricing Tiers</span>
+          </div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">Unlimited</span>
+            <span class="hero-proof-label">Hires Per Month</span>
+          </div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">Pause</span>
+            <span class="hero-proof-label">Anytime Flexibility</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="cost-card">
+          <div class="cost-card-title">Traditional Recruiting vs. JPR</div>
+          <div class="cost-row">
+            <span class="cost-label">Contingency fee (20%) per hire</span>
+            <span class="cost-value cost-high">$12,000+</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-label">3 skilled hires (traditional)</span>
+            <span class="cost-value cost-high">$45,000–$60,000</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-label">JPR Growth Plan — 3 months</span>
+            <span class="cost-value cost-low">$13,500</span>
+          </div>
+        </div>
+        <div class="savings-badge">
+          <div>
+            <div class="savings-badge-label">Potential savings on 3 hires</div>
+          </div>
+          <div class="savings-badge-num">$46,500</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section" style="padding:100px 40px">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label" style="color:rgba(255,255,255,0.5)">Simple Pricing</div>
+      <h2 class="section-title" style="color:var(--white)">Flat Rate. Unlimited Hires. No Surprises.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.55);margin:0 auto">Every plan includes unlimited hires, full-cycle recruiting support, and the flexibility to pause anytime. Choose the scale that matches your current hiring volume.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Essential</div>
+        <div class="pricing-price">$2,500<span>/mo</span></div>
+        <div class="pricing-per">Flat monthly rate</div>
+        <div class="pricing-capacity">Up to 5 unique roles at a time</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited hires
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full-cycle recruiting
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Pause anytime
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Candidate delivery
+          </div>
+        </div>
+        <div class="pricing-cta">
+          <a href="mailto:Justin@jpeacerecruiting.com" class="btn-pricing">Get Started</a>
+        </div>
+      </div>
+      <div class="pricing-card featured fade-up">
+        <div class="popular-badge">Most Popular</div>
+        <div class="pricing-tier">Growth</div>
+        <div class="pricing-price">$4,500<span>/mo</span></div>
+        <div class="pricing-per">Flat monthly rate</div>
+        <div class="pricing-capacity">Up to 10 unique roles at a time</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited hires
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full-cycle recruiting
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Pause anytime
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority candidate delivery
+          </div>
+        </div>
+        <div class="pricing-cta">
+          <a href="mailto:Justin@jpeacerecruiting.com" class="btn-pricing">Get Started</a>
+        </div>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Scale</div>
+        <div class="pricing-price">$6,500<span>/mo</span></div>
+        <div class="pricing-per">Flat monthly rate</div>
+        <div class="pricing-capacity">Up to 15 unique roles at a time</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited hires
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full-cycle recruiting
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Pause anytime
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Dedicated account support
+          </div>
+        </div>
+        <div class="pricing-cta">
+          <a href="mailto:Justin@jpeacerecruiting.com" class="btn-pricing">Get Started</a>
+        </div>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price">$8,500<span>/mo</span></div>
+        <div class="pricing-per">Flat monthly rate</div>
+        <div class="pricing-capacity">Up to 20 unique roles at a time</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited hires
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full-cycle recruiting
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Pause anytime
+          </div>
+          <div class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full embedded RPO support
+          </div>
+        </div>
+        <div class="pricing-cta">
+          <a href="mailto:Justin@jpeacerecruiting.com" class="btn-pricing">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <p class="pricing-note fade-up">All plans include <strong>unlimited hires</strong> and <strong>pause-anytime flexibility</strong>. No long-term contracts, no per-hire fees.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">End-to-End Machining Recruitment</h2>
+      <p class="section-sub">We handle the entire recruiting process for machining and manufacturing roles — so your team can stay focused on production, not hiring.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>CNC Machining Roles</h3>
+        <p>CNC machinists, operators, programmers, and setup technicians — sourced from job boards, resume databases, and direct outreach to active and passive candidates.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        </div>
+        <h3>Fabrication &amp; Welding</h3>
+        <p>Structural welders, MIG/TIG specialists, fabricators, and shop-floor production staff placed with fabrication shops and manufacturing facilities.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Precision Manufacturing</h3>
+        <p>Quality technicians, inspection, and precision manufacturing specialists for aerospace, medical device, defense, and high-tolerance production environments.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Full-Cycle Sourcing</h3>
+        <p>We handle everything: job postings, LinkedIn outreach, resume mining, phone screens, and candidate delivery — so you only spend time on the best fits.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Scalable RPO Model</h3>
+        <p>Our fractional RPO structure scales with your hiring volume. Ramp up when you're growing, pause when you're not. No contracts, no wasted spend.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Industry-Expert Team</h3>
+        <p>Founded and operated by people with real shop-floor machining experience. We speak the language, understand the roles, and know what a good candidate looks like.</p>
+      </div>
+    </div>
+
+    <!-- VS TABLE -->
+    <div class="fade-up" style="margin-top:80px">
+      <h3 style="font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:8px">Why Fractional RPO Beats Traditional Recruiting</h3>
+      <p style="font-size:0.92rem;color:var(--muted);margin-bottom:0">Three hires via a contingency firm can cost $45,000 to $60,000. Our Growth plan covers the same hiring need for $4,500/month.</p>
+    </div>
+    <div class="vs-table fade-up">
+      <div class="vs-header">
+        <div class="vs-header-cell">Feature</div>
+        <div class="vs-header-cell">Traditional Firm</div>
+        <div class="vs-header-cell highlight">J. Peace Recruiting</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell feature-name">Pricing model</div>
+        <div class="vs-cell">20% per hire</div>
+        <div class="vs-cell highlight" style="font-weight:600;color:var(--accent)">Flat monthly rate</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell feature-name">Unlimited hires</div>
+        <div class="vs-cell"><svg class="cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</div>
+        <div class="vs-cell highlight"><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Yes</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell feature-name">Pause anytime</div>
+        <div class="vs-cell"><svg class="cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</div>
+        <div class="vs-cell highlight"><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Yes</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell feature-name">Machining industry expertise</div>
+        <div class="vs-cell"><svg class="cross" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Rarely</div>
+        <div class="vs-cell highlight"><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Always</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell feature-name">Cost for 3 hires</div>
+        <div class="vs-cell" style="color:#EF4444;font-weight:700">$45,000–$60,000</div>
+        <div class="vs-cell highlight" style="color:var(--accent);font-weight:700">$4,500–$13,500/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">From Intake to Hire — We Handle It</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Choose Your Plan</h4>
+        <p>Select the tier that fits your current hiring volume. Start small and scale up as your needs grow.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h4>Share Your Roles</h4>
+        <p>Tell us what you need — job titles, skills, experience level, shift requirements, and compensation.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h4>We Source &amp; Screen</h4>
+        <p>We post, source, outreach, and screen. Only qualified candidates land in your inbox — ready to interview.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">4</div>
+        <h4>You Hire, We Scale</h4>
+        <p>Hire as many as you need at no extra cost. Pause when your shop is staffed up. Resume whenever you need more.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-up">
+      <a href="mailto:Justin@jpeacerecruiting.com" class="btn-primary">Email Justin to Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About JPR</div>
+        <h2>Built by Machining People, for Machining Companies</h2>
+        <p>J. Peace Recruiting was founded by Justin with one conviction: the machining industry deserves a recruiting model built specifically for it. Not a generic staffing agency, not a contingency headhunter charging 20% per hire — a dedicated, flat-rate fractional RPO that knows the difference between a G-code programmer and a setup tech.</p>
+        <p>We have decades of real shop-floor, machining industry experience across CNC, fabrication, welding, and precision manufacturing. That expertise means we write better job posts, ask the right screening questions, and recognize a strong candidate before you ever have to interview them.</p>
+        <p>Our model is simple: you pay a flat monthly rate, we recruit as many qualified people as you need, and you hire without limits. Pause anytime. No contracts. No surprises.</p>
+        <div class="about-badges">
+          <span class="about-badge">Machining Industry Experts</span>
+          <span class="about-badge">Flat Monthly Rate</span>
+          <span class="about-badge">Pause Anytime</span>
+          <span class="about-badge">Fractional RPO Model</span>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <div class="about-vis-title">The Math Is Simple</div>
+        <div class="calc-row">
+          <div class="calc-label">Traditional fee — 1 CNC Machinist at $65k</div>
+          <div class="calc-value red">$13,000</div>
+        </div>
+        <hr class="calc-divider">
+        <div class="calc-row">
+          <div class="calc-label">JPR Growth Plan — full month, unlimited hires</div>
+          <div class="calc-value green">$4,500</div>
+        </div>
+        <hr class="calc-divider">
+        <div class="calc-row">
+          <div class="calc-label">Savings on a single placement</div>
+          <div class="calc-value green">$8,500</div>
+        </div>
+        <hr class="calc-divider">
+        <div class="calc-savings">
+          <div class="calc-savings-label">Savings over 3 months (Growth plan, 3 hires/mo)</div>
+          <div class="calc-savings-num">$92,500+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" style="padding:0">
+  <div class="cta-band">
+    <h2>Stop Paying Per Hire. Start Hiring Without Limits.</h2>
+    <p>Email Justin directly to discuss your current hiring needs and find out which plan fits your shop.</p>
+    <a href="mailto:Justin@jpeacerecruiting.com" class="btn-cta">Email Justin@jpeacerecruiting.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-text">J. Peace Recruiting</span>
+        <p>Flat-rate fractional RPO for CNC machining, fabrication, welding, and precision manufacturing. Founded and operated by machining industry experts.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Plans</h4>
+        <a href="#pricing">Essential &mdash; $2,500/mo</a>
+        <a href="#pricing">Growth &mdash; $4,500/mo</a>
+        <a href="#pricing">Scale &mdash; $6,500/mo</a>
+        <a href="#pricing">Enterprise &mdash; $8,500/mo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span>Justin@jpeacerecruiting.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>Machining Industry Specialists</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Pause anytime &mdash; no contracts</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 J. Peace Recruiting. All rights reserved.</span>
+      <span>Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
