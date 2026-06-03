@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S. Godoy & Associates LLC | Tax and Accounting in Rockwall, TX</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#0A2647;background:#fff}
+img{max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:#134F9F;border-bottom:1px solid #0f3d80}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-fallback{color:#fff;font-weight:800;font-size:16px;letter-spacing:.3px}
+.nav-menu{display:flex;align-items:center;gap:32px}
+.nav-link{color:rgba(255,255,255,.88);font-size:14px;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#fff}
+.nav-cta{background:#fff;color:#134F9F;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;transition:opacity .2s}
+.nav-cta:hover{opacity:.88}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#134F9F;padding:96px 24px;display:flex;align-items:center;min-height:580px}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.5);color:#fff;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(28px,3.5vw,50px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:#E6ECF2;font-style:normal}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:32px}
+.hero-cta{display:inline-block;background:#fff;color:#134F9F;padding:14px 32px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s;margin-bottom:20px}
+.hero-cta:hover{opacity:.88}
+.hero-contact{color:rgba(255,255,255,.85);font-size:15px;font-weight:600}
+.hero-contact a{color:#fff}
+.hero-photo{display:flex;justify-content:center;align-items:center}
+.hero-photo img{width:100%;max-width:480px;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.25);object-fit:cover;max-height:460px}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:64px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:clamp(32px,3.5vw,48px);font-weight:800;color:#134F9F;line-height:1}
+.stat-label{font-size:15px;color:#5a6a7a;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 24px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(28px,3vw,42px);font-weight:800;color:#0A2647;margin-bottom:12px}
+.section-header p{font-size:17px;color:#5a6a7a;max-width:560px;margin:0 auto}
+.services-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px 28px;border-top:3px solid #134F9F}
+.service-icon{width:48px;height:48px;background:#E6ECF2;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card h3{font-size:18px;font-weight:700;color:#0A2647;margin-bottom:10px}
+.service-card p{font-size:15px;color:#5a6a7a;line-height:1.65}
+
+/* TESTIMONIALS */
+.testimonials{background:#F5F6F8;padding:96px 24px}
+.testimonials-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px 28px}
+.stars{display:flex;gap:4px;margin-bottom:16px}
+.testimonial-card blockquote{font-size:15px;color:#0A2647;line-height:1.75;font-style:italic;margin-bottom:16px}
+.testimonial-card cite{font-size:13px;color:#134F9F;font-weight:600;font-style:normal}
+
+/* HOW IT WORKS */
+.how{background:#fff;padding:96px 24px}
+.steps{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:#1E6DD4;z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;background:#134F9F;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto 20px}
+.step h3{font-size:18px;font-weight:700;color:#0A2647;margin-bottom:10px}
+.step p{font-size:15px;color:#5a6a7a;line-height:1.65}
+.how-cta{text-align:center}
+.btn-primary{display:inline-block;background:#134F9F;color:#fff;padding:14px 32px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+
+/* ABOUT */
+.about{background:#E6ECF2;padding:96px 24px}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.about-badge{background:#fff;border:1px solid #134F9F;color:#0A2647;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.about h2{font-size:clamp(26px,3vw,38px);font-weight:800;color:#0A2647;margin-bottom:16px}
+.about p{font-size:16px;color:#2a3e52;line-height:1.75;margin-bottom:16px}
+.about-photo img{width:100%;max-width:460px;border-radius:8px;box-shadow:0 8px 32px rgba(19,79,159,.15);object-fit:cover}
+
+/* CTA BAND */
+.cta-band{background:#0A2647;padding:96px 24px;text-align:center}
+.cta-band h2{font-size:clamp(22px,2.5vw,36px);font-weight:800;color:#fff;margin-bottom:24px;max-width:760px;margin-left:auto;margin-right:auto}
+.btn-white{display:inline-block;background:#fff;color:#134F9F;padding:16px 40px;border-radius:6px;font-size:17px;font-weight:700;transition:opacity .2s}
+.btn-white:hover{opacity:.9}
+
+/* FOOTER */
+.footer{background:#061428;padding:48px 24px;color:#5a7a9a}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-contact{font-size:14px;line-height:2;margin-bottom:24px}
+.footer-contact strong{color:#fff}
+.footer-contact a{color:#1E6DD4}
+.footer-bottom{border-top:1px solid #0f2640;padding-top:24px;font-size:13px;text-align:center}
+.footer-bottom span{color:#1E6DD4}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner{grid-template-columns:1fr}
+  .hero-photo,.about-photo{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+}
+@media(max-width:767px){
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#134F9F;padding:24px;gap:20px}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://static.wixstatic.com/media/04e2f7_7100dabb067740b7bc6f1a91d3f6e331~mv2.png" alt="S. Godoy & Associates LLC" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback" style="display:none">S. Godoy & Associates</span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#testimonials" class="nav-link">Clients</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#cta" class="nav-cta">Free Consultation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy fade-in">
+      <div class="hero-badge-row">
+        <span class="hero-badge">Rockwall, TX</span>
+        <span class="hero-badge">Real People, Real Support</span>
+        <span class="hero-badge">Tax and Accounting Experts</span>
+      </div>
+      <h1>Bosses Make Moves. We Make Sure They Add Up.</h1>
+      <p class="hero-sub">S. Godoy & Associates delivers personal, expert tax preparation, bookkeeping, and business advisory services for North Texas business owners who want a real partner, not just a tax preparer.</p>
+      <a href="#cta" class="hero-cta">Get Your Free Consultation</a>
+      <div class="hero-contact"><a href="tel:4693141120">(469) 314-1120</a></div>
+    </div>
+    <div class="hero-photo fade-in">
+      <img src="https://static.wixstatic.com/media/04e2f7_e9318eec140d428da59b00e033c5cd97~mv2.jpg" alt="S. Godoy & Associates Team" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num">Rockwall</div>
+      <div class="stat-label">Texas Based</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">Full Service</div>
+      <div class="stat-label">Tax, Payroll and Bookkeeping</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">IRS</div>
+      <div class="stat-label">Notice Support Included</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>Our Services</h2>
+    <p>Full-service tax and accounting for North Texas business owners and individuals.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Tax Preparation</h3>
+      <p>Personal and business tax returns filed accurately and on time, with every deduction you deserve.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Tax Strategy</h3>
+      <p>Year-round tax planning to reduce your liability and position your business for maximum savings.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+      </div>
+      <h3>Bookkeeping and Cleanup</h3>
+      <p>Monthly bookkeeping and disorganized records cleanup so your financials are always in order.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+      </div>
+      <h3>Payroll Services</h3>
+      <p>Full payroll processing and compliance so your team gets paid correctly every time.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Entity Formation</h3>
+      <p>Business setup, LLC formation, and compliance guidance to start your company on solid ground.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>IRS Notice Support</h3>
+      <p>Expert representation and response for IRS notices, delinquent returns, and tax issues.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-in">
+    <h2>What Our Clients Say</h2>
+    <p>Real people, real results from across North Texas.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"A company with so much knowledge and honesty! If you want success, this is your company!"</blockquote>
+      <cite>Melissa S.</cite>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"S Godoy & Associates got my LLC forms corrected quickly and accurately. Highly professional and responsive team."</blockquote>
+      <cite>Josh C.</cite>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Great personal service with quick responses. I am very happy to have found them."</blockquote>
+      <cite>Lee W.</cite>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How It Works</h2>
+    <p>Simple, personal, and built around your business.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Free Consultation</h3>
+      <p>Talk through your tax situation, business needs, and what you are trying to accomplish.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Custom Proposal</h3>
+      <p>Receive a clear, flat-rate proposal covering exactly what you need.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Real Support, Ongoing</h3>
+      <p>We handle your taxes, books, and filings while you focus on running your business.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Get Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-copy fade-in">
+      <h2>About S. Godoy & Associates</h2>
+      <p>S. Godoy & Associates LLC was built for business owners who want real people in their corner, not a faceless firm. Based in Rockwall, Texas, Spencer Godoy and the team serve clients across North Texas — from Rockwall to Wylie, Plano, and beyond — with hands-on tax preparation, bookkeeping, and business advisory services.</p>
+      <p>The firm was founded on the belief that great accounting is about more than filing returns: it is about understanding your clients, anticipating their needs, and being available when questions arise. Text or call, someone always picks up.</p>
+      <div class="about-badges">
+        <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Rockwall, TX Based</span>
+        <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> North Texas Expert</span>
+        <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#134F9F" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Text or Call Anytime</span>
+      </div>
+    </div>
+    <div class="about-photo fade-in">
+      <img src="https://static.wixstatic.com/media/04e2f7_e9318eec140d428da59b00e033c5cd97~mv2.jpg" alt="S. Godoy & Associates Team" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="cta">
+  <h2 class="fade-in">Ready for an Accounting Partner Who Puts You First?</h2>
+  <a href="tel:4693141120" class="btn-white fade-in">Get Your Free Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <strong>S. Godoy & Associates LLC</strong><br>
+      Call: <a href="tel:4693141120">(469) 314-1120</a> | Text: <a href="tel:4692161914">(469) 216-1914</a><br>
+      <a href="mailto:spencer@sgodoyassociates.com">spencer@sgodoyassociates.com</a><br>
+      2235 Ridge Road Suite 102, Rockwall, TX 75087
+    </div>
+    <div class="footer-bottom">© 2026 S. Godoy & Associates LLC. All rights reserved. | Website by <span>Mediactive</span></div>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
