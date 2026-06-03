@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE Smart Advisors — Prep. Plan. Profit.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#1A1A1A;background:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo img{height:38px;object-fit:contain}
+.nav-logo-fallback{font-size:1.1rem;font-weight:700;color:#FF5722}
+.nav-menu{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{text-decoration:none;color:#374151;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#FF5722}
+.nav-cta{background:#FF5722;color:#fff!important;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.875rem;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#E64A19}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#FF5722;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO — centered, no photo */
+.hero{background:#fff;padding:100px 5%;border-bottom:1px solid #F0F2F5;text-align:center}
+.hero-inner{max-width:800px;margin:0 auto}
+.hero-eyebrow{display:inline-block;background:#FFF0EC;color:#FF5722;padding:7px 18px;border-radius:20px;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:clamp(2.1rem,4.5vw,3.25rem);font-weight:800;color:#1A1A1A;line-height:1.15;margin-bottom:24px;letter-spacing:-.02em}
+.hero h1 span{color:#FF5722}
+.hero p{font-size:1.1rem;color:#6B7280;line-height:1.7;margin-bottom:36px;max-width:680px;margin-left:auto;margin-right:auto}
+.hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.badge{background:#FFF0EC;color:#FF5722;border:1px solid #FFD4C8;padding:7px 18px;border-radius:20px;font-size:.8rem;font-weight:600;letter-spacing:.03em}
+.btn-primary{display:inline-block;background:#FF5722;color:#fff;padding:15px 38px;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-primary:hover{background:#E64A19}
+.hero-contact{margin-top:18px;font-size:.9rem;color:#9CA3AF}
+.hero-contact a{color:#374151;text-decoration:none;font-weight:600}
+.hero-contact a:hover{color:#FF5722}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:64px 5%}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.stat-number{font-size:2.25rem;font-weight:800;color:#FF5722;line-height:1}
+.stat-label{font-size:.875rem;color:#6B7280;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 5%}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#1A1A1A;margin-bottom:14px;letter-spacing:-.01em}
+.section-header p{font-size:1rem;color:#6B7280;max-width:580px;margin:0 auto;line-height:1.65}
+.cards-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:36px 32px;border:1px solid #F0F2F5;border-top:3px solid #FF5722}
+.card-icon{width:48px;height:48px;background:#FFF0EC;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.card h3{font-size:1.05rem;font-weight:700;color:#1A1A1A;margin-bottom:10px}
+.card p{font-size:.875rem;color:#6B7280;line-height:1.6}
+
+/* TESTIMONIALS */
+.testimonials{background:#F5F6F8;padding:96px 5%}
+.testimonials-grid{max-width:1280px;margin:40px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px 28px}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.testimonial-card blockquote{font-size:.925rem;color:#374151;line-height:1.7;font-style:italic;margin-bottom:16px}
+.testimonial-author{font-size:.82rem;font-weight:600;color:#FF5722;text-transform:uppercase;letter-spacing:.04em}
+
+/* HOW IT WORKS */
+.how{background:#fff;padding:96px 5%}
+.steps-row{max-width:1280px;margin:56px auto 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-row::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:2px;background:#FFD4C8;z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-number{width:64px;height:64px;background:#FF5722;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px;border:4px solid #fff;box-shadow:0 2px 12px rgba(255,87,34,.3)}
+.step h3{font-size:1rem;font-weight:700;color:#1A1A1A;margin-bottom:10px}
+.step p{font-size:.875rem;color:#6B7280;line-height:1.6}
+.how-cta{text-align:center}
+.btn-orange{display:inline-block;background:#FF5722;color:#fff;padding:14px 34px;border-radius:6px;font-weight:700;font-size:.975rem;text-decoration:none;transition:background .2s}
+.btn-orange:hover{background:#E64A19}
+
+/* ABOUT */
+.about{background:#F5F6F8;padding:96px 5%}
+.about-inner{max-width:900px;margin:0 auto}
+.about-header{display:flex;align-items:flex-start;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+.about-name-block h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#1A1A1A;margin-bottom:8px;letter-spacing:-.01em}
+.about-name-block .title{font-size:1rem;font-weight:600;color:#FF5722}
+.about-text p{font-size:.975rem;color:#374151;line-height:1.75;margin-bottom:18px}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.badge-solid{background:#fff;color:#FF5722;border:1.5px solid #FFD4C8;padding:8px 18px;border-radius:6px;font-size:.8rem;font-weight:600}
+.badge-mint{background:#69DEA3;color:#fff;padding:8px 18px;border-radius:6px;font-size:.8rem;font-weight:600}
+
+/* CTA BAND */
+.cta-band{background:#1A1A1A;padding:96px 5%;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:rgba(255,87,34,.08);border-radius:50%}
+.cta-band::after{content:'';position:absolute;bottom:-80px;left:-40px;width:240px;height:240px;background:rgba(255,87,34,.06);border-radius:50%}
+.cta-band h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.01em;position:relative;z-index:1}
+.cta-tagline{font-size:1.05rem;color:#9CA3AF;margin-bottom:36px;position:relative;z-index:1}
+.btn-cta-orange{display:inline-block;background:#FF5722;color:#fff;padding:15px 42px;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s;position:relative;z-index:1}
+.btn-cta-orange:hover{background:#E64A19}
+
+/* FOOTER */
+footer{background:#111;padding:48px 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.footer-logo img{height:34px;object-fit:contain;filter:brightness(0) invert(1);opacity:.8}
+.footer-logo-fallback{font-size:1rem;font-weight:700;color:#fff;opacity:.8}
+.footer-tagline{font-size:.85rem;font-weight:600;color:#FF5722;letter-spacing:.08em;text-transform:uppercase}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+.footer-links a{color:#6B7280;text-decoration:none;font-size:.875rem;font-weight:500}
+.footer-links a:hover{color:#fff}
+.footer-copy{color:#4B5563;font-size:.8rem}
+
+/* FADE-IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-row{grid-template-columns:repeat(2,1fr);gap:40px}
+  .steps-row::before{display:none}
+}
+@media(max-width:768px){
+  .stats-inner{grid-template-columns:1fr}
+  .cards-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .steps-row{grid-template-columns:1fr}
+  .hamburger{display:flex}
+  .nav-menu{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 5%;gap:16px;border-bottom:1px solid #E2E8F0;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .nav-menu.active{display:flex}
+  .nav-cta{width:100%;text-align:center;padding:13px}
+  .btn-primary,.btn-orange,.btn-cta-orange{width:100%;text-align:center}
+  .hero-badges{flex-direction:column;align-items:center}
+  .badge-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://cp7.cpasitesolutions.com/~resmarta/images/resmart-logo2.png" alt="RE Smart Advisors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback" style="display:none">RE Smart Advisors</span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+      <li><a href="#how" class="nav-link">How It Works</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link nav-cta">Schedule a Consultation</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <div class="hero-eyebrow">Prep. Plan. Profit.</div>
+    <h1>Stop Overpaying Taxes. Start Building <span>Real Wealth.</span></h1>
+    <p>RE Smart Advisors delivers virtual tax strategy, proactive planning, and CFO-level guidance tailored for real estate investors and growing businesses in Missouri and beyond.</p>
+    <div class="hero-badges">
+      <span class="badge">Virtual Accounting</span>
+      <span class="badge">Real Estate Specialist</span>
+      <span class="badge">Lees Summit, MO</span>
+    </div>
+    <a href="tel:9132295871" class="btn-primary">Schedule a Consultation</a>
+    <div class="hero-contact">Call us: <a href="tel:9132295871">(913) 229-5871</a></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="fade-in">
+      <div class="stat-number">Virtual</div>
+      <div class="stat-label">Accounting Services</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-number">2x / Month</div>
+      <div class="stat-label">Client Check-Ins Available</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-number">STR &amp; LTR</div>
+      <div class="stat-label">Real Estate Expertise</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>How We Help You Win</h2>
+    <p>Specialized services built for real estate investors and business owners who want more than just tax prep.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5722" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Tax Strategy for Real Estate</h3>
+      <p>STR, LTR, and house hacking tax strategies designed to maximize your deductions legally.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5722" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <h3>Business Tax Preparation</h3>
+      <p>Accurate, deadline-driven corporate and LLC tax prep with a proactive planning layer.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5722" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h3>Individual Tax Preparation</h3>
+      <p>Personal tax returns handled efficiently with a focus on every deduction you deserve.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5722" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <h3>Small Business Accounting</h3>
+      <p>Monthly bookkeeping and accounting that keeps your P&amp;L accurate and your business on track.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5722" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Part-Time CFO Services</h3>
+      <p>Cash flow management, financial forecasting, and strategic advisory on your schedule.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5722" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Tax Planning Retainer</h3>
+      <p>Year-round proactive planning sessions to structure your income, expenses, and entities for maximum savings.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-in">
+    <h2>What Clients Say</h2>
+    <p>Real results from real estate investors and business owners who trust RE Smart Advisors.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"RE Smart Advisors are the experts in the field and help implement a tax strategy in my STR business to maximize my tax deductions."</blockquote>
+      <div class="testimonial-author">STR Investor Client</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"We meet with Mehak twice a month for proactive cash flow management and achieving clarity in our business. We now know our monthly burn rate, the cash needs of our business, and have some much needed clarity."</blockquote>
+      <div class="testimonial-author">Business Owner</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"Mehak is very knowledgeable, timely and responsive in answering questions and setting us up for tax strategies we can implement in our business."</blockquote>
+      <div class="testimonial-author">Real Estate Client</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How We Work Together</h2>
+    <p>A proven process that turns financial complexity into a clear competitive advantage.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-number">1</div>
+      <h3>Discovery Call</h3>
+      <p>Learn about your portfolio, business structure, and current tax situation.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">2</div>
+      <h3>Strategy Session</h3>
+      <p>Develop a custom tax and financial plan based on your specific goals.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">3</div>
+      <h3>Ongoing Execution</h3>
+      <p>We implement your strategy, keep your books clean, and file everything on time.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">4</div>
+      <h3>Proactive Reviews</h3>
+      <p>Regular check-ins ensure your plan stays optimized as your business grows.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="tel:9132295871" class="btn-orange">Schedule a Consultation</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner fade-in">
+    <div class="about-header">
+      <div class="about-name-block">
+        <h2>Meet Mehak</h2>
+        <div class="title">Founder &amp; Principal Advisor, RE Smart Advisors</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>Mehak is the founder and principal advisor at RE Smart Advisors, a virtual firm built for business owners and real estate investors who want more than just tax prep. With deep expertise in short-term rental (STR) tax strategy, real estate entity structuring, and proactive cash flow management, Mehak works closely with clients to turn their financial complexity into a clear competitive advantage.</p>
+      <p>Based in Lees Summit, MO, RE Smart Advisors serves clients virtually across Missouri and nationwide, meeting clients twice monthly for proactive planning sessions that give business owners the clarity and confidence they need to grow.</p>
+    </div>
+    <div class="badge-row">
+      <span class="badge-mint">STR Tax Specialist</span>
+      <span class="badge-solid">Virtual Firm</span>
+      <span class="badge-solid">Cash Flow Expert</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Ready to Prep, Plan, and Profit?</h2>
+  <p class="cta-tagline fade-in">Schedule your consultation today. Virtual. Nationwide.</p>
+  <a href="tel:9132295871" class="btn-cta-orange fade-in">Schedule Your Consultation</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://cp7.cpasitesolutions.com/~resmarta/images/resmart-logo2.png" alt="RE Smart Advisors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="footer-logo-fallback" style="display:none">RE Smart Advisors</span>
+    </div>
+    <div class="footer-tagline">Prep. Plan. Profit.</div>
+    <div class="footer-links">
+      <a href="tel:9132295871">(913) 229-5871</a>
+      <a href="#">Lees Summit, MO</a>
+      <a href="#">Virtual Services Nationwide</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 RE Smart Advisors. All rights reserved. | Website by <span style="color:#FF5722">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');
+h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
