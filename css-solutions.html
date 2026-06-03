@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Solutions Inc. | Great Organizations Start With Great People</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #0D1117; background: #fff; }
+
+  /* Fade-in */
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff;
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .nav-logo-text {
+    color: #25318D; font-weight: 800; font-size: 1.15rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .nav-menu { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-link { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-link:hover { color: #25318D; }
+  .nav-cta {
+    background: #25318D; color: #fff; border: none; border-radius: 6px;
+    padding: 10px 22px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: #1c2570; }
+  .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 25px; height: 3px; background: #333; border-radius: 3px; transition: 0.3s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; position: relative; }
+    .hamburger { display: flex; }
+    .nav-menu {
+      display: none; position: absolute; top: 100%; left: 0; width: 100%;
+      background: #fff; padding: 20px; flex-direction: column; align-items: flex-start;
+      gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .nav-menu.active { display: flex; }
+    .nav-cta { width: 100%; text-align: center; display: block; }
+  }
+
+  /* HERO */
+  .hero {
+    background: #fff;
+    padding: 90px 40px;
+    min-height: 580px;
+    display: flex; align-items: center;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .hero-left { display: flex; flex-direction: column; gap: 24px; }
+  .hero-eyebrow {
+    display: inline-block;
+    background: #EEF0FF; color: #25318D;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
+    width: fit-content;
+  }
+  .hero h1 { font-size: clamp(2rem, 3.8vw, 2.9rem); font-weight: 800; line-height: 1.15; color: #0D1117; }
+  .hero h1 span { color: #25318D; }
+  .hero-sub { font-size: 1.05rem; color: #4a4a4a; line-height: 1.75; max-width: 480px; }
+  .btn-primary {
+    display: inline-block; background: #25318D; color: #fff;
+    border-radius: 6px; padding: 14px 30px; font-size: 1rem; font-weight: 700;
+    text-decoration: none; transition: background 0.2s; width: fit-content;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #1c2570; }
+  .hero-contact { display: flex; align-items: center; gap: 8px; color: #555; font-size: 0.95rem; }
+  .hero-contact a { color: #25318D; text-decoration: none; font-weight: 600; }
+  .hero-contact a:hover { text-decoration: underline; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .badge {
+    background: #EEF0FF; color: #25318D;
+    font-size: 0.79rem; font-weight: 600; padding: 6px 14px; border-radius: 20px;
+    border: 1px solid rgba(37,49,141,0.2);
+  }
+  .hero-photo {
+    width: 100%; height: 480px; object-fit: cover; object-position: center top;
+    border-radius: 16px; box-shadow: 0 8px 48px rgba(37,49,141,0.14);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo-wrap { order: -1; }
+    .hero-photo { height: 300px; }
+    .hero { padding: 60px 24px; min-height: auto; }
+  }
+  @media (max-width: 390px) {
+    .btn-primary { width: 100%; text-align: center; }
+  }
+
+  /* STATS BAR */
+  .stats-bar { background: #F5F6F8; padding: 70px 40px; }
+  .stats-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center;
+  }
+  .stat-num { font-size: 2.8rem; font-weight: 800; color: #25318D; line-height: 1; }
+  .stat-label { font-size: 0.9rem; color: #666; margin-top: 8px; font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+    .stats-bar { padding: 60px 24px; }
+  }
+
+  /* SERVICES */
+  .services { background: #fff; padding: 90px 40px; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-tag {
+    display: inline-block; background: #EEF0FF; color: #25318D;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px;
+  }
+  .section-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: #0D1117; line-height: 1.2; }
+  .section-header p { color: #666; font-size: 1rem; margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+  .services-grid {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .service-card {
+    background: #fff; border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 36px 28px;
+  }
+  .service-icon {
+    width: 50px; height: 50px; background: #EEF0FF;
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    color: #25318D; margin-bottom: 20px;
+  }
+  .service-card h3 { font-size: 1.05rem; font-weight: 700; color: #0D1117; margin-bottom: 10px; }
+  .service-card p { font-size: 0.9rem; color: #666; line-height: 1.65; }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .services { padding: 70px 24px; }
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: #F5F6F8; padding: 90px 40px; }
+  .testimonials-grid {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+  }
+  .testimonial-card {
+    background: #fff; border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 36px 28px;
+  }
+  .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+  .quote-text {
+    font-size: 0.95rem; color: #333; line-height: 1.75;
+    font-style: italic; margin-bottom: 20px;
+  }
+  .quote-author { font-size: 0.88rem; font-weight: 700; color: #25318D; }
+
+  @media (max-width: 680px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonials { padding: 70px 24px; }
+  }
+
+  /* HOW IT WORKS */
+  .how { background: #fff; padding: 90px 40px; }
+  .steps-row {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    position: relative;
+  }
+  .steps-row::before {
+    content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 2px; background: rgba(37,49,141,0.15); z-index: 0;
+  }
+  .step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25318D; color: #fff;
+    font-size: 1.2rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(37,49,141,0.3);
+  }
+  .step h3 { font-size: 1rem; font-weight: 700; color: #0D1117; margin-bottom: 10px; }
+  .step p { font-size: 0.87rem; color: #666; line-height: 1.6; }
+  .how-cta { text-align: center; margin-top: 52px; }
+
+  @media (max-width: 680px) {
+    .steps-row { grid-template-columns: 1fr; gap: 36px; }
+    .steps-row::before { display: none; }
+    .how { padding: 70px 24px; }
+  }
+
+  /* ABOUT */
+  .about { background: #F5F6F8; padding: 90px 40px; }
+  .about-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+  }
+  .about-tag {
+    display: inline-block; background: #EEF0FF; color: #25318D;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .about h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); font-weight: 800; color: #0D1117; margin-bottom: 20px; line-height: 1.25; }
+  .about p { font-size: 0.97rem; color: #555; line-height: 1.75; margin-bottom: 16px; }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .about-badge {
+    background: #fff; color: #25318D;
+    font-size: 0.8rem; font-weight: 600; padding: 7px 16px; border-radius: 20px;
+    border: 1px solid rgba(37,49,141,0.2);
+  }
+  .about-photo {
+    width: 100%; height: 460px; object-fit: cover; object-position: center top;
+    border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 900px) {
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { height: 280px; }
+    .about { padding: 70px 24px; }
+  }
+
+  /* CTA BAND */
+  .cta-band { background: #25318D; padding: 90px 40px; text-align: center; }
+  .cta-band h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 32px; line-height: 1.2; }
+  .btn-white {
+    display: inline-block; background: #fff; color: #25318D;
+    border-radius: 6px; padding: 16px 36px; font-size: 1.05rem; font-weight: 700;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+  @media (max-width: 600px) {
+    .cta-band { padding: 70px 24px; }
+    .btn-white { width: 100%; text-align: center; display: block; }
+  }
+
+  /* FOOTER */
+  footer { background: #0D1117; padding: 56px 40px 0; }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand-text { color: #fff; font-weight: 800; font-size: 1.05rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+  .footer-tagline { color: rgba(255,255,255,0.45); font-size: 0.88rem; line-height: 1.65; }
+  .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col ul a:hover { color: #fff; }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .footer-contact-item svg { color: #4A5FC1; flex-shrink: 0; margin-top: 2px; }
+  .footer-contact-item span { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.5; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    padding: 20px 0;
+    font-size: 0.82rem; color: rgba(255,255,255,0.35); text-align: center;
+  }
+  .footer-bottom span { color: #4A5FC1; }
+
+  @media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding: 48px 24px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo-text">CSS Solutions</div>
+  <button class="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu">
+    <li><a href="#services" class="nav-link">Services</a></li>
+    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+    <li><a href="#how" class="nav-link">How It Works</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="mailto:mattabel@csssolve.com" class="nav-cta">Start Your Search</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left fade-in">
+      <span class="hero-eyebrow">Executive Recruiting</span>
+      <h1>Great Organizations Start With <span>Great People</span></h1>
+      <p class="hero-sub">CSS Solutions specializes in connecting top-tier talent with the companies that are built to grow — through executive search, staffing, and strategic hiring partnerships.</p>
+      <a href="mailto:mattabel@csssolve.com" class="btn-primary">Start Your Search</a>
+      <div class="hero-contact">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <a href="mailto:mattabel@csssolve.com">mattabel@csssolve.com</a>
+      </div>
+      <div class="badge-row">
+        <span class="badge">10+ Years Experience</span>
+        <span class="badge">50+ Companies Served</span>
+        <span class="badge">Franchise Specialist</span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap fade-in">
+      <img src="https://static.wixstatic.com/media/11062b_a6f0fec9397443e8b4bbdbf4e74ca024~mv2.jpg"
+           alt="CSS Solutions Team"
+           class="hero-photo"
+           onerror="this.style.background='#EEF0FF'; this.alt='CSS Solutions';">
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner fade-in">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Companies Served</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Hundreds</div>
+      <div class="stat-label">Successful Placements</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <span class="section-tag">What We Offer</span>
+    <h2>Recruiting That Goes Beyond the Resume</h2>
+    <p>From talent acquisition to employer branding, CSS Solutions is your end-to-end partner for building teams that last.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Talent Acquisition</h3>
+      <p>End-to-end executive and specialized role recruitment for companies ready to scale.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Strategic Consultation</h3>
+      <p>Expert guidance on hiring efficiency, team structure, and recruitment strategy.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>Branding &amp; Positioning</h3>
+      <p>Aligning your employer brand with your talent search to attract the right people.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-in">
+    <span class="section-tag">Client Stories</span>
+    <h2>What Our Clients Say</h2>
+    <p>Real results from the companies we have partnered with to find transformational talent.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="quote-text">"CSS Solutions Inc. surpassed our expectations in finding the perfect match for our team. Their professionalism and commitment to quality service are truly commendable."</p>
+      <div class="quote-author">Tom Zacharias</div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="quote-text">"Working with CSS Solutions Inc. was transformative for our organization. The team understood exactly what we needed and delivered beyond what we thought was possible."</p>
+      <div class="quote-author">Alex Cronin</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <span class="section-tag">The Process</span>
+    <h2>Simple, Focused, and Built to Deliver</h2>
+    <p>Three clear steps from first conversation to successful placement.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Intake &amp; Discovery</h3>
+      <p>Deep-dive into your company culture, role requirements, and growth goals.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Targeted Search</h3>
+      <p>Identify and vet candidates with the skills, experience, and values that fit.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Placement &amp; Success</h3>
+      <p>Present your shortlist, support the hire, and ensure a smooth onboarding.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="mailto:mattabel@csssolve.com" class="btn-primary">Start Your Search</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left fade-in">
+      <span class="about-tag">Who We Are</span>
+      <h2>One Great Hire at a Time, for Over a Decade</h2>
+      <p>Matt Abel and Toni Carlton founded CSS Solutions Inc. on a simple premise: that the best organizations are built one great hire at a time. With over 10 years serving companies across a wide range of industries — including 20+ franchise brands — the CSS team brings a nuanced understanding of what it takes to find talent that sticks.</p>
+      <p>From executive search to specialized placements, CSS Solutions has helped hundreds of professionals find roles where they can do the best work of their careers.</p>
+      <div class="about-badges">
+        <span class="about-badge">10+ Years Recruiting</span>
+        <span class="about-badge">Franchise Specialist</span>
+        <span class="about-badge">Amherst, MA Based</span>
+      </div>
+    </div>
+    <div class="fade-in">
+      <img src="https://static.wixstatic.com/media/11062b_1c1dad37976a477086dea4fefabe1e09~mv2.jpg"
+           alt="CSS Solutions Inc. Team"
+           class="about-photo"
+           onerror="this.style.background='#EEF0FF'; this.alt='CSS Solutions Team';">
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <div class="fade-in">
+    <h2>Ready to Build Your Dream Team?</h2>
+    <a href="mailto:mattabel@csssolve.com" class="btn-white">Talk to CSS Solutions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-text">CSS Solutions</div>
+      <p class="footer-tagline">Empowering Careers, Building Futures. Connecting top-tier talent with companies built to grow since 2014.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#how" class="nav-link">How It Works</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <span>mattabel@csssolve.com</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>9 Winston Ct, Amherst MA 01002</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 CSS Solutions Inc. All rights reserved. | Website by <span>Mediactive</span>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+  document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  }));
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
