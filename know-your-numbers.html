@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know Your Numbers DPC | Fixed-Fee Bookkeeping for Business Owners</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#2C2E32;background:#fff}
+img{max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #3F784C;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-fallback{color:#3F784C;font-weight:800;font-size:16px;letter-spacing:.3px}
+.nav-menu{display:flex;align-items:center;gap:32px}
+.nav-link{color:#2C2E32;font-size:14px;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#3F784C}
+.nav-cta{background:#3F784C;color:#fff;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#2C2E32;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#fff;padding:112px 24px;text-align:center;border-bottom:1px solid #e8f0eb}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;justify-content:center}
+.hero-badge{background:#EBF4EE;border:1px solid #3F784C;color:#2D5936;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(30px,4vw,54px);font-weight:800;color:#2D5936;line-height:1.15;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:17px;color:#4a5e4f;line-height:1.7;margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:#3F784C;color:#fff;padding:14px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s;margin-bottom:20px}
+.hero-cta:hover{opacity:.85}
+.hero-contact{color:#3F784C;font-size:15px;font-weight:600}
+.hero-contact a{color:#3F784C}
+
+/* STATS */
+.stats{background:#EBF4EE;padding:64px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:clamp(34px,4vw,52px);font-weight:800;color:#3F784C;line-height:1}
+.stat-label{font-size:15px;color:#4a5e4f;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 24px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(28px,3vw,42px);font-weight:800;color:#2D5936;margin-bottom:12px}
+.section-header p{font-size:17px;color:#4a5e4f;max-width:560px;margin:0 auto}
+.services-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.service-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:36px 32px;border-left:4px solid #3F784C}
+.service-icon{width:48px;height:48px;background:#EBF4EE;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card h3{font-size:18px;font-weight:700;color:#2D5936;margin-bottom:10px}
+.service-card p{font-size:15px;color:#4a5e4f;line-height:1.65}
+
+/* HOW IT WORKS */
+.how{background:#F5F6F8;padding:96px 24px}
+.steps{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:#3F784C;z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;background:#3F784C;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 20px}
+.step h3{font-size:16px;font-weight:700;color:#2D5936;margin-bottom:10px}
+.step p{font-size:14px;color:#4a5e4f;line-height:1.65}
+.how-cta{text-align:center}
+.btn-primary{display:inline-block;background:#3F784C;color:#fff;padding:14px 32px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+
+/* ABOUT */
+.about{background:#fff;padding:96px 24px}
+.about-inner{max-width:860px;margin:0 auto;background:#EBF4EE;border-radius:8px;padding:48px 48px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.about-badge{background:#fff;border:1px solid #3F784C;color:#2D5936;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.about h2{font-size:clamp(26px,3vw,36px);font-weight:800;color:#2D5936;margin-bottom:16px}
+.about p{font-size:16px;color:#3a4e3f;line-height:1.75;margin-bottom:16px}
+
+/* CTA BAND */
+.cta-band{background:#2D5936;padding:96px 24px;text-align:center}
+.cta-band h2{font-size:clamp(24px,3vw,38px);font-weight:800;color:#fff;margin-bottom:24px;max-width:640px;margin-left:auto;margin-right:auto}
+.btn-green{display:inline-block;background:#3F784C;color:#fff;border:2px solid #EBF4EE;padding:16px 40px;border-radius:6px;font-size:17px;font-weight:700;transition:opacity .2s}
+.btn-green:hover{opacity:.85}
+
+/* FOOTER */
+.footer{background:#1e2820;padding:48px 24px;color:#7a9080}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-contact{font-size:14px;line-height:2;margin-bottom:24px}
+.footer-contact a{color:#3F784C}
+.footer-bottom{border-top:1px solid #2d3e32;padding-top:24px;font-size:13px;text-align:center}
+.footer-bottom span{color:#3F784C}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .steps::before{display:none}
+}
+@media(max-width:767px){
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#fff;padding:24px;gap:20px;border-bottom:2px solid #3F784C}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .about-inner{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://knowyournumbers-dpc.com/logo.png" alt="Know Your Numbers DPC" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback" style="display:none">Know Your Numbers DPC</span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#cta" class="nav-cta">Start Your Path to Clarity</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge-row fade-in">
+    <span class="hero-badge">Fixed-Fee Pricing</span>
+    <span class="hero-badge">Proactive Advice</span>
+    <span class="hero-badge">Technology Savvy</span>
+  </div>
+  <h1 class="fade-in">Know Your Numbers. Run Your Business With Confidence.</h1>
+  <p class="hero-sub fade-in">Know Your Numbers DPC offers personalized, fixed-fee bookkeeping with proactive financial advice — so you always know exactly where your business stands, with no surprises on the bill.</p>
+  <a href="#cta" class="hero-cta fade-in">Start Your Path to Clarity</a>
+  <div class="hero-contact fade-in"><a href="https://knowyournumbers-dpc.com" target="_blank">knowyournumbers-dpc.com</a></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num">Fixed</div>
+      <div class="stat-label">Fee Pricing Always</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">Zero</div>
+      <div class="stat-label">Hidden Surprises</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">Proactive</div>
+      <div class="stat-label">Financial Advice Included</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>What We Do</h2>
+    <p>Bookkeeping that goes beyond the numbers — personalized, transparent, and always proactive.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3>Monthly Bookkeeping</h3>
+      <p>Accurate, consistent bookkeeping every month with a personalized approach to your unique business.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+      </div>
+      <h3>Financial Records Management</h3>
+      <p>Organized, current financial records that are always audit-ready and easy to review.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Proactive Financial Advice</h3>
+      <p>We do not just record your numbers — we help you understand what they mean and what to do next.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>QuickBooks Online Setup</h3>
+      <p>Get your accounting software set up right from the start with guidance from a technology-savvy advisor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How It Works</h2>
+    <p>Four simple steps from your first conversation to ongoing financial clarity.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Discovery Call</h3>
+      <p>A free conversation to learn about your business, your books, and what clarity looks like for you.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Custom Proposal</h3>
+      <p>Receive a fixed-fee proposal with a clear scope and no hidden charges.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Onboarding</h3>
+      <p>We set up your systems, get your books in order, and handle the transition seamlessly.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">4</div>
+      <h3>Ongoing Clarity</h3>
+      <p>Monthly bookkeeping and proactive advice so you always know your numbers.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Start Your Path to Clarity</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner fade-in">
+    <h2>About Know Your Numbers DPC</h2>
+    <p>Know Your Numbers DPC Bookkeeping was founded on a simple conviction: business owners deserve to understand their finances, not just survive them. With a personalized approach, technology-driven processes, and fixed-fee pricing, the firm delivers the clarity and confidence that come from truly knowing where your business stands.</p>
+    <p>Every engagement begins with a discovery call and a customized proposal. Ongoing service includes not just accurate bookkeeping, but proactive insights that help clients make smarter decisions — without surprises on the invoice.</p>
+    <div class="about-badges">
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Fixed-Fee Pricing</span>
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Technology Savvy</span>
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F784C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Proactive Advisor</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="cta">
+  <h2 class="fade-in">Ready to Finally Know Your Numbers?</h2>
+  <a href="https://knowyournumbers-dpc.com" target="_blank" class="btn-green fade-in">Start Your Path to Clarity</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <strong style="color:#fff">Know Your Numbers DPC Bookkeeping</strong><br>
+      <a href="https://knowyournumbers-dpc.com" target="_blank">knowyournumbers-dpc.com</a>
+    </div>
+    <div class="footer-bottom">© 2026 Know Your Numbers DPC. All rights reserved. | Website by <span>Mediactive</span></div>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
