@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCH MedSpa | Precision Aesthetics. Physician-Supervised Results.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#1D1B1E;background:#fff}
+img{max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:#1D1B1E;border-bottom:1px solid #2d2b2e}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;object-fit:contain}
+.nav-logo-fallback{color:#C2A66E;font-weight:800;font-size:18px;letter-spacing:.5px}
+.nav-menu{display:flex;align-items:center;gap:32px}
+.nav-link{color:#fff;font-size:14px;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#C2A66E}
+.nav-cta{background:#C2A66E;color:#1D1B1E;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#1D1B1E;padding:96px 24px;min-height:600px;display:flex;align-items:center}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.hero-badge{background:rgba(194,166,110,.15);border:1px solid #C2A66E;color:#C2A66E;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(32px,4vw,52px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:#C2A66E;font-style:normal}
+.hero-sub{font-size:17px;color:#c0bdc4;line-height:1.7;margin-bottom:32px}
+.hero-cta{display:inline-block;background:#C2A66E;color:#1D1B1E;padding:14px 32px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s;margin-bottom:20px}
+.hero-cta:hover{opacity:.85}
+.hero-contact{color:#C2A66E;font-size:15px;font-weight:600}
+.hero-contact a{color:#C2A66E}
+.hero-photo{display:flex;justify-content:center;align-items:flex-end}
+.hero-photo img{max-height:480px;object-fit:contain;filter:drop-shadow(0 8px 32px rgba(194,166,110,.25))}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:64px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:clamp(36px,4vw,56px);font-weight:800;color:#C2A66E;line-height:1}
+.stat-label{font-size:15px;color:#6b6873;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 24px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(28px,3vw,42px);font-weight:800;color:#1D1B1E;margin-bottom:12px}
+.section-header p{font-size:17px;color:#6b6873;max-width:560px;margin:0 auto}
+.services-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px 28px;border-top:3px solid #C2A66E}
+.service-icon{width:48px;height:48px;background:rgba(194,166,110,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card h3{font-size:18px;font-weight:700;color:#1D1B1E;margin-bottom:10px}
+.service-card p{font-size:15px;color:#6b6873;line-height:1.65}
+
+/* HOW IT WORKS */
+.how{background:#F5F6F8;padding:96px 24px}
+.steps{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:#C2A66E;z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;background:#C2A66E;color:#1D1B1E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto 20px}
+.step h3{font-size:18px;font-weight:700;color:#1D1B1E;margin-bottom:10px}
+.step p{font-size:15px;color:#6b6873;line-height:1.65}
+.how-cta{text-align:center}
+.btn-primary{display:inline-block;background:#1D1B1E;color:#fff;padding:14px 32px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+
+/* ABOUT */
+.about{background:#fff;padding:96px 24px}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.about-badge{background:rgba(194,166,110,.12);border:1px solid #C2A66E;color:#C2A66E;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.about h2{font-size:clamp(26px,3vw,38px);font-weight:800;color:#1D1B1E;margin-bottom:16px}
+.about p{font-size:16px;color:#4a4750;line-height:1.75;margin-bottom:16px}
+.about-photo img{width:100%;max-width:440px;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+
+/* CTA BAND */
+.cta-band{background:#1D1B1E;padding:96px 24px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3vw,40px);font-weight:800;color:#fff;margin-bottom:24px}
+.btn-gold{display:inline-block;background:#C2A66E;color:#1D1B1E;padding:16px 40px;border-radius:6px;font-size:17px;font-weight:700;transition:opacity .2s}
+.btn-gold:hover{opacity:.85}
+
+/* FOOTER */
+.footer{background:#111012;padding:48px 24px;color:#8a8790}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+.footer-brand span{color:#C2A66E}
+.footer-contact{font-size:14px;line-height:2}
+.footer-bottom{width:100%;border-top:1px solid #2d2b2e;padding-top:24px;margin-top:24px;font-size:13px;text-align:center}
+.footer-bottom span{color:#C2A66E}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner{grid-template-columns:1fr}
+  .hero-photo{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+}
+@media(max-width:767px){
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#1D1B1E;padding:24px;gap:20px}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://www.pchmedspa.com/wp-content/uploads/2021/06/PCH-MedSpa-Transparent-Logo.png" alt="PCH MedSpa" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback" style="display:none">PCH MedSpa</span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#cta" class="nav-cta">Request Consultation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy fade-in">
+      <div class="hero-badge-row">
+        <span class="hero-badge">100% Physician Supervised</span>
+        <span class="hero-badge">20+ Years Experience</span>
+        <span class="hero-badge">Corona Del Mar, CA</span>
+      </div>
+      <h1>Precision Aesthetics. <em>Physician-Supervised</em> Results.</h1>
+      <p class="hero-sub">PCH MedSpa is Orange County's premier destination for minimally invasive aesthetic treatments — from Endolift laser to medical weight loss — under the personal care of board-certified Dr. Kaveh Karandish.</p>
+      <a href="#cta" class="hero-cta">Request a Consultation</a>
+      <div class="hero-contact"><a href="tel:9492429166">(949) 242-9166</a></div>
+    </div>
+    <div class="hero-photo fade-in">
+      <img src="https://www.pchmedspa.com/wp-content/uploads/2022/06/Dr.-K-Headshot-circle.png" alt="Dr. Kaveh Karandish" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years Medical Experience</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">700+</div>
+      <div class="stat-label">Endolift Treatments</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">28.7%</div>
+      <div class="stat-label">Avg. Weight Loss with Retatrutide</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>Our Treatments</h2>
+    <p>Every procedure performed or personally supervised by Dr. Karandish for results you can trust.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Endolift Laser</h3>
+      <p>Non-surgical skin tightening and fat reduction with Dr. K as a recognized Key Opinion Leader nationally.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>PDO Thread Lift</h3>
+      <p>Non-surgical facelift with dissolvable threads for natural-looking lift and collagen stimulation.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+      </div>
+      <h3>Medical Weight Loss</h3>
+      <p>Physician-supervised GLP-1 programs with Semaglutide, Tirzepatide, and Retatrutide.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Morpheus8 RF</h3>
+      <p>Fractional radiofrequency micro-needling to remodel skin and reduce fat simultaneously.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <h3>SKINVIVE and Fillers</h3>
+      <p>Hyaluronic acid skin boosters, dermal fillers, and Botox for natural facial rejuvenation.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h3>Body Sculpting</h3>
+      <p>Muscle Max EMS, i-Shape, and Agnes RF for non-surgical body contouring results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How It Works</h2>
+    <p>A personalized process from first visit to lasting results.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Personal Consultation</h3>
+      <p>Meet with Dr. Karandish to discuss your goals and design a customized treatment plan.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Precision Treatment</h3>
+      <p>Experience best-in-class aesthetic treatments in a safe, physician-supervised environment.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Lasting Results</h3>
+      <p>Enjoy natural-looking, long-lasting results with ongoing support and follow-up care.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Request a Consultation</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-copy fade-in">
+      <h2>Dr. Kaveh Karandish, MD</h2>
+      <p>Dr. Kaveh Karandish is a board-certified physician, ABIM-certified internist, and one of the country's most respected minimally invasive aesthetic specialists. With over 20 years of medical experience and more than 700 Endolift laser treatments performed, Dr. K has earned national recognition as a Key Opinion Leader for multiple leading aesthetic brands.</p>
+      <p>At PCH MedSpa in Corona Del Mar, he personally supervises every treatment, ensuring the highest standards of safety, precision, and patient care. The result is a practice where patients consistently achieve natural-looking outcomes they could not get anywhere else in Orange County.</p>
+      <div class="about-badges">
+        <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Board-Certified Physician</span>
+        <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> ABIM Certified</span>
+        <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2A66E" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Endolift Key Opinion Leader</span>
+      </div>
+    </div>
+    <div class="about-photo fade-in">
+      <img src="https://www.pchmedspa.com/wp-content/uploads/2021/10/Dr-K-Headshot-circle-PCH-MedSpa-vertical-_-576x1024.jpeg" alt="Dr. Kaveh Karandish" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="cta">
+  <h2 class="fade-in">Experience Physician-Level Aesthetic Care</h2>
+  <a href="tel:9492429166" class="btn-gold fade-in">Request Your Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand" style="font-weight:700;font-size:17px;color:#fff;margin-bottom:8px">PCH MedSpa</div>
+      <div class="footer-contact">
+        (949) 242-9166<br>
+        info@pchmedspa.com<br>
+        2801 E. Coast Hwy, Corona Del Mar, CA 92625
+      </div>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-bottom">© 2026 PCH MedSpa. All rights reserved. | Website by <span>Mediactive</span></div>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
