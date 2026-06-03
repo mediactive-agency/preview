@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spa Bleu | Award-Winning Aveda Salon and Day Spa in Illinois</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#1A3D5C;background:#fff}
+img{max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:#1A3D5C;border-bottom:1px solid #15324e}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:40px;object-fit:contain}
+.nav-logo-fallback{color:#7FBFE9;font-weight:800;font-size:18px;letter-spacing:.5px}
+.nav-menu{display:flex;align-items:center;gap:32px}
+.nav-link{color:#fff;font-size:14px;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#7FBFE9}
+.nav-cta{background:#7FBFE9;color:#1A3D5C;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#1A3D5C;padding:112px 24px;text-align:center}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;justify-content:center}
+.hero-badge{background:rgba(127,191,233,.18);border:1px solid #7FBFE9;color:#7FBFE9;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(30px,4vw,54px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:17px;color:#a8cfe6;line-height:1.7;margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:#1A3D5C;border:2px solid #7FBFE9;color:#7FBFE9;padding:14px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:all .2s;margin-bottom:20px}
+.hero-cta:hover{background:#7FBFE9;color:#1A3D5C}
+.hero-contact{color:#7FBFE9;font-size:15px;font-weight:600}
+.hero-contact a{color:#7FBFE9}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:64px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:clamp(34px,4vw,52px);font-weight:800;color:#1A3D5C;line-height:1}
+.stat-label{font-size:15px;color:#6b7a8a;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 24px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(28px,3vw,42px);font-weight:800;color:#1A3D5C;margin-bottom:12px}
+.section-header p{font-size:17px;color:#6b7a8a;max-width:560px;margin:0 auto}
+.services-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px 28px;border-top:3px solid #7FBFE9}
+.service-icon{width:48px;height:48px;background:rgba(127,191,233,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card h3{font-size:18px;font-weight:700;color:#1A3D5C;margin-bottom:10px}
+.service-card p{font-size:15px;color:#6b7a8a;line-height:1.65}
+
+/* TESTIMONIALS */
+.testimonials{background:#F5F6F8;padding:96px 24px}
+.testimonials-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:28px}
+.testimonial-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:36px 32px}
+.stars{display:flex;gap:4px;margin-bottom:16px}
+.testimonial-card blockquote{font-size:17px;color:#1A3D5C;line-height:1.75;font-style:italic;margin-bottom:16px}
+.testimonial-card cite{font-size:14px;color:#7FBFE9;font-weight:600;font-style:normal}
+
+/* HOW IT WORKS */
+.how{background:#fff;padding:96px 24px}
+.steps{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:#7FBFE9;z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;background:#7FBFE9;color:#1A3D5C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto 20px}
+.step h3{font-size:18px;font-weight:700;color:#1A3D5C;margin-bottom:10px}
+.step p{font-size:15px;color:#6b7a8a;line-height:1.65}
+.how-cta{text-align:center}
+
+/* ABOUT */
+.about{background:#F5F6F8;padding:96px 24px}
+.about-inner{max-width:1280px;margin:0 auto;max-width:860px}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.about-badge{background:rgba(127,191,233,.15);border:1px solid #7FBFE9;color:#1A3D5C;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.about h2{font-size:clamp(26px,3vw,38px);font-weight:800;color:#1A3D5C;margin-bottom:16px}
+.about p{font-size:16px;color:#3d5166;line-height:1.75;margin-bottom:16px}
+
+/* CTA BAND */
+.cta-band{background:#1A3D5C;padding:96px 24px;text-align:center}
+.cta-band h2{font-size:clamp(24px,3vw,38px);font-weight:800;color:#fff;margin-bottom:24px;max-width:720px;margin-left:auto;margin-right:auto}
+.btn-primary{display:inline-block;background:#7FBFE9;color:#1A3D5C;padding:16px 40px;border-radius:6px;font-size:17px;font-weight:700;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+
+/* FOOTER */
+.footer{background:#0f2538;padding:48px 24px;color:#7a98b0}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-locations{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:32px}
+.footer-loc h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:8px}
+.footer-loc p{font-size:13px;line-height:1.8}
+.footer-bottom{border-top:1px solid #1e3c55;padding-top:24px;font-size:13px;text-align:center}
+.footer-bottom span{color:#7FBFE9}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .footer-locations{grid-template-columns:1fr}
+}
+@media(max-width:767px){
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#1A3D5C;padding:24px;gap:20px}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://spa-bleu.com/wp-content/uploads/2021/03/spa-bleu_logo-lightblue-trans-sized-e1615241049453.png" alt="Spa Bleu" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback" style="display:none">Spa Bleu</span>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#testimonials" class="nav-link">Reviews</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#cta" class="nav-cta">Book Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge-row fade-in">
+    <span class="hero-badge">Aveda Certified</span>
+    <span class="hero-badge">Green Circle Salon</span>
+    <span class="hero-badge">Salon Today 200 Honoree</span>
+  </div>
+  <h1 class="fade-in">Where Every Visit Feels Like the Best Decision You Made All Week</h1>
+  <p class="hero-sub fade-in">Spa Bleu is Illinois' award-winning Aveda salon and day spa — three locations dedicated to delivering 5-star beauty and wellness experiences in a peaceful, restorative atmosphere.</p>
+  <a href="#cta" class="hero-cta fade-in">Book Your Appointment</a>
+  <div class="hero-contact fade-in"><a href="tel:8474263656">(847) 426-3656</a></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Illinois Locations</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">Aveda</div>
+      <div class="stat-label">Certified Salon</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">5-Star</div>
+      <div class="stat-label">Service Every Visit</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>Our Services</h2>
+    <p>A full menu of beauty and wellness experiences across all three Illinois locations.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H7v10a2 2 0 002 2h6a2 2 0 002-2V10h3.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
+      </div>
+      <h3>Hair Services</h3>
+      <p>Precision cuts, Aveda color, demi color, professional treatments, and ENVIE extensions for every style.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Massage and Body</h3>
+      <p>Relaxation, deep tissue, and specialty massages plus luxurious body treatments and wraps.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <h3>Facials and Skin Care</h3>
+      <p>Ultraceuticals and custom facials designed to treat, restore, and transform your skin.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h3>Makeup and Lashes</h3>
+      <p>Professional makeup application, lash services, and bridal packages for your special occasions.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Laser Hair Reduction</h3>
+      <p>Safe, effective laser hair reduction to permanently reduce unwanted hair.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Spa Packages and Groups</h3>
+      <p>Curated spa packages and group booking experiences for parties, bridal events, and corporate groups.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-in">
+    <h2>What Our Guests Say</h2>
+    <p>Real experiences from real guests across our Illinois locations.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <blockquote>"My visit was absolutely wonderful! The room was very peaceful and I was offered a variety of aroma options. I will definitely be coming back soon."</blockquote>
+      <cite>Rachel LS — Google Review</cite>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How It Works</h2>
+    <p>Three simple steps to your most relaxing visit yet.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Choose Your Experience</h3>
+      <p>Browse our full menu of salon and spa services across all three locations.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Book Your Visit</h3>
+      <p>Schedule online or call your nearest location for same-week availability.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Arrive and Unwind</h3>
+      <p>Walk in, let us take care of everything, and leave feeling completely renewed.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Book Your Appointment</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner fade-in">
+    <h2>About Spa Bleu</h2>
+    <p>Spa Bleu was founded with a single commitment: create a peaceful atmosphere where every guest experiences genuine beauty and wellness care at the highest level. With three locations across the Chicago suburbs — West Dundee, South Barrington, and St. Charles — Spa Bleu has built a reputation for expert service, Aveda-quality products, and a team of dedicated professionals who truly love what they do.</p>
+    <p>As a Salon Today 200 Honoree and Green Circle Salon, Spa Bleu combines award-winning results with a commitment to sustainability. Whether you are coming in for a cut and color or a full spa day, the focus is always the same: 5-star service, every visit.</p>
+    <div class="about-badges">
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Aveda Certified Salon</span>
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Green Circle Certified</span>
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A3D5C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Salon Today 200 Honoree</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="cta">
+  <h2 class="fade-in">Ready for Your Best Salon and Spa Experience?</h2>
+  <a href="tel:8474263656" class="btn-primary fade-in">Book Your Appointment Today</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-locations">
+      <div class="footer-loc">
+        <h4>West Dundee</h4>
+        <p>106 N. Second Street<br>(847) 426-3656</p>
+      </div>
+      <div class="footer-loc">
+        <h4>South Barrington</h4>
+        <p>100 W. Higgins, F-80<br>(847) 783-0703</p>
+      </div>
+      <div class="footer-loc">
+        <h4>St. Charles</h4>
+        <p>116 W. Main St.<br>(847) 960-5214</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Spa Bleu. All rights reserved. | Website by <span>Mediactive</span></div>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
