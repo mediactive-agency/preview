@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Closer Everyday | Free Wellness and Accountability Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif;color:#1A1A1A}
+body{overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:999;background:#fff;border-bottom:1px solid #e0e8f5;padding:0 24px}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{height:44px;display:flex;align-items:center}
+.nav-logo img{height:44px;width:auto;object-fit:contain}
+.nav-logo-text{font-size:18px;font-weight:800;color:#1F4386;letter-spacing:-0.3px}
+.nav-menu{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{font-size:14px;font-weight:500;color:#1A1A1A;transition:color 0.2s}
+.nav-link:hover{color:#1F4386}
+.nav-cta{background:#1F4386;color:#fff;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:600;transition:background 0.2s}
+.nav-cta:hover{background:#046BD2;color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#1A1A1A;transition:all 0.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#fff;padding:100px 24px}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.badge-pill{background:#EBF2FF;color:#1F4386;border:1px solid #b8cef5;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(28px,3.5vw,48px);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:20px;color:#1A1A1A}
+.hero h1 span{color:#1F4386}
+.hero-sub{font-size:17px;line-height:1.7;color:#555;margin-bottom:36px}
+.btn-primary{display:inline-block;background:#1F4386;color:#fff;padding:16px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:background 0.2s;margin-bottom:20px}
+.btn-primary:hover{background:#046BD2}
+.hero-contact{font-size:14px;color:#888}
+.hero-contact a{color:#1F4386;font-weight:600}
+.hero-contact a:hover{color:#046BD2}
+.hero-photo-wrap{position:relative}
+.hero-photo-wrap img{width:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.12);object-fit:cover;max-height:560px}
+.hero-photo-badge{position:absolute;bottom:24px;left:24px;background:#fff;border-radius:8px;padding:12px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.12)}
+.hero-photo-badge p{font-size:13px;font-weight:700;color:#1A1A1A}
+.hero-photo-badge span{font-size:12px;color:#666}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:80px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.stat-num{font-size:clamp(36px,4vw,52px);font-weight:800;color:#1F4386;line-height:1}
+.stat-label{font-size:15px;color:#666;margin-top:8px;font-weight:500}
+
+/* PROGRAMS */
+.programs{background:#fff;padding:100px 24px}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1F4386;margin-bottom:12px}
+.section-title{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-0.5px;color:#1A1A1A}
+.cards-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:36px 28px}
+.card-icon{width:48px;height:48px;background:#EBF2FF;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.card h3{font-size:18px;font-weight:700;margin-bottom:10px;color:#1A1A1A}
+.card p{font-size:15px;line-height:1.65;color:#666}
+
+/* HOW IT WORKS */
+.how{background:#F5F6F8;padding:100px 24px}
+.steps-row{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.steps-row::before{content:'';position:absolute;top:32px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:#1F4386;z-index:0}
+.step{text-align:center;padding:0 20px;position:relative;z-index:1}
+.step-num{width:64px;height:64px;border-radius:50%;background:#1F4386;color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:10px;color:#1A1A1A}
+.step p{font-size:14px;line-height:1.65;color:#666}
+.how-cta{text-align:center}
+
+/* ABOUT */
+.about{background:#fff;padding:100px 24px}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text .section-tag{text-align:left}
+.about-text .section-title{text-align:left;margin-bottom:24px}
+.about-text p{font-size:16px;line-height:1.75;color:#555;margin-bottom:20px}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.about-badge{background:#EBF2FF;border:1px solid #b8cef5;color:#1F4386;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600}
+.about-photo-wrap{}
+.about-photo-wrap img{width:100%;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.10);object-fit:cover;max-height:520px}
+
+/* CTA BAND */
+.cta-band{background:#1F4386;padding:100px 24px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;margin-bottom:20px;letter-spacing:-0.5px}
+.btn-white{display:inline-block;background:#fff;color:#1F4386;padding:16px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:all 0.2s}
+.btn-white:hover{background:#046BD2;color:#fff}
+
+/* FOOTER */
+footer{background:#1A1A1A;color:#aaa;padding:40px 24px;text-align:center}
+footer p{font-size:14px;line-height:1.8}
+footer a{color:#046BD2}
+
+/* FADE-IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-photo-wrap{max-width:480px;margin:0 auto}
+  .steps-row::before{display:none}
+  .steps-row{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:768px){
+  .nav-menu{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;padding:20px 24px;flex-direction:column;gap:16px;border-bottom:1px solid #e0e8f5;z-index:998}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr;gap:32px}
+  .cards-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr;gap:40px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://gettingclosereveryday.com/wp-content/uploads/2025/07/gce-logo-small.png" alt="Getting Closer Everyday" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-text" style="display:none">GETTING CLOSER EVERYDAY</span>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#programs" class="nav-link">Programs</a></li>
+      <li><a href="#how" class="nav-link">How It Works</a></li>
+      <li><a href="#about" class="nav-link">About Jenna</a></li>
+      <li><a href="#cta" class="nav-cta">Join Free</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+      <div class="hero-badge-row">
+        <span class="badge-pill">Free to Join</span>
+        <span class="badge-pill">Since 2015</span>
+        <span class="badge-pill">130,000+ Members</span>
+      </div>
+      <h1>Join Thousands Who Are <span>Getting Closer to Their Goals Every Day</span></h1>
+      <p class="hero-sub">Getting Closer Everyday is a free accountability community built by someone who lost 140 pounds and never looked back. Join the movement, stay motivated, and finally make the progress you have been working toward.</p>
+      <a href="#cta" class="btn-primary">Join the Free Community</a>
+      <p class="hero-contact">Questions? Email <a href="mailto:info@gettingclosereveryday.com">info@gettingclosereveryday.com</a></p>
+    </div>
+    <div class="hero-photo-wrap fade-in">
+      <img src="https://gettingclosereveryday.com/wp-content/uploads/2025/07/20200206_192438-copy-1024x1024-1.jpg" alt="Jenna Leveille, Founder of Getting Closer Everyday" onerror="this.style.background='#EBF2FF';this.style.minHeight='400px';this.style.borderRadius='8px'">
+      <div class="hero-photo-badge">
+        <p>Jenna Leveille</p>
+        <span>Founder, Getting Closer Everyday</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" id="stats">
+  <div class="stats-inner">
+    <div class="fade-in">
+      <div class="stat-num">130,000+</div>
+      <div class="stat-label">Community Members</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-num">2015</div>
+      <div class="stat-label">Founded</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-num">140 lbs</div>
+      <div class="stat-label">Jenna's Personal Journey</div>
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="section-header fade-in">
+    <div class="section-tag">Programs</div>
+    <h2 class="section-title">Everything You Need to Keep Moving Forward</h2>
+  </div>
+  <div class="cards-grid">
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F4386" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Free Accountability Group</h3>
+      <p>Join a thriving online community of people committed to their health goals and daily progress.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F4386" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Weight Loss Coaching</h3>
+      <p>Personalized coaching and support from someone who has been through the journey herself.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F4386" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Wellness Programs</h3>
+      <p>Exclusive access to health education, partner programs, and wellness resources at member discounts.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F4386" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>Retreat and Travel Experiences</h3>
+      <p>Group retreats and transformational travel experiences for members ready for the next level.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <div class="section-tag">The Process</div>
+    <h2 class="section-title">How It Works</h2>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Join Free</h3>
+      <p>Sign up for the accountability community at no cost and get instant access to the group.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Show Up Daily</h3>
+      <p>Participate in the community, share your wins, and stay accountable to your goals.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Transform Together</h3>
+      <p>With support, tools, and a community behind you, getting closer to your goal becomes inevitable.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Join the Free Community</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-tag">About Jenna</div>
+      <h2 class="section-title">One Transformation Became a Movement</h2>
+      <p>Jenna Leveille started Getting Closer Everyday in 2015 after losing 140 pounds in just 18 months. What began as a personal transformation became a movement when she realized the one thing that made the difference was accountability and community.</p>
+      <p>Today, GCE has grown to over 130,000 members who show up for each other every day — sharing wins, supporting struggles, and proving that progress is possible. Jenna believes that when you learn something in life, it is only great when it is shared.</p>
+      <p>Her mission is to give every member the tools, community, and motivation to close the gap between where they are and where they want to be.</p>
+      <div class="about-badges">
+        <span class="about-badge">140 lb Weight Loss Journey</span>
+        <span class="about-badge">Certified Wellness Coach</span>
+        <span class="about-badge">Community Builder Since 2015</span>
+      </div>
+    </div>
+    <div class="about-photo-wrap fade-in">
+      <img src="https://gettingclosereveryday.com/wp-content/uploads/2025/07/20200206_192438-copy-1024x1024-1.jpg" alt="Jenna Leveille" onerror="this.parentElement.innerHTML='<div style=\'background:#EBF2FF;border-radius:8px;padding:80px 40px;text-align:center\'><div style=\'width:80px;height:80px;border-radius:50%;background:#1F4386;color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px\'>JL</div><h3 style=\'font-size:22px;font-weight:800;color:#1A1A1A;margin-bottom:8px\'>Jenna Leveille</h3><p style=\'font-size:15px;color:#666\'>Founder, GCE</p></div>'">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="cta">
+  <div class="fade-in">
+    <h2>Ready to Start Getting Closer Every Day?</h2>
+    <a href="mailto:info@gettingclosereveryday.com" class="btn-white">Join the Free Community</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="mailto:info@gettingclosereveryday.com">info@gettingclosereveryday.com</a> | Free to Join at <a href="https://gettingclosereveryday.com">gettingclosereveryday.com</a></p>
+  <p style="margin-top:12px">© 2026 Getting Closer Everyday. All rights reserved. | Website by <span style="color:#046BD2">Mediactive</span></p>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
