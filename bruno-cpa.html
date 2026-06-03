@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bruno CPA &amp; Associates — Accounting That Works as Hard as You Do</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#1A1A1A;background:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo img{height:38px;object-fit:contain}
+.nav-logo-fallback{font-size:1.1rem;font-weight:700;color:#168259}
+.nav-menu{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{text-decoration:none;color:#374151;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#168259}
+.nav-cta{background:#168259;color:#fff!important;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.875rem;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#0F6344}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#168259;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#fff;padding:96px 5%;border-bottom:1px solid #F0F2F5}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.hero-copy{}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.badge{background:#E8F5EF;color:#168259;padding:6px 16px;border-radius:20px;font-size:.78rem;font-weight:600;letter-spacing:.03em}
+.hero-copy h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#1A1A1A;line-height:1.18;margin-bottom:20px;letter-spacing:-.02em}
+.hero-copy p{font-size:1.05rem;color:#6B7280;line-height:1.7;margin-bottom:32px}
+.btn-primary{display:inline-block;background:#168259;color:#fff;padding:15px 34px;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-primary:hover{background:#0F6344}
+.hero-contact{margin-top:18px;font-size:.9rem;color:#9CA3AF}
+.hero-contact a{color:#374151;text-decoration:none;font-weight:600}
+.hero-contact a:hover{color:#168259}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;max-width:480px;height:520px;object-fit:cover;object-position:top;border-radius:16px;box-shadow:0 8px 40px rgba(22,130,89,.15);display:block;margin:0 auto}
+.hero-photo-fallback{width:100%;max-width:480px;height:520px;background:#E8F5EF;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:1.1rem;font-weight:600;color:#168259}
+.photo-accent{position:absolute;bottom:-16px;right:calc(50% - 240px + 16px);background:#168259;color:#fff;padding:12px 20px;border-radius:8px;font-size:.85rem;font-weight:700;box-shadow:0 4px 16px rgba(22,130,89,.35)}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:64px 5%}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.stat-number{font-size:2.5rem;font-weight:800;color:#168259;line-height:1}
+.stat-label{font-size:.875rem;color:#6B7280;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 5%}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#1A1A1A;margin-bottom:14px;letter-spacing:-.01em}
+.section-header p{font-size:1rem;color:#6B7280;max-width:580px;margin:0 auto;line-height:1.65}
+.cards-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:36px 32px;border:1px solid #F0F2F5}
+.card-icon{width:48px;height:48px;background:#E8F5EF;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.card h3{font-size:1.05rem;font-weight:700;color:#1A1A1A;margin-bottom:10px}
+.card p{font-size:.875rem;color:#6B7280;line-height:1.6}
+
+/* HOW IT WORKS */
+.how{background:#F5F6F8;padding:96px 5%}
+.steps-row{max-width:1280px;margin:56px auto 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-row::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:2px;background:#D1FAE5;z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-number{width:64px;height:64px;background:#168259;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px;border:4px solid #F5F6F8;box-shadow:0 2px 12px rgba(22,130,89,.25)}
+.step h3{font-size:1rem;font-weight:700;color:#1A1A1A;margin-bottom:10px}
+.step p{font-size:.875rem;color:#6B7280;line-height:1.6}
+.how-cta{text-align:center}
+.btn-green{display:inline-block;background:#168259;color:#fff;padding:14px 34px;border-radius:6px;font-weight:700;font-size:.975rem;text-decoration:none;transition:background .2s}
+.btn-green:hover{background:#0F6344}
+
+/* ABOUT */
+.about{background:#fff;padding:96px 5%}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-text h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#1A1A1A;margin-bottom:20px;letter-spacing:-.01em}
+.about-text p{font-size:.975rem;color:#374151;line-height:1.75;margin-bottom:18px}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.badge-solid{background:#E8F5EF;color:#168259;padding:8px 18px;border-radius:6px;font-size:.8rem;font-weight:600}
+.about-photo img{width:100%;max-width:440px;height:480px;object-fit:cover;object-position:top;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.1);display:block;margin:0 auto}
+.about-photo-fallback{display:none}
+
+/* CTA BAND */
+.cta-band{background:#168259;padding:96px 5%;text-align:center}
+.cta-band h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#fff;margin-bottom:32px;letter-spacing:-.01em}
+.btn-white{display:inline-block;background:#fff;color:#168259;padding:15px 38px;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-white:hover{background:#E8F5EF}
+
+/* FOOTER */
+footer{background:#0A3D28;padding:48px 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.footer-logo img{height:34px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85}
+.footer-logo-fallback{font-size:1rem;font-weight:700;color:#fff;opacity:.85}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+.footer-links a{color:#7EC8A4;text-decoration:none;font-size:.875rem;font-weight:500}
+.footer-links a:hover{color:#fff}
+.footer-copy{color:#4A8A68;font-size:.8rem}
+
+/* FADE-IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-photo{order:-1}
+  .about-inner{grid-template-columns:1fr}
+  .about-photo{order:-1}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-row{grid-template-columns:repeat(2,1fr);gap:40px}
+  .steps-row::before{display:none}
+  .photo-accent{right:16px}
+}
+@media(max-width:768px){
+  .stats-inner{grid-template-columns:1fr}
+  .cards-grid{grid-template-columns:1fr}
+  .steps-row{grid-template-columns:1fr}
+  .hamburger{display:flex}
+  .nav-menu{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 5%;gap:16px;border-bottom:1px solid #E2E8F0;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .nav-menu.active{display:flex}
+  .nav-cta{width:100%;text-align:center;padding:13px}
+  .btn-primary,.btn-green,.btn-white{width:100%;text-align:center}
+  .hero-badges{flex-direction:column;align-items:flex-start}
+  .badge-row{flex-direction:column}
+  .hero-photo img{height:340px}
+  .about-photo img{height:340px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://www.brunocpafirm.com/site_images/bruno2.png" alt="Bruno CPA &amp; Associates" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback" style="display:none">Bruno CPA &amp; Associates</span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#how" class="nav-link">How It Works</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link nav-cta">Schedule a Conversation</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy fade-in">
+      <div class="hero-badges">
+        <span class="badge">CPA Certified</span>
+        <span class="badge">Yonkers, NY</span>
+        <span class="badge">13+ Years Experience</span>
+      </div>
+      <h1>Accounting That Works as Hard as You Do</h1>
+      <p>Bruno CPA &amp; Associates delivers clean books, proactive tax planning, and CFO-level advisory that helps small business owners stop guessing and start growing.</p>
+      <a href="tel:9147433370" class="btn-primary">Schedule a Conversation</a>
+      <div class="hero-contact">Call us: <a href="tel:9147433370">(914) 743-3370</a></div>
+    </div>
+    <div class="hero-photo fade-in">
+      <img src="https://www.brunocpafirm.com/site_images/steve-bruno.jpg" alt="Steve Bruno, CPA" onerror="this.outerHTML='<div class=\'hero-photo-fallback\' style=\'display:flex\'>Steve Bruno, CPA</div>'">
+      <div class="photo-accent">Steve Bruno, CPA</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="fade-in">
+      <div class="stat-number">13+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-number">Yonkers</div>
+      <div class="stat-label">NY Based</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>Services We Offer</h2>
+    <p>From bookkeeping to specialized cannabis accounting, every service is designed to give you clarity, confidence, and control over your finances.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#168259" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Outsourced Accounting</h3>
+      <p>Full-service accounting partnership so you never have to worry about your books again.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#168259" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Small Business Tax Planning</h3>
+      <p>Year-round strategies to minimize your tax liability and keep more of what you earn.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#168259" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <h3>Bookkeeping</h3>
+      <p>Accurate monthly bookkeeping that keeps your financials clean, current, and audit-ready.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#168259" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Business Consulting</h3>
+      <p>Strategic guidance on growth, cash flow, and financial decision-making from a trusted advisor.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#168259" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Cannabis Industry Accounting</h3>
+      <p>Specialized compliance and accounting expertise for cultivators, distributors, and retailers.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#168259" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Financial Operations Partner</h3>
+      <p>We become your outsourced finance department, from AP/AR to month-end close.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How It Works</h2>
+    <p>A straightforward process that gets your finances in order and keeps them there.</p>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-number">1</div>
+      <h3>Initial Consultation</h3>
+      <p>Discuss your business, challenges, and financial goals with no obligation.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">2</div>
+      <h3>Accounting Assessment</h3>
+      <p>We review your current books, systems, and tax situation for a full picture.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">3</div>
+      <h3>Custom Engagement Plan</h3>
+      <p>You receive a clear proposal tailored to your exact needs and budget.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">4</div>
+      <h3>Ongoing Partnership</h3>
+      <p>Monthly bookkeeping, quarterly reviews, and proactive tax planning year-round.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="tel:9147433370" class="btn-green">Schedule a Conversation</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <h2>Meet Steve Bruno, CPA</h2>
+      <p>Steve Bruno, CPA, brings over 13 years of experience as a Certified Public Accountant and trusted business advisor across multiple industries. His background spans both public and corporate accounting settings, giving him a practical understanding of what business owners actually need from their numbers.</p>
+      <p>Not just compliance, but clarity and strategy. Steve is certified by AICPA, the NYS Society of CPAs, and holds certifications as a QuickBooks ProAdvisor and A2X Certified Partner. Whether you are running a construction company, an e-commerce brand, or a cannabis operation, Steve's approach is the same: build reliable financial foundations and provide the advisory layer that helps you plan, grow, and move forward with confidence.</p>
+      <div class="badge-row">
+        <span class="badge-solid">AICPA Member</span>
+        <span class="badge-solid">QuickBooks ProAdvisor</span>
+        <span class="badge-solid">A2X Certified Partner</span>
+      </div>
+    </div>
+    <div class="about-photo fade-in">
+      <img src="https://www.brunocpafirm.com/site_images/steve-bruno.jpg" alt="Steve Bruno, CPA" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Ready for Accounting That Finally Works for You?</h2>
+  <a href="tel:9147433370" class="btn-white fade-in">Schedule a Conversation</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://www.brunocpafirm.com/site_images/bruno2.png" alt="Bruno CPA &amp; Associates" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="footer-logo-fallback" style="display:none">Bruno CPA &amp; Associates</span>
+    </div>
+    <div class="footer-links">
+      <a href="tel:9147433370">(914) 743-3370</a>
+      <a href="mailto:info@brunocpafirm.com">info@brunocpafirm.com</a>
+      <a href="#">Yonkers, NY</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Bruno CPA &amp; Associates. All rights reserved. | Website by <span style="color:#168259">Mediactive</span></p>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');
+h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
