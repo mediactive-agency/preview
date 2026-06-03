@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindful Healing Massage LLC | Where Healing Meets Intention</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#2C2E32;background:#fff}
+img{max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #3E8D9A}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{color:#3E8D9A;font-weight:800;font-size:17px;letter-spacing:.5px;line-height:1.2}
+.nav-menu{display:flex;align-items:center;gap:32px}
+.nav-link{color:#2C2E32;font-size:14px;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#3E8D9A}
+.nav-cta{background:#3E8D9A;color:#fff;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#2C2E32;transition:.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{position:relative;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://static.glossgenius.com/public/salon/a3beb091fc9e4c4a2bb914f497959fb4f8361b01/website_cover_image/d474fc3a5deb1abfe8f9e8585416a734.jpeg') center/cover no-repeat;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.52);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:96px 24px;text-align:center;width:100%}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;justify-content:center}
+.hero-badge{background:rgba(62,141,154,.25);border:1px solid #3E8D9A;color:#fff;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(32px,4vw,56px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;max-width:760px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.87);line-height:1.7;margin-bottom:36px;max-width:620px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:#3E8D9A;color:#fff;padding:14px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s;margin-bottom:20px}
+.hero-cta:hover{opacity:.85}
+.hero-contact{color:#fff;font-size:15px;font-weight:600}
+.hero-contact a{color:#fff}
+
+/* STATS */
+.stats{background:#F5F6F8;padding:64px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-num{font-size:clamp(34px,4vw,52px);font-weight:800;color:#3E8D9A;line-height:1}
+.stat-label{font-size:15px;color:#6b7078;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:96px 24px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(28px,3vw,42px);font-weight:800;color:#2C2E32;margin-bottom:12px}
+.section-header p{font-size:17px;color:#6b7078;max-width:560px;margin:0 auto}
+.services-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:32px 28px;border-top:3px solid #3E8D9A}
+.service-icon{width:48px;height:48px;background:rgba(62,141,154,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card h3{font-size:18px;font-weight:700;color:#2C2E32;margin-bottom:10px}
+.service-card p{font-size:15px;color:#6b7078;line-height:1.65}
+
+/* HOW IT WORKS */
+.how{background:#F5F6F8;padding:96px 24px}
+.steps{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:#3E8D9A;z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;background:#3E8D9A;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto 20px}
+.step h3{font-size:18px;font-weight:700;color:#2C2E32;margin-bottom:10px}
+.step p{font-size:15px;color:#6b7078;line-height:1.65}
+.how-cta{text-align:center}
+.btn-primary{display:inline-block;background:#3E8D9A;color:#fff;padding:14px 32px;border-radius:6px;font-size:16px;font-weight:700;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+
+/* ABOUT */
+.about{background:#fff;padding:96px 24px}
+.about-inner{max-width:860px;margin:0 auto;border-left:4px solid #3E8D9A;padding-left:36px}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.about-badge{background:rgba(62,141,154,.1);border:1px solid #3E8D9A;color:#2C2E32;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.about h2{font-size:clamp(26px,3vw,38px);font-weight:800;color:#2C2E32;margin-bottom:16px}
+.about p{font-size:16px;color:#4a4d52;line-height:1.75;margin-bottom:16px}
+
+/* CTA BAND */
+.cta-band{background:#2C2E32;padding:96px 24px;text-align:center}
+.cta-band h2{font-size:clamp(24px,3vw,38px);font-weight:800;color:#fff;margin-bottom:24px;max-width:640px;margin-left:auto;margin-right:auto}
+.btn-teal{display:inline-block;background:#3E8D9A;color:#fff;padding:16px 40px;border-radius:6px;font-size:17px;font-weight:700;transition:opacity .2s}
+.btn-teal:hover{opacity:.85}
+
+/* FOOTER */
+.footer{background:#1e2023;padding:48px 24px;color:#8a8d92}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-contact{font-size:14px;line-height:2;margin-bottom:24px}
+.footer-contact strong{color:#fff}
+.footer-bottom{border-top:1px solid #2d2f33;padding-top:24px;font-size:13px;text-align:center}
+.footer-bottom span{color:#3E8D9A}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+}
+@media(max-width:767px){
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#fff;padding:24px;gap:20px;border-bottom:2px solid #3E8D9A}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .about-inner{padding-left:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">MINDFUL HEALING MASSAGE</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#cta" class="nav-cta">Book a Session</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge-row fade-in">
+      <span class="hero-badge">Licensed Massage Therapist</span>
+      <span class="hero-badge">17+ Years Experience</span>
+      <span class="hero-badge">200-Hour Yoga Teacher</span>
+    </div>
+    <h1 class="fade-in">Where Healing Meets Intention</h1>
+    <p class="hero-sub fade-in">Mindful Healing Massage LLC offers expert therapeutic massage and bodywork in Pewaukee, WI — designed to restore balance, relieve pain, and reconnect you to your body.</p>
+    <a href="#cta" class="hero-cta fade-in">Book Your Session</a>
+    <div class="hero-contact fade-in"><a href="tel:2626074325">(262) 607-4325</a></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num">17+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Massage Modalities</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">Pewaukee</div>
+      <div class="stat-label">Wisconsin</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <h2>Our Services</h2>
+    <p>Every session tailored to your body, your goals, and your healing journey.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Swedish Massage</h3>
+      <p>Classic full-body relaxation massage to ease tension, improve circulation, and restore calm from head to toe.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+      </div>
+      <h3>Deep Tissue Massage</h3>
+      <p>Targeted work on chronic tension and muscle knots for lasting relief from everyday stress and pain.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Sports and Orthopedic Massage</h3>
+      <p>Performance-focused massage to prevent injury, speed recovery, and keep you at your best.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h3>Prenatal Massage</h3>
+      <p>Safe, nurturing massage designed specifically for expectant mothers at any stage of pregnancy.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>Himalayan Hot Stone</h3>
+      <p>Deeply warming stone massage that melts tension and promotes profound relaxation and restoration.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+      </div>
+      <h3>Neuromuscular Therapy</h3>
+      <p>Advanced technique targeting trigger points and nerve pain for clients with chronic conditions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <h2>How It Works</h2>
+    <p>Your path to feeling better starts here.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Book Your Session</h3>
+      <p>Choose your service, select your date and time, and reserve your spot online.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Arrive and Decompress</h3>
+      <p>Come in and let Catrina guide you through an intake to personalize your session.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Leave Feeling Renewed</h3>
+      <p>Walk out with less pain, more ease, and a clear path to ongoing healing and wellness.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Book Your Session</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner fade-in">
+    <h2>Catrina Braatz Weed, LMT</h2>
+    <p>Catrina Braatz Weed, LMT, is the founder of Mindful Healing Massage LLC and a licensed massage therapist with over 17 years of experience. A graduate of Lakeside School of Massage Therapy, Catrina holds credentials as an LMT, ADMT, and 200-hour Certified Yoga Teacher.</p>
+    <p>Her work spans therapeutic, sports, and deep tissue massage, neuromuscular release, hot stone, gua sha, foot reflexology, and meditation — creating a practice that treats the whole person, not just the symptom. Located in Suite 10 at N28W23000 Roundy Drive in Pewaukee, WI, Mindful Healing Massage is a space dedicated to everyone who is trying to heal and needs a helping hand.</p>
+    <div class="about-badges">
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> LMT, Licensed</span>
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> ADMT Certified</span>
+      <span class="about-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3E8D9A" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 200-Hour CYT</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="cta">
+  <h2 class="fade-in">Ready to Start Your Healing Journey?</h2>
+  <a href="tel:2626074325" class="btn-teal fade-in">Book Your Massage Today</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <strong>Mindful Healing Massage LLC</strong><br>
+      (262) 607-4325<br>
+      N28W23000 Roundy Drive Suite 10, Pewaukee, WI 53072
+    </div>
+    <div class="footer-bottom">© 2026 Mindful Healing Massage LLC. All rights reserved. | Website by <span>Mediactive</span></div>
+  </div>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
