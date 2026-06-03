@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sawyer CPAs & Advisors | Fort Lauderdale CPA Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+  body { color: #1A2535; background: #fff; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: #fff; border-bottom: 1px solid #e8e4df;
+    padding: 0 40px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo img { height: 48px; width: auto; display: block; }
+  .nav-logo-text { font-size: 18px; font-weight: 800; color: #31486D; display: none; }
+  .nav-menu { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-link { text-decoration: none; color: #1A2535; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+  .nav-link:hover { color: #31486D; }
+  .nav-cta {
+    background: #31486D; color: #fff; padding: 10px 22px;
+    border-radius: 6px; font-weight: 600; font-size: 15px;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #243757; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #1A2535; transition: all 0.3s; }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* HERO */
+  .hero {
+    background: #fff; padding: 100px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 72px; max-width: 1280px; margin: 0 auto;
+  }
+  .hero-content { flex: 1; max-width: 580px; }
+  .hero-eyebrow {
+    display: inline-block; background: #f0ebe5; color: #A98063;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .hero-content h1 {
+    font-size: clamp(30px, 3.8vw, 50px); font-weight: 800;
+    line-height: 1.13; color: #1A2535; margin-bottom: 20px;
+  }
+  .hero-content h1 span { color: #31486D; }
+  .hero-content p {
+    font-size: 17px; line-height: 1.75; color: #5a6578; margin-bottom: 32px;
+  }
+  .hero-btn {
+    display: inline-block; background: #31486D; color: #fff;
+    padding: 16px 32px; border-radius: 6px; font-size: 17px;
+    font-weight: 700; text-decoration: none; transition: background 0.2s;
+    margin-bottom: 16px;
+  }
+  .hero-btn:hover { background: #243757; }
+  .hero-contact {
+    display: block; font-size: 16px; color: #31486D;
+    text-decoration: none; font-weight: 600;
+  }
+  .hero-contact:hover { text-decoration: underline; }
+  .badge-row { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+  .badge {
+    background: #f0ebe5; color: #7a5c3f; border: 1px solid #ddd3c8;
+    padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+  }
+  .hero-photo { flex: 0 0 440px; }
+  .hero-photo img {
+    width: 100%; height: 540px; object-fit: cover; object-position: center top;
+    border-radius: 12px; display: block;
+    box-shadow: 0 12px 40px rgba(49,72,109,0.14);
+  }
+
+  /* STATS BAR */
+  .stats-bar { background: #F5F6F8; padding: 64px 40px; }
+  .stats-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center;
+  }
+  .stat-num { font-size: 48px; font-weight: 800; color: #31486D; line-height: 1; }
+  .stat-label { font-size: 15px; color: #666; margin-top: 8px; font-weight: 500; }
+
+  /* SERVICES */
+  .services { background: #fff; padding: 100px 40px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+    color: #A98063; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 3vw, 40px); font-weight: 800;
+    color: #1A2535; margin-bottom: 12px; line-height: 1.2;
+  }
+  .section-sub { font-size: 17px; color: #666; margin-bottom: 56px; max-width: 580px; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .service-card {
+    background: #fff; border: 1px solid #e8e4df;
+    border-radius: 8px; padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(49,72,109,0.12); }
+  .service-icon {
+    width: 48px; height: 48px; background: #f0ebe5;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .service-card h3 { font-size: 17px; font-weight: 700; color: #1A2535; margin-bottom: 10px; }
+  .service-card p { font-size: 15px; color: #666; line-height: 1.65; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: #F5F6F8; padding: 100px 40px; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px;
+  }
+  .testimonial-card {
+    background: #fff; border-radius: 8px; padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-top: 3px solid #A98063;
+  }
+  .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+  .testimonial-card blockquote {
+    font-size: 15px; color: #555; line-height: 1.75;
+    font-style: italic; margin-bottom: 24px;
+  }
+  .testimonial-author { font-size: 14px; font-weight: 700; color: #1A2535; }
+
+  /* HOW IT WORKS */
+  .how { background: #fff; padding: 100px 40px; }
+  .steps-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    position: relative; margin-top: 56px;
+  }
+  .steps-row::before {
+    content: ''; position: absolute; top: 32px; left: calc(12.5% + 12px);
+    right: calc(12.5% + 12px); height: 2px;
+    background: linear-gradient(90deg, #ddd3c8, #A98063, #ddd3c8);
+    z-index: 0;
+  }
+  .step { text-align: center; padding: 0 16px; position: relative; }
+  .step-num {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #31486D; color: #fff;
+    font-size: 22px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px; position: relative; z-index: 1;
+  }
+  .step h3 { font-size: 17px; font-weight: 700; color: #1A2535; margin-bottom: 10px; }
+  .step p { font-size: 14px; color: #666; line-height: 1.65; }
+  .how-cta { text-align: center; margin-top: 56px; }
+  .btn-primary {
+    display: inline-block; background: #31486D; color: #fff;
+    padding: 16px 36px; border-radius: 6px; font-size: 17px;
+    font-weight: 700; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #243757; }
+
+  /* ABOUT */
+  .about { background: #F5F6F8; padding: 100px 40px; }
+  .about-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; gap: 72px;
+  }
+  .about-text { flex: 1; }
+  .about-text p { font-size: 16px; color: #555; line-height: 1.85; margin-bottom: 20px; }
+  .about-photo { flex: 0 0 400px; }
+  .about-photo img {
+    width: 100%; height: 480px; object-fit: cover; object-position: center top;
+    border-radius: 12px; display: block;
+    box-shadow: 0 8px 32px rgba(49,72,109,0.15);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: #31486D; padding: 100px 40px; text-align: center;
+  }
+  .cta-band h2 {
+    font-size: clamp(26px, 3.5vw, 44px); font-weight: 800;
+    color: #fff; margin-bottom: 12px; line-height: 1.2;
+  }
+  .cta-band p {
+    font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 40px;
+  }
+  .btn-accent {
+    display: inline-block; background: #A98063; color: #fff;
+    padding: 18px 40px; border-radius: 6px; font-size: 17px;
+    font-weight: 700; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-accent:hover { background: #8a6550; }
+
+  /* FOOTER */
+  footer { background: #1A2535; padding: 64px 40px 32px; color: #9aa5b8; }
+  .footer-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 56px;
+    padding-bottom: 40px; border-bottom: 1px solid #2a3a52;
+  }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 14px; }
+  .footer-logo-fallback { font-size: 18px; font-weight: 800; color: #A98063; margin-bottom: 14px; display: none; }
+  .footer-desc { font-size: 14px; color: #7a8a9e; line-height: 1.65; max-width: 280px; }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links strong { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #A98063; font-weight: 700; display: block; margin-bottom: 6px; }
+  .footer-links a { color: #7a8a9e; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-links a:hover { color: #A98063; }
+  .footer-contact strong { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #A98063; font-weight: 700; display: block; margin-bottom: 10px; }
+  .footer-contact p { font-size: 14px; color: #7a8a9e; line-height: 1.85; }
+  .footer-contact a { color: #A98063; text-decoration: none; }
+  .footer-bottom {
+    max-width: 1280px; margin: 24px auto 0;
+    text-align: center; font-size: 13px; color: #4a5a72;
+  }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-row { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .steps-row::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-menu {
+      display: none; position: absolute; top: 72px; left: 0; right: 0;
+      background: #fff; flex-direction: column; padding: 20px;
+      border-bottom: 1px solid #e8e4df; gap: 16px;
+    }
+    .nav-menu.active { display: flex; }
+    .hamburger { display: flex; }
+    .hero { flex-direction: column-reverse; padding: 60px 20px; gap: 40px; }
+    .hero-photo { flex: none; width: 100%; }
+    .hero-photo img { height: 320px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .steps-row { grid-template-columns: 1fr; gap: 36px; }
+    .about-inner { flex-direction: column; gap: 40px; }
+    .about-photo { flex: none; width: 100%; }
+    .about-photo img { height: 320px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .btn-primary, .hero-btn, .btn-accent { display: block; width: 100%; text-align: center; }
+    .services { padding: 80px 20px; }
+    .testimonials { padding: 80px 20px; }
+    .how { padding: 80px 20px; }
+    .about { padding: 80px 20px; }
+    .cta-band { padding: 80px 20px; }
+    footer { padding: 60px 20px 24px; }
+    .stats-bar { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://sawyerlatimer.com/wp-content/uploads/2026/01/New-Sawyer-CPAs-Logo-revised.gif"
+         alt="Sawyer CPAs & Advisors"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="nav-logo-text">Sawyer CPAs</span>
+  </div>
+  <div class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="#services" class="nav-link">Services</a></li>
+    <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#contact" class="nav-cta">Schedule Appointment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="hero fade-in">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Fort Lauderdale, FL</div>
+      <h1>Real-Time Accounting and Tax Strategy That Builds <span>Profitable Businesses</span></h1>
+      <p>Sawyer CPAs combines proactive tax planning, cloud accounting, and CFO-level advisory — so you can stop reacting to your numbers and start using them to grow.</p>
+      <a href="#contact" class="hero-btn">Schedule an Appointment</a>
+      <a href="tel:+19544917233" class="hero-contact">(954) 491-7233</a>
+      <div class="badge-row">
+        <span class="badge">20+ Years Experience</span>
+        <span class="badge">Fort Lauderdale, FL</span>
+        <span class="badge">CFO Level Advisory</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://sawyerlatimer.com/wp-content/uploads/2021/02/Untitled-design-29.jpg"
+           alt="Sawyer CPAs & Advisors Team"
+           onerror="this.style.display='none';">
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stats-inner fade-in">
+    <div>
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years Serving Clients</div>
+    </div>
+    <div>
+      <div class="stat-num">8am&ndash;5pm</div>
+      <div class="stat-label">Mon&ndash;Fri Availability</div>
+    </div>
+    <div>
+      <div class="stat-num">After Hours</div>
+      <div class="stat-label">By Request</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Full-Service Accounting, Tax, and Advisory</h2>
+      <p class="section-sub">Everything your business needs to stay compliant, minimize taxes, and scale with confidence.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#31486D" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Tax Planning and Preparation</h3>
+        <p>Proactive strategies that minimize your tax burden year-round, not just at filing time.</p>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#31486D" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Bookkeeping and Accounting</h3>
+        <p>Real-time financial statements, bank reconciliation, and month-end close you can trust.</p>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#31486D" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>CFO Advisory</h3>
+        <p>Strategic financial guidance to help owners make better decisions with confidence.</p>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#31486D" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Business Planning</h3>
+        <p>Financial forecasting, budgeting, and planning support for sustainable growth.</p>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#31486D" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Payroll Services</h3>
+        <p>Accurate, compliant payroll processing so your team gets paid right, every time.</p>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#31486D" stroke-width="2"><polyline points="3 9 12 2 21 9"/><path d="M9 22V12h6v10"/><path d="M3 9v13h18V9"/></svg>
+        </div>
+        <h3>QuickBooks Cleanup</h3>
+        <p>Get your books in order with a full QBO cleanup and implementation by certified experts.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">Client Stories</p>
+      <h2 class="section-title">20 Years of Client Wins</h2>
+      <p class="section-sub">South Florida business owners have trusted Tom Sawyer for decades. Here is why.</p>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"I have been with Sawyer CPAs for more than 20 years. Tom has never let me down. They are incredibly responsive, proactive, and have saved me a tremendous amount in taxes over the years."</blockquote>
+        <div class="testimonial-author">Erik S.</div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"They have always been professional, helpful and responsive. Some of the tools they share for organization are well thought out and extremely helpful."</blockquote>
+        <div class="testimonial-author">William P.</div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <div class="stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"If you are fortunate enough to secure the services of Tom Sawyer, you have a real champion in your corner."</blockquote>
+        <div class="testimonial-author">Franklin S.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="how">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">Getting Started</p>
+      <h2 class="section-title">From Discovery to Ongoing Partnership</h2>
+      <p class="section-sub">A simple, proven process to get your books clean, your taxes optimized, and your business on track.</p>
+    </div>
+    <div class="steps-row fade-in">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Free Discovery Call</h3>
+        <p>Talk through your current situation, pain points, and financial goals.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Custom Roadmap</h3>
+        <p>Receive a tailored plan covering tax strategy, accounting, and advisory needs.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Onboarding</h3>
+        <p>We get your books clean, your systems set up, and your team up to speed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Ongoing Partnership</h3>
+        <p>Monthly reporting, proactive tax planning, and strategic check-ins all year long.</p>
+      </div>
+    </div>
+    <div class="how-cta fade-in">
+      <a href="#contact" class="btn-primary">Schedule Your Free Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-inner fade-in">
+    <div class="about-text">
+      <p class="section-label">About Tom Sawyer</p>
+      <h2 class="section-title">A Champion in Your Corner for 20+ Years</h2>
+      <p>Tom Sawyer, CPA, has spent more than two decades helping South Florida business owners stop stressing about their finances and start using them as a competitive advantage. As the principal at Sawyer CPAs and Advisors, PA, Tom has built a firm known for its responsiveness, deep expertise, and genuine care for client outcomes.</p>
+      <p>Located in Fort Lauderdale, the firm serves business owners across a wide range of industries — from professional services to retail — with a hands-on, advisory-first approach that goes far beyond traditional CPA work. Clients consistently note that Tom's proactive guidance has saved them tens of thousands of dollars in taxes and helped them scale with confidence.</p>
+      <div class="badge-row">
+        <span class="badge">CPA, Certified</span>
+        <span class="badge">Fort Lauderdale, FL</span>
+        <span class="badge">QuickBooks ProAdvisor</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="https://sawyerlatimer.com/wp-content/uploads/2021/02/Untitled-design-29.jpg"
+           alt="Tom Sawyer, CPA"
+           onerror="this.style.display='none';">
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact" class="cta-band">
+  <div class="fade-in">
+    <h2>Stop Losing Sleep Over Your Business Finances.</h2>
+    <p>Get proactive accounting, tax strategy, and CFO-level advisory — all under one roof.</p>
+    <a href="tel:+19544917233" class="btn-accent">Schedule Your Appointment</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="https://sawyerlatimer.com/wp-content/uploads/2026/01/New-Sawyer-CPAs-Logo-revised.gif"
+             alt="Sawyer CPAs & Advisors"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="footer-logo-fallback">Sawyer CPAs</div>
+      </div>
+      <p class="footer-desc">Fort Lauderdale CPA firm serving South Florida business owners with tax, accounting, and CFO advisory for 20+ years.</p>
+    </div>
+    <div>
+      <div class="footer-links">
+        <strong>Navigation</strong>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#about" class="nav-link">About</a>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <strong>Contact</strong>
+      <p>1400 East Oakland Park Blvd., Suite 102<br>Fort Lauderdale, FL 33334</p>
+      <p><a href="tel:+19544917233">(954) 491-7233</a></p>
+      <p>Hours: 8am&ndash;5pm Mon&ndash;Fri<br>After hours by request</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Sawyer CPAs & Advisors, PA. All rights reserved. | Website by <span style="color:#A98063">Mediactive</span>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
+document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }));
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
