@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Steady Bookkeeping LLC | Wisconsin Small Business Bookkeeping</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif;color:#12151E}
+body{overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:999;background:#fff;border-bottom:1px solid #e0ddd7;padding:0 24px}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{font-size:17px;font-weight:800;color:#2E36A5;letter-spacing:-0.3px;line-height:1.2}
+.nav-menu{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-link{font-size:14px;font-weight:500;color:#12151E;transition:color 0.2s}
+.nav-link:hover{color:#2E36A5}
+.nav-cta{background:#2E36A5;color:#fff;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:600;transition:background 0.2s}
+.nav-cta:hover{background:#12151E;color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#12151E;transition:all 0.3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{background:#fff;padding:100px 24px}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.badge-pill{background:#EDEAE4;color:#2E36A5;border:1px solid #c8c4bc;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(28px,3.5vw,48px);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:20px;color:#12151E}
+.hero h1 span{color:#2E36A5}
+.hero-sub{font-size:17px;line-height:1.7;color:#555;margin-bottom:36px}
+.btn-primary{display:inline-block;background:#2E36A5;color:#fff;padding:16px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:background 0.2s;margin-bottom:20px}
+.btn-primary:hover{background:#12151E}
+.hero-contact{font-size:14px;color:#888}
+.hero-contact a{color:#2E36A5;font-weight:600}
+.hero-contact a:hover{color:#12151E}
+.hero-photo-wrap{position:relative}
+.hero-photo-wrap img{width:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.12);object-fit:cover;max-height:560px}
+.hero-photo-badge{position:absolute;bottom:24px;left:24px;background:#fff;border-radius:8px;padding:12px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.12)}
+.hero-photo-badge p{font-size:13px;font-weight:700;color:#12151E}
+.hero-photo-badge span{font-size:12px;color:#666}
+
+/* STATS */
+.stats{background:#EDEAE4;padding:80px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.stat-num{font-size:clamp(36px,4vw,52px);font-weight:800;color:#2E36A5;line-height:1}
+.stat-label{font-size:15px;color:#666;margin-top:8px;font-weight:500}
+
+/* SERVICES */
+.services{background:#fff;padding:100px 24px}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2E36A5;margin-bottom:12px}
+.section-title{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-0.5px;color:#12151E}
+.cards-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:36px 28px}
+.card-icon{width:48px;height:48px;background:#EDEAE4;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.card h3{font-size:18px;font-weight:700;margin-bottom:10px;color:#12151E}
+.card p{font-size:15px;line-height:1.65;color:#666}
+
+/* TESTIMONIALS */
+.testimonials{background:#F5F6F8;padding:100px 24px}
+.testi-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.testi-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:36px 32px}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.testi-quote{font-size:15px;line-height:1.7;color:#444;font-style:italic;margin-bottom:20px}
+.testi-author{font-size:14px;font-weight:700;color:#12151E}
+
+/* HOW IT WORKS */
+.how{background:#fff;padding:100px 24px}
+.steps-row{max-width:1280px;margin:0 auto 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-row::before{content:'';position:absolute;top:32px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:#2E36A5;z-index:0}
+.step{text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-num{width:64px;height:64px;border-radius:50%;background:#2E36A5;color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.step h3{font-size:16px;font-weight:700;margin-bottom:10px;color:#12151E}
+.step p{font-size:14px;line-height:1.65;color:#666}
+.how-cta{text-align:center}
+
+/* ABOUT */
+.about{background:#EDEAE4;padding:100px 24px}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text .section-tag{text-align:left}
+.about-text .section-title{text-align:left;margin-bottom:24px}
+.about-text p{font-size:16px;line-height:1.75;color:#555;margin-bottom:20px}
+.about-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.about-badge{background:#fff;border:1px solid #c8c4bc;color:#2E36A5;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600}
+.about-photo-wrap{}
+.about-photo-wrap img{width:100%;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.10);object-fit:cover;max-height:520px}
+
+/* CTA BAND */
+.cta-band{background:#12151E;padding:100px 24px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;margin-bottom:20px;letter-spacing:-0.5px}
+.btn-white{display:inline-block;background:#2E36A5;color:#fff;padding:16px 36px;border-radius:6px;font-size:16px;font-weight:700;transition:all 0.2s}
+.btn-white:hover{background:#fff;color:#2E36A5}
+
+/* FOOTER */
+footer{background:#12151E;border-top:1px solid #1e2230;color:#888;padding:40px 24px;text-align:center}
+footer p{font-size:14px;line-height:1.8}
+footer a{color:#4A54C8}
+
+/* FADE-IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-photo-wrap{max-width:480px;margin:0 auto}
+  .steps-row::before{display:none}
+  .steps-row{grid-template-columns:repeat(2,1fr);gap:32px}
+}
+@media(max-width:768px){
+  .nav-menu{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;padding:20px 24px;flex-direction:column;gap:16px;border-bottom:1px solid #e0ddd7;z-index:998}
+  .nav-menu.active{display:flex}
+  .hamburger{display:flex}
+  .stats-inner{grid-template-columns:1fr;gap:32px}
+  .cards-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr;gap:40px}
+  .steps-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">ROCK STEADY<br>BOOKKEEPING</div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#how" class="nav-link">How It Works</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+      <li><a href="#cta" class="nav-cta">Free Discovery Call</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+      <div class="hero-badge-row">
+        <span class="badge-pill">QuickBooks ProAdvisor Gold</span>
+        <span class="badge-pill">10+ Years Experience</span>
+        <span class="badge-pill">100% Small Business Focused</span>
+      </div>
+      <h1>Wisconsin Small Businesses Deserve <span>Rock Solid Books</span></h1>
+      <p class="hero-sub">Rock Steady Bookkeeping delivers full-service bookkeeping, catch-up cleanup, and fractional CFO advisory built exclusively for Wisconsin small business owners who are ready to stop guessing and start growing.</p>
+      <a href="#cta" class="btn-primary">Book a Free Discovery Call</a>
+      <p class="hero-contact">Questions? Email <a href="mailto:hello@rocksteadybookkeeping.com">hello@rocksteadybookkeeping.com</a></p>
+    </div>
+    <div class="hero-photo-wrap fade-in">
+      <img src="https://www.rocksteadybookkeeping.com/_astro/why-us.CLh6bqKe_jFX89.webp" alt="Laura Prater, Rock Steady Bookkeeping" onerror="this.style.background='#EDEAE4';this.style.minHeight='400px';this.style.borderRadius='8px'">
+      <div class="hero-photo-badge">
+        <p>Laura Prater</p>
+        <span>Owner, Rock Steady Bookkeeping</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" id="stats">
+  <div class="stats-inner">
+    <div class="fade-in">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-num">Gold</div>
+      <div class="stat-label">QuickBooks Certified ProAdvisor</div>
+    </div>
+    <div class="fade-in">
+      <div class="stat-num">WI</div>
+      <div class="stat-label">Based, Nationwide Service</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Full-Service Bookkeeping and CFO Support</h2>
+  </div>
+  <div class="cards-grid">
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E36A5" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Full-Service Bookkeeping</h3>
+      <p>Monthly bookkeeping that keeps your accounts reconciled, accurate, and always current.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E36A5" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Catch-Up Bookkeeping</h3>
+      <p>Get your books current no matter how far behind you are — months or years of cleanup handled.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E36A5" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      </div>
+      <h3>Payroll Setup and Training</h3>
+      <p>Get your payroll system running right with certified guidance and ongoing support.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E36A5" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>QuickBooks Online Setup</h3>
+      <p>Full QBO implementation and training so your books are built on a solid foundation from day one.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E36A5" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Cash Flow Forecasting</h3>
+      <p>Understand where your money is going and where it will be — 30, 60, and 90 days out.</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E36A5" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Fractional CFO Advisory</h3>
+      <p>Strategic financial guidance for businesses ready to make smarter, data-driven decisions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-in">
+    <div class="section-tag">Client Reviews</div>
+    <h2 class="section-title">What Wisconsin Business Owners Say</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-quote">"Rock Steady was the best decision I have made for my business. Laura is thorough, responsive, and genuinely invested in helping us succeed."</p>
+      <div class="testi-author">Jessie U.</div>
+    </div>
+    <div class="testi-card fade-in">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-quote">"Choosing Rock Steady Bookkeeping, you are getting the best organization, attention to detail, and financial partnership for your small business."</p>
+      <div class="testi-author">Oscar O.</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-header fade-in">
+    <div class="section-tag">The Process</div>
+    <h2 class="section-title">How It Works</h2>
+  </div>
+  <div class="steps-row">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h3>Free Discovery Call</h3>
+      <p>Talk through your bookkeeping situation, pain points, and business goals.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h3>Onboarding and Cleanup</h3>
+      <p>We assess your books, clean up any backlog, and get your financials current.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">3</div>
+      <h3>Monthly Bookkeeping</h3>
+      <p>Accurate, on-time monthly bookkeeping delivered every single month without fail.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">4</div>
+      <h3>Strategy and Growth</h3>
+      <p>Regular reviews, cash flow analysis, and advisory support to help you grow with confidence.</p>
+    </div>
+  </div>
+  <div class="how-cta fade-in">
+    <a href="#cta" class="btn-primary">Book Your Free Discovery Call</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text fade-in">
+      <div class="section-tag">About Laura</div>
+      <h2 class="section-title">Rock Solid Financial Clarity for Wisconsin Businesses</h2>
+      <p>Laura Prater is the owner of Rock Steady Bookkeeping LLC and a QuickBooks Certified ProAdvisor Gold with over 10 years of bookkeeping and financial advisory experience. Based in Beaver Dam, Wisconsin, Laura founded Rock Steady to serve the small businesses that form the backbone of her community.</p>
+      <p>She is certified in QuickBooks Online, Gusto Payroll, and Float financial forecasting, and holds Alignable's Highly Recommended distinction from the local business community. Whether you are a first-time business owner or an established company that needs a CFO-level partner, Laura meets you where you are.</p>
+      <div class="about-badges">
+        <span class="about-badge">QuickBooks ProAdvisor Gold</span>
+        <span class="about-badge">Gusto Certified</span>
+        <span class="about-badge">Float Certified Advisor</span>
+      </div>
+    </div>
+    <div class="about-photo-wrap fade-in">
+      <img src="https://www.rocksteadybookkeeping.com/_astro/why-us.CLh6bqKe_jFX89.webp" alt="Laura Prater, Rock Steady Bookkeeping" onerror="this.parentElement.innerHTML='<div style=\'background:#fff;border-radius:8px;padding:80px 40px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.08)\'><div style=\'width:80px;height:80px;border-radius:50%;background:#2E36A5;color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px\'>LP</div><h3 style=\'font-size:22px;font-weight:800;color:#12151E;margin-bottom:8px\'>Laura Prater</h3><p style=\'font-size:15px;color:#666\'>Owner, Rock Steady Bookkeeping</p></div>'">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="cta">
+  <div class="fade-in">
+    <h2>Ready for Rock Solid Books and Real Financial Clarity?</h2>
+    <a href="mailto:hello@rocksteadybookkeeping.com" class="btn-white">Book Your Free Call</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="mailto:hello@rocksteadybookkeeping.com">hello@rocksteadybookkeeping.com</a> | (608) 318-3094 | 506 Grove St, Beaver Dam, WI 53916</p>
+  <p style="margin-top:12px">© 2026 Rock Steady Bookkeeping LLC. All rights reserved. | Website by <span style="color:#4A54C8">Mediactive</span></p>
+</footer>
+
+<script>
+const h=document.querySelector('.hamburger'),n=document.querySelector('.nav-menu');h.addEventListener('click',()=>{h.classList.toggle('active');n.classList.toggle('active');});document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{h.classList.remove('active');n.classList.remove('active');}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
