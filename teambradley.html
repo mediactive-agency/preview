@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamBradley | Chicago IT Recruiting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #001F43;
+    --sky: #42B8F8;
+    --red: #ED3D48;
+    --dark-bar: #022938;
+    --mid-blue: #5F727F;
+    --alt: #F4F6F7;
+    --white: #FFFFFF;
+    --text: #1A2E3B;
+    --text-soft: #4A5E6A;
+    --text-muted: #7A909E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+  }
+
+  h3, h4 {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--dark-bar);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+  }
+
+  .top-bar a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .top-bar a:hover { color: var(--white); }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid rgba(0,31,67,0.10);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--sky) !important;
+    color: var(--navy) !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.88 !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 2px solid var(--sky);
+    padding: 24px 5%;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 999;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,31,67,0.06);
+  }
+
+  .mobile-menu .nav-cta {
+    display: inline-block;
+    text-align: center;
+    border-radius: 6px;
+    color: var(--navy) !important;
+    border: none;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(66,184,248,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--sky);
+  }
+
+  .hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .hero h1 span {
+    color: var(--sky);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+    max-width: 500px;
+    line-height: 1.75;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    background: var(--sky);
+    color: var(--navy);
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  .hero-btn:hover { opacity: 0.88; }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(66,184,248,0.2);
+    border-radius: 12px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-card-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 28px;
+  }
+
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hero-stat:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .hero-stat-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(66,184,248,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hero-stat p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+  }
+
+  .hero-stat strong {
+    display: block;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 2px;
+    font-size: 0.95rem;
+  }
+
+  /* STATS */
+  .stats {
+    background: var(--alt);
+    padding: 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stat-item {
+    padding: 48px 40px;
+    border-right: 1px solid rgba(0,31,67,0.08);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .stat-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--sky);
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+
+  .section-sub {
+    font-size: 1.02rem;
+    color: var(--text-soft);
+    max-width: 540px;
+    margin-bottom: 56px;
+    line-height: 1.75;
+  }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--alt);
+    border-radius: 8px;
+    padding: 36px 28px;
+    box-shadow: 0 2px 12px rgba(0,31,67,0.06);
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    border-top-color: var(--sky);
+    box-shadow: 0 6px 28px rgba(0,31,67,0.10);
+  }
+
+  .service-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-size: 0.97rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.65;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--alt); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .testi-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 2px 20px rgba(0,31,67,0.07);
+    position: relative;
+  }
+
+  .testi-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--sky);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .testi-quote {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* HOW IT WORKS */
+  .hiw { background: var(--white); }
+
+  .hiw-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .hiw-grid::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: calc(12.5% + 0px);
+    right: calc(12.5% + 0px);
+    height: 2px;
+    background: linear-gradient(to right, var(--sky), rgba(66,184,248,0.2));
+    z-index: 0;
+  }
+
+  .hiw-step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hiw-num {
+    width: 52px;
+    height: 52px;
+    background: var(--navy);
+    color: var(--sky);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 auto 24px;
+    border: 2px solid var(--sky);
+  }
+
+  .hiw-step h3 {
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .hiw-step p {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+  }
+
+  /* ABOUT */
+  .about { background: var(--alt); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-left h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .about-left p {
+    font-size: 0.97rem;
+    color: var(--text-soft);
+    margin-bottom: 20px;
+    line-height: 1.75;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .badge {
+    background: var(--white);
+    border: 1px solid rgba(0,31,67,0.14);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .about-right-card {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 48px 40px;
+    box-shadow: 0 8px 40px rgba(0,31,67,0.18);
+  }
+
+  .about-right-card h3 {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 28px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .about-placeholder {
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    border: 1px dashed rgba(66,184,248,0.2);
+  }
+
+  .about-placeholder p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .about-fact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .sky-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--sky);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .about-fact p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--navy);
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(66,184,248,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-band h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-band p {
+    font-size: 1.02rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 540px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--sky);
+    color: var(--navy);
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn:hover { opacity: 0.88; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark-bar);
+    padding: 64px 5% 40px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 14px;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-logo img { height: 36px; width: auto; }
+
+  .footer-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .footer-col h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li { margin-bottom: 10px; }
+
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: var(--white); }
+
+  .footer-col p { font-size: 0.88rem; margin-bottom: 8px; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+
+  .footer-bottom a {
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer-bottom a:hover { color: var(--white); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero h1 { font-size: 2.4rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hiw-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .hiw-grid::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .top-bar { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 72px 5%; gap: 40px; }
+    .hero h1 { font-size: 2rem; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(0,31,67,0.08); }
+    .stat-item:last-child { border-bottom: none; }
+    .section-title { font-size: 1.9rem; }
+    .cta-band h2 { font-size: 1.9rem; }
+  }
+
+  @media (max-width: 390px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero h1 { font-size: 1.7rem; }
+    section { padding: 72px 5%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hiw-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="tel:+16303445100">+1 (630) 344-5100</a>
+  <a href="mailto:rich@teambradley.com">rich@teambradley.com</a>
+  <a href="#">Chicago, Illinois</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://teambradley.com/wp-content/uploads/2023/02/TeamBradley-Logo.png" alt="TeamBradley" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="nav-logo-text" style="display:none;">TeamBradley</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="nav-cta">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="fade-up">
+    <p class="hero-eyebrow">Chicago IT Recruiting</p>
+    <h1>Solving the <span>Recruiting Jigsaw Puzzle</span> to Find the Perfect Fit</h1>
+    <p>TeamBradley is a boutique IT recruiting firm connecting the best technology professionals with companies across the Chicagoland area. Permanent and contract placements across all IT levels &mdash; many clients return to find their next top performer.</p>
+    <a href="#contact" class="hero-btn">Contact TeamBradley</a>
+  </div>
+  <div class="hero-right fade-up">
+    <div class="hero-card">
+      <p class="hero-card-label">What Makes TeamBradley Different</p>
+      <div class="hero-stat">
+        <div class="hero-stat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#42B8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <strong>Chicago IT Focus</strong>
+          <p>Deep Chicagoland market knowledge and established candidate networks.</p>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#42B8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <strong>Permanent + Contract</strong>
+          <p>Full-time placements and flexible contract staffing for every need.</p>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#42B8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div>
+          <strong>IT Specialists Only</strong>
+          <p>Technology recruiting exclusively &mdash; no generic staffing playbook.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item fade-up">
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#42B8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <span class="stat-label">Chicago IT Focus</span>
+      <span class="stat-sub">Chicagoland market specialists</span>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#42B8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <span class="stat-label">Permanent + Contract</span>
+      <span class="stat-sub">All placement types covered</span>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#42B8F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="stat-label">All IT Levels Served</span>
+      <span class="stat-sub">From engineers to executive leadership</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="section-label">Specializations</span>
+  <h2 class="section-title">IT Recruiting Across Every Discipline</h2>
+  <p class="section-sub">Pure information technology recruiting &mdash; which means every placement comes with genuine industry knowledge behind it.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <span class="service-num">01</span>
+      <h3>Software Development Recruiting</h3>
+      <p>Frontend, backend, full-stack developers and architects placed with tech teams that need them immediately.</p>
+    </div>
+    <div class="service-card fade-up">
+      <span class="service-num">02</span>
+      <h3>Infrastructure &amp; Cloud</h3>
+      <p>Systems administrators, cloud architects, DevOps engineers, and network professionals for enterprise environments.</p>
+    </div>
+    <div class="service-card fade-up">
+      <span class="service-num">03</span>
+      <h3>Cybersecurity Talent</h3>
+      <p>Security analysts, penetration testers, and compliance specialists for organizations that can't afford gaps.</p>
+    </div>
+    <div class="service-card fade-up">
+      <span class="service-num">04</span>
+      <h3>Data &amp; Analytics</h3>
+      <p>Data engineers, BI developers, data scientists, and analysts connected to companies building data-driven operations.</p>
+    </div>
+    <div class="service-card fade-up">
+      <span class="service-num">05</span>
+      <h3>IT Leadership</h3>
+      <p>CTO, VP of Engineering, IT Director, and project management placements for organizations scaling their technology teams.</p>
+    </div>
+    <div class="service-card fade-up">
+      <span class="service-num">06</span>
+      <h3>Contract &amp; Interim Staffing</h3>
+      <p>Flexible IT talent for project surges, backfills, and specialized engagements &mdash; ready to contribute from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <span class="section-label">Client Feedback</span>
+  <h2 class="section-title">What Hiring Managers Say</h2>
+  <p class="section-sub">Chicago-area companies that stopped posting and started placing.</p>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+      </div>
+      <p class="testi-quote">"Rich Bradley found us a senior DevOps engineer within two weeks when we'd been searching for months on our own. The candidates were pre-vetted and immediately relevant to our stack."</p>
+      <p class="testi-author">VP of Engineering &mdash; Chicago SaaS Company</p>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l2.3 6.9h7.2l-5.8 4.2 2.2 6.9L9 14.7l-5.9 4.3 2.2-6.9L-.3 7.9h7.3z" fill="#42B8F8"/></svg>
+      </div>
+      <p class="testi-quote">"We've worked with TeamBradley on three separate hires now. Every time, they understand what we actually need &mdash; not just the job description."</p>
+      <p class="testi-author">IT Director &mdash; Manufacturing Firm, Chicagoland</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw" id="process">
+  <span class="section-label">Our Process</span>
+  <h2 class="section-title">How TeamBradley Works</h2>
+  <p class="section-sub">No resume dumps. No guesswork. A focused process built to surface the candidates your job post can't reach.</p>
+  <div class="hiw-grid">
+    <div class="hiw-step fade-up">
+      <div class="hiw-num">1</div>
+      <h3>Discovery Call</h3>
+      <p>We learn your tech stack, team culture, and what great looks like for this specific role.</p>
+    </div>
+    <div class="hiw-step fade-up">
+      <div class="hiw-num">2</div>
+      <h3>Targeted Search</h3>
+      <p>We activate our Chicago IT network and headhunt the candidates your job post can't attract.</p>
+    </div>
+    <div class="hiw-step fade-up">
+      <div class="hiw-num">3</div>
+      <h3>Curated Shortlist</h3>
+      <p>You receive vetted, relevant candidates &mdash; not a resume dump. Every name is there for a reason.</p>
+    </div>
+    <div class="hiw-step fade-up">
+      <div class="hiw-num">4</div>
+      <h3>Placement &amp; Follow-Up</h3>
+      <p>We support the offer process and follow up to ensure the hire is working for both sides.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-left fade-up">
+      <span class="section-label">About</span>
+      <h2>Chicago's Boutique IT Recruiting Partner</h2>
+      <p>TeamBradley was built on one conviction: the best IT talent isn't actively looking on job boards. You need a recruiter who knows the market, knows the talent, and does the work to bring them to the surface.</p>
+      <p>Founded by Rich Bradley, TeamBradley specializes exclusively in information technology &mdash; which means every placement is backed by genuine industry knowledge, not a generic staffing playbook.</p>
+      <div class="badges">
+        <span class="badge">Chicago Based</span>
+        <span class="badge">IT Specialists Only</span>
+        <span class="badge">Permanent + Contract</span>
+        <span class="badge">Boutique Firm</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="about-right-card">
+        <h3>Why TeamBradley</h3>
+        <div class="about-placeholder">
+          <p>Team Photo</p>
+        </div>
+        <div class="about-fact">
+          <div class="sky-dot"></div>
+          <p>Founded by Rich Bradley &mdash; Chicago IT veteran</p>
+        </div>
+        <div class="about-fact">
+          <div class="sky-dot"></div>
+          <p>100% technology recruiting focus</p>
+        </div>
+        <div class="about-fact">
+          <div class="sky-dot"></div>
+          <p>Repeat clients across the Chicagoland market</p>
+        </div>
+        <div class="about-fact">
+          <div class="sky-dot"></div>
+          <p>Permanent, contract, and interim placements</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <h2 class="fade-up">Find Your Next IT Hire in the Chicagoland Area</h2>
+  <p class="fade-up">Stop posting and hoping. Let TeamBradley bring you the candidates your job post can't reach.</p>
+  <a href="mailto:rich@teambradley.com" class="cta-btn fade-up">Contact TeamBradley</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="footer-logo">
+        <img src="https://teambradley.com/wp-content/uploads/2023/02/TeamBradley-Logo.png" alt="TeamBradley" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;">TeamBradley</span>
+      </a>
+      <p class="footer-desc">Boutique IT recruiting firm serving the Chicagoland area. Permanent and contract placements across all technology disciplines.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Specializations</h4>
+      <ul>
+        <li><a href="#services">Software Development</a></li>
+        <li><a href="#services">Infrastructure &amp; Cloud</a></li>
+        <li><a href="#services">Cybersecurity</a></li>
+        <li><a href="#services">Data &amp; Analytics</a></li>
+        <li><a href="#services">IT Leadership</a></li>
+        <li><a href="#services">Contract Staffing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#about">About TeamBradley</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>+1 (630) 344-5100</p>
+      <p>rich@teambradley.com</p>
+      <p>Chicago, Illinois</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 TeamBradley. All rights reserved.</span>
+    <span>Website by <a href="https://mediactive.agency" target="_blank" rel="noopener">Mediactive</a></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.mobile-menu').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.mobile-menu').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
