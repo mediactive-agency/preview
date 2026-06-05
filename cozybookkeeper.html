@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cozy Bookkeeper — Stress-Free Books. Clear Numbers. Confident Decisions.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#3d2010;background:#fff}
+:root{--primary:#c79b78;--dark:#482800;--mid:#513128;--text:#523226;--warm:#765434;--light-tan:#fdf5ed;--tan-border:#e8d5be;--gray:#7a5a3e;--light:#faf5f0}
+
+nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--tan-border);padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;width:auto}
+.nav-logo span{font-size:1rem;font-weight:700;color:var(--dark)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{text-decoration:none;color:var(--text);font-weight:500;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:var(--dark)}
+.nav-cta{background:var(--dark);color:#e8bf9f;padding:.6rem 1.4rem;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--mid)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark)}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--tan-border);padding:1.5rem 5%;flex-direction:column;gap:1rem;z-index:999}
+.mobile-menu a{text-decoration:none;color:var(--text);font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--light-tan)}
+.mobile-menu .nav-cta{text-align:center;padding:.8rem}
+.mobile-menu.open{display:flex}
+
+section{padding:90px 5%}
+.container{max-width:1280px;margin:0 auto}
+
+.hero{background:var(--light-tan);padding:110px 5%}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(199,155,120,.2);color:var(--warm);padding:.4rem 1rem;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:1.5rem;border:1px solid rgba(199,155,120,.4)}
+.hero h1{font-size:2.8rem;font-weight:800;line-height:1.15;color:var(--dark);margin-bottom:1.25rem}
+.hero h1 span{color:var(--primary)}
+.hero p{font-size:1.1rem;color:var(--gray);line-height:1.75;margin-bottom:2rem}
+.hero-cta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--dark);color:#e8bf9f;padding:.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-primary:hover{background:var(--mid)}
+.hero-contact{color:var(--warm);font-weight:600;font-size:.95rem;text-decoration:none}
+.hero-contact:hover{text-decoration:underline}
+.hero-badges{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+.badge-pill{background:rgba(199,155,120,.15);color:var(--warm);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;font-weight:600;border:1px solid rgba(199,155,120,.3)}
+.hero-img-box{border-radius:16px;overflow:hidden;height:480px;background:linear-gradient(135deg,var(--primary) 0%,#dbb898 100%)}
+.hero-img-box img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.stats-bar{background:var(--dark);padding:60px 5%}
+.stats-bar-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.stat-item .num{font-size:2.4rem;font-weight:800;color:var(--primary)}
+.stat-item .label{font-size:.95rem;color:rgba(232,191,159,.7);margin-top:.25rem}
+
+.section-tag{font-size:.85rem;font-weight:700;color:var(--warm);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--dark);margin-bottom:1rem;line-height:1.2}
+.section-sub{font-size:1.05rem;color:var(--gray);max-width:580px;line-height:1.7;margin-bottom:3rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.service-card{background:#fff;border:1px solid var(--tan-border);border-radius:8px;padding:1.75rem;box-shadow:0 2px 8px rgba(72,40,0,.06);transition:box-shadow .2s}
+.service-card:hover{box-shadow:0 8px 24px rgba(199,155,120,.2)}
+.service-icon{width:44px;height:44px;background:var(--light-tan);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--warm)}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.service-card p{font-size:.9rem;color:var(--gray);line-height:1.65}
+
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;margin-bottom:3rem}
+.how-steps::after{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary),#dbb898);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 1rem}
+.step h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.4rem}
+.step p{font-size:.85rem;color:var(--gray);line-height:1.6}
+.how-cta{text-align:center}
+
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text h2{font-size:2.1rem;font-weight:800;color:var(--dark);margin-bottom:1.25rem}
+.about-text p{font-size:1rem;color:var(--gray);line-height:1.8;margin-bottom:1rem}
+.about-badges{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.5rem}
+.about-badge{background:var(--light-tan);color:var(--warm);padding:.35rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600;border:1px solid var(--tan-border)}
+.about-img{border-radius:16px;overflow:hidden;height:460px}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.cta-band{background:var(--dark);padding:90px 5%;text-align:center}
+.cta-band h2{font-size:2.4rem;font-weight:800;color:#e8bf9f;margin-bottom:1rem}
+.cta-band p{font-size:1.1rem;color:rgba(232,191,159,.75);margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-tan{background:var(--primary);color:#fff;padding:.9rem 2.5rem;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-tan:hover{background:var(--warm)}
+
+footer{background:var(--mid);padding:60px 5% 30px}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+footer p{font-size:.9rem;color:rgba(232,191,159,.5);line-height:1.7}
+.footer-logo img{height:40px;margin-bottom:.75rem}
+.footer-col h4{font-size:.9rem;font-weight:700;color:#e8bf9f;margin-bottom:1rem}
+.footer-col a{display:block;font-size:.88rem;color:rgba(232,191,159,.5);text-decoration:none;margin-bottom:.5rem}
+.footer-col a:hover{color:var(--primary)}
+.footer-contact span{display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:rgba(232,191,159,.5);margin-bottom:.5rem}
+.footer-bottom{border-top:1px solid rgba(232,191,159,.12);padding-top:1.5rem;max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:.82rem;color:rgba(232,191,159,.35)}
+.footer-bottom a{color:var(--primary);text-decoration:none}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner{grid-template-columns:1fr}
+  .hero-img-box{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .how-steps{grid-template-columns:repeat(2,1fr)}
+  .how-steps::after{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:2rem}
+  .section-title{font-size:1.7rem}
+  .services-grid,.stats-bar-inner{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .cta-band h2{font-size:1.8rem}
+  section{padding:70px 5%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/DkL21wuPWxMvuDpHrypi/media/6778179f10dd0d8a8b8f3c30.jpeg" alt="The Cozy Bookkeeper" style="border-radius:4px" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none">The Cozy Bookkeeper</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Let's Chat</a>
+    </div>
+    <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="nav-cta">Let's Chat</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        QBO Elite ProAdvisor — 30+ Years of Bookkeeping Excellence
+      </div>
+      <h1>Stress-Free Books.<br><span>Clear Numbers.</span><br>Confident Decisions.</h1>
+      <p>The Cozy Bookkeeper helps small and medium-sized businesses earning $100K+ per year get organized, stay current, and feel genuinely calm and confident about their finances — without the overwhelm.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="#contact" class="hero-contact">Schedule a Call</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge-pill">QBO Elite ProAdvisor</span>
+        <span class="badge-pill">A2X Gold Partner</span>
+        <span class="badge-pill">Michigan-Based</span>
+      </div>
+    </div>
+    <div class="hero-image fade-up">
+      <div class="hero-img-box">
+        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/DkL21wuPWxMvuDpHrypi/media/67aaacb44325e17c9d605047.jpeg" alt="Michele Palfalvi — The Cozy Bookkeeper" onerror="this.parentElement.style.background='linear-gradient(135deg,#c79b78 0%,#dbb898 100%)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner fade-up">
+    <div class="stat-item">
+      <div class="num">30+</div>
+      <div class="label">Years of Bookkeeping Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">Elite</div>
+      <div class="label">QBO ProAdvisor — Advanced Certified</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">100%</div>
+      <div class="label">Focused on Your Peace of Mind and Profitability</div>
+    </div>
+  </div>
+</div>
+
+<section id="services" style="background:#fff">
+  <div class="container fade-up">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">Your Books Done Right — Every Single Month</h2>
+    <p class="section-sub">Whether you need clean, accurate books or strategic financial guidance, The Cozy Bookkeeper delivers personalized service that grows with your business.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Bookkeeping Services</h3>
+        <p>Monthly reconciliations, clean financial records, and organized books that give you a clear, accurate picture of your business finances every month.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>CFO and Advisory Services</h3>
+        <p>For businesses generating $300K+ annually — strategic financial guidance that turns your numbers into a roadmap for growth and profitability.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Payroll Services</h3>
+        <p>Accurate, on-time payroll processing so your team gets paid correctly and your business stays compliant — with zero stress for you.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Catch-Up and Clean-Up</h3>
+        <p>If your books are behind or messy, we get you caught up fast — so you can move forward with confidence instead of dreading your numbers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3>QuickBooks Setup and Training</h3>
+        <p>Professional QBO setup, chart of accounts configuration, and training so your bookkeeping system works the way your business actually works.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Financial Reporting</h3>
+        <p>Clear, readable financial reports — profit and loss, cash flow, and balance sheet — that you can actually understand and act on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--light)">
+  <div class="container fade-up">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From Overwhelmed to Organized in Four Simple Steps</h2>
+    <p class="section-sub">Getting started is easy — and you will feel the difference from our very first conversation.</p>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Free Consultation</h3>
+        <p>We learn about your business, your current pain points, and what clean finances would mean for your day-to-day life.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Custom Plan</h3>
+        <p>We recommend the right services for your business size and needs — nothing you don't need, everything you do.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Clean Setup</h3>
+        <p>We get your books organized, set up your systems, and catch up any backlog — quickly and without disrupting your operations.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Ongoing Clarity</h3>
+        <p>Monthly bookkeeping, regular reports, and consistent support so you always know exactly where your money stands.</p>
+      </div>
+    </div>
+    <div class="how-cta"><a href="#contact" class="btn-primary">Book Your Free Consultation</a></div>
+  </div>
+</section>
+
+<section id="about" style="background:#fff">
+  <div class="container">
+    <div class="about-inner fade-up">
+      <div class="about-text">
+        <div class="section-tag">Meet Michele</div>
+        <h2>30 Years of Experience. One Goal: Your Peace of Mind.</h2>
+        <p>Michele Palfalvi founded The Cozy Bookkeeper with a mission that sounds simple but takes real expertise to deliver: help business owners feel calm and confident about their finances.</p>
+        <p>With over 30 years of bookkeeping experience working for CPA firms in Detroit and Los Angeles, as well as Business Management Firms in Los Angeles, Michele brings an unmatched depth of knowledge to every client she serves. She is a QuickBooks Advanced Certified ProAdvisor, QBO Elite ProAdvisor, and A2X Gold Partner.</p>
+        <p>Michele's approach is personal, precise, and genuinely supportive. She doesn't just record numbers — she helps you understand them, use them, and feel good about where your business is going.</p>
+        <div class="about-badges">
+          <span class="about-badge">QBO Elite ProAdvisor</span>
+          <span class="about-badge">A2X Gold Partner</span>
+          <span class="about-badge">30+ Years Experience</span>
+          <span class="about-badge">Michigan-Based</span>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/DkL21wuPWxMvuDpHrypi/media/67aaacb44325e17c9d605047.jpeg" alt="Michele Palfalvi — Owner, The Cozy Bookkeeper" onerror="this.parentElement.style.background='linear-gradient(135deg,#c79b78 0%,#dbb898 100%)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta-band">
+  <div class="container fade-up">
+    <h2>Ready for Books That Don't Keep You Up at Night?</h2>
+    <p>Book a free, no-pressure consultation with Michele. In 30 minutes, you will have a clear picture of what stress-free bookkeeping looks like for your business — and what it could cost you every month.</p>
+    <a href="#contact" class="btn-tan">Book Your Free Consultation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/DkL21wuPWxMvuDpHrypi/media/6778179f10dd0d8a8b8f3c30.jpeg" alt="The Cozy Bookkeeper" style="border-radius:4px" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#e8bf9f;font-weight:700\'>The Cozy Bookkeeper</span>'"></div>
+      <p>Stress-Free Books. Clear Numbers. Confident Decisions. Serving Michigan businesses and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Bookkeeping</a>
+      <a href="#services">CFO and Advisory</a>
+      <a href="#services">Payroll</a>
+      <a href="#services">Catch-Up and Clean-Up</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Bloomfield Hills and Waterford, MI</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Online Appointments Available</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Cozy Bookkeeper LLC. All rights reserved. | Website by <a href="#">Mediactive</a></p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
