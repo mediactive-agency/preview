@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruView Business Advisors — Certified Business Brokers in Houston</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+body{color:#374151;background:#fff}
+:root{--primary:#43b0e5;--dark:#27323d;--mid:#32393f;--light-blue:#e8f6fd;--text:#374151;--gray:#6b7280;--light:#F5F6F8}
+
+nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;width:auto}
+.nav-logo span{font-size:1.1rem;font-weight:700;color:var(--dark)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{text-decoration:none;color:var(--text);font-weight:500;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:#fff;padding:.6rem 1.4rem;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#2a9fd6}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark)}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;padding:1.5rem 5%;flex-direction:column;gap:1rem;z-index:999}
+.mobile-menu a{text-decoration:none;color:var(--text);font-weight:500;padding:.5rem 0;border-bottom:1px solid #f0f0f0}
+.mobile-menu .nav-cta{text-align:center;padding:.8rem}
+.mobile-menu.open{display:flex}
+
+section{padding:90px 5%}
+.container{max-width:1280px;margin:0 auto}
+
+.hero{background:#fff;padding:110px 5%}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--light-blue);color:var(--primary);padding:.4rem 1rem;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:1.5rem}
+.hero h1{font-size:2.8rem;font-weight:800;line-height:1.15;color:var(--dark);margin-bottom:1.25rem}
+.hero h1 span{color:var(--primary)}
+.hero p{font-size:1.1rem;color:var(--gray);line-height:1.75;margin-bottom:2rem}
+.hero-cta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--primary);color:#fff;padding:.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-primary:hover{background:#2a9fd6}
+.hero-contact{color:var(--primary);font-weight:600;font-size:.95rem;text-decoration:none}
+.hero-contact:hover{text-decoration:underline}
+.hero-badges{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+.badge-pill{background:var(--light-blue);color:var(--primary);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;font-weight:600}
+.hero-img-box{border-radius:16px;overflow:hidden;height:460px;background:linear-gradient(135deg,var(--light-blue) 0%,#c5e8f8 100%)}
+.hero-img-box img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-stat-box{margin-top:1.5rem;display:flex;gap:1.5rem}
+.stat-pill{background:var(--light-blue);border-radius:12px;padding:.75rem 1.25rem;text-align:center}
+.stat-pill .num{font-size:1.4rem;font-weight:800;color:var(--primary)}
+.stat-pill .lbl{font-size:.75rem;color:var(--gray);margin-top:.1rem}
+
+.stats-bar{background:var(--dark);padding:60px 5%}
+.stats-bar-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.stat-item .num{font-size:2.4rem;font-weight:800;color:var(--primary)}
+.stat-item .label{font-size:.95rem;color:rgba(255,255,255,.6);margin-top:.25rem}
+
+.section-tag{font-size:.85rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--dark);margin-bottom:1rem;line-height:1.2}
+.section-sub{font-size:1.05rem;color:var(--gray);max-width:580px;line-height:1.7;margin-bottom:3rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.service-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:1.75rem;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:box-shadow .2s}
+.service-card:hover{box-shadow:0 8px 24px rgba(67,176,229,.12)}
+.service-icon{width:44px;height:44px;background:var(--light-blue);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--primary)}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.service-card p{font-size:.9rem;color:var(--gray);line-height:1.65}
+
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;margin-bottom:3rem}
+.how-steps::after{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary),#7acde8);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 1rem}
+.step h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.4rem}
+.step p{font-size:.85rem;color:var(--gray);line-height:1.6}
+.how-cta{text-align:center}
+
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text h2{font-size:2.1rem;font-weight:800;color:var(--dark);margin-bottom:1.25rem}
+.about-text p{font-size:1rem;color:var(--gray);line-height:1.8;margin-bottom:1rem}
+.about-badges{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.5rem}
+.about-badge{background:var(--light-blue);color:var(--primary);padding:.35rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600}
+.about-img{border-radius:16px;overflow:hidden;height:420px}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.cta-band{background:var(--primary);padding:90px 5%;text-align:center}
+.cta-band h2{font-size:2.4rem;font-weight:800;color:#fff;margin-bottom:1rem}
+.cta-band p{font-size:1.1rem;color:rgba(255,255,255,.88);margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-white{background:#fff;color:var(--primary);padding:.9rem 2.5rem;border-radius:6px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s}
+.btn-white:hover{background:var(--light-blue)}
+
+footer{background:var(--dark);padding:60px 5% 30px}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+footer p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7}
+.footer-logo img{height:40px;margin-bottom:.75rem}
+.footer-col h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:1rem}
+.footer-col a{display:block;font-size:.88rem;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:.5rem}
+.footer-col a:hover{color:var(--primary)}
+.footer-contact span{display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:.82rem;color:rgba(255,255,255,.35)}
+.footer-bottom a{color:var(--primary);text-decoration:none}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .hero-inner,.about-inner{grid-template-columns:1fr}
+  .hero-img-box{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .how-steps{grid-template-columns:repeat(2,1fr)}
+  .how-steps::after{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:2rem}
+  .section-title{font-size:1.7rem}
+  .services-grid,.stats-bar-inner{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .cta-band h2{font-size:1.8rem}
+  section{padding:70px 5%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="https://truviewbusiness.com/wp-content/uploads/2024/02/tvb_logos.webp" alt="TruView Business Advisors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none">TruView Business Advisors</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">Team</a>
+      <a href="#contact" class="nav-cta">Schedule a Call</a>
+    </div>
+    <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#services">Services</a>
+  <a href="#about">Team</a>
+  <a href="#contact" class="nav-cta">Schedule a Call</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Certified Business Brokers and Advisors — Houston, TX
+      </div>
+      <h1>A New Approach<br>to <span>Business Sales</span><br>and Advisory</h1>
+      <p>TruView Business Advisors helps business owners in Houston sell their businesses for maximum value — with confidentiality, professionalism, and a CPA-led process that delivers results other brokers can not match.</p>
+      <div class="hero-cta">
+        <a href="tel:7132803600" class="btn-primary">Schedule a Free Call</a>
+        <a href="tel:7132803600" class="hero-contact">(713) 280-3600</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge-pill">CPA, CBI, M&amp;AMI Certified</span>
+        <span class="badge-pill">Houston Business Brokers</span>
+        <span class="badge-pill">Confidential Process</span>
+      </div>
+    </div>
+    <div class="hero-image fade-up">
+      <div class="hero-img-box">
+        <img src="https://truviewbusiness.com/wp-content/uploads/2017/01/jason_ward-780x780.jpg" alt="Jason Ward, CPA — TruView Business Advisors" onerror="this.parentElement.style.background='linear-gradient(135deg,#e8f6fd 0%,#c5e8f8 100%)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner fade-up">
+    <div class="stat-item">
+      <div class="num">CPA</div>
+      <div class="label">CPA-Led Process — Financial Precision in Every Deal</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">CBI</div>
+      <div class="label">Certified Business Intermediary — Proven Brokerage Expertise</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">M&amp;AMI</div>
+      <div class="label">Mergers and Acquisitions Master Intermediary Designation</div>
+    </div>
+  </div>
+</div>
+
+<section id="services" style="background:#fff">
+  <div class="container fade-up">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">Expert Guidance for Every Stage of Your Business Journey</h2>
+    <p class="section-sub">Whether you are ready to sell, considering an acquisition, or need to understand what your business is worth, TruView has the expertise to guide you every step of the way.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Business Sales and Brokerage</h3>
+        <p>We manage the entire sale process — from confidential marketing through due diligence and closing — to get you maximum value without disrupting your operations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Business Valuation</h3>
+        <p>Accurate, defensible business valuations backed by CPA-level financial analysis — whether for a sale, estate planning, or dispute resolution.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3>Business Advisory</h3>
+        <p>Strategic advisory for business owners looking to maximize value before a sale — improving profitability, systems, and transferability.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <h3>Buyer Representation</h3>
+        <p>Helping qualified buyers identify, evaluate, and acquire businesses that fit their goals — with thorough due diligence throughout.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Valuation Calculator</h3>
+        <p>Get a quick, free preliminary estimate of your business's market value — a starting point for any serious conversation about a future sale.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>International Expansion Advisory</h3>
+        <p>Strategic guidance for business leaders considering expansion into international markets — with proven experience navigating global growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--light)">
+  <div class="container fade-up">
+    <div class="section-tag">Our Process</div>
+    <h2 class="section-title">How We Sell Your Business for Maximum Value</h2>
+    <p class="section-sub">A disciplined, confidential process designed to attract serious buyers, protect your business, and close at the right price.</p>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Free Consultation</h3>
+        <p>We learn about your business, your goals, and your timeline — with complete confidentiality from the first call.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Valuation and Preparation</h3>
+        <p>We conduct a thorough valuation and prepare your business for maximum appeal to qualified buyers.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Confidential Marketing</h3>
+        <p>We market your business to our network of buyers while protecting your identity and keeping employees, customers, and competitors in the dark.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Close the Deal</h3>
+        <p>We manage due diligence, negotiations, and closing logistics so you stay focused on running your business right up to the finish line.</p>
+      </div>
+    </div>
+    <div class="how-cta"><a href="tel:7132803600" class="btn-primary">Schedule Your Free Consultation</a></div>
+  </div>
+</section>
+
+<section id="about" style="background:#fff">
+  <div class="container">
+    <div class="about-inner fade-up">
+      <div class="about-text">
+        <div class="section-tag">About</div>
+        <h2>Led by a CPA Who Has Seen Every Side of a Business Transaction</h2>
+        <p>Jason Ward, CPA, CBI, M&AMI founded TruView Business Advisors to bring a different kind of expertise to business brokerage. As a Certified Public Accountant, Certified Business Intermediary, and Mergers and Acquisitions Master Intermediary, Jason brings financial precision to every deal that most brokers simply cannot offer.</p>
+        <p>The TruView team — including business advisor Noon Vichitra (MBA, PE, PMP) and broker Jean Claude Moughanni — brings together complementary expertise to serve business owners and buyers throughout Houston and beyond.</p>
+        <p>We believe that selling a business is one of the most important financial decisions you will ever make. We treat it that way — with the rigor, confidentiality, and personal commitment it deserves.</p>
+        <div class="about-badges">
+          <span class="about-badge">CPA Certified</span>
+          <span class="about-badge">CBI Designation</span>
+          <span class="about-badge">M&amp;AMI Certified</span>
+          <span class="about-badge">Houston, TX</span>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://truviewbusiness.com/wp-content/uploads/2017/01/jason_ward-780x780.jpg" alt="Jason Ward, CPA — Founder, TruView Business Advisors" onerror="this.parentElement.style.background='linear-gradient(135deg,#e8f6fd 0%,#c5e8f8 100%)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta-band">
+  <div class="container fade-up">
+    <h2>Ready to Find Out What Your Business Is Worth?</h2>
+    <p>Schedule a free, confidential consultation with Jason Ward and the TruView team. No pressure, no commitment — just the information you need to make the right decision for your future.</p>
+    <a href="tel:7132803600" class="btn-white">Schedule Your Free Call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><img src="https://truviewbusiness.com/wp-content/uploads/2024/02/tvb_logos.webp" alt="TruView Business Advisors" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#fff;font-weight:700\'>TruView Business Advisors</span>'"></div>
+      <p>Houston's CPA-led business brokerage firm — confidential, professional, and committed to your maximum outcome.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Business Sales</a>
+      <a href="#services">Valuation</a>
+      <a href="#services">Advisory</a>
+      <a href="#services">Buyer Representation</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>(713) 280-3600</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>info@truviewbusiness.com</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Houston, TX</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TruView Business Advisors. All rights reserved. | Website by <a href="#">Mediactive</a></p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
