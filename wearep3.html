@@ -4,130 +4,155 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>P3 Properties — Plan. Perform. Prosper.</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 body{color:#0a0a0a;background:#fff}
-:root{--primary:#4d9fff;--dark:#0a0a0a;--mid:#525252;--light:#fafafa;--border:#e8e8e8;--text:#404040;--gray:#737373;--blue-bg:#f0f7ff}
+:root{--blue:#4d9fff;--dark:#0a0a0a;--mid:#525252;--soft:#a3a3a3;--bg:#fafafa;--border:#e8e8e8;--blue-light:#f0f7ff}
 
-nav{position:sticky;top:0;z-index:1000;background:rgba(250,250,250,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
-.nav-logo img{height:38px;width:auto}
-.nav-logo span{font-size:1.1rem;font-weight:700;color:var(--dark)}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,0.88);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo img{height:32px;width:auto}
+.nav-logo span{font-size:1.05rem;font-weight:700;color:var(--dark);letter-spacing:-.02em}
 .nav-links{display:flex;align-items:center;gap:2.5rem}
-.nav-links a{text-decoration:none;color:var(--mid);font-weight:500;font-size:.9rem;transition:color .2s;letter-spacing:-.01em}
+.nav-links a{text-decoration:none;color:var(--mid);font-weight:500;font-size:.875rem;transition:color .15s}
 .nav-links a:hover{color:var(--dark)}
-.nav-cta{background:var(--dark);color:#fff;padding:.55rem 1.25rem;border-radius:6px;font-weight:600;font-size:.875rem;text-decoration:none;transition:background .2s}
+.nav-cta{background:var(--dark);color:#fff;padding:.5rem 1.25rem;border-radius:980px;font-weight:600;font-size:.82rem;text-decoration:none;transition:background .15s;letter-spacing:.01em}
 .nav-cta:hover{background:#1a1a1a}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--dark)}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(250,250,250,0.98);border-bottom:1px solid var(--border);padding:1.5rem 5%;flex-direction:column;gap:1rem;z-index:999;backdrop-filter:blur(20px)}
-.mobile-menu a{text-decoration:none;color:var(--text);font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--border)}
-.mobile-menu .nav-cta{text-align:center;padding:.75rem}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(250,250,250,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06);padding:1.5rem 5%;flex-direction:column;gap:1rem;z-index:99}
+.mobile-menu a{text-decoration:none;color:var(--dark);font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem}
+.mobile-menu .nav-cta{border-radius:6px;text-align:center;padding:.75rem}
 .mobile-menu.open{display:flex}
 
-section{padding:100px 5%}
-.container{max-width:1280px;margin:0 auto}
-
-.hero{background:#fff;padding:120px 5% 100px}
-.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.hero-eyebrow{font-size:.8rem;font-weight:600;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.25rem}
-.hero h1{font-size:3.4rem;font-weight:800;line-height:1.08;color:var(--dark);margin-bottom:1.5rem;letter-spacing:-.03em}
-.hero h1 span{color:var(--primary)}
-.hero p{font-size:1.1rem;color:var(--mid);line-height:1.75;margin-bottom:2.25rem;font-weight:400}
-.hero-cta{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
-.btn-dark{background:var(--dark);color:#fff;padding:.85rem 2rem;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none;transition:background .2s;letter-spacing:-.01em}
+/* HERO */
+.hero{padding:120px 5% 100px;background:#fff}
+.hero-inner{max-width:1200px;margin:0 auto}
+.hero-overline{font-size:.75rem;font-weight:600;color:var(--blue);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:.98;letter-spacing:-.05em;color:var(--dark);margin-bottom:2rem;max-width:14ch}
+.hero-sub{font-size:1.2rem;color:var(--mid);line-height:1.7;max-width:520px;margin-bottom:3rem;font-weight:400}
+.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:5rem}
+.btn-dark{background:var(--dark);color:#fff;padding:.8rem 2rem;border-radius:980px;font-weight:600;font-size:.9rem;text-decoration:none;transition:background .15s}
 .btn-dark:hover{background:#1a1a1a}
-.btn-outline{color:var(--primary);font-weight:600;font-size:.95rem;text-decoration:none;display:flex;align-items:center;gap:.4rem}
-.btn-outline:hover{color:#2a85e8}
-.hero-img-box{border-radius:20px;overflow:hidden;height:520px;background:var(--light);border:1px solid var(--border)}
-.hero-img-box img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-tags{display:flex;gap:.6rem;margin-top:1.75rem;flex-wrap:wrap}
-.tag{background:var(--blue-bg);color:var(--primary);padding:.3rem .85rem;border-radius:20px;font-size:.78rem;font-weight:600}
+.btn-ghost{color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.btn-ghost:hover{color:#2a85e8}
+.hero-metrics{display:grid;grid-template-columns:repeat(4,auto);gap:0;border-top:1px solid var(--border);border-left:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:680px}
+.metric{padding:1.5rem 2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.metric:last-child{border-right:1px solid var(--border)}
+.metric-num{font-size:1.75rem;font-weight:800;color:var(--dark);letter-spacing:-.04em;line-height:1}
+.metric-num span{color:var(--blue)}
+.metric-label{font-size:.72rem;color:var(--soft);margin-top:.35rem;letter-spacing:.02em;text-transform:uppercase;font-weight:500}
 
-.stats-bar{background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 5%}
-.stats-bar-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.stat-item .num{font-size:2.2rem;font-weight:800;color:var(--dark);letter-spacing:-.03em}
-.stat-item .num span{color:var(--primary)}
-.stat-item .label{font-size:.85rem;color:var(--gray);margin-top:.3rem}
+/* SECTION SHARED */
+section{padding:100px 5%}
+.container{max-width:1200px;margin:0 auto}
+.section-overline{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--dark);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem}
+.section-body{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:560px;margin-bottom:3.5rem}
+.section-title-center{text-align:center}
+.section-body-center{text-align:center;margin-left:auto;margin-right:auto}
 
-.section-eyebrow{font-size:.8rem;font-weight:600;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
-.section-title{font-size:2.4rem;font-weight:800;color:var(--dark);margin-bottom:1.1rem;line-height:1.1;letter-spacing:-.03em}
-.section-sub{font-size:1rem;color:var(--mid);max-width:560px;line-height:1.75;margin-bottom:3rem}
+/* PHILOSOPHY STRIP */
+.philosophy{background:var(--dark);padding:80px 5%}
+.philosophy-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+.philosophy-item{padding:2.5rem;border-right:1px solid rgba(255,255,255,.08)}
+.philosophy-item:last-child{border-right:none}
+.philosophy-item p{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.75rem}
+.philosophy-item h3{font-size:1.2rem;font-weight:700;color:#fff;line-height:1.4;letter-spacing:-.02em}
 
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.service-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:box-shadow .2s,border-color .2s}
-.service-card:hover{box-shadow:0 8px 32px rgba(77,159,255,.1);border-color:#c5deff}
-.service-icon{width:40px;height:40px;background:var(--blue-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--primary)}
-.service-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;letter-spacing:-.01em}
-.service-card p{font-size:.875rem;color:var(--mid);line-height:1.7}
+/* WHAT WE DO */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.what-card{background:#fff;padding:2.5rem;transition:background .15s}
+.what-card:hover{background:var(--bg)}
+.what-num{font-size:.72rem;font-weight:600;color:var(--soft);letter-spacing:.08em;margin-bottom:1.25rem}
+.what-card h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:.6rem;letter-spacing:-.02em}
+.what-card p{font-size:.9rem;color:var(--mid);line-height:1.7}
 
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.testi-card{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
-.stars{display:flex;gap:2px;margin-bottom:.875rem}
-.testi-card blockquote{font-size:.875rem;color:var(--text);line-height:1.7;margin-bottom:1rem;font-style:italic}
-.testi-author{font-weight:700;font-size:.85rem;color:var(--dark)}
-.testi-role{font-size:.78rem;color:var(--gray)}
+/* TRACK RECORD */
+.track-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.track-text h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--dark);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem}
+.track-text p{font-size:1rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
+.track-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem}
+.track-badge{background:var(--blue-light);color:var(--blue);padding:.3rem .9rem;border-radius:980px;font-size:.75rem;font-weight:600;letter-spacing:.01em}
+.track-photo{border-radius:20px;overflow:hidden;height:520px}
+.track-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
 
-.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;position:relative;margin-bottom:3rem}
-.how-steps::after{content:'';position:absolute;top:20px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,var(--primary),#a8d4ff);z-index:0}
-.step{text-align:center;position:relative;z-index:1}
-.step-num{width:42px;height:42px;background:#fff;border:2px solid var(--primary);color:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;margin:0 auto 1rem}
-.step h3{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.35rem}
-.step p{font-size:.82rem;color:var(--mid);line-height:1.6}
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.testi-card{padding:2rem;border:1px solid var(--border);border-radius:16px;background:#fff;transition:border-color .15s}
+.testi-card:hover{border-color:#c5deff}
+.stars{display:flex;gap:2px;margin-bottom:1.1rem}
+.testi-card blockquote{font-size:.9rem;color:#2a2a2a;line-height:1.7;margin-bottom:1.1rem;font-weight:400}
+.testi-author{font-weight:700;font-size:.82rem;color:var(--dark);letter-spacing:-.01em}
+.testi-role{font-size:.75rem;color:var(--soft);margin-top:.2rem}
+
+/* HOW */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:3rem}
+.how-step{}
+.how-num{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.08em;margin-bottom:.75rem}
+.how-step h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;letter-spacing:-.02em}
+.how-step p{font-size:.875rem;color:var(--mid);line-height:1.7}
+.how-divider{height:1px;background:linear-gradient(90deg,var(--blue) 0%,#a8d4ff 100%);margin-bottom:3rem;max-width:400px}
 .how-cta{text-align:center}
 
-.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.about-text h2{font-size:2.4rem;font-weight:800;color:var(--dark);margin-bottom:1.25rem;letter-spacing:-.03em}
-.about-text p{font-size:1rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
-.about-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
-.about-badge{background:var(--blue-bg);color:var(--primary);padding:.3rem .85rem;border-radius:20px;font-size:.78rem;font-weight:600}
-.about-img{border-radius:20px;overflow:hidden;height:480px;border:1px solid var(--border)}
-.about-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
-
-.cta-band{background:var(--dark);padding:100px 5%;text-align:center}
-.cta-band h2{font-size:2.6rem;font-weight:800;color:#fff;margin-bottom:1rem;letter-spacing:-.03em}
-.cta-band p{font-size:1.05rem;color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.75}
-.btn-blue{background:var(--primary);color:#fff;padding:.9rem 2.5rem;border-radius:6px;font-weight:600;font-size:1rem;text-decoration:none;transition:background .2s}
+/* CTA BAND */
+.cta-band{background:var(--dark);padding:120px 5%;text-align:center}
+.cta-band h2{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;color:#fff;letter-spacing:-.05em;line-height:.95;margin-bottom:1.5rem;max-width:12ch;margin-left:auto;margin-right:auto}
+.cta-band p{font-size:1.05rem;color:rgba(255,255,255,.55);line-height:1.75;max-width:480px;margin:0 auto 2.5rem}
+.btn-blue{background:var(--blue);color:#fff;padding:.85rem 2.25rem;border-radius:980px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .15s}
 .btn-blue:hover{background:#2a85e8}
 
-footer{background:var(--light);border-top:1px solid var(--border);padding:60px 5% 30px}
-.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
-footer p{font-size:.875rem;color:var(--gray);line-height:1.7}
-.footer-logo img{height:34px;margin-bottom:.75rem}
-.footer-col h4{font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.08em}
-.footer-col a{display:block;font-size:.875rem;color:var(--gray);text-decoration:none;margin-bottom:.45rem}
-.footer-col a:hover{color:var(--primary)}
-.footer-contact span{display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--gray);margin-bottom:.45rem}
-.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.footer-bottom p{font-size:.8rem;color:var(--gray)}
-.footer-bottom a{color:var(--primary);text-decoration:none}
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 5% 30px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.footer-desc{font-size:.875rem;color:var(--soft);line-height:1.7;margin-top:.5rem}
+.footer-logo img{height:28px}
+.footer-logo span{font-size:.95rem;font-weight:700;color:var(--dark)}
+.footer-col h4{font-size:.72rem;font-weight:600;color:var(--dark);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.1rem}
+.footer-col a{display:block;font-size:.875rem;color:var(--soft);text-decoration:none;margin-bottom:.4rem;transition:color .15s}
+.footer-col a:hover{color:var(--dark)}
+.footer-contact span{display:flex;align-items:flex-start;gap:.5rem;font-size:.875rem;color:var(--soft);margin-bottom:.4rem;line-height:1.5}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:.78rem;color:var(--soft)}
+.footer-bottom a{color:var(--blue);text-decoration:none}
 
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
+/* RESPONSIVE */
 @media(max-width:1024px){
-  .hero-inner,.about-inner{grid-template-columns:1fr}
-  .hero-img-box{display:none}
-  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-metrics{grid-template-columns:repeat(2,1fr)}
+  .what-grid{grid-template-columns:1fr}
+  .track-inner{grid-template-columns:1fr}
+  .track-photo{height:360px}
   .testi-grid{grid-template-columns:1fr 1fr}
-  .how-steps{grid-template-columns:repeat(2,1fr)}
-  .how-steps::after{display:none}
-  .stats-bar-inner{grid-template-columns:repeat(2,1fr)}
+  .how-grid{grid-template-columns:repeat(2,1fr)}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .nav-links{display:none}
   .hamburger{display:flex}
-  .hero h1{font-size:2.4rem}
-  .section-title{font-size:1.9rem}
-  .cta-band h2{font-size:2rem}
-  .services-grid,.testi-grid,.stats-bar-inner{grid-template-columns:1fr}
-  .how-steps{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:3rem}
+  .hero-metrics{grid-template-columns:1fr 1fr}
+  .philosophy-inner{grid-template-columns:1fr}
+  .philosophy-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .philosophy-item:last-child{border-bottom:none}
+  .testi-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr 1fr}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column}
   section{padding:80px 5%}
+  .cta-band{padding:80px 5%}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2.4rem}
+  .hero-metrics{grid-template-columns:1fr 1fr}
+  .metric{padding:1rem 1.25rem}
+  .how-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -140,8 +165,8 @@ footer p{font-size:.875rem;color:var(--gray);line-height:1.7}
       <span style="display:none">P3 Properties</span>
     </a>
     <div class="nav-links">
-      <a href="#portfolio">Portfolio</a>
       <a href="#approach">Approach</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#team">Team</a>
       <a href="#contact" class="nav-cta">Get in Touch</a>
     </div>
@@ -151,110 +176,139 @@ footer p{font-size:.875rem;color:var(--gray);line-height:1.7}
   </div>
 </nav>
 <div class="mobile-menu">
-  <a href="#portfolio">Portfolio</a>
   <a href="#approach">Approach</a>
+  <a href="#portfolio">Portfolio</a>
   <a href="#team">Team</a>
   <a href="#contact" class="nav-cta">Get in Touch</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="fade-up">
-      <div class="hero-eyebrow">Vertically Integrated Real Estate Platform</div>
-      <h1>Plan.<br><span>Perform.</span><br>Prosper.</h1>
-      <p>P3 Properties is a disciplined, vertically integrated real estate investment and operating platform — acquiring, repositioning, and managing commercial, multifamily, and hospitality assets across the eastern United States.</p>
-      <div class="hero-cta">
-        <a href="mailto:Info@wearep3.com" class="btn-dark">Connect with Our Team</a>
-        <a href="tel:9739331300" class="btn-outline">(973) 933-1300 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-      <div class="hero-tags">
-        <span class="tag">~$2B Assets Under Management</span>
-        <span class="tag">20+ Properties</span>
-        <span class="tag">7 States</span>
-      </div>
+  <div class="hero-inner fade-up">
+    <div class="hero-overline">Vertically Integrated Real Estate</div>
+    <h1>Plan.<br>Perform.<br>Prosper.</h1>
+    <p class="hero-sub">P3 Properties acquires, repositions, and operates commercial, multifamily, and hospitality assets across the eastern United States — combining institutional-grade discipline with an operator's hands-on accountability.</p>
+    <div class="hero-actions">
+      <a href="mailto:Info@wearep3.com" class="btn-dark">Connect with Our Team</a>
+      <a href="tel:9739331300" class="btn-ghost">(973) 933-1300 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
-    <div class="hero-image fade-up">
-      <div class="hero-img-box">
-        <img src="https://www.wearep3.com/images/embedded-029-0d5500b5.jpg" alt="Harvey Rosenblatt — P3 Properties" onerror="this.parentElement.style.background='var(--light)'">
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-num">~<span>$2B</span></div>
+        <div class="metric-label">Assets Under Management</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span>20</span>+</div>
+        <div class="metric-label">Properties in Portfolio</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span>7</span></div>
+        <div class="metric-label">States</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span>2014</span></div>
+        <div class="metric-label">Founded</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="stats-bar">
-  <div class="stats-bar-inner fade-up">
-    <div class="stat-item">
-      <div class="num">~<span>$2B</span></div>
-      <div class="label">Assets Under Management</div>
+<!-- PHILOSOPHY -->
+<div class="philosophy fade-up">
+  <div class="philosophy-inner">
+    <div class="philosophy-item">
+      <p>Our perspective</p>
+      <h3>We don't manage assets. We raise expectations.</h3>
     </div>
-    <div class="stat-item">
-      <div class="num"><span>20+</span></div>
-      <div class="label">Properties in Portfolio</div>
+    <div class="philosophy-item">
+      <p>Our commitment</p>
+      <h3>We don't lease space. We develop relationships.</h3>
     </div>
-    <div class="stat-item">
-      <div class="num"><span>7</span></div>
-      <div class="label">States of Operation</div>
-    </div>
-    <div class="stat-item">
-      <div class="num"><span>2014</span></div>
-      <div class="label">Founded — A Decade of Results</div>
+    <div class="philosophy-item">
+      <p>Our approach</p>
+      <h3>We don't accept "it can't be done" — we find the way.</h3>
     </div>
   </div>
 </div>
 
-<section id="portfolio" style="background:#fff">
+<!-- WHAT WE DO -->
+<section id="approach" style="background:#fff">
   <div class="container fade-up">
-    <div class="section-eyebrow">What We Do</div>
-    <h2 class="section-title">We Don't Manage Assets. We Raise Expectations.</h2>
-    <p class="section-sub">Our vertically integrated platform means we control every phase of the investment lifecycle — from acquisition and repositioning through day-to-day operations and eventual disposition.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Real Estate Investment</h3>
-        <p>Disciplined acquisition of office, multifamily, retail, and hospitality assets — focused on value-add opportunities with clear execution strategies.</p>
+    <div class="section-overline">What We Do</div>
+    <h2 class="section-title">A Platform Built<br>for Every Phase</h2>
+    <p class="section-body">Our vertically integrated model means we control acquisition, operations, and disposition in-house — no outsourcing of accountability, no misalignment of incentives.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-num">01</div>
+        <h3>Real Estate Investment &amp; Acquisition</h3>
+        <p>Disciplined, conservative underwriting on value-add opportunities with clear execution theses. We only buy what we would bet our own capital on.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="what-card">
+        <div class="what-num">02</div>
         <h3>Asset Repositioning</h3>
-        <p>Transforming underperforming properties through strategic capital investment, operational improvement, and thoughtful repositioning in the market.</p>
+        <p>Strategic capital deployment, operational improvement, and market repositioning that unlocks value others miss — or walk away from.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h3>In-House Management</h3>
-        <p>Vertically integrated property management and leasing platforms that give us direct control over the operating performance of every asset.</p>
+      <div class="what-card">
+        <div class="what-num">03</div>
+        <h3>In-House Management &amp; Leasing</h3>
+        <p>Fully integrated property management and leasing platforms across all asset types. We own the relationship with every tenant, every day.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3>Office Properties</h3>
-        <p>Strategic acquisition and active management of office assets in supply-constrained markets, with a focus on long-term occupancy and tenant retention.</p>
+      <div class="what-card">
+        <div class="what-num">04</div>
+        <h3>Ground-Up Development</h3>
+        <p>Selective ground-up development in supply-constrained markets where our operating expertise gives us a structural edge from day one.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <h3>Multifamily Development</h3>
-        <p>Ground-up and value-add multifamily development in markets with strong demand fundamentals and limited new supply.</p>
+      <div class="what-card">
+        <div class="what-num">05</div>
+        <h3>Office &amp; Multifamily</h3>
+        <p>Long-term hold strategies in office and multifamily where active management — not passive ownership — separates average returns from exceptional ones.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="what-card">
+        <div class="what-num">06</div>
         <h3>Hospitality Operations</h3>
-        <p>Hands-on hospitality property operations with an operator's mindset — driving revenue, controlling costs, and delivering guest experiences that build lasting value.</p>
+        <p>Hands-on hotel and hospitality management where revenue optimization, cost control, and guest experience compound into durable asset value.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section style="background:var(--light)">
+<!-- TRACK RECORD -->
+<section id="portfolio" style="background:var(--bg)">
+  <div class="container">
+    <div class="track-inner fade-up">
+      <div class="track-text">
+        <div class="section-overline">Track Record</div>
+        <h2>Six Realized Deals.<br>One Consistent Standard.</h2>
+        <p>Since 2014, P3 has built, stabilized, and successfully exited six deals — three sold or recapitalized, three stabilized and permed out. Every one of them was underwritten conservatively, managed aggressively, and executed with the same accountability we bring to every deal in our portfolio today.</p>
+        <p>What our investors say about us is not marketing language — it is a track record. Harvey stands out for clarity of vision, a strong work ethic, and the ability to execute. That is what P3 was built on, and what every deal reflects.</p>
+        <div class="track-badges">
+          <span class="track-badge">6 Realized Deals</span>
+          <span class="track-badge">3 Sold / Recapped</span>
+          <span class="track-badge">3 Stabilized &amp; Permed</span>
+          <span class="track-badge">~$2B AUM</span>
+        </div>
+      </div>
+      <div class="track-photo">
+        <img src="https://www.wearep3.com/images/embedded-029-0d5500b5.jpg" alt="Harvey Rosenblatt, Founder — P3 Properties" onerror="this.parentElement.style.background='var(--border)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:#fff">
   <div class="container fade-up">
-    <div class="section-eyebrow">What Our Partners Say</div>
-    <h2 class="section-title">The P3 Reputation, Earned One Deal at a Time</h2>
-    <p class="section-sub">Our investors, partners, and tenants speak to a consistent track record of follow-through, expertise, and integrity.</p>
+    <div class="section-overline" style="text-align:center">What Our Partners Say</div>
+    <h2 class="section-title section-title-center">The P3 Reputation,<br>Earned One Deal at a Time</h2>
+    <p class="section-body section-body-center">Our investors speak not to a pitch — but to a pattern. A decade of transactions, all executed the same way.</p>
     <div class="testi-grid">
       <div class="testi-card">
         <div class="stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <blockquote>"Harvey is a phenomenal operator and executor. His ability to take a project from vision to reality is unmatched."</blockquote>
         <div class="testi-author">P3 Investment Partner</div>
@@ -262,112 +316,118 @@ footer p{font-size:.875rem;color:var(--gray);line-height:1.7}
       </div>
       <div class="testi-card">
         <div class="stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <blockquote>"What Harvey says he will do, he will do. His enthusiasm was infectious and his execution was excellent."</blockquote>
-        <div class="testi-author">P3 Investment Partner</div>
-        <div class="testi-role">Portfolio Investor</div>
-      </div>
-      <div class="testi-card">
-        <div class="stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <blockquote>"Harvey has a strong moral compass, does his homework, and never cuts corners. Due to his conservative underwriting, the property thrived."</blockquote>
         <div class="testi-author">P3 Investment Partner</div>
         <div class="testi-role">Co-Investor</div>
       </div>
+      <div class="testi-card">
+        <div class="stars">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"I've been consistently impressed by Harvey's strategic insight, diligence, and ability to structure deals. Whatever issues arose were handled with the utmost efficiency."</blockquote>
+        <div class="testi-author">P3 Investment Partner</div>
+        <div class="testi-role">Portfolio Investor</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="approach" style="background:#fff">
+<!-- HOW WE WORK -->
+<section style="background:var(--bg)">
   <div class="container fade-up">
-    <div class="section-eyebrow">Our Process</div>
-    <h2 class="section-title">How P3 Creates Value in Every Deal</h2>
-    <p class="section-sub">A disciplined, repeatable process built around conservative underwriting, active management, and long-term value creation.</p>
-    <div class="how-steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Disciplined Acquisition</h3>
-        <p>Conservative underwriting with clear value-add theses. We only buy what we believe in.</p>
+    <div class="section-overline">How We Invest</div>
+    <h2 class="section-title">A Disciplined Process.<br>No Exceptions.</h2>
+    <p class="section-body">Every deal goes through the same rigorous process — because consistency is what produces repeatable results over a decade.</p>
+    <div class="how-divider"></div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">STEP 01</div>
+        <h3>Conservative Underwriting</h3>
+        <p>We stress-test every assumption. If the deal only works in the best-case scenario, we pass.</p>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Strategic Repositioning</h3>
-        <p>Capital investment, operational improvements, and market repositioning that unlocks embedded value.</p>
+      <div class="how-step">
+        <div class="how-num">STEP 02</div>
+        <h3>Clear Value-Add Thesis</h3>
+        <p>We know exactly what we are buying, why it is mispriced, and how we will create value before we close.</p>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Active Operations</h3>
-        <p>In-house management and leasing teams drive performance at the property level — no outsourcing of accountability.</p>
+      <div class="how-step">
+        <div class="how-num">STEP 03</div>
+        <h3>In-House Execution</h3>
+        <p>Our team manages every phase — no third-party managers, no accountability gaps, no surprises for investors.</p>
       </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Optimized Disposition</h3>
-        <p>Thoughtful exit timing and execution that delivers strong risk-adjusted returns to our investors.</p>
+      <div class="how-step">
+        <div class="how-num">STEP 04</div>
+        <h3>Optimized Exit</h3>
+        <p>We choose timing and structure based on maximizing investor returns — not on fees or fund timelines.</p>
       </div>
     </div>
     <div class="how-cta"><a href="mailto:Info@wearep3.com" class="btn-dark">Connect with Our Team</a></div>
   </div>
 </section>
 
-<section id="team" style="background:var(--light)">
+<!-- TEAM -->
+<section id="team" style="background:#fff">
   <div class="container">
-    <div class="about-inner fade-up">
-      <div class="about-text">
-        <div class="section-eyebrow">Leadership</div>
-        <h2>Built by Operators, Run by Owners</h2>
-        <p>Harvey Rosenblatt founded P3 Properties in 2014 with a clear conviction: the best real estate investments are made by people who understand operations deeply and who have aligned incentives with their investors.</p>
-        <p>Today, P3's leadership team — including Brendan Petri, Brian Frankel, Aharon Steinberg, and a seasoned group of senior professionals — brings together decades of operating experience across commercial, multifamily, retail, and hospitality real estate.</p>
-        <p>We don't accept "it can't be done." Our track record of 6 realized deals, three stabilized assets, and approximately $2 billion under management reflects a team that consistently finds the way forward where others see obstacles.</p>
-        <div class="about-badges">
-          <span class="about-badge">Founded 2014</span>
-          <span class="about-badge">~$2B AUM</span>
-          <span class="about-badge">6 Realized Deals</span>
-          <span class="about-badge">East Rutherford, NJ</span>
-        </div>
+    <div class="track-inner fade-up">
+      <div class="track-photo" style="order:1">
+        <img src="https://www.wearep3.com/images/embedded-030-07e029a8.jpg" alt="P3 Properties Leadership" onerror="this.parentElement.style.background='var(--border)'">
       </div>
-      <div class="about-img">
-        <img src="https://www.wearep3.com/images/embedded-029-0d5500b5.jpg" alt="Harvey Rosenblatt — Founder, P3 Properties" onerror="this.parentElement.style.background='var(--light);border:1px solid var(--border)'">
+      <div class="track-text" style="order:2">
+        <div class="section-overline">Leadership</div>
+        <h2>Built by Operators.<br>Accountable to Owners.</h2>
+        <p>Harvey Rosenblatt founded P3 in 2014 because he saw a gap between how institutional real estate gets managed and what real performance actually requires. The answer was a platform where the people making decisions are directly accountable for the outcomes.</p>
+        <p>The P3 leadership team — including Brendan Petri, Brian Frankel, Aharon Steinberg, and a group of senior professionals across disciplines — brings decades of hands-on operating experience. Every one of them has been in the room when deals get hard.</p>
+        <p>We believe that is the difference. Not the pitch deck. The people at the property, making the right call, every day.</p>
+        <div class="track-badges">
+          <span class="track-badge">East Rutherford, NJ</span>
+          <span class="track-badge">Founded 2014</span>
+          <span class="track-badge">9-Person Leadership Team</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section id="contact" class="cta-band">
   <div class="container fade-up">
-    <h2>Our Perspective is Unique.<br>Our Approach is Proven.</h2>
-    <p>We don't lease space — we develop relationships. We don't manage assets — we raise expectations. If that resonates, let's talk.</p>
+    <h2>Our perspective<br>is unique.</h2>
+    <p>We don't accept "it can't be done." If you are looking for a disciplined, vertically integrated partner for your next real estate investment, let's talk.</p>
     <a href="mailto:Info@wearep3.com" class="btn-blue">Connect with P3</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo"><img src="https://www.wearep3.com/images/embedded-001-0c523fa9.png" alt="P3 Properties" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#0a0a0a;font-weight:700;font-size:1rem\'>P3 Properties</span>'"></div>
-      <p>Vertically integrated real estate investment and operating platform. Plan. Perform. Prosper.</p>
+      <div class="footer-logo">
+        <img src="https://www.wearep3.com/images/embedded-001-0c523fa9.png" alt="P3 Properties" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none">P3 Properties</span>
+      </div>
+      <p class="footer-desc">Plan. Perform. Prosper. Vertically integrated real estate investment and operating platform.</p>
     </div>
     <div class="footer-col">
       <h4>Platform</h4>
-      <a href="#portfolio">Investment Strategy</a>
-      <a href="#portfolio">Asset Types</a>
-      <a href="#approach">Our Process</a>
+      <a href="#approach">What We Do</a>
+      <a href="#portfolio">Track Record</a>
       <a href="#team">Leadership</a>
     </div>
     <div class="footer-col footer-contact">
       <h4>Contact</h4>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>(973) 933-1300</span>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>Info@wearep3.com</span>
-      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>1 Meadowlands Plaza, Suite 1511, East Rutherford NJ</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>1 Meadowlands Plaza, Suite 1511<br>East Rutherford, NJ 07073</span>
     </div>
   </div>
   <div class="footer-bottom">
@@ -376,10 +436,10 @@ footer p{font-size:.875rem;color:var(--gray);line-height:1.7}
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
+const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.1});
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
