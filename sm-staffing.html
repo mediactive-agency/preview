@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SM Staffing | Professional Staffing &amp; Career Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#14B8A6;--dark:#111827;--text:#1a1a1a;--muted:#6b7280;--white:#fff;--gray:#F5F6F8}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(17,24,39,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,184,166,.15);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:42px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.58);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:var(--dark);padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:var(--dark);padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(155deg,#111827 0%,#0d1520 55%,#0f1f1d 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:700px;height:700px;background:radial-gradient(circle,rgba(20,184,166,.12) 0%,transparent 65%);pointer-events:none}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(20,184,166,.14);border:1px solid rgba(20,184,166,.28);color:var(--primary);padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.5rem);color:#fff;line-height:1.1;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{color:rgba(255,255,255,.5);font-size:1.02rem;max-width:480px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn{background:var(--primary);color:var(--dark);padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.btnout{border:2px solid rgba(255,255,255,.22);color:rgba(255,255,255,.75);padding:.78rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .2s;display:inline-block}
+.btnout:hover{border-color:var(--primary);color:#fff}
+.hero-right{display:flex;flex-direction:column;gap:1rem}
+.hitem{background:rgba(255,255,255,.04);border:1px solid rgba(20,184,166,.15);border-radius:14px;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;transition:border-color .2s}
+.hitem:hover{border-color:rgba(20,184,166,.4)}
+.hicon{width:44px;height:44px;background:rgba(20,184,166,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary)}
+.htxt h4{font-family:'Syne',sans-serif;color:#fff;font-size:.95rem;font-weight:700}
+.htxt p{color:rgba(255,255,255,.4);font-size:.8rem;margin-top:.15rem}
+.stats{background:var(--dark);padding:52px 6%;border-top:1px solid rgba(20,184,166,.08);border-bottom:1px solid rgba(20,184,166,.08)}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;color:var(--primary)}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.35);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(20,184,166,.1);color:#0a7c6e;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;margin-bottom:.85rem}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(20,184,166,.1)}
+.icon{width:46px;height:46px;background:rgba(20,184,166,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0a7c6e;margin-bottom:1rem}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(16.66% + 15px);right:calc(16.66% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(20,184,166,.15));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;background:var(--primary);color:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem}
+.step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.86rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(20,184,166,.09);border:1px solid rgba(20,184,166,.2);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.dark-card{background:linear-gradient(155deg,#111827,#0d1520);border-radius:20px;padding:2.5rem;border:1px solid rgba(20,184,166,.15)}
+.dark-card h3{font-family:'Syne',sans-serif;color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.dark-card p{color:rgba(255,255,255,.45);font-size:.88rem;line-height:1.8;margin-bottom:1.2rem}
+.dc-line{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem 0;border-top:1px solid rgba(255,255,255,.05)}
+.dc-icon{width:30px;height:30px;background:rgba(20,184,166,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0}
+.dc-txt{color:rgba(255,255,255,.52);font-size:.86rem;line-height:1.5}
+.band{background:linear-gradient(155deg,#111827,#0d1520);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(20,184,166,.1) 0%,transparent 70%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:680px}
+.band p{color:rgba(255,255,255,.45);font-size:1.03rem;margin-bottom:2.5rem}
+footer{background:#080e18;padding:60px 6% 28px;border-top:1px solid rgba(20,184,166,.08)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.3);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.62);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.32);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--primary)}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+.fbot p{color:rgba(255,255,255,.2);font-size:.78rem}
+.fbot a{color:var(--primary);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn,.btnout{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://smstaffing.herokuapp.com/images/sm-logo.png" alt="SM Staffing" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>SM Staffing</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Get Started</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Professional Staffing &amp; Career Solutions</div>
+      <h1>Connecting <em>Exceptional Talent</em> with Exceptional Employers</h1>
+      <p>SM Staffing delivers professional staffing and career solutions for employers who need quality talent and candidates who deserve real opportunities.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start Hiring</a>
+        <a href="#services" class="btnout">Find a Job</a>
+      </div>
+    </div>
+    <div class="hero-right fu">
+      <div class="hitem">
+        <div class="hicon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="htxt"><h4>Direct Hire Placement</h4><p>Permanent roles filled with pre-vetted professionals</p></div>
+      </div>
+      <div class="hitem">
+        <div class="hicon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="htxt"><h4>Temporary Staffing</h4><p>Immediate workforce coverage when you need it</p></div>
+      </div>
+      <div class="hitem">
+        <div class="hicon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <div class="htxt"><h4>Career Placement</h4><p>We advocate for candidates, not just employers</p></div>
+      </div>
+      <div class="hitem">
+        <div class="hicon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="htxt"><h4>Executive Search</h4><p>Senior-level placements with rigorous vetting</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn">500+</div><div class="sl2">Placements Made</div></div>
+    <div><div class="sn">48h</div><div class="sl2">Avg Candidate Delivery</div></div>
+    <div><div class="sn">Multi</div><div class="sl2">Industry Coverage</div></div>
+    <div><div class="sn">100%</div><div class="sl2">Dedicated Service</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Services</span>
+    <h2>Staffing Solutions for Employers and Candidates</h2>
+    <p>Whether you are building a team or building your career, SM Staffing delivers with care, speed, and transparency.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Direct Hire</h3>
+      <p>Permanent placements managed from sourcing through offer — delivering candidates ready to add value from day one.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Temporary Staffing</h3>
+      <p>Qualified temporary workers placed quickly — for peaks, projects, and coverage gaps across professional and skilled roles.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <h3>Contract-to-Hire</h3>
+      <p>Evaluate a professional on the job before making a permanent commitment — with a smooth conversion path built in.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Executive Search</h3>
+      <p>Senior and leadership searches with deep vetting, reference checks, and cultural fit assessment before presentation.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Career Placement</h3>
+      <p>For job seekers: we act as your advocate — matching you with roles aligned to your experience, goals, and work preferences.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Volume Staffing</h3>
+      <p>High-volume hiring projects managed efficiently — sourcing, screening, and placing at scale without compromising quality.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="process">
+  <div class="shdr fu">
+    <span class="stag">How We Work</span>
+    <h2>Simple, Transparent, Effective</h2>
+    <p>No complicated engagement models. Just a clear process that respects your time and delivers the right result.</p>
+  </div>
+  <div class="steps fu">
+    <div class="step">
+      <div class="snum2">1</div>
+      <h3>Tell Us What You Need</h3>
+      <p>We listen first — understanding your requirements, culture, and timeline before sourcing a single candidate.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">2</div>
+      <h3>We Find and Screen</h3>
+      <p>We source from our professional network, interview candidates, and verify fit — you only see people who are genuinely qualified.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">3</div>
+      <h3>You Hire the Right Person</h3>
+      <p>Meet a focused shortlist, make your decision, and we handle offer logistics, onboarding coordination, and follow-up.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Start a Search</a>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About SM Staffing</span>
+      <h2>A Staffing Partner That Works for Both Sides</h2>
+      <p>SM Staffing was built around a straightforward conviction: great staffing serves employers and candidates equally well. We are not a resume clearinghouse — we invest time in understanding what each side genuinely needs before making a match.</p>
+      <p>For employers, that means fewer interviews and better outcomes. For candidates, it means opportunities that are actually right for where they want to go — not just available.</p>
+      <p>We stay engaged after placement because we know that is where the real work begins. Our follow-up and replacement guarantee reflect a commitment to outcomes, not just placements.</p>
+      <div class="creds">
+        <span class="cred">Employer &amp; Candidate Focused</span>
+        <span class="cred">48h Delivery</span>
+        <span class="cred">Replacement Guarantee</span>
+        <span class="cred">Multi-Industry</span>
+      </div>
+    </div>
+    <div class="dark-card fu">
+      <h3>The SM Standard</h3>
+      <p>Every engagement — employer or candidate — gets the same level of attention and accountability.</p>
+      <div class="dc-line">
+        <div class="dc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dc-txt">Candidates personally screened before presentation — no resume blasts</div>
+      </div>
+      <div class="dc-line">
+        <div class="dc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dc-txt">First shortlist delivered within 48 hours for most openings</div>
+      </div>
+      <div class="dc-line">
+        <div class="dc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dc-txt">Replacement guarantee included on all direct hire placements</div>
+      </div>
+      <div class="dc-line">
+        <div class="dc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dc-txt">Single point of contact for every search — no handoffs or call centers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>Ready to Find Your Next Great Hire?</h2>
+    <p>Talk to SM Staffing today and get your search started.</p>
+    <a href="https://smstaffing.herokuapp.com" class="btn">Contact SM Staffing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800">SM Staffing</span>
+      <p>Professional staffing and career solutions — serving employers and candidates with equal care and accountability.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Direct Hire</a></li>
+        <li><a href="#services">Temporary Staffing</a></li>
+        <li><a href="#services">Contract-to-Hire</a></li>
+        <li><a href="#services">Career Placement</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 SM Staffing. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
