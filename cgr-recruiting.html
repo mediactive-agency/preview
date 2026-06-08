@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGR Recruiting | Executive Search &amp; Talent Acquisition</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#B78938;--dark:#14253E;--text:#1a1a1a;--muted:#6b7280;--white:#fff;--gray:#F5F6F8}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(20,37,62,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(183,137,56,.2);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:42px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800;letter-spacing:.01em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.62);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:#fff;padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:#fff;padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(155deg,#14253E 0%,#0d1926 60%,#1a2f4a 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-60px;width:650px;height:650px;background:radial-gradient(circle,rgba(183,137,56,.12) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(183,137,56,.07) 0%,transparent 65%);pointer-events:none}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.bage{display:inline-flex;align-items:center;gap:.5rem;background:rgba(183,137,56,.14);border:1px solid rgba(183,137,56,.28);color:var(--primary);padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.4rem);color:#fff;line-height:1.1;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{color:rgba(255,255,255,.52);font-size:1.02rem;max-width:470px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn{background:var(--primary);color:#fff;padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.btnout{border:2px solid rgba(183,137,56,.5);color:rgba(255,255,255,.75);padding:.78rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .2s;display:inline-block}
+.btnout:hover{border-color:var(--primary);color:#fff}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hcard{background:rgba(255,255,255,.05);border:1px solid rgba(183,137,56,.18);border-radius:14px;padding:1.5rem;transition:border-color .2s}
+.hcard:hover{border-color:rgba(183,137,56,.4)}
+.hcard-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--primary)}
+.hcard-lbl{color:rgba(255,255,255,.52);font-size:.82rem;margin-top:.2rem;line-height:1.4}
+.hcard-sub{color:rgba(183,137,56,.65);font-size:.74rem;font-weight:600;margin-top:.4rem}
+.stats{background:var(--dark);border-top:1px solid rgba(183,137,56,.1);border-bottom:1px solid rgba(183,137,56,.1);padding:56px 6%}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--primary)}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.42);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(183,137,56,.12);color:#8b6628;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;color:var(--text);margin-bottom:.85rem}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(183,137,56,.1)}
+.icon{width:46px;height:46px;background:rgba(183,137,56,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#8b6628;margin-bottom:1rem}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.industry-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.icard{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:1.5rem 1.2rem;text-align:center;transition:border-color .2s,box-shadow .2s}
+.icard:hover{border-color:var(--primary);box-shadow:0 6px 24px rgba(183,137,56,.1)}
+.icard .icon{margin:0 auto .8rem}
+.icard h4{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(12.5% + 15px);right:calc(12.5% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(183,137,56,.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem}
+.step h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.82rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8;font-size:.95rem}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(183,137,56,.1);border:1px solid rgba(183,137,56,.22);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.value-list{list-style:none;margin-top:1.5rem}
+.value-list li{display:flex;align-items:flex-start;gap:.8rem;padding:.6rem 0;border-bottom:1px solid #f0f0f0;font-size:.9rem;color:var(--muted)}
+.value-list li:last-child{border-bottom:none}
+.value-list .chk{width:20px;height:20px;background:rgba(183,137,56,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:#8b6628}
+.band{background:linear-gradient(160deg,#14253E,#0d1926);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(183,137,56,.12) 0%,transparent 70%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:680px}
+.band p{color:rgba(255,255,255,.48);font-size:1.03rem;margin-bottom:2.5rem}
+footer{background:#0a1420;padding:60px 6% 28px;border-top:1px solid rgba(183,137,56,.12)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.35);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.75);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.38);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--primary)}
+.ci{color:rgba(255,255,255,.38);font-size:.86rem;display:flex;align-items:center;gap:.45rem;margin-bottom:.55rem}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+.fbot p{color:rgba(255,255,255,.22);font-size:.78rem}
+.fbot a{color:var(--primary);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.industry-grid{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:repeat(2,1fr)}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.industry-grid,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn,.btnout{width:100%;text-align:center}
+.hero-cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://cgrecruits.com/wp-content/uploads/cgr-logo.png" alt="CGR Recruiting" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>CGR Recruiting</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Start a Search</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#industries">Industries</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Start a Search</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="bage"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Executive Search Specialists</div>
+      <h1>We Find the Talent <em>Others Can't</em></h1>
+      <p>CGR Recruiting connects high-growth companies with executive and professional talent through a rigorous, relationship-driven search process. No volume plays. No spray and pray.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start a Search</a>
+        <a href="#services" class="btnout">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-cards fu">
+      <div class="hcard">
+        <div class="hcard-num">92%</div>
+        <div class="hcard-lbl">Candidate retention at 12 months</div>
+        <div class="hcard-sub">Industry avg: 68%</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">21</div>
+        <div class="hcard-lbl">Days average time to shortlist</div>
+        <div class="hcard-sub">For senior roles</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">500+</div>
+        <div class="hcard-lbl">Executive placements made</div>
+        <div class="hcard-sub">Across multiple sectors</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">100%</div>
+        <div class="hcard-lbl">Search completion rate</div>
+        <div class="hcard-sub">We finish what we start</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn">92%</div><div class="sl2">Retention at 12 Months</div></div>
+    <div><div class="sn">21</div><div class="sl2">Days to Shortlist</div></div>
+    <div><div class="sn">500+</div><div class="sl2">Executive Placements</div></div>
+    <div><div class="sn">100%</div><div class="sl2">Search Completion Rate</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">What We Do</span>
+    <h2>Tailored Executive Search Services</h2>
+    <p>From retained search to contract leadership, every engagement is built around your specific hiring challenge — not a template.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Retained Executive Search</h3>
+      <p>Exclusive, fully managed C-suite and VP-level searches with dedicated research, direct outreach, and full market mapping.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Contingency Recruitment</h3>
+      <p>No-risk professional hiring for director and manager roles — you pay only when you hire from our shortlist.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <h3>Interim &amp; Fractional Leadership</h3>
+      <p>Experienced executives placed on an interim basis to lead through transition, M&amp;A, or capability gaps — typically starting within two weeks.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <h3>Talent Strategy Consulting</h3>
+      <p>Organizational design, compensation benchmarking, and succession planning to build a talent framework that scales with your growth.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Diversity-Focused Search</h3>
+      <p>Structured search methodologies that actively surface diverse candidate pools without sacrificing quality or speed.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <h3>On-Demand RPO</h3>
+      <p>Embedded recruiting support for high-volume hiring surges — we operate as an extension of your internal TA team.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="industries">
+  <div class="shdr fu">
+    <span class="stag">Industries</span>
+    <h2>Deep Sector Expertise Across Key Markets</h2>
+    <p>We do not generalize. Our consultants specialize in sectors where they understand the competitive talent landscape from the inside.</p>
+  </div>
+  <div class="industry-grid fu">
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg></div>
+      <h4>Manufacturing &amp; Industrial</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h4>Technology &amp; SaaS</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 12H5M20 17H9"/><path d="M7 7l-4 5 4 5"/></svg></div>
+      <h4>Financial Services</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <h4>Healthcare &amp; Life Sciences</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h4>Consumer &amp; Retail</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h4>Supply Chain &amp; Logistics</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <h4>Professional Services</h4>
+    </div>
+    <div class="icard">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h4>Energy &amp; Utilities</h4>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="shdr fu">
+    <span class="stag">Our Process</span>
+    <h2>A Search Process Built for Precision</h2>
+    <p>Four disciplined steps that eliminate guesswork and deliver the right hire the first time.</p>
+  </div>
+  <div class="steps fu">
+    <div class="step">
+      <div class="snum2">1</div>
+      <h3>Discovery</h3>
+      <p>We understand your business, culture, and what success looks like in the role — not just the job description.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">2</div>
+      <h3>Market Mapping</h3>
+      <p>Proprietary research identifies the full universe of qualified candidates, including those not actively looking.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">3</div>
+      <h3>Shortlist Delivery</h3>
+      <p>Thoroughly screened, reference-checked candidates presented with a complete profile and our recommendation.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">4</div>
+      <h3>Offer &amp; Onboarding</h3>
+      <p>We manage the offer process and stay engaged through the first 90 days to protect your investment.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Start Your Search</a>
+  </div>
+</section>
+
+<section class="sec alt" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About CGR</span>
+      <h2>Relationship-Driven. Results-Accountable.</h2>
+      <p>CGR Recruiting was built on a simple conviction: great companies deserve great people, and finding them takes expertise, not automation. We work with a focused portfolio of clients — not hundreds — so every search gets the senior attention it deserves.</p>
+      <p>Our consultants bring real-world leadership experience in the industries they recruit for. That means we know what good looks like, and we know how to recognize it before the interview ever happens.</p>
+      <ul class="value-list">
+        <li><span class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Senior-led searches — no hand-offs to junior recruiters</li>
+        <li><span class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Active candidate networks built over decades of recruiting</li>
+        <li><span class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Transparent communication at every stage of the search</li>
+        <li><span class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>12-month placement guarantee on every retained search</li>
+      </ul>
+      <div class="creds">
+        <span class="cred">Executive Search</span>
+        <span class="cred">Multi-Sector</span>
+        <span class="cred">12-Mo Guarantee</span>
+      </div>
+    </div>
+    <div class="fu">
+      <div style="background:linear-gradient(160deg,#14253E,#1a2f4a);border-radius:20px;padding:2.5rem;border:1px solid rgba(183,137,56,.2)">
+        <h3 style="font-family:'Syne',sans-serif;color:#fff;font-size:1.4rem;font-weight:800;margin-bottom:1rem">Why Clients Choose CGR</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.8;margin-bottom:1.5rem">We are not a resume-forwarding service. Every candidate we present has been personally spoken with, vetted against your criteria, and assessed for cultural fit — before they ever reach your inbox.</p>
+        <div style="display:flex;flex-direction:column;gap:.8rem">
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:34px;height:34px;background:rgba(183,137,56,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.65);font-size:.88rem">No resumes sent without a real conversation</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:34px;height:34px;background:rgba(183,137,56,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.65);font-size:.88rem">Reference checks completed before shortlist delivery</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:34px;height:34px;background:rgba(183,137,56,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.65);font-size:.88rem">60-day onboarding support included on all searches</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:34px;height:34px;background:rgba(183,137,56,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.65);font-size:.88rem">92% 12-month retention vs. 68% industry average</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>The Right Leader Changes Everything</h2>
+    <p>Let's talk about who you are looking for and how we can find them.</p>
+    <a href="https://cgrecruits.com" class="btn">Start a Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800">CGR Recruiting</span>
+      <p>Executive and professional search built on relationships, precision, and accountability.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Retained Executive Search</a></li>
+        <li><a href="#services">Contingency Recruitment</a></li>
+        <li><a href="#services">Interim Leadership</a></li>
+        <li><a href="#services">RPO Solutions</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="#industries">Manufacturing</a></li>
+        <li><a href="#industries">Technology</a></li>
+        <li><a href="#industries">Financial Services</a></li>
+        <li><a href="#industries">Healthcare</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 CGR Recruiting. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
