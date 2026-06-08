@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Provide | Modern Workforce Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#0066FF;--cyan:#00D4FF;--dark:#0A0E27;--deeper:#070a1c;--text:#0a0e27;--muted:#5a647a;--white:#fff;--gray:#F4F6FF}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,39,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,102,255,.18);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:42px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.15rem;color:#fff;font-weight:800}
+.nav-logo span em{color:var(--cyan);font-style:normal}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.58);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{background:linear-gradient(135deg,var(--primary),#0055dd);color:#fff;padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:#fff;padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(155deg,#0A0E27 0%,#0c1035 55%,#070a1c 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:700px;height:700px;background:radial-gradient(circle,rgba(0,102,255,.15) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-60px;left:25%;width:600px;height:400px;background:radial-gradient(ellipse,rgba(0,212,255,.07) 0%,transparent 65%);pointer-events:none}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);color:var(--cyan);padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.6rem);color:#fff;line-height:1.05;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{background:linear-gradient(135deg,var(--primary),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal}
+.hero p{color:rgba(255,255,255,.48);font-size:1.02rem;max-width:490px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.btn{background:linear-gradient(135deg,var(--primary),#0055dd);color:#fff;padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.btn-cy{background:rgba(0,212,255,.1);border:1.5px solid rgba(0,212,255,.35);color:var(--cyan);padding:.78rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-cy:hover{background:rgba(0,212,255,.18);border-color:var(--cyan)}
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.hv{border-radius:14px;padding:1.5rem;transition:transform .25s}
+.hv:hover{transform:translateY(-4px)}
+.hv-a{background:linear-gradient(155deg,rgba(0,102,255,.15),rgba(0,102,255,.06));border:1px solid rgba(0,102,255,.2)}
+.hv-b{background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15)}
+.hv-c{grid-column:span 2;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:1.2rem}
+.hv-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800}
+.hv-a .hv-num{color:var(--primary)}
+.hv-b .hv-num{color:var(--cyan)}
+.hv-lbl{color:rgba(255,255,255,.42);font-size:.78rem;margin-top:.2rem;line-height:1.4}
+.hv-c-icon{width:42px;height:42px;background:linear-gradient(135deg,rgba(0,102,255,.2),rgba(0,212,255,.15));border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hv-c-txt h4{font-family:'Syne',sans-serif;color:#fff;font-size:.9rem;font-weight:700}
+.hv-c-txt p{color:rgba(255,255,255,.38);font-size:.78rem;margin-top:.15rem}
+.stats{background:var(--deeper);padding:52px 6%;border-top:1px solid rgba(0,102,255,.1);border-bottom:1px solid rgba(0,102,255,.1)}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800}
+.sn-b{color:var(--primary)}
+.sn-c{color:var(--cyan)}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.32);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.sec.dk{background:var(--dark);padding:100px 6%}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(0,102,255,.1);color:#0044bb;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.stag.cy{background:rgba(0,212,255,.1);color:#007a99}
+.stag.lt{background:rgba(0,102,255,.15);color:var(--cyan)}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;margin-bottom:.85rem}
+.shdr.dk h2{color:#fff}
+.shdr.dk p{color:rgba(255,255,255,.42)}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.card-lt{background:var(--gray)}
+.sec.alt .card-lt{background:#fff}
+.card-lt:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(0,102,255,.1)}
+.card-dk{background:rgba(255,255,255,.04);border:1px solid rgba(0,102,255,.15)}
+.card-dk:hover{border-color:rgba(0,212,255,.4);box-shadow:0 8px 32px rgba(0,212,255,.06)}
+.icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.ic-b{background:rgba(0,102,255,.1);color:#0044bb}
+.ic-c{background:rgba(0,212,255,.1);color:#007a99}
+.ic-lt{background:rgba(0,102,255,.15);color:var(--cyan)}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card-dk h3{color:#fff}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.card-dk p{color:rgba(255,255,255,.4)}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(16.66% + 15px);right:calc(16.66% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),var(--cyan));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;background:linear-gradient(135deg,var(--primary),#0044cc);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem}
+.step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.86rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(0,102,255,.08);border:1px solid rgba(0,102,255,.18);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.dark-card{background:linear-gradient(155deg,#0A0E27,#0c1035);border-radius:20px;padding:2.5rem;border:1px solid rgba(0,102,255,.2)}
+.dark-card h3{font-family:'Syne',sans-serif;color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.dark-card p{color:rgba(255,255,255,.4);font-size:.88rem;line-height:1.8;margin-bottom:1.2rem}
+.dcl{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem 0;border-top:1px solid rgba(255,255,255,.05)}
+.dci{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dci-b{background:rgba(0,102,255,.2);color:#4d8cff}
+.dci-c{background:rgba(0,212,255,.15);color:var(--cyan)}
+.dct{color:rgba(255,255,255,.52);font-size:.86rem;line-height:1.5}
+.band{background:linear-gradient(135deg,var(--primary),#003acc);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(0,212,255,.15) 0%,transparent 65%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:700px;position:relative}
+.band p{color:rgba(255,255,255,.6);font-size:1.03rem;margin-bottom:2.5rem;position:relative}
+.band .btn-w{background:#fff;color:var(--primary);padding:.84rem 2rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block;position:relative}
+.band .btn-w:hover{opacity:.9}
+footer{background:var(--deeper);padding:60px 6% 28px;border-top:1px solid rgba(0,102,255,.1)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.28);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.6);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.3);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--cyan)}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.04);text-align:center}
+.fbot p{color:rgba(255,255,255,.18);font-size:.78rem}
+.fbot a{color:var(--cyan);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn,.btn-cy{width:100%;text-align:center}
+.hero-visual{grid-template-columns:1fr}
+.hv-c{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://www.teamprovide.com/images/teamprovide-logo.png" alt="Team Provide" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>Team<em>Provide</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Get Started</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modern Workforce Solutions</div>
+      <h1>We <em>Provide</em> the Team You Need to Win</h1>
+      <p>Team Provide delivers modern workforce solutions — connecting growing organizations with the skilled professionals they need to move fast and build confidently.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start Hiring</a>
+        <a href="#services" class="btn-cy">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual fu">
+      <div class="hv hv-a">
+        <div class="hv-num">500+</div>
+        <div class="hv-lbl">Professionals placed across industries</div>
+      </div>
+      <div class="hv hv-b">
+        <div class="hv-num">48h</div>
+        <div class="hv-lbl">Average time to first qualified candidate</div>
+      </div>
+      <div class="hv hv-a">
+        <div class="hv-num">90%+</div>
+        <div class="hv-lbl">12-month placement retention rate</div>
+      </div>
+      <div class="hv hv-b">
+        <div class="hv-num">100%</div>
+        <div class="hv-lbl">Search completion on every engagement</div>
+      </div>
+      <div class="hv hv-c">
+        <div class="hv-c-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="hv-c-txt"><h4>Fast. Reliable. Accountable.</h4><p>Every search comes with a dedicated recruiter and a replacement guarantee</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn sn-b">500+</div><div class="sl2">Placements Completed</div></div>
+    <div><div class="sn sn-c">48h</div><div class="sl2">Avg Candidate Delivery</div></div>
+    <div><div class="sn sn-b">90%+</div><div class="sl2">12-Mo Retention Rate</div></div>
+    <div><div class="sn sn-c">100%</div><div class="sl2">Search Completion Rate</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Services</span>
+    <h2>Workforce Solutions for Every Stage of Growth</h2>
+    <p>From a single critical hire to building a full team from scratch, Team Provide delivers the right talent at the right time — without the usual staffing agency friction.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card card-lt">
+      <div class="icon ic-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Direct Hire Placement</h3>
+      <p>Permanent placements with professionals who are pre-screened, motivated, and ready to contribute from their first week.</p>
+    </div>
+    <div class="card card-lt">
+      <div class="icon ic-c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Temporary Staffing</h3>
+      <p>Skilled professionals placed quickly for project work, seasonal peaks, and workforce gaps — with no long-term commitment required.</p>
+    </div>
+    <div class="card card-lt">
+      <div class="icon ic-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <h3>Contract-to-Hire</h3>
+      <p>A built-in evaluation path — work with a professional on contract before converting to a permanent hire, with full support throughout.</p>
+    </div>
+    <div class="card card-lt">
+      <div class="icon ic-c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Executive Search</h3>
+      <p>Director through C-suite searches conducted with full market research, deep vetting, and complete accountability for the outcome.</p>
+    </div>
+    <div class="card card-lt">
+      <div class="icon ic-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Team Build-Out</h3>
+      <p>Multi-role hiring managed as a single coordinated engagement — so your team scales fast without your internal resources being overwhelmed.</p>
+    </div>
+    <div class="card card-lt">
+      <div class="icon ic-c"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Workforce Consulting</h3>
+      <p>Hiring strategy, role design, and workforce planning support for organizations figuring out how to structure their talent for what comes next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec dk" id="process">
+  <div class="shdr dk fu">
+    <span class="stag lt">How We Work</span>
+    <h2>Built to Move Fast Without Cutting Corners</h2>
+    <p>Our process is designed around your timeline — delivering qualified candidates quickly while maintaining the quality that makes every placement stick.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card card-dk">
+      <div class="icon ic-lt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Understand First</h3>
+      <p>We start with a deep intake — understanding your requirements, team dynamics, and what good actually looks like for this specific role and organization.</p>
+    </div>
+    <div class="card card-dk">
+      <div class="icon ic-lt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Source and Screen Fast</h3>
+      <p>We reach active and passive candidates through our professional networks, run structured interviews, and verify fit before any candidate touches your inbox.</p>
+    </div>
+    <div class="card card-dk">
+      <div class="icon ic-lt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Deliver and Stay Engaged</h3>
+      <p>You receive a focused shortlist, make your decision, and we manage offer logistics, onboarding coordination, and 30-day follow-up to protect the placement.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Start a Search</a>
+  </div>
+</section>
+
+<section class="sec alt" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag cy">About Team Provide</span>
+      <h2>A Modern Staffing Partner for Modern Teams</h2>
+      <p>Team Provide was built for organizations that need a staffing partner as fast and accountable as they are. We cut the overhead, skip the generic playbook, and deliver — because in a competitive market, speed and quality are not a trade-off.</p>
+      <p>Our recruiters are committed to understanding your business before sourcing a single candidate. That means better matches, faster decisions, and placements that actually stick past the first 90 days.</p>
+      <p>We measure ourselves on outcomes — which is why every engagement includes a replacement guarantee and a single dedicated point of contact who knows your business from day one.</p>
+      <div class="creds">
+        <span class="cred">Modern Staffing Model</span>
+        <span class="cred">48h Delivery</span>
+        <span class="cred">90%+ Retention</span>
+        <span class="cred">Replacement Guarantee</span>
+      </div>
+    </div>
+    <div class="dark-card fu">
+      <h3>The Team Provide Standard</h3>
+      <p>Every engagement — regardless of size or seniority — gets the same high standard of service and accountability.</p>
+      <div class="dcl">
+        <div class="dci dci-b"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dct">Dedicated recruiter on every search — one contact, full accountability</div>
+      </div>
+      <div class="dcl">
+        <div class="dci dci-c"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dct">First candidate shortlist delivered within 48 hours for most roles</div>
+      </div>
+      <div class="dcl">
+        <div class="dci dci-b"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dct">Every candidate personally screened — no automated resume forwarding</div>
+      </div>
+      <div class="dcl">
+        <div class="dci dci-c"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dct">Replacement guarantee included on all direct hire placements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>Ready to Build the Team That Moves You Forward?</h2>
+    <p>Tell us what you need and we will deliver it — fast, reliably, and with full accountability.</p>
+    <a href="https://www.teamprovide.com" class="btn-w">Get Started with Team Provide</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1.15rem;color:#fff;font-weight:800">Team<span style="color:var(--cyan)">Provide</span></span>
+      <p>Modern workforce solutions — fast, accountable, and built for organizations that cannot afford to settle.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Direct Hire</a></li>
+        <li><a href="#services">Temporary Staffing</a></li>
+        <li><a href="#services">Contract-to-Hire</a></li>
+        <li><a href="#services">Executive Search</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Team Provide. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
