@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specialized Talent Solutions | Niche Staffing &amp; Recruiting</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#EA492E;--dark:#0a0a0a;--text:#111;--muted:#6b7280;--white:#fff;--gray:#F5F6F8}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,73,46,.18);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:42px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:800}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:#fff;padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:#fff;padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:#0a0a0a;display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:700px;height:700px;background:radial-gradient(circle,rgba(234,73,46,.14) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(234,73,46,.3),transparent)}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(234,73,46,.14);border:1px solid rgba(234,73,46,.28);color:#f07058;padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.6rem);color:#fff;line-height:1.05;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{color:rgba(255,255,255,.48);font-size:1.02rem;max-width:480px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn{background:var(--primary);color:#fff;padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.btnout{border:2px solid rgba(255,255,255,.2);color:rgba(255,255,255,.72);padding:.78rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .2s;display:inline-block}
+.btnout:hover{border-color:var(--primary);color:#fff}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.hg{background:rgba(255,255,255,.04);border:1px solid rgba(234,73,46,.14);border-radius:12px;padding:1.4rem;transition:border-color .2s}
+.hg:hover{border-color:rgba(234,73,46,.38)}
+.hg-num{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--primary)}
+.hg-lbl{color:rgba(255,255,255,.42);font-size:.78rem;margin-top:.2rem;line-height:1.4}
+.stats{background:#060606;padding:52px 6%;border-bottom:1px solid rgba(234,73,46,.06)}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;color:var(--primary)}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.32);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.sec.blk{background:#0a0a0a;padding:100px 6%}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(234,73,46,.1);color:#c0381f;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.stag.lt{background:rgba(234,73,46,.15);color:#f07058}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;margin-bottom:.85rem}
+.shdr.dk h2{color:#fff}
+.shdr.dk p{color:rgba(255,255,255,.42)}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(234,73,46,.1)}
+.card.dk{background:rgba(255,255,255,.04);border:1px solid rgba(234,73,46,.12)}
+.card.dk:hover{border-color:rgba(234,73,46,.38)}
+.icon{width:46px;height:46px;background:rgba(234,73,46,.09);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#c0381f;margin-bottom:1rem}
+.icon.lt{background:rgba(234,73,46,.15);color:#f07058}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card.dk h3{color:#fff}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.card.dk p{color:rgba(255,255,255,.4)}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(16.66% + 15px);right:calc(16.66% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(234,73,46,.15));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem}
+.step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.86rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(234,73,46,.08);border:1px solid rgba(234,73,46,.18);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.dark-box{background:#0a0a0a;border-radius:20px;padding:2.5rem;border:1px solid rgba(234,73,46,.15)}
+.dark-box h3{font-family:'Syne',sans-serif;color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.dark-box p{color:rgba(255,255,255,.42);font-size:.88rem;line-height:1.8;margin-bottom:1.2rem}
+.dbline{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem 0;border-top:1px solid rgba(255,255,255,.05)}
+.dbicon{width:30px;height:30px;background:rgba(234,73,46,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0}
+.dbtxt{color:rgba(255,255,255,.52);font-size:.86rem;line-height:1.5}
+.band{background:var(--primary);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(255,255,255,.1) 0%,transparent 70%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:680px}
+.band p{color:rgba(255,255,255,.65);font-size:1.03rem;margin-bottom:2.5rem}
+.band .btn{background:#fff;color:var(--primary)}
+footer{background:#040404;padding:60px 6% 28px;border-top:1px solid rgba(234,73,46,.08)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.28);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.6);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.3);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--primary)}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.04);text-align:center}
+.fbot p{color:rgba(255,255,255,.18);font-size:.78rem}
+.fbot a{color:var(--primary);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn,.btnout{width:100%;text-align:center}
+.hero-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://www.specializedtalentsolutions.com/images/sts-logo.png" alt="Specialized Talent Solutions" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>Specialized Talent Solutions</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Start a Search</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Start a Search</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Niche Staffing &amp; Specialized Recruiting</div>
+      <h1>Talent Solutions Built for <em>Specialized</em> Roles</h1>
+      <p>Specialized Talent Solutions fills the roles that generalist staffing firms cannot. Niche expertise, targeted outreach, and a process built for hard-to-fill positions.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start a Search</a>
+        <a href="#services" class="btnout">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-grid fu">
+      <div class="hg">
+        <div class="hg-num">Niche</div>
+        <div class="hg-lbl">Specialized roles other firms cannot fill</div>
+      </div>
+      <div class="hg">
+        <div class="hg-num">Fast</div>
+        <div class="hg-lbl">Shortlist delivered within days, not weeks</div>
+      </div>
+      <div class="hg">
+        <div class="hg-num">Deep</div>
+        <div class="hg-lbl">Industry networks built over years of specialist recruiting</div>
+      </div>
+      <div class="hg">
+        <div class="hg-num">100%</div>
+        <div class="hg-lbl">Search completion on every engagement we take</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn">500+</div><div class="sl2">Specialized Placements</div></div>
+    <div><div class="sn">100%</div><div class="sl2">Search Completion Rate</div></div>
+    <div><div class="sn">Multi</div><div class="sl2">Niche Industries</div></div>
+    <div><div class="sn">90%+</div><div class="sl2">12-Mo Retention Rate</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Services</span>
+    <h2>Recruiting Where Specialization Matters</h2>
+    <p>From one-of-a-kind technical roles to senior niche leadership, we have the networks and methodology to find talent that does not appear on job boards.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Specialized Executive Search</h3>
+      <p>C-suite and VP-level searches for niche industries where the talent pool is small and passive outreach is the only path to the best candidates.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Technical Specialist Recruiting</h3>
+      <p>Hard-to-fill technical roles requiring deep domain expertise — engineers, scientists, and specialized technologists who are not actively searching.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Direct Hire Placement</h3>
+      <p>Permanent placements with candidates who are thoroughly vetted for both technical fit and the specific cultural demands of specialist-driven organizations.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Contract Specialists</h3>
+      <p>Niche contractors placed for project work, critical gaps, and interim coverage — with domain expertise built into the screening process.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Market Intelligence</h3>
+      <p>Standalone talent mapping and compensation benchmarking for niche roles — know the landscape before you open a search.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Succession and Pipeline</h3>
+      <p>Proactive talent pipeline building for organizations that cannot afford to be caught flat-footed when a specialist departs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec blk" id="process">
+  <div class="shdr dk fu">
+    <span class="stag lt">How We Work</span>
+    <h2>Built for the Hard Searches</h2>
+    <p>Our process is designed for roles where the standard playbook does not work. We go further — because with specialized talent, further is the only way to find the right person.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card dk">
+      <div class="icon lt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Deep Discovery</h3>
+      <p>We invest more time upfront than most firms spend on the entire search — understanding the technical requirements, team dynamics, and what the ideal candidate actually looks like in practice.</p>
+    </div>
+    <div class="card dk">
+      <div class="icon lt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Targeted Outreach</h3>
+      <p>Passive candidate outreach through industry networks, professional communities, and direct relationships — reaching candidates who will never respond to a job posting.</p>
+    </div>
+    <div class="card dk">
+      <div class="icon lt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Expert Assessment</h3>
+      <p>Technical and cultural screening by recruiters who understand the domain — not just the job title — ensuring every presented candidate is genuinely qualified.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Talk to a Specialist</a>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About STS</span>
+      <h2>Specialists in Finding Specialists</h2>
+      <p>Specialized Talent Solutions was built for the hiring challenges that stump generalist firms. We recruit in niche disciplines where the talent pool is small, passive, and hard to reach — and where getting it wrong has real consequences.</p>
+      <p>Our recruiters are not career-switchers who learned staffing on the job. They bring genuine domain knowledge in the sectors they cover, which means they can evaluate a candidate's qualifications, not just their resume formatting.</p>
+      <p>We take fewer searches than a generalist firm — so every engagement gets the senior focus and complete commitment it deserves. Our 100% search completion rate reflects that commitment.</p>
+      <div class="creds">
+        <span class="cred">Niche Specialist Focus</span>
+        <span class="cred">100% Completion Rate</span>
+        <span class="cred">Domain Expertise</span>
+        <span class="cred">90%+ Retention</span>
+      </div>
+    </div>
+    <div class="dark-box fu">
+      <h3>Why STS</h3>
+      <p>We only take searches we can win — and we guarantee the work.</p>
+      <div class="dbline">
+        <div class="dbicon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dbtxt">Recruiters with real domain expertise — not keyword-search generalists</div>
+      </div>
+      <div class="dbline">
+        <div class="dbicon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dbtxt">Access to passive candidates through built specialist networks</div>
+      </div>
+      <div class="dbline">
+        <div class="dbicon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dbtxt">12-month replacement guarantee on all retained engagements</div>
+      </div>
+      <div class="dbline">
+        <div class="dbicon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dbtxt">100% search completion — we finish what we start</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>The Specialist You Need Is Out There. We Know How to Find Them.</h2>
+    <p>Tell us about your search and we will tell you exactly how we would approach it.</p>
+    <a href="https://www.specializedtalentsolutions.com" class="btn">Start a Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:800">Specialized Talent Solutions</span>
+      <p>Niche staffing and specialized recruiting for roles that generalist firms cannot fill.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Executive Search</a></li>
+        <li><a href="#services">Technical Recruiting</a></li>
+        <li><a href="#services">Direct Hire</a></li>
+        <li><a href="#services">Contract Specialists</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About STS</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Specialized Talent Solutions. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
