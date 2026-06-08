@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perkins and Associates | Technology Talent &amp; Staffing</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#1B3242;--accent:#DCD0B9;--dark:#0f1e2b;--text:#1a1a1a;--muted:#6b7280;--white:#fff;--gray:#F5F6F8}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,30,43,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(220,208,185,.15);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:42px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.05rem;color:#fff;font-weight:800}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:var(--primary);padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--accent);color:var(--primary);padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(155deg,#0f1e2b 0%,#1B3242 55%,#1a2e3f 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-80px;width:700px;height:700px;background:radial-gradient(circle,rgba(220,208,185,.09) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(220,208,185,.25),transparent)}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(220,208,185,.12);border:1px solid rgba(220,208,185,.25);color:var(--accent);padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.4rem);color:#fff;line-height:1.1;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero p{color:rgba(255,255,255,.52);font-size:1.02rem;max-width:500px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn{background:var(--accent);color:var(--primary);padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.sl{color:rgba(220,208,185,.7);font-size:.88rem;text-decoration:none;font-weight:500}
+.sl:hover{color:var(--accent)}
+.hero-panel{background:rgba(255,255,255,.05);border:1px solid rgba(220,208,185,.15);border-radius:20px;padding:2.2rem}
+.hp-head{font-family:'Syne',sans-serif;color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.hp-head::before{content:'';display:block;width:4px;height:14px;background:var(--accent);border-radius:2px}
+.diff-item{padding:1rem 0;border-bottom:1px solid rgba(220,208,185,.08);display:flex;align-items:flex-start;gap:.9rem}
+.diff-item:last-child{border-bottom:none;padding-bottom:0}
+.diff-num{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--accent);min-width:56px;line-height:1}
+.diff-text h4{color:#fff;font-size:.9rem;font-weight:600;margin-bottom:.25rem}
+.diff-text p{color:rgba(255,255,255,.42);font-size:.78rem;line-height:1.5}
+.stats{background:var(--primary);padding:52px 6%;border-bottom:1px solid rgba(220,208,185,.1)}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;color:var(--accent)}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.4);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.shdr{text-align:center;max-width:620px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(27,50,66,.1);color:var(--primary);padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;color:var(--text);margin-bottom:.85rem}
+.shdr p{color:var(--muted);font-size:.98rem;line-height:1.8}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(27,50,66,.1)}
+.icon{width:46px;height:46px;background:rgba(27,50,66,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:1rem}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.pillrow{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.cpill{background:rgba(27,50,66,.07);color:var(--primary);padding:.22rem .7rem;border-radius:100px;font-size:.73rem;font-weight:500}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(16.66% + 15px);right:calc(16.66% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(27,50,66,.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;background:var(--primary);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem}
+.step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.86rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(27,50,66,.09);border:1px solid rgba(27,50,66,.18);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.philosophy-box{background:var(--primary);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
+.philosophy-box::before{content:'"';position:absolute;top:-20px;left:20px;font-size:10rem;font-family:'Syne',sans-serif;font-weight:800;color:rgba(220,208,185,.06);line-height:1}
+.philosophy-box h3{font-family:'Syne',sans-serif;color:var(--accent);font-size:1.3rem;font-weight:800;margin-bottom:1rem;position:relative}
+.philosophy-box p{color:rgba(255,255,255,.58);font-size:.9rem;line-height:1.85;position:relative;margin-bottom:1.2rem}
+.phi-stat{display:flex;align-items:center;gap:.75rem;padding:.65rem 0;border-top:1px solid rgba(220,208,185,.1)}
+.phi-stat:first-of-type{border-top:none;padding-top:.3rem}
+.phi-icon{width:32px;height:32px;background:rgba(220,208,185,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.phi-txt{color:rgba(255,255,255,.6);font-size:.86rem}
+.band{background:var(--primary);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(220,208,185,.08) 0%,transparent 70%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:700px}
+.band p{color:rgba(255,255,255,.48);font-size:1.03rem;margin-bottom:2.5rem}
+footer{background:#0a1520;padding:60px 6% 28px;border-top:1px solid rgba(220,208,185,.1)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.35);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.75);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.38);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--accent)}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+.fbot p{color:rgba(255,255,255,.22);font-size:.78rem}
+.fbot a{color:var(--accent);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://www.perkinsandassociates.com/assets/logo.png" alt="Perkins and Associates" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>Perkins &amp; Associates</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Start a Search</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Start a Search</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Technology Talent &amp; Staffing</div>
+      <h1>The Right Technology Talent. <em>As Few Interviews</em> as Possible.</h1>
+      <p>Perkins and Associates is more than a staffing firm. We are a comprehensive resource for technology professionals and organizations seeking talent — built on nearly two decades of industry experience.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start a Search</a>
+        <a href="#services" class="sl">See what we do</a>
+      </div>
+    </div>
+    <div class="hero-panel fu">
+      <div class="hp-head">What Makes Us Different</div>
+      <div class="diff-item">
+        <div class="diff-num">20</div>
+        <div class="diff-text"><h4>Years of Industry Experience</h4><p>Market knowledge and networks built over two decades — applied from day one of your search</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">1</div>
+        <div class="diff-text"><h4>Job to Find the Right Fit</h4><p>We deliver candidates or jobs that match immediate needs and long-term goals — not just keyword matches</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">0</div>
+        <div class="diff-text"><h4>Wasted Interviews</h4><p>We cut through the noise and streamline the process so you meet fewer, better-matched candidates</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn">20</div><div class="sl2">Years of Experience</div></div>
+    <div><div class="sn">Fast</div><div class="sl2">Time to Shortlist</div></div>
+    <div><div class="sn">Tech</div><div class="sl2">Specialized Focus</div></div>
+    <div><div class="sn">100%</div><div class="sl2">Long-Term Fit Focus</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Services</span>
+    <h2>Technology Staffing for Every Engagement Model</h2>
+    <p>Whether you need a permanent hire, a contract specialist, or a technology career advisor, Perkins and Associates delivers with speed and precision.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Technology Direct Hire</h3>
+      <p>Permanent placements for engineering, development, data, cybersecurity, and IT leadership roles — screened for both technical fit and cultural alignment.</p>
+      <div class="pillrow"><span class="cpill">Software Engineering</span><span class="cpill">Data Science</span><span class="cpill">IT Leadership</span></div>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Contract Staffing</h3>
+      <p>Skilled technology contractors placed quickly for project work, critical gaps, and specialist needs — with a seamless path to permanent if the fit is right.</p>
+      <div class="pillrow"><span class="cpill">Project-Based</span><span class="cpill">Contract-to-Hire</span></div>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Executive Technology Search</h3>
+      <p>CTO, VP Engineering, and CISO searches conducted with the depth and discretion those roles demand — retained and contingency options available.</p>
+      <div class="pillrow"><span class="cpill">CTO</span><span class="cpill">VP Engineering</span><span class="cpill">CISO</span></div>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Career Placement for Tech Professionals</h3>
+      <p>For individuals: we work as your advocate to match you with roles that align with your immediate goals and the long-term trajectory of your career.</p>
+      <div class="pillrow"><span class="cpill">Career Matching</span><span class="cpill">Long-Term Fit</span></div>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Emerging Tech Consulting</h3>
+      <p>We stay ahead of emerging technology trends and advise clients on how new capabilities can be applied across their organization to drive competitive advantage.</p>
+      <div class="pillrow"><span class="cpill">AI &amp; ML</span><span class="cpill">Cloud</span><span class="cpill">Cybersecurity</span></div>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Team Build-Out</h3>
+      <p>Building a new engineering team or scaling an existing one? We manage the full talent acquisition process so you can focus on the product.</p>
+      <div class="pillrow"><span class="cpill">Scale-Up</span><span class="cpill">Multi-Hire</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="process">
+  <div class="shdr fu">
+    <span class="stag">Our Approach</span>
+    <h2>Fewer Interviews. Better Outcomes.</h2>
+    <p>We do not send resumes to hit a volume target. We invest the time upfront to understand fit — so the candidates you meet are already the right ones.</p>
+  </div>
+  <div class="steps fu">
+    <div class="step">
+      <div class="snum2">1</div>
+      <h3>Deep Discovery</h3>
+      <p>We learn your technical requirements, team culture, and long-term goals — not just the job description — before reaching out to a single candidate.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">2</div>
+      <h3>Targeted Search</h3>
+      <p>Leveraging 20 years of technology networks, we reach candidates who are the right fit — active and passive — and qualify them against your specific criteria.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">3</div>
+      <h3>Curated Shortlist</h3>
+      <p>You receive a small, high-confidence shortlist. Every person on it is technically strong, culturally aligned, and genuinely interested in your role.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Start a Search</a>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About</span>
+      <h2>A Young Company. Nearly Two Decades of Experience.</h2>
+      <p>Perkins and Associates was founded on the belief that technology hiring deserves better than keyword filtering and resume volume plays. We bring market knowledge and networks built over nearly 20 years — applied with the agility of a focused, modern firm.</p>
+      <p>We are passionate about staying ahead of emerging technology and understanding how it can be applied across a wide range of business contexts. That curiosity makes us better at what we do: finding people who are not just qualified for today's role, but ready for where your organization is going.</p>
+      <p>For technology professionals, we operate as true advocates — not just a pipeline to employers. We take the time to understand your career goals and make matches that support where you want to be in five years, not just next month.</p>
+      <div class="creds">
+        <span class="cred">20 Years Experience</span>
+        <span class="cred">Technology Specialist</span>
+        <span class="cred">Employer &amp; Candidate Advocate</span>
+      </div>
+    </div>
+    <div class="philosophy-box fu">
+      <h3>Our Philosophy</h3>
+      <p>We cut through the noise, streamline the process, and deliver the top talent — or the right job — in as few interviews as possible.</p>
+      <div class="phi-stat">
+        <div class="phi-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="phi-txt">We do not search keywords — we understand candidates</div>
+      </div>
+      <div class="phi-stat">
+        <div class="phi-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="phi-txt">Immediate needs and long-term goals, both</div>
+      </div>
+      <div class="phi-stat">
+        <div class="phi-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="phi-txt">Emerging tech expertise applied to every engagement</div>
+      </div>
+      <div class="phi-stat">
+        <div class="phi-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="phi-txt">Immediate market impact from a young, experienced team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>Ready to Find the Right Technology Talent?</h2>
+    <p>Let us cut through the noise and deliver the candidates — or the career — that are actually right.</p>
+    <a href="https://www.perkinsandassociates.com" class="btn">Work With Us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800">Perkins &amp; Associates</span>
+      <p>Technology talent and staffing — built on 20 years of experience, delivered with modern precision.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Technology Direct Hire</a></li>
+        <li><a href="#services">Contract Staffing</a></li>
+        <li><a href="#services">Executive Search</a></li>
+        <li><a href="#services">Career Placement</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Perkins and Associates. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
