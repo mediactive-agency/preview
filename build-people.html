@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build People | Construction & Infrastructure Recruitment</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#008FA1;--dark:#333;--text:#1a1a1a;--muted:#6b7280;--white:#fff;--gray:#F5F6F8}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(51,51,51,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,143,161,.2);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.05rem;color:#fff;font-weight:800}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:#fff;padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:#333;z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:#fff;padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(135deg,#1a2a2c 0%,#0d1f22 60%,#001a1e 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,143,161,.18) 0%,transparent 70%);pointer-events:none}
+.hero-in{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,143,161,.15);border:1px solid rgba(0,143,161,.35);color:var(--primary);padding:.38rem 1rem;border-radius:100px;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.4rem);color:#fff;line-height:1.11;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{color:rgba(255,255,255,.58);font-size:1.05rem;max-width:460px;margin-bottom:2rem}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn{background:var(--primary);color:#fff;padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.sl{color:rgba(0,188,212,.9);font-size:.88rem;text-decoration:none;font-weight:500}
+.sl:hover{text-decoration:underline}
+.pills{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.8rem}
+.pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.68);padding:.3rem .82rem;border-radius:100px;font-size:.74rem;font-weight:500}
+.divisions{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+.div-card{background:rgba(255,255,255,.05);border:1px solid rgba(0,143,161,.2);border-radius:10px;padding:1.2rem}
+.div-card h4{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.div-card p{font-size:.78rem;color:rgba(255,255,255,.5)}
+.stats{background:var(--gray);padding:72px 6%}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--primary)}
+.sl2{font-size:.9rem;color:var(--muted);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(0,143,161,.1);color:#007a8a;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;color:var(--text);margin-bottom:.85rem}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(0,143,161,.1)}
+.icon{width:44px;height:44px;background:rgba(0,143,161,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:1rem}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card p{font-size:.86rem;color:var(--muted)}
+.steps{max-width:1100px;margin:3.5rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:31px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(0,188,212,.4));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:62px;height:62px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin:0 auto 1.2rem}
+.step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.45rem}
+.step p{font-size:.86rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at .stag{margin-bottom:.85rem}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(0,143,161,.1);border:1px solid rgba(0,143,161,.22);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.76rem;font-weight:500}
+.about-visual{background:linear-gradient(135deg,#1a2a2c,#0d1f22);border-radius:20px;padding:2.5rem;color:#fff;display:flex;flex-direction:column;gap:1.2rem}
+.astat{display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(0,143,161,.1);border-radius:10px;border:1px solid rgba(0,143,161,.2)}
+.astat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--primary);min-width:80px}
+.astat-lbl{font-size:.88rem;color:rgba(255,255,255,.65)}
+.band{background:linear-gradient(135deg,#1a2a2c,#0d1f22);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(0,143,161,.15) 0%,transparent 70%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:680px}
+.band p{color:rgba(255,255,255,.52);font-size:1.03rem;margin-bottom:2.5rem}
+footer{background:#0d1a1c;padding:60px 6% 28px;border-top:1px solid rgba(0,143,161,.15)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.38);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.82);font-weight:600;font-size:.8rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--primary)}
+.ci{color:rgba(255,255,255,.4);font-size:.86rem;display:flex;align-items:center;gap:.45rem;margin-bottom:.55rem}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+.fbot p{color:rgba(255,255,255,.23);font-size:.78rem}
+.fbot a{color:var(--primary);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr}.steps::before{display:none}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn{width:100%;text-align:center}
+.divisions{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://build-people.com/img/logos/bp_logo.svg" alt="Build People" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none">Build People</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Divisions</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="tel:+18138088808" class="nav-cta">Get Talent Now</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Divisions</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="tel:+18138088808" class="mbtn">Get Talent Now</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Florida-Based. US-Wide Reach.</div>
+      <h1>"You don't build a business. You build <em>people,</em> and people build the business."</h1>
+      <p>Build People connects businesses across infrastructure, construction, real estate, and renewables with the specialized talent needed to deliver extraordinary outcomes.</p>
+      <div class="hact">
+        <a href="tel:+18138088808" class="btn">Call (813) 808-8808</a>
+        <a href="mailto:hello@build-people.com" class="sl">hello@build-people.com</a>
+      </div>
+      <div class="pills">
+        <span class="pill">Infrastructure</span>
+        <span class="pill">Construction</span>
+        <span class="pill">Real Estate</span>
+        <span class="pill">Renewables</span>
+      </div>
+    </div>
+    <div class="fu">
+      <div class="divisions">
+        <div class="div-card">
+          <h4>Infrastructure</h4>
+          <p>Critical infrastructure talent across civil, utilities, and transport sectors</p>
+        </div>
+        <div class="div-card">
+          <h4>Construction</h4>
+          <p>Project managers, superintendents, and skilled trades for any scale</p>
+        </div>
+        <div class="div-card">
+          <h4>Real Estate</h4>
+          <p>Development, acquisition, and asset management professionals</p>
+        </div>
+        <div class="div-card">
+          <h4>Renewables</h4>
+          <p>Solar, wind, and clean energy specialists driving the future forward</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn">4</div><div class="sl2">Specialist Divisions</div></div>
+    <div><div class="sn">$80k+</div><div class="sl2">Avg Placement Salary</div></div>
+    <div><div class="sn">US-Wide</div><div class="sl2">Recruiting Reach</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Our Divisions</span>
+    <h2>Specialists in Every Niche Sector</h2>
+    <p>Four focused divisions, each staffed by recruiters who have spent years working exclusively in their field.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h3>Infrastructure</h3>
+      <p>Recruiting across civil engineering, utilities, and critical transport infrastructure for roles from site supervisor to VP level.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <h3>Construction</h3>
+      <p>Project managers, estimators, supers, and skilled trades placed on commercial, residential, and industrial projects nationwide.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Real Estate</h3>
+      <p>Development executives, acquisition specialists, asset managers, and leasing professionals across residential and commercial real estate.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div>
+      <h3>Renewables</h3>
+      <p>Solar, wind, and clean energy talent — from project developers and engineers to operations and maintenance teams.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>Contract Staffing</h3>
+      <p>Flexible contract and project-based staffing for short-term needs, seasonal peaks, and specialized engagements.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Executive Search</h3>
+      <p>C-suite and senior leadership placements for organizations that need proven leaders to drive growth and transformation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="process">
+  <div class="shdr fu">
+    <span class="stag">How We Work</span>
+    <h2>Precision Recruiting, Every Time</h2>
+    <p>A focused, disciplined process built to deliver the right talent faster than any generalist firm.</p>
+  </div>
+  <div class="steps fu">
+    <div class="step">
+      <div class="snum2">1</div>
+      <h3>Deep Briefing</h3>
+      <p>We invest time upfront to understand the role, the culture, and the outcomes you need the hire to achieve.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">2</div>
+      <h3>Specialist Search</h3>
+      <p>Our division-specific recruiters activate their deep networks and identify only the most qualified candidates.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">3</div>
+      <h3>Placed &amp; Supported</h3>
+      <p>We manage the full process through offer acceptance and stay engaged to ensure a successful start.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="tel:+18138088808" class="btn">Start the Search</a>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About</span>
+      <h2>Built on Industry, Driven by People</h2>
+      <p>Build People is a Florida-based recruitment firm servicing the entire US market. Founded in 2001 by a UK-based parent company, we bring decades of niche recruiting expertise to the sectors that build the world.</p>
+      <p>We believe talent is the single greatest competitive advantage. Our four specialist divisions operate with deep market knowledge, extensive networks, and a genuine commitment to long-term placements that stick.</p>
+      <p>Located in the heart of Tampa, we combine local presence with national reach to connect the right people with the right opportunities.</p>
+      <div class="creds">
+        <span class="cred">Founded 2001</span>
+        <span class="cred">4 Specialist Divisions</span>
+        <span class="cred">Tampa, FL</span>
+      </div>
+    </div>
+    <div class="about-visual fu">
+      <div class="astat">
+        <div class="astat-num">$80k+</div>
+        <div class="astat-lbl">Average salary of open positions placed across all divisions</div>
+      </div>
+      <div class="astat">
+        <div class="astat-num">4</div>
+        <div class="astat-lbl">Specialist divisions covering the full built environment</div>
+      </div>
+      <div class="astat">
+        <div class="astat-num">US</div>
+        <div class="astat-lbl">Nationwide recruiting reach from our Tampa headquarters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="fu">
+    <h2>The Right Talent Builds the Right Future.</h2>
+    <p>Tell us about your open role and we will have qualified candidates on your desk faster than you expect.</p>
+    <a href="tel:+18138088808" class="btn">Call (813) 808-8808</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <img src="https://build-people.com/img/logos/bp_logo.svg" alt="Build People" style="height:38px;width:auto" onerror="this.style.display='none'">
+      <p>Florida-based recruitment firm specializing in infrastructure, construction, real estate, and renewables across the US.</p>
+    </div>
+    <div class="fc">
+      <h4>Divisions</h4>
+      <ul>
+        <li><a href="#services">Infrastructure</a></li>
+        <li><a href="#services">Construction</a></li>
+        <li><a href="#services">Real Estate</a></li>
+        <li><a href="#services">Renewables</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <div class="ci"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-.21-8.62A2 2 0 014.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>(813) 808-8808</div>
+      <div class="ci"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>hello@build-people.com</div>
+      <div class="ci"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>401 East Jackson St, Tampa, FL 33602</div>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Build People. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
