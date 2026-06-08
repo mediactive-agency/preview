@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Strategic Search | Executive Search &amp; Leadership Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#F7C04A;--navy:#25307A;--blue:#6E9DD4;--dark:#1a1e4a;--text:#1a1a1a;--muted:#6b7280;--white:#fff;--gray:#F5F6F8}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(37,48,122,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(247,192,74,.15);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:42px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.05rem;color:#fff;font-weight:800}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{background:var(--primary);color:var(--navy);padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--navy);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:var(--navy);padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(155deg,#25307A 0%,#1a1e4a 55%,#1e2a5a 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-80px;width:700px;height:700px;background:radial-gradient(circle,rgba(247,192,74,.1) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:20%;width:500px;height:500px;background:radial-gradient(circle,rgba(110,157,212,.08) 0%,transparent 65%);pointer-events:none}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(247,192,74,.12);border:1px solid rgba(247,192,74,.28);color:var(--primary);padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.5rem);color:#fff;line-height:1.1;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{color:rgba(255,255,255,.5);font-size:1.02rem;max-width:480px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn{background:var(--primary);color:var(--navy);padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.btnout{border:2px solid rgba(255,255,255,.22);color:rgba(255,255,255,.75);padding:.78rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:all .2s;display:inline-block}
+.btnout:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.hero-panel{display:flex;flex-direction:column;gap:1rem}
+.hp{background:rgba(255,255,255,.05);border:1px solid rgba(110,157,212,.2);border-radius:14px;padding:1.4rem 1.6rem;border-left:3px solid var(--blue);transition:border-color .2s}
+.hp:hover{border-color:rgba(110,157,212,.45)}
+.hp h4{font-family:'Syne',sans-serif;color:#fff;font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+.hp p{color:rgba(255,255,255,.42);font-size:.8rem;line-height:1.5}
+.hp-tag{display:inline-block;background:rgba(247,192,74,.12);color:var(--primary);padding:.18rem .65rem;border-radius:100px;font-size:.7rem;font-weight:600;margin-top:.5rem}
+.stats{background:var(--navy);padding:52px 6%;border-top:1px solid rgba(247,192,74,.08);border-bottom:1px solid rgba(247,192,74,.08)}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;color:var(--primary)}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.38);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(247,192,74,.12);color:#8a6510;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;margin-bottom:.85rem}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--navy);box-shadow:0 8px 32px rgba(37,48,122,.1)}
+.icon{width:46px;height:46px;background:rgba(37,48,122,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--navy);margin-bottom:1rem}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.sector-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sc{background:#fff;border-radius:12px;padding:1.5rem;text-align:center;border:1px solid #eee;transition:all .2s}
+.sc:hover{border-color:var(--primary);box-shadow:0 4px 20px rgba(247,192,74,.15)}
+.sc-icon{width:42px;height:42px;background:linear-gradient(135deg,rgba(37,48,122,.08),rgba(110,157,212,.1));border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--navy);margin:0 auto .7rem}
+.sc h4{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:var(--text)}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(12.5% + 15px);right:calc(12.5% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(247,192,74,.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;background:linear-gradient(135deg,var(--navy),#3d4fa8);color:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem;border:2px solid rgba(247,192,74,.3)}
+.step h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.35rem}
+.step p{font-size:.82rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(37,48,122,.08);border:1px solid rgba(37,48,122,.15);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.promise{background:linear-gradient(155deg,#25307A,#1a1e4a);border-radius:20px;padding:2.5rem;border:1px solid rgba(247,192,74,.15)}
+.promise h3{font-family:'Syne',sans-serif;color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.promise p{color:rgba(255,255,255,.48);font-size:.88rem;line-height:1.8;margin-bottom:1.2rem}
+.pline{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem 0;border-top:1px solid rgba(255,255,255,.06)}
+.picon{width:30px;height:30px;background:rgba(247,192,74,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0}
+.ptxt{color:rgba(255,255,255,.55);font-size:.86rem;line-height:1.5}
+.band{background:linear-gradient(155deg,#25307A,#1a1e4a);padding:100px 6%;text-align:center;position:relative;overflow:hidden}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(247,192,74,.08) 0%,transparent 70%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:680px}
+.band p{color:rgba(255,255,255,.45);font-size:1.03rem;margin-bottom:2.5rem}
+footer{background:#141932;padding:60px 6% 28px;border-top:1px solid rgba(247,192,74,.08)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.32);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.65);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--primary)}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+.fbot p{color:rgba(255,255,255,.2);font-size:.78rem}
+.fbot a{color:var(--primary);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3,.sector-grid{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:repeat(2,1fr)}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.sector-grid,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn,.btnout{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="http://www.summitstrategicsearch.com/images/summit-logo.png" alt="Summit Strategic Search" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>Summit Strategic Search</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Start a Search</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#sectors">Sectors</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Start a Search</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Executive Search &amp; Leadership Consulting</div>
+      <h1>Placing Leaders Who <em>Elevate</em> Organizations</h1>
+      <p>Summit Strategic Search delivers retained executive search and leadership consulting for companies that understand the difference between a good hire and a transformational one.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start a Search</a>
+        <a href="#services" class="btnout">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-panel fu">
+      <div class="hp">
+        <h4>Retained Executive Search</h4>
+        <p>Exclusive, senior-led search for C-suite and VP-level roles with full market coverage and accountability</p>
+        <span class="hp-tag">C-Suite &amp; VP</span>
+      </div>
+      <div class="hp">
+        <h4>Leadership Consulting</h4>
+        <p>Organizational design, succession planning, and talent strategy advisory for high-growth companies</p>
+        <span class="hp-tag">Advisory</span>
+      </div>
+      <div class="hp">
+        <h4>Interim Leadership</h4>
+        <p>Experienced executives available quickly for transition, restructuring, or critical capability gaps</p>
+        <span class="hp-tag">Interim</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn">100%</div><div class="sl2">Search Completion Rate</div></div>
+    <div><div class="sn">18</div><div class="sl2">Days Avg to Shortlist</div></div>
+    <div><div class="sn">90%+</div><div class="sl2">12-Mo Retention Rate</div></div>
+    <div><div class="sn">300+</div><div class="sl2">Executive Placements</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Services</span>
+    <h2>Built for High-Stakes Leadership Hires</h2>
+    <p>From the initial brief to 90-day onboarding support, Summit Strategic Search manages every dimension of the executive hiring process.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Retained Executive Search</h3>
+      <p>Fully exclusive, research-intensive searches for CEO, CFO, COO, CTO, and VP-level roles — with complete market mapping and a 12-month guarantee.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Senior Professional Search</h3>
+      <p>Director and senior manager searches with the same rigor and methodology applied to C-suite engagements.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <h3>Interim Leadership</h3>
+      <p>Pre-vetted executives for gap cover, restructuring, and critical transition periods — typically placed within two weeks.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Succession Planning</h3>
+      <p>Internal assessment and external benchmarking to prepare for planned and unplanned leadership transitions.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Confidential Search</h3>
+      <p>Sensitive leadership replacements and board-level searches handled with full discretion and controlled market exposure.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Market Mapping</h3>
+      <p>Standalone talent intelligence — mapping the competitive leadership landscape before a search begins or as a board advisory service.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="sectors">
+  <div class="shdr fu">
+    <span class="stag">Sectors</span>
+    <h2>Expertise Across Key Leadership Markets</h2>
+    <p>Our consultants bring direct professional experience in the industries they recruit for — not just research from the outside.</p>
+  </div>
+  <div class="sector-grid fu">
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div><h4>Technology &amp; SaaS</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 12H5M20 17H9"/><path d="M7 7l-4 5 4 5"/></svg></div><h4>Financial Services</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h4>Healthcare</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/></svg></div><h4>Manufacturing</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><h4>Consumer &amp; Retail</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h4>Energy</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h4>Professional Services</h4></div>
+    <div class="sc"><div class="sc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h4>Non-Profit</h4></div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="shdr fu">
+    <span class="stag">Our Process</span>
+    <h2>Four Steps to the Right Leader</h2>
+    <p>A research-first methodology that eliminates guesswork and builds confidence at every stage of the search.</p>
+  </div>
+  <div class="steps fu">
+    <div class="step">
+      <div class="snum2">1</div>
+      <h3>Search Design</h3>
+      <p>Deep alignment on ideal candidate profile, success metrics, compensation, and organizational context.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">2</div>
+      <h3>Market Research</h3>
+      <p>Full market mapping — identifying every qualified candidate in the target landscape, active and passive.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">3</div>
+      <h3>Assessment</h3>
+      <p>In-depth interviews, reference verification, and cultural fit assessment before any candidate is presented.</p>
+    </div>
+    <div class="step">
+      <div class="snum2">4</div>
+      <h3>Close &amp; Onboard</h3>
+      <p>Offer management, negotiation support, and 90-day onboarding engagement to protect the placement.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Start a Search</a>
+  </div>
+</section>
+
+<section class="sec alt" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About Summit</span>
+      <h2>Where Rigor Meets Relationships</h2>
+      <p>Summit Strategic Search was built to do executive search the way it should be done: with genuine research, real accountability, and a commitment to delivering leaders who make organizations better.</p>
+      <p>Our consultants bring deep domain expertise across the sectors they serve. That means we know what great leadership looks like from the inside — and we recognize it in candidates before the first interview.</p>
+      <p>Our 100% search completion rate and 90%+ 12-month retention record are not marketing — they reflect a search methodology built around doing the work properly, every time.</p>
+      <div class="creds">
+        <span class="cred">Retained Search Specialists</span>
+        <span class="cred">100% Completion Rate</span>
+        <span class="cred">12-Mo Guarantee</span>
+        <span class="cred">Senior-Led</span>
+      </div>
+    </div>
+    <div class="promise fu">
+      <h3>The Summit Standard</h3>
+      <p>Every retained search comes with the same commitment: full market coverage, senior accountability, and a guarantee that reflects our confidence in the process.</p>
+      <div class="pline">
+        <div class="picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="ptxt">Every search is partner-led — no junior hand-offs once briefed</div>
+      </div>
+      <div class="pline">
+        <div class="picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="ptxt">Full market map delivered within 10 business days of brief</div>
+      </div>
+      <div class="pline">
+        <div class="picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="ptxt">12-month replacement guarantee on all retained searches</div>
+      </div>
+      <div class="pline">
+        <div class="picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="ptxt">Weekly search updates with real candidate pipeline data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>The Right Leader Is the Best Investment You Will Make</h2>
+    <p>Let Summit Strategic Search find yours.</p>
+    <a href="http://www.summitstrategicsearch.com" class="btn">Start a Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1.05rem;color:#fff;font-weight:800">Summit Strategic Search</span>
+      <p>Executive search and leadership consulting — research-driven, accountability-backed, results-focused.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Retained Search</a></li>
+        <li><a href="#services">Senior Professional</a></li>
+        <li><a href="#services">Interim Leadership</a></li>
+        <li><a href="#services">Succession Planning</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Sectors</h4>
+      <ul>
+        <li><a href="#sectors">Technology</a></li>
+        <li><a href="#sectors">Financial Services</a></li>
+        <li><a href="#sectors">Healthcare</a></li>
+        <li><a href="#sectors">Manufacturing</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Summit Strategic Search. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
