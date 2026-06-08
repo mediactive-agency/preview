@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KD Staffing | Workforce Solutions &amp; Recruiting</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--primary:#0170B9;--accent:#FE44FF;--dark:#05111e;--text:#0d1f30;--muted:#5a6e80;--white:#fff;--gray:#F4F8FC}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,17,30,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(1,112,185,.2);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:44px;width:auto}
+.nav-logo span{font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.58);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:linear-gradient(135deg,var(--primary),#0190e8);color:#fff;padding:.52rem 1.35rem;border-radius:6px;font-weight:700;font-size:.86rem;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;padding:5rem 6% 3rem;flex-direction:column;gap:1.5rem}
+.mob a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1.2rem;font-weight:600}
+.mob .mbtn{background:var(--primary);color:#fff;padding:.95rem;border-radius:6px;text-align:center;font-weight:700}
+.hero{min-height:100vh;background:linear-gradient(155deg,#05111e 0%,#061824 55%,#090b1a 100%);display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:700px;height:700px;background:radial-gradient(circle,rgba(1,112,185,.16) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:500px;height:500px;background:radial-gradient(circle,rgba(254,68,255,.08) 0%,transparent 65%);pointer-events:none}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(1,112,185,.15);border:1px solid rgba(1,112,185,.3);color:#4db3ff;padding:.38rem 1rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3.5rem);color:#fff;line-height:1.1;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero p{color:rgba(255,255,255,.5);font-size:1.02rem;max-width:480px;margin-bottom:2rem;line-height:1.8}
+.hact{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.btn{background:linear-gradient(135deg,var(--primary),#0190e8);color:#fff;padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn:hover{opacity:.85}
+.btn-acc{background:linear-gradient(135deg,#cc00cc,var(--accent));color:#fff;padding:.82rem 1.9rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn-acc:hover{opacity:.85}
+.hero-right{display:flex;flex-direction:column;gap:1rem}
+.hbox{background:rgba(255,255,255,.04);border-radius:14px;padding:1.5rem 1.8rem;border-left:3px solid var(--primary);transition:border-color .2s}
+.hbox:nth-child(even){border-left-color:var(--accent)}
+.hbox:hover{background:rgba(255,255,255,.06)}
+.hbox h4{font-family:'Syne',sans-serif;color:#fff;font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+.hbox p{color:rgba(255,255,255,.4);font-size:.8rem;line-height:1.5}
+.stats{background:linear-gradient(135deg,#061824,#090b1a);padding:52px 6%;border-top:1px solid rgba(1,112,185,.1);border-bottom:1px solid rgba(1,112,185,.1)}
+.st-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.sn{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800}
+.sn-b{color:var(--accent)}
+.sn-a{color:#4db3ff}
+.sl2{font-size:.86rem;color:rgba(255,255,255,.35);margin-top:.2rem}
+.sec{background:#fff;padding:100px 6%}
+.sec.alt{background:var(--gray)}
+.sec.dk{background:var(--dark);padding:100px 6%}
+.shdr{text-align:center;max-width:600px;margin:0 auto 3.5rem}
+.stag{display:inline-block;background:rgba(1,112,185,.1);color:#005fa0;padding:.27rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem}
+.stag.pk{background:rgba(254,68,255,.1);color:#cc00cc}
+.stag.lt{background:rgba(1,112,185,.15);color:#4db3ff}
+.shdr h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;margin-bottom:.85rem}
+.shdr.dk h2{color:#fff}
+.shdr.dk p{color:rgba(255,255,255,.42)}
+.shdr p{color:var(--muted);font-size:.98rem}
+.grid3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:var(--gray);border-radius:12px;padding:2rem;border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sec.alt .card{background:#fff}
+.card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(1,112,185,.1)}
+.card.dk{background:rgba(255,255,255,.04);border:1px solid rgba(1,112,185,.15)}
+.card.dk:hover{border-color:rgba(254,68,255,.4);box-shadow:0 8px 32px rgba(254,68,255,.06)}
+.icon{width:46px;height:46px;background:rgba(1,112,185,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#005fa0;margin-bottom:1rem}
+.icon.pk{background:rgba(254,68,255,.1);color:#cc00cc}
+.icon.lt{background:rgba(1,112,185,.15);color:#4db3ff}
+.card h3{font-family:'Syne',sans-serif;font-size:1.03rem;font-weight:700;margin-bottom:.45rem}
+.card.dk h3{color:#fff}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.card.dk p{color:rgba(255,255,255,.4)}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(16.66% + 15px);right:calc(16.66% + 15px);height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum2{width:60px;height:60px;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin:0 auto 1.1rem}
+.sn2-a{background:var(--primary)}
+.sn2-b{background:linear-gradient(135deg,var(--primary),var(--accent))}
+.sn2-c{background:var(--accent)}
+.step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.step p{font-size:.86rem;color:var(--muted)}
+.ctarow{text-align:center;margin-top:3.5rem}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at h2{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:1.2rem}
+.at p{color:var(--muted);margin-bottom:1rem;line-height:1.8}
+.creds{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
+.cred{background:rgba(1,112,185,.08);border:1px solid rgba(1,112,185,.18);color:var(--text);padding:.32rem .82rem;border-radius:100px;font-size:.75rem;font-weight:500}
+.dark-card{background:linear-gradient(155deg,#05111e,#061824);border-radius:20px;padding:2.5rem;border:1px solid rgba(1,112,185,.2)}
+.dark-card h3{font-family:'Syne',sans-serif;color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:.8rem}
+.dark-card p{color:rgba(255,255,255,.42);font-size:.88rem;line-height:1.8;margin-bottom:1.2rem}
+.dcline{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem 0;border-top:1px solid rgba(255,255,255,.05)}
+.dcico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dcico-b{background:rgba(1,112,185,.2);color:#4db3ff}
+.dcico-p{background:rgba(254,68,255,.15);color:var(--accent)}
+.dctxt{color:rgba(255,255,255,.52);font-size:.86rem;line-height:1.5}
+.band{padding:100px 6%;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--primary),#0056a0)}
+.band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(254,68,255,.15) 0%,transparent 65%);pointer-events:none}
+.band h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);color:#fff;font-weight:800;margin:0 auto 1rem;max-width:680px;position:relative}
+.band p{color:rgba(255,255,255,.6);font-size:1.03rem;margin-bottom:2.5rem;position:relative}
+.band .btn-acc{position:relative}
+footer{background:#030d17;padding:60px 6% 28px;border-top:1px solid rgba(1,112,185,.1)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.fb p{color:rgba(255,255,255,.28);font-size:.86rem;margin-top:.8rem;max-width:280px}
+.fc h4{color:rgba(255,255,255,.6);font-weight:600;font-size:.78rem;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:rgba(255,255,255,.3);text-decoration:none;font-size:.86rem;transition:color .2s}
+.fc a:hover{color:var(--accent)}
+.fbot{max-width:1100px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.04);text-align:center}
+.fbot p{color:rgba(255,255,255,.18);font-size:.78rem}
+.fbot a{color:var(--accent);text-decoration:none}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero-in,.about-in{grid-template-columns:1fr}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.steps{grid-template-columns:1fr}.steps::before{display:none}
+.st-in{grid-template-columns:repeat(2,1fr)}
+.fi{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav-links{display:none}.hamburger{display:flex}
+.mob.open{display:flex}
+.grid3,.steps,.st-in,.fi{grid-template-columns:1fr}
+.hact{flex-direction:column;align-items:flex-start}
+.btn,.btn-acc{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://kdstaffing.org/wp-content/uploads/kd-logo.png" alt="KD Staffing" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span>KD Staffing</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+  <button class="hamburger" onclick="document.querySelector('.mob').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob">
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="mbtn">Get Started</a>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Workforce Solutions &amp; Professional Recruiting</div>
+      <h1>The Right People. <em>Right Now.</em></h1>
+      <p>KD Staffing connects employers with qualified professionals across industries — fast, reliable, and built around your specific hiring needs.</p>
+      <div class="hact">
+        <a href="#contact" class="btn">Start Hiring</a>
+        <a href="#services" class="btn-acc">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-right fu">
+      <div class="hbox">
+        <h4>Direct Hire Placement</h4>
+        <p>Permanent positions filled with pre-screened, motivated candidates aligned to your role and culture</p>
+      </div>
+      <div class="hbox">
+        <h4>Temporary Staffing</h4>
+        <p>Qualified temporary workers delivered quickly for peak periods, projects, and coverage gaps</p>
+      </div>
+      <div class="hbox">
+        <h4>Contract-to-Hire</h4>
+        <p>Evaluate candidates on the job before committing — a risk-free path to permanent placement</p>
+      </div>
+      <div class="hbox">
+        <h4>Executive Search</h4>
+        <p>Senior and leadership searches conducted with deep vetting, reference checks, and cultural fit assessment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="st-in fu">
+    <div><div class="sn sn-a">500+</div><div class="sl2">Placements Completed</div></div>
+    <div><div class="sn sn-b">48h</div><div class="sl2">Avg Candidate Delivery</div></div>
+    <div><div class="sn sn-a">Multi</div><div class="sl2">Industry Coverage</div></div>
+    <div><div class="sn sn-b">100%</div><div class="sl2">Dedicated Service</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="shdr fu">
+    <span class="stag">Services</span>
+    <h2>Every Staffing Model. One Trusted Partner.</h2>
+    <p>From a single urgent hire to a full workforce build-out, KD Staffing delivers with speed, accuracy, and genuine accountability.</p>
+  </div>
+  <div class="grid3 fu">
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <h3>Direct Hire</h3>
+      <p>Permanent placements from sourcing through offer — with candidates fully screened for technical fit and cultural alignment.</p>
+    </div>
+    <div class="card">
+      <div class="icon pk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Temporary Staffing</h3>
+      <p>Qualified professionals available fast for seasonal demand, project surges, or unexpected workforce gaps.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <h3>Contract-to-Hire</h3>
+      <p>Evaluate a worker on the job before making a permanent commitment — with a seamless, built-in conversion process.</p>
+    </div>
+    <div class="card">
+      <div class="icon pk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h3>Executive Search</h3>
+      <p>Director through C-suite searches with full vetting, reference verification, and cultural assessment before presentation.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Volume Staffing</h3>
+      <p>High-volume hiring projects managed end-to-end — sourcing, screening, and placing at scale without compromising quality.</p>
+    </div>
+    <div class="card">
+      <div class="icon pk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Workforce Consulting</h3>
+      <p>Strategic hiring advice and workforce planning for organizations scaling quickly or restructuring their talent model.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec dk" id="process">
+  <div class="shdr dk fu">
+    <span class="stag lt">How We Work</span>
+    <h2>Three Steps. Real Results.</h2>
+    <p>No overcomplicated process. Just a focused, disciplined approach that delivers the right candidate every time.</p>
+  </div>
+  <div class="steps fu">
+    <div class="step">
+      <div class="snum2 sn2-a">1</div>
+      <h3>Tell Us What You Need</h3>
+      <p>We align on your requirements, timeline, culture, and what success looks like for the role — in one focused call.</p>
+    </div>
+    <div class="step">
+      <div class="snum2 sn2-b">2</div>
+      <h3>We Source and Screen</h3>
+      <p>We reach our networks, interview candidates, and verify fit — so only genuinely matched professionals land in your inbox.</p>
+    </div>
+    <div class="step">
+      <div class="snum2 sn2-c">3</div>
+      <h3>You Hire the Right Person</h3>
+      <p>Meet a tight, high-confidence shortlist. You choose — we handle offer logistics, onboarding coordination, and 30-day follow-up.</p>
+    </div>
+  </div>
+  <div class="ctarow fu">
+    <a href="#contact" class="btn">Start a Search</a>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="about-in">
+    <div class="at fu">
+      <span class="stag">About KD Staffing</span>
+      <h2>Staffing Built on Service, Speed, and Results</h2>
+      <p>KD Staffing was built to deliver something simple but rare in the staffing industry: genuine responsiveness, consistent quality, and complete accountability for every hire.</p>
+      <p>We work across professional and skilled disciplines, bringing the same standards to every search regardless of seniority or scope. Our clients return because we are honest about what we can deliver — and then we deliver it.</p>
+      <p>For job seekers, we operate as advocates — making matches that fit your skills and your goals, not just whatever is open at the moment.</p>
+      <div class="creds">
+        <span class="cred">Multi-Industry</span>
+        <span class="cred">Direct Hire &amp; Temp</span>
+        <span class="cred">48h Delivery</span>
+        <span class="cred">Replacement Guarantee</span>
+      </div>
+    </div>
+    <div class="dark-card fu">
+      <h3>Why KD Staffing</h3>
+      <p>We deliver quality over volume — every candidate is personally reviewed, every search gets a dedicated recruiter.</p>
+      <div class="dcline">
+        <div class="dcico dcico-b"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dctxt">Every candidate personally screened — no automated resume blasts</div>
+      </div>
+      <div class="dcline">
+        <div class="dcico dcico-p"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dctxt">First qualified candidate delivered within 48 hours for most roles</div>
+      </div>
+      <div class="dcline">
+        <div class="dcico dcico-b"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dctxt">Dedicated single point of contact — no call centers or handoffs</div>
+      </div>
+      <div class="dcline">
+        <div class="dcico dcico-p"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="dctxt">Replacement guarantee included on all direct hire placements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="fu">
+    <h2>Ready to Find Your Next Great Hire?</h2>
+    <p>Talk to KD Staffing and get your search started today.</p>
+    <a href="https://kdstaffing.org" class="btn-acc">Contact KD Staffing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <span style="font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;font-weight:800">KD Staffing</span>
+      <p>Workforce solutions and professional recruiting — fast, reliable, and built around your specific needs.</p>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Direct Hire</a></li>
+        <li><a href="#services">Temporary Staffing</a></li>
+        <li><a href="#services">Contract-to-Hire</a></li>
+        <li><a href="#services">Executive Search</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 KD Staffing. All rights reserved. | Website by <a href="https://mediactive.agency" target="_blank">Mediactive</a></p>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
